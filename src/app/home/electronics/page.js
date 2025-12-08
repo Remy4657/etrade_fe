@@ -20,23 +20,52 @@ import ProductListOne from "@/components/product/ProductListOne";
 import { mapInSlices, slugify } from "@/utils";
 import PosterTwo from "@/components/poster/PosterTwo";
 import { useEffect, useState } from "react";
-import { getCategoryAll } from "@/services/category.service"
+import { getCategoryAll, getProductAll } from "@/services/category.service"
 
 const HomeElectronics = () => {
     const pathname = usePathname();
     const split = pathname.split("/");
     const pageCategory = split[split.length - 1];
     const electronicsProduct = ProductsData.filter(data => data.pCate === "Electronics");
-    const exploreProduct = mapInSlices(electronicsProduct, 8);
+    //const exploreProduct = mapInSlices(electronicsProduct, 8);
+    console.log("electronicsProduct: ", electronicsProduct)
     const [listCategory, setListCategory] = useState([])
+    const [exploreProduct, setExploreProduct] = useState([])
+    // useEffect(() => {
+    //     const fetchAllCategory = async () => {
+    //         const res = await getCategoryAll()
+    //         console.log("res: ", res)
+    //         setListCategory(res.data)
+    //     }
+    //     const fetchAllProduct = async () => {
+    //         const res = await getProductAll()
+    //         console.log("res product: ", res)
+    //         setExploreProduct([1])
+    //     }
+    //     fetchAllCategory()
+    //     fetchAllProduct()
+    // }, [])
     useEffect(() => {
-        const fetchAllCategory = async () => {
-            const res = await getCategoryAll()
-            console.log("res: ", res)
-            setListCategory(res.data)
+        const fetchData = async () => {
+            try {
+                const [cateRes, productRes] = await Promise.all([
+                    getCategoryAll(),
+                    getProductAll()
+                ])
+                console.log("productRes.data: ", productRes.data)
+                setListCategory(cateRes.data)
+                setExploreProduct(productRes.data)
+            } catch (error) {
+                console.error(error)
+            }
         }
-        fetchAllCategory()
+
+        fetchData()
     }, [])
+
+    useEffect(() => {
+        console.log("Explore product updated:", exploreProduct)
+    }, [exploreProduct])
 
     return (
         <>

@@ -4,29 +4,29 @@ const ProductsData = [
         title: "3D™ wireless headset",
         thumbnail: "/images/product/product-big-03.png",
         hoverThumbnail: "/images/product/product-big-02.png",
-        gallery: ["/images/product/product-big-01.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/product-big-01.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Headphones", "Computers"],
         price: 500,
         salePrice: 400,
         productType: "variable",
-        sizeAttribute: [ 'XL', 'L', 'M', 'S', 'XS'],
+        sizeAttribute: ['XL', 'L', 'M', 'S', 'XS'],
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/product-big-03.png",
+                img: "/images/product/product-big-03.png",
             },
             {
                 color: 'black',
-                img:"/images/product/product-big-02.png"
+                img: "/images/product/product-big-02.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/product-big-01.png"
+                img: "/images/product/product-big-01.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -87,14 +87,14 @@ const ProductsData = [
         title: "PS2 DualShock 2 Wireless Controller",
         thumbnail: "/images/product/electric/product-08.png",
         hoverThumbnail: "/images/product/electric/product-08.png",
-        gallery: ["/images/product/electric/product-08.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-08.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["PC Gaming"],
         price: 49.99,
         salePrice: 29.99,
         productType: "variable",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -129,7 +129,7 @@ const ProductsData = [
         title: "Wired Keyboard & Mouse Combo Pack",
         thumbnail: "/images/product/electric/product-02.png",
         hoverThumbnail: "/images/product/electric/product-06.png",
-        gallery: ["/images/product/electric/product-02.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-02.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 55.99,
@@ -138,19 +138,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/electric/product-05.png",
+                img: "/images/product/electric/product-05.png",
             },
             {
                 color: 'black',
-                img:"/images/product/electric/product-04.png"
+                img: "/images/product/electric/product-04.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/electric/product-03.png"
+                img: "/images/product/electric/product-03.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -184,7 +184,7 @@ const ProductsData = [
         id: 4,
         title: "Logitech Streamcam",
         thumbnail: "/images/product/electric/product-03.png",
-        gallery: ["/images/product/electric/product-03.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-03.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Camera & Photo"],
         price: 219,
@@ -193,19 +193,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/electric/product-07.png",
+                img: "/images/product/electric/product-07.png",
             },
             {
                 color: 'black',
-                img:"/images/product/electric/product-04.png"
+                img: "/images/product/electric/product-04.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/electric/product-03.png"
+                img: "/images/product/electric/product-03.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -240,14 +240,14 @@ const ProductsData = [
         title: "3D™ wireless headset",
         thumbnail: "/images/product/electric/product-04.png",
         hoverThumbnail: "/images/product/electric/product-06.png",
-        gallery: ["/images/product/electric/product-04.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-04.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Headphones"],
         price: 417,
         salePrice: 387,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -282,7 +282,7 @@ const ProductsData = [
         title: "Bass Meets Clarity",
         thumbnail: "/images/product/electric/product-05.png",
         hoverThumbnail: "/images/product/electric/product-04.png",
-        gallery: ["/images/product/electric/product-05.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-05.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 400,
@@ -291,19 +291,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/electric/product-05.png",
+                img: "/images/product/electric/product-05.png",
             },
             {
                 color: 'black',
-                img:"/images/product/electric/product-04.png"
+                img: "/images/product/electric/product-04.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/electric/product-03.png"
+                img: "/images/product/electric/product-03.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -337,7 +337,7 @@ const ProductsData = [
         id: 7,
         title: "Mouce Logitech",
         thumbnail: "/images/product/electric/product-06.png",
-        gallery: ["/images/product/electric/product-06.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-06.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Computers"],
         price: 130,
@@ -346,19 +346,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/electric/product-06.png",
+                img: "/images/product/electric/product-06.png",
             },
             {
                 color: 'black',
-                img:"/images/product/electric/product-04.png"
+                img: "/images/product/electric/product-04.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/electric/product-03.png"
+                img: "/images/product/electric/product-03.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -398,24 +398,24 @@ const ProductsData = [
         price: 49.99,
         salePrice: 29.99,
         productType: "variable",
-        sizeAttribute: [ 'XL', 'L', 'M', 'S', 'XS'],
+        sizeAttribute: ['XL', 'L', 'M', 'S', 'XS'],
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-12.png",
-                
+                img: "/images/product/jewellery/product-12.png",
+
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-13.png"
+                img: "/images/product/jewellery/product-13.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-14.png"
+                img: "/images/product/jewellery/product-14.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -450,14 +450,14 @@ const ProductsData = [
         title: "Zone Headphone",
         thumbnail: "/images/product/electric/product-07.png",
         hoverThumbnail: "/images/product/electric/product-08.png",
-        gallery: ["/images/product/electric/product-07.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-07.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Headphones"],
         price: 200,
         salePrice: 179,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -491,7 +491,7 @@ const ProductsData = [
         id: 10,
         title: "Playstation Black Controller",
         thumbnail: "/images/product/electric/product-08.png",
-        gallery: ["/images/product/electric/product-08.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-08.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["PC Gaming"],
         price: 310,
@@ -500,19 +500,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/electric/product-08.png",
+                img: "/images/product/electric/product-08.png",
             },
             {
                 color: 'black',
-                img:"/images/product/electric/product-08.png"
+                img: "/images/product/electric/product-08.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/electric/product-03.png"
+                img: "/images/product/electric/product-03.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -546,14 +546,14 @@ const ProductsData = [
         id: 11,
         title: "Media Remote",
         thumbnail: "/images/product/electric/product-09.png",
-        gallery: ["/images/product/electric/product-09.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-09.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 50,
         salePrice: 39,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -587,13 +587,13 @@ const ProductsData = [
         id: 12,
         title: "HD Camera",
         thumbnail: "/images/product/electric/product-10.png",
-        gallery: ["/images/product/electric/product-10.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-10.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 49.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -627,13 +627,13 @@ const ProductsData = [
         id: 13,
         title: "Gaming Controller",
         thumbnail: "/images/product/electric/product-11.png",
-        gallery: ["/images/product/electric/product-11.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-11.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 50,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -667,13 +667,13 @@ const ProductsData = [
         id: 14,
         title: "Wall Mount",
         thumbnail: "/images/product/electric/product-12.png",
-        gallery: ["/images/product/electric/product-12.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-12.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 19,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -707,13 +707,13 @@ const ProductsData = [
         id: 15,
         title: "Lenevo Laptop",
         thumbnail: "/images/product/electric/product-13.png",
-        gallery: ["/images/product/electric/product-13.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-13.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Laptops"],
         price: 999.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -747,13 +747,13 @@ const ProductsData = [
         id: 16,
         title: "Juice Grinder Machine",
         thumbnail: "/images/product/electric/product-14.png",
-        gallery: ["/images/product/electric/product-14.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-14.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Accessories"],
         price: 99.00,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -787,13 +787,13 @@ const ProductsData = [
         id: 17,
         title: "Wireless Headphone",
         thumbnail: "/images/product/electric/product-15.png",
-        gallery: ["/images/product/electric/product-15.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-15.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Headphones"],
         price: 59.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -827,13 +827,13 @@ const ProductsData = [
         id: 18,
         title: "Asus Zenbook Laptop",
         thumbnail: "/images/product/electric/product-16.png",
-        gallery: ["/images/product/electric/product-16.png","/images/product/product-big-02.png","/images/product/product-big-03.png","/images/product/product-big-02.png"],
+        gallery: ["/images/product/electric/product-16.png", "/images/product/product-big-02.png", "/images/product/product-big-03.png", "/images/product/product-big-02.png"],
         pCate: "Electronics",
         cate: ["Laptops"],
         price: 899.00,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -2789,7 +2789,7 @@ const ProductsData = [
         salePrice: 60,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -2830,7 +2830,7 @@ const ProductsData = [
         salePrice: 40,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -2864,14 +2864,14 @@ const ProductsData = [
         id: 43,
         title: "Leather Bag For Men",
         thumbnail: "/images/product/fashion/product-3.png",
-        gallery: ["/images/product/product-18.png","/images/product/product-17.png","/images/product/product-14.png","/images/product/product-15.png","/images/product/product-16.png","/images/product/product-19.png","/images/product/product-20.png","/images/product/product-22.png"],
+        gallery: ["/images/product/product-18.png", "/images/product/product-17.png", "/images/product/product-14.png", "/images/product/product-15.png", "/images/product/product-16.png", "/images/product/product-19.png", "/images/product/product-20.png", "/images/product/product-22.png"],
         pCate: "Fashion",
         cate: ["Handbag"],
         price: 30,
         salePrice: 24,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -2911,7 +2911,7 @@ const ProductsData = [
         salePrice: 99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -2951,7 +2951,7 @@ const ProductsData = [
         salePrice: 132,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -2993,7 +2993,7 @@ const ProductsData = [
         productType: "simple",
         gender: "Men",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3034,7 +3034,7 @@ const ProductsData = [
         salePrice: 37.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3075,7 +3075,7 @@ const ProductsData = [
         salePrice: 59.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3116,7 +3116,7 @@ const ProductsData = [
         salePrice: 89.00,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3157,7 +3157,7 @@ const ProductsData = [
         salePrice: 35.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3198,7 +3198,7 @@ const ProductsData = [
         salePrice: 27.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3239,7 +3239,7 @@ const ProductsData = [
         salePrice: 51.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3280,7 +3280,7 @@ const ProductsData = [
         salePrice: 62.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3320,7 +3320,7 @@ const ProductsData = [
         salePrice: 99.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3360,7 +3360,7 @@ const ProductsData = [
         salePrice: 57.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3400,7 +3400,7 @@ const ProductsData = [
         salePrice: 70.99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3440,7 +3440,7 @@ const ProductsData = [
         salePrice: 25,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3480,7 +3480,7 @@ const ProductsData = [
         salePrice: 65,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3520,7 +3520,7 @@ const ProductsData = [
         salePrice: 30,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3560,7 +3560,7 @@ const ProductsData = [
         salePrice: 210,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3600,7 +3600,7 @@ const ProductsData = [
         salePrice: 69,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3640,7 +3640,7 @@ const ProductsData = [
         salePrice: 289,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3674,7 +3674,7 @@ const ProductsData = [
         id: 63,
         title: "Diamond Locket",
         thumbnail: "/images/product/jewellery/product-1.png",
-        gallery: ["/images/product/jewellery/product-1.png","/images/product/jewellery/product-2.png", "/images/product/jewellery/product-3.png","/images/product/jewellery/product-4.png","/images/product/jewellery/product-5.png"],
+        gallery: ["/images/product/jewellery/product-1.png", "/images/product/jewellery/product-2.png", "/images/product/jewellery/product-3.png", "/images/product/jewellery/product-4.png", "/images/product/jewellery/product-5.png"],
         pCate: "Jewellery",
         cate: ["Barrette"],
         price: 50,
@@ -3683,19 +3683,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-1.png",
+                img: "/images/product/jewellery/product-1.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-1.png"
+                img: "/images/product/jewellery/product-1.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-1.png"
+                img: "/images/product/jewellery/product-1.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3738,19 +3738,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-2.png",
+                img: "/images/product/jewellery/product-2.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-3.png"
+                img: "/images/product/jewellery/product-3.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-4.png"
+                img: "/images/product/jewellery/product-4.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3793,19 +3793,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-3.png",
+                img: "/images/product/jewellery/product-3.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-3.png"
+                img: "/images/product/jewellery/product-3.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-3.png"
+                img: "/images/product/jewellery/product-3.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3848,19 +3848,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-4.png",
+                img: "/images/product/jewellery/product-4.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-4.png"
+                img: "/images/product/jewellery/product-4.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-4.png"
+                img: "/images/product/jewellery/product-4.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3903,19 +3903,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-5.png",
+                img: "/images/product/jewellery/product-5.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-5.png"
+                img: "/images/product/jewellery/product-5.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-5.png"
+                img: "/images/product/jewellery/product-5.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -3958,19 +3958,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-6.png",
+                img: "/images/product/jewellery/product-6.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-6.png"
+                img: "/images/product/jewellery/product-6.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-6.png"
+                img: "/images/product/jewellery/product-6.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4013,19 +4013,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-7.png",
+                img: "/images/product/jewellery/product-7.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-7.png"
+                img: "/images/product/jewellery/product-7.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-7.png"
+                img: "/images/product/jewellery/product-7.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4068,19 +4068,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-8.png",
+                img: "/images/product/jewellery/product-8.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-8.png"
+                img: "/images/product/jewellery/product-8.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-8.png"
+                img: "/images/product/jewellery/product-8.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4123,19 +4123,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-9.png",
+                img: "/images/product/jewellery/product-9.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-9.png"
+                img: "/images/product/jewellery/product-9.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-9.png"
+                img: "/images/product/jewellery/product-9.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4178,19 +4178,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-10.png",
+                img: "/images/product/jewellery/product-10.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-10.png"
+                img: "/images/product/jewellery/product-10.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-10.png"
+                img: "/images/product/jewellery/product-10.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4233,19 +4233,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-11.png",
+                img: "/images/product/jewellery/product-11.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-11.png"
+                img: "/images/product/jewellery/product-11.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-11.png"
+                img: "/images/product/jewellery/product-11.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4288,19 +4288,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-12.png",
+                img: "/images/product/jewellery/product-12.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-12.png"
+                img: "/images/product/jewellery/product-12.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-12.png"
+                img: "/images/product/jewellery/product-12.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4342,19 +4342,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-13.png",
+                img: "/images/product/jewellery/product-13.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-13.png"
+                img: "/images/product/jewellery/product-13.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-13.png"
+                img: "/images/product/jewellery/product-13.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4396,19 +4396,19 @@ const ProductsData = [
         colorAttribute: [
             {
                 color: 'red',
-                img:"/images/product/jewellery/product-14.png",
+                img: "/images/product/jewellery/product-14.png",
             },
             {
                 color: 'black',
-                img:"/images/product/jewellery/product-14.png"
+                img: "/images/product/jewellery/product-14.png"
             },
             {
                 color: 'skyblue',
-                img:"/images/product/jewellery/product-14.png"
+                img: "/images/product/jewellery/product-14.png"
             }
         ],
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4449,7 +4449,7 @@ const ProductsData = [
         salePrice: 60,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4490,7 +4490,7 @@ const ProductsData = [
         salePrice: 70,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4531,7 +4531,7 @@ const ProductsData = [
         salePrice: 75,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4572,7 +4572,7 @@ const ProductsData = [
         salePrice: 100,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4613,7 +4613,7 @@ const ProductsData = [
         salePrice: 159,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4656,7 +4656,7 @@ const ProductsData = [
         salePrice: 100,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4698,7 +4698,7 @@ const ProductsData = [
         salePrice: 80,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4740,7 +4740,7 @@ const ProductsData = [
         salePrice: 133,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4782,7 +4782,7 @@ const ProductsData = [
         salePrice: 110,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4824,7 +4824,7 @@ const ProductsData = [
         salePrice: 200,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4866,7 +4866,7 @@ const ProductsData = [
         salePrice: 178,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4908,7 +4908,7 @@ const ProductsData = [
         salePrice: 65,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4950,7 +4950,7 @@ const ProductsData = [
         salePrice: 89,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -4990,7 +4990,7 @@ const ProductsData = [
         salePrice: 110,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5030,7 +5030,7 @@ const ProductsData = [
         salePrice: 140,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5070,7 +5070,7 @@ const ProductsData = [
         salePrice: 160,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5110,7 +5110,7 @@ const ProductsData = [
         salePrice: 190,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5150,7 +5150,7 @@ const ProductsData = [
         salePrice: 90,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5190,7 +5190,7 @@ const ProductsData = [
         salePrice: 99,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5230,7 +5230,7 @@ const ProductsData = [
         salePrice: 65,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
@@ -5270,7 +5270,7 @@ const ProductsData = [
         salePrice: 50,
         productType: "simple",
         shortDes: {
-            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.", 
+            text: "In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.",
             listItem: '<li><i class="fal fa-check"></i>In stock</li><li><i class="fal fa-check"></i>Free delivery available</li><li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>'
         },
         description: {
