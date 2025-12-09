@@ -27,8 +27,8 @@ const HomeElectronics = () => {
     const split = pathname.split("/");
     const pageCategory = split[split.length - 1];
     const electronicsProduct = ProductsData.filter(data => data.pCate === "Electronics");
-    //const exploreProduct = mapInSlices(electronicsProduct, 8);
-    console.log("electronicsProduct: ", electronicsProduct)
+    const exploreProduct1 = mapInSlices(electronicsProduct, 8);
+    console.log("exploreProduct1: ", exploreProduct1)
     const [listCategory, setListCategory] = useState([])
     const [exploreProduct, setExploreProduct] = useState([])
     // useEffect(() => {
@@ -64,6 +64,7 @@ const HomeElectronics = () => {
     }, [])
 
     useEffect(() => {
+
         console.log("Explore product updated:", exploreProduct)
     }, [exploreProduct])
 
@@ -85,14 +86,13 @@ const HomeElectronics = () => {
                         class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
                         slidesToShow={1}
                     >
-                        {exploreProduct.slice(0, 2).map((product, index) => (
+                        {exploreProduct.map((product, index) => (
                             <div key={index}>
                                 <div className="row row--15">
-                                    {product.map((data) => (
-                                        <div className="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30" key={data.id}>
-                                            <ProductOne product={data} />
-                                        </div>
-                                    ))}
+                                    <div className="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30" key={product.id}>
+                                        <ProductOne product={product} />
+                                    </div>
+
                                 </div>
                             </div>
                         ))}

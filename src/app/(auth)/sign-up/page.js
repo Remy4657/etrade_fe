@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import AuthService from "@/services/auth.service"
 
 const SignUp = () => {
     const [signupData, setSignupData] = useState(null);
@@ -8,30 +9,33 @@ const SignUp = () => {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
+    } = useForm();
 
     const onSubmit = (data, e) => {
+        console.log("data signup: ", data)
+
+        AuthService.register({ ...data })
         setSignupData(data);
     }
 
-    return ( 
+    return (
         <div className="axil-signin-form">
             <h3 className="title">I&apos;m New Here</h3>
             <p className="b2 mb--55">Enter your detail below</p>
             <form className="singin-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label>User Name</label>
-                    <input type="text" className="form-control" {...register('userName', { required: true })} placeholder="admin"/>
-                    {errors.userName && <p className="error">User Name is required.</p>}
+                    <input type="text" className="form-control" {...register('username', { required: true })} placeholder="admin" />
+                    {errors.username && <p className="error">User Name is required.</p>}
                 </div>
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" {...register('email', { required: true, pattern: /^\S+@\S+$/i})} placeholder="annie@example.com" />
+                    <input type="email" className="form-control" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="annie@example.com" />
                     {errors.email && <p className="error">Email is required.</p>}
                 </div>
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" {...register('password', { required: true, minLength: 4})} />
+                    <input type="password" className="form-control" {...register('password', { required: true, minLength: 4 })} />
                     {errors.password && <p className="error">Password is required.</p>}
                 </div>
                 <div className="form-group">
@@ -40,7 +44,7 @@ const SignUp = () => {
                 </div>
             </form>
         </div>
-     );
+    );
 }
- 
+
 export default SignUp;

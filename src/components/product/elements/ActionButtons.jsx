@@ -38,15 +38,10 @@ const ActionButtons = (props) => {
       )}
       {props.cartBtn && (
         <li className="select-option">
-          {props.productAction.pCate === "NFT" || props.productAction.productType === "variable" ? (
-            <Link href={`/products/${props.productAction.id}`}>
-              Buy Product
-            </Link>
-          ) : (
             <button onClick={() => handleAddToCart(props.productAction)}>
               Add to Cart
             </button>
-          )}
+         
         </li>
       )}
       {props.quickViewBtn && props.productAction.pCate !== "NFT" && (
