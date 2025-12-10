@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
 import AuthLayout from "../layout";
-import { logIn } from "@/store/slices/authSlice";
+import { logIn, loginUser } from "@/store/slices/authSlice";
+
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -16,24 +17,23 @@ const SignIn = () => {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
+    } = useForm();
 
     const loginInfo = {
-        email: "admin@email.com",
-        password: "1234"
+        email: "test1@gmail.com",
+        password: "123456"
     }
-    
+
     const onSubmit = (data) => {
-        if (data.email === loginInfo.email &&  data.password === loginInfo.password) {
-            setSignInData(data);
-            dispatch(logIn(data.email));
-            router.push('/dashboard');
-        }else {
+        if (data.email === loginInfo.email && data.password === loginInfo.password) {
+            dispatch(loginUser({ email: data.email, password: data.password }));
+            // router.push('/');
+        } else {
             setLoginError(true);
         }
     }
 
-    return ( 
+    return (
         <AuthLayout bgImage="bg_image--9">
             <div className="axil-signin-form">
                 <h3 className="title">Sign in to eTrade.</h3>
@@ -41,12 +41,12 @@ const SignIn = () => {
                 <form className="singin-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" {...register('email', { required: true })} defaultValue="admin@email.com" />
+                        <input type="email" className="form-control" {...register('email', { required: true })} defaultValue="test1@gmail.com" />
                         {errors.email && <p className="error">Email is required.</p>}
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" {...register('password', { required: true, minLength: 4})} defaultValue={1234} />
+                        <input type="password" className="form-control" {...register('password', { required: true, minLength: 4 })} defaultValue={123456} />
                         {errors.password && <p className="error">Password is required.</p>}
                     </div>
                     <div className="form-group d-flex align-items-center justify-content-between">
@@ -57,7 +57,7 @@ const SignIn = () => {
                 </form>
             </div>
         </AuthLayout>
-     );
+    );
 }
- 
+
 export default SignIn;

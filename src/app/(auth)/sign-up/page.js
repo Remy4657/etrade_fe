@@ -1,9 +1,12 @@
 'use client';
+import { toast, Bounce } from 'react-toastify';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import AuthService from "@/services/auth.service"
 
 const SignUp = () => {
+    const router = useRouter();
     const [signupData, setSignupData] = useState(null);
     const {
         register,
@@ -11,12 +14,39 @@ const SignUp = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data, e) => {
-        console.log("data signup: ", data)
-
-        AuthService.register({ ...data })
+    const onSubmit = async (data, e) => {
         setSignupData(data);
+        const res = await AuthService.register({ ...data })
+        console.log("res sign up: ", res)
+        if (res.data.code === 200) {
+            toast.success(res.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+            router.push("/sign-in")
+        } else {
+            toast.error(res.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+
     }
+
 
     return (
         <div className="axil-signin-form">
