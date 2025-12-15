@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
         try {
             const res = await AuthService.login(data);
             console.log("[res data] login: ", res)
-            return res.data?.data; // ⚠️ BẮT BUỘC return
+            return res.data?.data;
         } catch (err) {
             return rejectWithValue(
                 err.response?.data || "Login failed"
@@ -16,6 +16,19 @@ export const loginUser = createAsyncThunk(
         }
     }
 );
+export const getMe = createAsyncThunk(
+    "auth/getMe",
+    async (_, { rejectWithValue }) => {
+        try {
+            const res = await AuthService.me();
+
+            return res.data;
+        } catch (err) {
+            return rejectWithValue("Unauthenticated");
+        }
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
@@ -31,27 +44,40 @@ const authSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
+        //login
         builder
-            // pending
             .addCase(loginUser.pending, (state) => {
                 state.isLoading = true;
                 state.isError = null;
             })
-
-            // fulfilled
             .addCase(loginUser.fulfilled, (state, action) => {
                 console.log("action.payload: ", action.payload)
                 state.isLoading = false;
                 state.login = true;
                 state.userData = action.payload;
             })
-
-            // rejected
             .addCase(loginUser.rejected, (state, action) => {
                 state.isLoading = false;
                 state.login = false;
                 state.isError = action.payload;
             });
+        // getMe
+        builder
+            .addCase(getMe.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getMe.fulfilled, (state, action) => {
+                console.log("[me] action.payload: ", action.payload)
+                state.isLoading = false;
+                state.login = true;
+                state.userData = action.payload;
+            })
+            .addCase(getMe.rejected, (state) => {
+                state.isLoading = false;
+                state.login = false;
+                state.userData = null;
+            })
+
     },
 });
 

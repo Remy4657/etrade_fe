@@ -5,12 +5,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/style.scss";
 import { ToastContainer, Bounce } from 'react-toastify';
+import RefreshApp from '@/components/refresh';
 
 const RootLayout = ({ children }) => {
-
 	useEffect(() => {
 		window.bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js");
 	}, []);
+
 
 	return (
 		<html lang="en">
@@ -22,7 +23,9 @@ const RootLayout = ({ children }) => {
 			</head>
 			<body>
 				<Providers>
-					{children}
+					<RefreshApp>
+						{children}
+					</RefreshApp>
 					<ToastContainer
 						position="top-right"
 						autoClose={5000}

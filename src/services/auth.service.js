@@ -1,7 +1,6 @@
 import axiosClient from "@/utils/axios";
 import { authApi } from "@/api/api";
 
-
 const AuthService = {
     register: (data) => {
         return axiosClient.post(authApi.REGISTER, { ...data });
@@ -9,6 +8,9 @@ const AuthService = {
     login: (data) => {
         console.log("[data login]:", data)
         return axiosClient.post(authApi.LOGIN, { ...data });
+    },
+    me: () => {
+        return axiosClient.get(authApi.GET_ME)
     }
 };
 

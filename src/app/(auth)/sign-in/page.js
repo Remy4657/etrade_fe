@@ -24,7 +24,7 @@ const SignIn = () => {
     }
 
     const onSubmit = (data) => {
-        if (data.email === loginInfo.email && data.password === loginInfo.password) {
+        if (true) {
             dispatch(loginUser({ email: data.email, password: data.password }));
             // router.push('/');
         } else {

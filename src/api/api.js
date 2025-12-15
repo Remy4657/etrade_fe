@@ -4,6 +4,7 @@ export const categoryApi = {
 };
 export const authApi = {
     REGISTER: "/auth/register",
-    LOGIN: "/auth/login"
+    LOGIN: "/auth/login",
+    GET_ME: "/auth/me"
 };
 
