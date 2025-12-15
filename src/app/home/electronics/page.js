@@ -28,7 +28,6 @@ const HomeElectronics = () => {
     const pageCategory = split[split.length - 1];
     const electronicsProduct = ProductsData.filter(data => data.pCate === "Electronics");
     const exploreProduct1 = mapInSlices(electronicsProduct, 8);
-    console.log("exploreProduct1: ", exploreProduct1)
     const [listCategory, setListCategory] = useState([])
     const [exploreProduct, setExploreProduct] = useState([])
     // useEffect(() => {
@@ -52,7 +51,6 @@ const HomeElectronics = () => {
                     getCategoryAll(),
                     getProductAll()
                 ])
-                console.log("productRes.data: ", productRes.data)
                 setListCategory(cateRes.data)
                 setExploreProduct(productRes.data)
             } catch (error) {

@@ -4,10 +4,16 @@ import AuthService from "@/services/auth.service"
 
 export const loginUser = createAsyncThunk(
     "auth/loginUser",
-    async (data) => {
-        console.log("data login: ", data)
-        const res = await AuthService.login(data)
-        console.log("res login: ", res)
+    async (data, { rejectWithValue }) => {
+        try {
+            const res = await AuthService.login(data);
+            console.log("[res data] login: ", res)
+            return res.data?.data; // ⚠️ BẮT BUỘC return
+        } catch (err) {
+            return rejectWithValue(
+                err.response?.data || "Login failed"
+            );
+        }
     }
 );
 const authSlice = createSlice({
@@ -15,23 +21,41 @@ const authSlice = createSlice({
     initialState: {
         login: false,
         userData: {},
+        isLoading: false,
+        isError: null,
     },
     reducers: {
-        logIn(state, action) {
-            //const findUser = UserLists.filter(user => user.email === action.payload);
-            console.log("action.payload: ", action.payload)
-            state.userData = { name: "dat", age: "24" }
-            state.login = true;
+        logout(state) {
+            state.login = false;
+            state.userData = null;
+        },
+    },
+    extraReducers: (builder) => {
+        builder
+            // pending
+            .addCase(loginUser.pending, (state) => {
+                state.isLoading = true;
+                state.isError = null;
+            })
 
-            // if (findUser.length) {
-            //     state.userData = findUser[0];
-            //     state.login = true;
-            // }
-        }
-    }
+            // fulfilled
+            .addCase(loginUser.fulfilled, (state, action) => {
+                console.log("action.payload: ", action.payload)
+                state.isLoading = false;
+                state.login = true;
+                state.userData = action.payload;
+            })
+
+            // rejected
+            .addCase(loginUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.login = false;
+                state.isError = action.payload;
+            });
+    },
 });
 
-export const { logIn } = authSlice.actions;
+//export const { logIn } = authSlice.actions;
 
 export default authSlice.reducer;
 

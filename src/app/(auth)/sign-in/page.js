@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
 import AuthLayout from "../layout";
-import { logIn, loginUser } from "@/store/slices/authSlice";
-
+import { loginUser } from "@/store/slices/authSlice";
 
 const SignIn = () => {
     const dispatch = useDispatch();
