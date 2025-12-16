@@ -30,20 +30,7 @@ const HomeElectronics = () => {
     const exploreProduct1 = mapInSlices(electronicsProduct, 8);
     const [listCategory, setListCategory] = useState([])
     const [exploreProduct, setExploreProduct] = useState([])
-    // useEffect(() => {
-    //     const fetchAllCategory = async () => {
-    //         const res = await getCategoryAll()
-    //         console.log("res: ", res)
-    //         setListCategory(res.data)
-    //     }
-    //     const fetchAllProduct = async () => {
-    //         const res = await getProductAll()
-    //         console.log("res product: ", res)
-    //         setExploreProduct([1])
-    //     }
-    //     fetchAllCategory()
-    //     fetchAllProduct()
-    // }, [])
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -61,10 +48,7 @@ const HomeElectronics = () => {
         fetchData()
     }, [])
 
-    useEffect(() => {
 
-        console.log("Explore product updated:", exploreProduct)
-    }, [exploreProduct])
 
     return (
         <>

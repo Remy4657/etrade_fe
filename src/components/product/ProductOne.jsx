@@ -6,30 +6,30 @@ import ProductThumbnail from "./elements/ProductThumbnail";
 import ProductTitle from "./elements/ProductTitle";
 
 const ProductOne = ({ product, pClass }) => {
-    const [colorAttribute, setColorAttribute] = useState('');
+  const [colorAttribute, setColorAttribute] = useState('');
 
-    const getAttributeData = (data) => {
-        setColorAttribute(data.img);
-    }
+  const getAttributeData = (data) => {
+    setColorAttribute(data.img);
+  }
 
   return (
     <>
       <div className={`axil-product product-style-one ${pClass ?? ""}`}>
-       <ProductThumbnail 
-       productThumb={product} 
-       attributeImg={colorAttribute} 
-       discountLabel 
-       hoverItems
-       wishlistBtn
-       cartBtn
-       quickViewBtn
-       isHoverThumbnail
-       />
+        <ProductThumbnail
+          productThumb={product}
+          attributeImg={colorAttribute}
+          discountLabel
+          hoverItems
+          wishlistBtn
+          cartBtn
+          quickViewBtn
+          isHoverThumbnail
+        />
         <div className="product-content">
           <div className="inner">
             <ProductTitle verified={product.verified} productTitle={product} />
             <ProductPrice price={product} />
-            {product.colorAttribute && <ProductColorAttribute attributeColor={product} getAttribute={getAttributeData}/>}
+            {product.colorAttribute && <ProductColorAttribute attributeColor={product} getAttribute={getAttributeData} />}
           </div>
         </div>
       </div>

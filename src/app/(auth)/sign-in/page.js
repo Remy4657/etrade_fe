@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast, Bounce } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
 import AuthLayout from "../layout";
@@ -23,13 +24,38 @@ const SignIn = () => {
         password: "123456"
     }
 
-    const onSubmit = (data) => {
-        if (true) {
-            dispatch(loginUser({ email: data.email, password: data.password }));
-            // router.push('/');
+    const onSubmit = async (data) => {
+
+        const resultAction = await dispatch(loginUser({ email: data.email, password: data.password }));
+        console.log("[res dispatch login]: ", resultAction)
+        if (resultAction.payload.code == 200) {
+            toast.success(resultAction.payload?.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+            router.push("/");
         } else {
+            toast.error(resultAction.payload?.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             setLoginError(true);
         }
+
     }
 
     return (

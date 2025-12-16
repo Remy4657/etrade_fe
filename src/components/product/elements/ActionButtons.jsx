@@ -9,10 +9,17 @@ import {
 
 const ActionButtons = (props) => {
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.auth);
+  console.log("userData: ", userData)
+
   const getWishlist = useSelector((state) => state.productData.wishlistItems);
   const isWishlistAdded = getWishlist.filter((data) => data.id === props.productAction.id);
-
+  //
   const handleAddToCart = (product) => {
+    if (!userData.login) {
+      router.push("/sign-in");
+      return;
+    }
     dispatch(addToCart(product));
   };
 
@@ -32,16 +39,16 @@ const ActionButtons = (props) => {
       {props.wishlistBtn && props.productAction.pCate !== "NFT" && (
         <li className="wishlist">
           <button onClick={() => handleAddToWishlist(props.productAction)}>
-		  <i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} />
+            <i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} />
           </button>
         </li>
       )}
       {props.cartBtn && (
         <li className="select-option">
-            <button onClick={() => handleAddToCart(props.productAction)}>
-              Add to Cart
-            </button>
-         
+          <button onClick={() => handleAddToCart(props.productAction)}>
+            Add to Cart
+          </button>
+
         </li>
       )}
       {props.quickViewBtn && props.productAction.pCate !== "NFT" && (

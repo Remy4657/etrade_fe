@@ -17,7 +17,6 @@ const SignUp = () => {
     const onSubmit = async (data, e) => {
         setSignupData(data);
         const res = await AuthService.register({ ...data })
-        console.log("res sign up: ", res)
         if (res.data.code === 200) {
             toast.success(res.data.message, {
                 position: "top-right",
