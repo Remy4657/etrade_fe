@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const Dashboard = () => {
     const authInfo = useSelector((state) => state.auth);
     const users = authInfo?.userData;
-    console.log("user info: ", users)
     return (
         <div className="axil-dashboard-overview">
             <div className="welcome-text">Hello {users.username} (not <span>{users.name}?</span> <a href="/sign-in">Log Out</a>)</div>

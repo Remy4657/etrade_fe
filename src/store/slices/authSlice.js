@@ -7,10 +7,6 @@ export const loginUser = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             const res = await AuthService.login(data);
-            console.log("[res data] login: ", res)
-            // if (res.data.code == 200) {
-
-            // }
             return res.data;
         } catch (err) {
             return rejectWithValue(
@@ -24,7 +20,7 @@ export const getMe = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const res = await AuthService.me();
-            console.log("[me] res: ", res.data)
+            console.log("[me] res: ", res)
             return res.data;
         } catch (err) {
             return rejectWithValue("Unauthenticated");

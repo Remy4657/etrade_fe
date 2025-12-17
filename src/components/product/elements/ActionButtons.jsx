@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -8,9 +8,9 @@ import {
 } from "@/store/slices/productSlice";
 
 const ActionButtons = (props) => {
+  const router = useRouter()
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth);
-  console.log("userData: ", userData)
 
   const getWishlist = useSelector((state) => state.productData.wishlistItems);
   const isWishlistAdded = getWishlist.filter((data) => data.id === props.productAction.id);

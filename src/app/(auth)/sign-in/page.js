@@ -19,11 +19,6 @@ const SignIn = () => {
         formState: { errors },
     } = useForm();
 
-    const loginInfo = {
-        email: "test1@gmail.com",
-        password: "123456"
-    }
-
     const onSubmit = async (data) => {
 
         const resultAction = await dispatch(loginUser({ email: data.email, password: data.password }));

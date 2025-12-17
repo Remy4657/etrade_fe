@@ -8,9 +8,13 @@ const axiosClient = axios.create({
     withCredentials: true
 });
 axiosClient.interceptors.response.use(
-    (response) => response,
+    (response) => {
+        console.log("[axios] response: ", response)
+        return response
+    },
     (error) => {
-        return Promise.resolve({
+        console.log("loi axios")
+        return Promise.reject({
             status: error.response?.status || 500,
             data: error.response?.data || { message: "Server error" },
         });

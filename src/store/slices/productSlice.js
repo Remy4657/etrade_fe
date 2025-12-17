@@ -24,7 +24,7 @@ const productSlice = createSlice({
                 state.isMinicartOpen = true;
 
             } else {
-                const tempProduct = { 
+                const tempProduct = {
                     id: action.payload.id,
                     title: action.payload.title,
                     thumbnail: action.payload.thumbnail,
