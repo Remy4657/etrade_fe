@@ -1,7 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2';
+import CartService from "@/services/cart.service"
 import { calculateTotalAmount, calculateTotalQuantity } from "@/utils";
 
+export const addToCartAPI = createAsyncThunk(
+    "cart/addToCartAPI",
+    async (product, { rejectWithValue }) => {
+        try {
+            console.log("[sile] product: ", product)
+            const res = await CartService.addToCart(product)
+            return res.data;
+        } catch (error) {
+            return rejectWithValue(
+                err.response?.data || "Error system"
+            );
+        }
+    }
+);
+export const getCart = createAsyncThunk(
+    "cart/getCart",
+    async (_, thunkAPI) => {
+        try {
+            const res = await CartService.getCart();
+            return res.data;
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data);
+        }
+    }
+);
 const productSlice = createSlice({
     name: 'products',
     initialState: {
@@ -22,7 +48,6 @@ const productSlice = createSlice({
                 state.cartItems[ItemIndex].cartQuantity += action.payload.cartQuantity ?? 1;
                 state.cartQuantityTotal += action.payload.cartQuantity ?? 1
                 state.isMinicartOpen = true;
-
             } else {
                 const tempProduct = {
                     id: action.payload.id,
@@ -39,7 +64,6 @@ const productSlice = createSlice({
                 state.cartQuantityTotal += action.payload.cartQuantity ?? 1;
                 state.isMinicartOpen = true;
             }
-
             state.cartTotalAmount = calculateTotalAmount(state.cartItems);
         },
         removeCartItem(state, action) {
@@ -113,6 +137,13 @@ const productSlice = createSlice({
             state.cartQuantityTotal = 0;
             state.cartItems = [];
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getCart.fulfilled, (state, action) => {
+            state.cartItems = action.payload.items;
+            state.cartQuantityTotal = action.payload.cartQuantityTotal;
+            state.cartTotalAmount = action.payload.cartTotalAmount;
+        });
     }
 });
 

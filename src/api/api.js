@@ -7,4 +7,8 @@ export const authApi = {
     LOGIN: "/auth/login",
     GET_ME: "/auth/me"
 };
+export const cartApi = {
+    ADD_TO_CART: "/cart/add",
+    GET_CART: "/cart/get-current"
+}
 

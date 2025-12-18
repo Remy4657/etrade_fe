@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
 import AuthLayout from "../layout";
 import { loginUser } from "@/store/slices/authSlice";
+import { getCart } from "@/store/slices/productSlice";
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const SignIn = () => {
         const resultAction = await dispatch(loginUser({ email: data.email, password: data.password }));
         console.log("[res dispatch login]: ", resultAction)
         if (resultAction.payload.code == 200) {
+            dispatch(getCart())
             toast.success(resultAction.payload?.message, {
                 position: "top-right",
                 autoClose: 5000,

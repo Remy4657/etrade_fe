@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
+  addToCartAPI,
   addToWishlist,
   addToQuickView,
 } from "@/store/slices/productSlice";
@@ -14,13 +15,16 @@ const ActionButtons = (props) => {
 
   const getWishlist = useSelector((state) => state.productData.wishlistItems);
   const isWishlistAdded = getWishlist.filter((data) => data.id === props.productAction.id);
-  //
+
   const handleAddToCart = (product) => {
     if (!userData.login) {
       router.push("/sign-in");
       return;
     }
+    console.log("[add] product: ", product)
     dispatch(addToCart(product));
+    dispatch(addToCartAPI({ productId: product.id, quantity: 1 }));
+
   };
 
   const handleAddToWishlist = (product) => {

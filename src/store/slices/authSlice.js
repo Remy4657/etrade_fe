@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useRouter } from 'next/navigation';
 import AuthService from "@/services/auth.service"
 
 export const loginUser = createAsyncThunk(
@@ -50,7 +49,6 @@ const authSlice = createSlice({
                 state.isError = null;
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-                console.log("action.payload login: ", action.payload)
                 state.isLoading = false;
                 state.login = true;
                 state.userData = action.payload.data;
@@ -66,13 +64,11 @@ const authSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getMe.fulfilled, (state, action) => {
-                console.log("[me fulfilled] action.payload: ", action.payload)
                 state.isLoading = false;
                 state.login = true;
                 state.userData = action.payload;
             })
             .addCase(getMe.rejected, (state) => {
-                console.log("[me rejected] action.payload: ")
                 state.isLoading = false;
                 state.login = false;
                 state.userData = null;
