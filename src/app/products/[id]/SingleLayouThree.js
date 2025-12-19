@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FsLightbox from "fslightbox-react";
-import { addToCart, addToWishlist } from "@/store/slices/productSlice";
+import { addToCart, addToWishlist, addToCartAPI } from "@/store/slices/productSlice";
 import SlickSlider from "@/components/elements/SlickSlider";
 import { discountPercentage, reviewAverage, slugify } from "@/utils";
 import { ProductReview } from "@/data/Comments";
@@ -25,13 +25,29 @@ const SingleLayouThree = ({ singleData }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = (cartAddedData) => {
-        let product = {...cartAddedData}
+        let product = { ...cartAddedData }
+        console.log("[add detail] product: ", product)
+        const quantity2 = product.cartQuantity
+        console.log("quantity: ", product.thubnail)
+        console.log("[add detail]: ", {
+            productId: product.id,
+            quantity2: product?.cartQuantity,
+            productColor: colorImage.color,
+            productSize
+        })
+        // dispatch(addToCart())
         if (quantity > 0) {
             product.cartQuantity = quantity;
             product.productColor = colorImage.color;
             product.productSize = productSize;
             dispatch(addToCart(product));
-        }else {
+            // dispatch(addToCartAPI({
+            //     productId: product.id,
+            //     quantity: product.cartQuantity,
+            //     productColor: colorImage.color,
+            //     productSize
+            // }))
+        } else {
             alert("Please select minimum 1 quantity")
         }
     };
@@ -138,13 +154,13 @@ const SingleLayouThree = ({ singleData }) => {
                                         vertical={true}
                                         asNavFor={nav1}
                                         ref={(slider2 => setNav2(slider2))}
-                                        responsive= {[
+                                        responsive={[
                                             {
                                                 breakpoint: 992,
                                                 settings: {
                                                     vertical: false,
                                                 }
-                                              },
+                                            },
                                         ]}
                                     >
                                         {singleData.gallery ? singleData.gallery.map((galleryImg, index) => (
@@ -174,41 +190,41 @@ const SingleLayouThree = ({ singleData }) => {
                                 <div className="inner">
                                     <h2 className="product-title">{singleData.title}</h2>
                                     <span className="price-amount">${singleData.salePrice ? singleData.salePrice : singleData.price}</span>
-                                    <ProductRating rating={singleData} textEnable/>
-                                    {singleData.shortDes && 
-                                    <>
-                                    <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
-                                    <p>{singleData.shortDes.text}</p>
-                                    </>
+                                    <ProductRating rating={singleData} textEnable />
+                                    {singleData.shortDes &&
+                                        <>
+                                            <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
+                                            <p>{singleData.shortDes.text}</p>
+                                        </>
                                     }
                                     <div className="product-variations-wrapper">
                                         {singleData.colorAttribute &&
-                                        <div className="product-variation">
-                                            <h6 className="title">Colors:</h6>
-                                            <div className="color-variant-wrapper">
-                                                <ul className="color-variant">
-                                                    {singleData.colorAttribute?.map((data, index) => (
-                                                        <li className={`${data.color} ${colorImage.color === data.color ? "active" : ""
-                                                            }`} key={index} onClick={() => colorImageHandler(data)}>
-                                                            <span>
-                                                                <span className="color" />
-                                                            </span>
-                                                        </li>
+                                            <div className="product-variation">
+                                                <h6 className="title">Colors:</h6>
+                                                <div className="color-variant-wrapper">
+                                                    <ul className="color-variant">
+                                                        {singleData.colorAttribute?.map((data, index) => (
+                                                            <li className={`${data.color} ${colorImage.color === data.color ? "active" : ""
+                                                                }`} key={index} onClick={() => colorImageHandler(data)}>
+                                                                <span>
+                                                                    <span className="color" />
+                                                                </span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        }
+                                        {singleData.sizeAttribute &&
+                                            <div className="product-variation product-size-variation">
+                                                <h6 className="title">Size:</h6>
+                                                <ul className="range-variant">
+                                                    {singleData.sizeAttribute?.map((data, index) => (
+                                                        <li key={index} className={productSize === data ? "active" : ""}
+                                                            onClick={() => productSizeHandler(data)}>{data}</li>
                                                     ))}
                                                 </ul>
                                             </div>
-                                        </div>
-                                        }
-                                        {singleData.sizeAttribute &&
-                                        <div className="product-variation product-size-variation">
-                                            <h6 className="title">Size:</h6>
-                                            <ul className="range-variant">
-                                                {singleData.sizeAttribute?.map((data, index) => (
-                                                    <li key={index} className={productSize === data ? "active" : ""}
-                                                    onClick={() => productSizeHandler(data)}>{data}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
                                         }
                                     </div>
 
@@ -220,7 +236,7 @@ const SingleLayouThree = ({ singleData }) => {
                                         </div>
                                         <ul className="product-action d-flex-center mb--0">
                                             <li className="add-to-cart">
-                                                <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Add to Cart</button>
+                                                <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">bAdd to Cart</button>
                                             </li>
                                             <li className="wishlist">
                                                 <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)}><i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} /></button>

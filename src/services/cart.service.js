@@ -8,6 +8,10 @@ const CartService = {
     getCart: () => {
         return axiosClient.get(cartApi.GET_CART);
     },
+    removeFromCart: (cartItemId) => {
+        return axiosClient.delete(`${cartApi.REMOVE_FROM_CART}/${cartItemId}`)
+    }
+
 };
 
 module.exports = CartService

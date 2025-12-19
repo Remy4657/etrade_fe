@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToWishlist } from "@/store/slices/productSlice";
 import ProductRating from "@/components/product/elements/ProductRating";
 
-const SingleLayoutOne = ({singleData}) => {
+const SingleLayoutOne = ({ singleData }) => {
     const dispatch = useDispatch();
     const [quantity, setquantity] = useState(1);
     const [colorImage, setColorImage] = useState("");
@@ -28,13 +28,13 @@ const SingleLayoutOne = ({singleData}) => {
         setquantity(quantity + 1);
     }
     const handleAddToCart = (cartAddedData) => {
-        let product = {...cartAddedData}
+        let product = { ...cartAddedData }
         if (quantity > 0) {
             product.cartQuantity = quantity;
             product.productColor = colorImage.color;
             product.productSize = productSize;
             dispatch(addToCart(product));
-        }else {
+        } else {
             alert("Please select minimum 1 quantity")
         }
     }
@@ -42,7 +42,7 @@ const SingleLayoutOne = ({singleData}) => {
         dispatch(addToWishlist(product));
     }
 
-    return ( 
+    return (
         <div className="axil-single-product-area bg-color-white">
             <div className="single-product-thumb axil-section-gap pb--20 pb_sm--0 bg-vista-white">
                 <div className="container">
@@ -56,25 +56,25 @@ const SingleLayoutOne = ({singleData}) => {
                                                 <div className="single-product-thumbnail axil-product thumbnail-grid">
                                                     <div className="thumbnail">
                                                         <Image
-                                                        src={image}
-                                                        width={300}
-                                                        height={342}
-                                                        alt="Gallery"
+                                                            src={image}
+                                                            width={300}
+                                                            height={342}
+                                                            alt="Gallery"
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
-                                        )): 
-                                        <div className="single-product-thumbnail axil-product thumbnail-grid">
-                                            <div className="thumbnail">
-                                                <Image
-                                                src={singleData.thumbnail}
-                                                width={595}
-                                                height={595}
-                                                alt="Thumbnail"
-                                                />
+                                        )) :
+                                            <div className="single-product-thumbnail axil-product thumbnail-grid">
+                                                <div className="thumbnail">
+                                                    <Image
+                                                        src={singleData.thumbnail}
+                                                        width={595}
+                                                        height={595}
+                                                        alt="Thumbnail"
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
                                         }
                                     </div>
                                 </div>
@@ -87,11 +87,11 @@ const SingleLayoutOne = ({singleData}) => {
                                         <div className="inner">
                                             <h2 className="product-title">{singleData.title}</h2>
                                             <span className="price-amount">${singleData.salePrice ? singleData.salePrice : singleData.price}</span>
-                                            <ProductRating rating={singleData} textEnable/>
-                                            {singleData.shortDes && 
+                                            <ProductRating rating={singleData} textEnable />
+                                            {singleData.shortDes &&
                                                 <>
-                                                <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
-                                                <p>{singleData.shortDes.text}</p>
+                                                    <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
+                                                    <p>{singleData.shortDes.text}</p>
                                                 </>
                                             }
                                             <div className="product-variations-wrapper">
@@ -118,7 +118,7 @@ const SingleLayoutOne = ({singleData}) => {
                                                         <ul className="range-variant">
                                                             {singleData.sizeAttribute?.map((data, index) => (
                                                                 <li key={index} className={productSize === data ? "active" : ""}
-                                                                onClick={() => productSizeHandler(data)}>{data}</li>
+                                                                    onClick={() => productSizeHandler(data)}>{data}</li>
                                                             ))}
                                                         </ul>
                                                     </div>
@@ -141,12 +141,12 @@ const SingleLayoutOne = ({singleData}) => {
                                             </div>
                                             <div className="product-desc-wrapper pt--80 pt_sm--60">
                                                 <h4 className="primary-color mb--40 desc-heading">Description</h4>
-                                                    {Array.isArray(singleData.description.textDesc) && singleData.description.textDesc?.map((data, index) => (
-                                                        <div className={`single-desc ${singleData.description.textDesc[index + 1] ? "mb--30": ""}`} key={index}>
-                                                            <h5 className="title">{data.title}</h5>
-                                                            <p>{data.text}</p>
-                                                        </div>
-                                                    ))}
+                                                {Array.isArray(singleData.description.textDesc) && singleData.description.textDesc?.map((data, index) => (
+                                                    <div className={`single-desc ${singleData.description.textDesc[index + 1] ? "mb--30" : ""}`} key={index}>
+                                                        <h5 className="title">{data.title}</h5>
+                                                        <p>{data.text}</p>
+                                                    </div>
+                                                ))}
                                                 <ul className="pro-des-features pro-desc-style-two">
                                                     {singleData.description.listDesc?.map((data, index) => (
                                                         <li className="single-features" key={index}>
@@ -174,5 +174,5 @@ const SingleLayoutOne = ({singleData}) => {
         </div>
     );
 }
- 
+
 export default SingleLayoutOne;

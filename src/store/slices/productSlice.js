@@ -17,6 +17,20 @@ export const addToCartAPI = createAsyncThunk(
         }
     }
 );
+
+export const removeFromCartAPI = createAsyncThunk(
+    "cart/removeFromCartAPI",
+    async (cartItemId, { rejectWithValue }) => {
+        try {
+            const res = await CartService.removeFromCart(cartItemId)
+            return res.data;
+        } catch (error) {
+            return rejectWithValue(
+                err.response?.data || "Error system"
+            );
+        }
+    }
+);
 export const getCart = createAsyncThunk(
     "cart/getCart",
     async (_, thunkAPI) => {

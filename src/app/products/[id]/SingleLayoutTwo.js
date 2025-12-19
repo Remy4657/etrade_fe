@@ -8,7 +8,7 @@ import { discountPercentage } from "@/utils";
 import { addToCart, addToWishlist } from "@/store/slices/productSlice";
 import ProductRating from "@/components/product/elements/ProductRating";
 
-const SingleLayoutTwo = ({singleData}) => {
+const SingleLayoutTwo = ({ singleData }) => {
     const dispatch = useDispatch();
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
@@ -35,13 +35,13 @@ const SingleLayoutTwo = ({singleData}) => {
         setquantity(quantity + 1);
     }
     const handleAddToCart = (cartAddedData) => {
-            let product = {...cartAddedData}
+        let product = { ...cartAddedData }
         if (quantity > 0) {
             product.cartQuantity = quantity;
             product.productColor = colorImage.color;
             product.productSize = productSize;
             dispatch(addToCart(product));
-        }else {
+        } else {
             alert("Please select minimum 1 quantity")
         }
     }
@@ -61,7 +61,7 @@ const SingleLayoutTwo = ({singleData}) => {
         return galleryPreview;
     }
 
-    return ( 
+    return (
         <div className="axil-single-product-area bg-color-white">
             <div className="single-product-thumb axil-section-gap pb--20 pb_sm--0 bg-vista-white">
                 <div className="container">
@@ -128,13 +128,13 @@ const SingleLayoutTwo = ({singleData}) => {
                                         vertical={true}
                                         asNavFor={nav1}
                                         ref={(slider2 => setNav2(slider2))}
-                                        responsive= {[
+                                        responsive={[
                                             {
                                                 breakpoint: 992,
                                                 settings: {
                                                     vertical: false,
                                                 }
-                                              },
+                                            },
                                         ]}
                                     >
                                         {singleData.gallery ? singleData.gallery.map((galleryImg, index) => (
@@ -164,11 +164,11 @@ const SingleLayoutTwo = ({singleData}) => {
                                 <div className="inner">
                                     <h2 className="product-title">{singleData.title}</h2>
                                     <span className="price-amount">${singleData.salePrice ? singleData.salePrice : singleData.price}</span>
-                                    <ProductRating rating={singleData} textEnable/>
-                                    {singleData.shortDes && 
+                                    <ProductRating rating={singleData} textEnable />
+                                    {singleData.shortDes &&
                                         <>
-                                        <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
-                                        <p>{singleData.shortDes.text}</p>
+                                            <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
+                                            <p>{singleData.shortDes.text}</p>
                                         </>
                                     }
                                     <div className="product-variations-wrapper">
@@ -195,7 +195,7 @@ const SingleLayoutTwo = ({singleData}) => {
                                                 <ul className="range-variant">
                                                     {singleData.sizeAttribute?.map((data, index) => (
                                                         <li key={index} className={productSize === data ? "active" : ""}
-                                                        onClick={() => productSizeHandler(data)}>{data}</li>
+                                                            onClick={() => productSizeHandler(data)}>{data}</li>
                                                     ))}
                                                 </ul>
                                             </div>
@@ -218,12 +218,12 @@ const SingleLayoutTwo = ({singleData}) => {
                                     </div>
                                     <div className="product-desc-wrapper pt--80 pt_sm--60">
                                         <h4 className="primary-color mb--40 desc-heading">Description</h4>
-                                            {Array.isArray(singleData.description.textDesc) && singleData.description.textDesc?.map((data, index) => (
-                                                <div className={`single-desc ${singleData.description.textDesc[index + 1] ? "mb--30": ""}`} key={index}>
-                                                    <h5 className="title">{data.title}</h5>
-                                                    <p>{data.text}</p>
-                                                </div>
-                                            ))}
+                                        {Array.isArray(singleData.description.textDesc) && singleData.description.textDesc?.map((data, index) => (
+                                            <div className={`single-desc ${singleData.description.textDesc[index + 1] ? "mb--30" : ""}`} key={index}>
+                                                <h5 className="title">{data.title}</h5>
+                                                <p>{data.text}</p>
+                                            </div>
+                                        ))}
                                         <ul className="pro-des-features pro-desc-style-two">
                                             {singleData.description.listDesc?.map((data, index) => (
                                                 <li className="single-features" key={index}>
@@ -249,5 +249,5 @@ const SingleLayoutTwo = ({singleData}) => {
         </div>
     );
 }
- 
+
 export default SingleLayoutTwo;
