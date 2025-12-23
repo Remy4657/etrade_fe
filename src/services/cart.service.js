@@ -10,7 +10,10 @@ const CartService = {
     },
     removeFromCart: (cartItemId) => {
         return axiosClient.delete(`${cartApi.REMOVE_FROM_CART}/${cartItemId}`)
-    }
+    },
+    updateProductCartQuantity: (data) => {
+        return axiosClient.put(`${cartApi.UPDATE_PRODUCT_CART_QUANTITY}/${data.cartItemId}`, { typeUpdate: data.typeUpdate })
+    },
 
 };
 

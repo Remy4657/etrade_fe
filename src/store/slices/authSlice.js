@@ -19,7 +19,6 @@ export const getMe = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const res = await AuthService.me();
-            console.log("[me] res: ", res)
             return res.data;
         } catch (err) {
             return rejectWithValue("Unauthenticated");

@@ -10,6 +10,11 @@ export const authApi = {
 export const cartApi = {
     ADD_TO_CART: "/cart/add",
     GET_CART: "/cart/get-current",
-    REMOVE_FROM_CART: "cart/remove-item"
+    REMOVE_FROM_CART: "cart/remove-item",
+    UPDATE_PRODUCT_CART_QUANTITY: "cart/update"
+
 }
+export const productApi = {
+    GET_DETAIL_PRODUCT: "/product",
+};
 

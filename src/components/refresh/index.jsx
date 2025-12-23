@@ -8,7 +8,6 @@ const RefreshApp = ({ children }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("reload app")
         const fetchMe = async () => {
             dispatch(getMe())
             dispatch(getCart())

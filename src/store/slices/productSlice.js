@@ -5,19 +5,19 @@ import { calculateTotalAmount, calculateTotalQuantity } from "@/utils";
 
 export const addToCartAPI = createAsyncThunk(
     "cart/addToCartAPI",
-    async (product, { rejectWithValue }) => {
+    async (product, thunkAPI) => {
         try {
             console.log("[sile] product: ", product)
             const res = await CartService.addToCart(product)
+            thunkAPI.dispatch(getCart());
             return res.data;
         } catch (error) {
-            return rejectWithValue(
+            return thunkAPI.rejectWithValue(
                 err.response?.data || "Error system"
             );
         }
     }
 );
-
 export const removeFromCartAPI = createAsyncThunk(
     "cart/removeFromCartAPI",
     async (cartItemId, { rejectWithValue }) => {
@@ -42,6 +42,17 @@ export const getCart = createAsyncThunk(
         }
     }
 );
+export const updateProductCartQuantity = createAsyncThunk(
+    "cart/updateProductCartQuantity",
+    async (data, thunkAPI) => {
+        try {
+            const res = await CartService.updateProductCartQuantity(data);
+            return res.data;
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data);
+        }
+    }
+);
 const productSlice = createSlice({
     name: 'products',
     initialState: {
@@ -57,14 +68,18 @@ const productSlice = createSlice({
     },
     reducers: {
         addToCart(state, action) {
-            const ItemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
+            console.log("[add product] action.payload: ", action.payload)
+            const ItemIndex = state.cartItems.findIndex((item) =>
+                item.productId === action.payload.productId &&
+                item.productColor === action.payload.productColor &&
+                item.productSize === action.payload.productSize);
             if (ItemIndex >= 0) {
                 state.cartItems[ItemIndex].cartQuantity += action.payload.cartQuantity ?? 1;
                 state.cartQuantityTotal += action.payload.cartQuantity ?? 1
                 state.isMinicartOpen = true;
             } else {
                 const tempProduct = {
-                    id: action.payload.id,
+                    productId: action.payload.productId,
                     title: action.payload.title,
                     thumbnail: action.payload.thumbnail,
                     salePrice: action.payload.salePrice ?? 0,
@@ -81,12 +96,18 @@ const productSlice = createSlice({
             state.cartTotalAmount = calculateTotalAmount(state.cartItems);
         },
         removeCartItem(state, action) {
-            const filteredCartItem = state.cartItems.filter((cartItem) => cartItem.id !== action.payload.id);
+            console.log("[remove] action.payload: ", action.payload)
+            console.log("[remove] state.cartItems: ", state.cartItems)
+
+            const filteredCartItem = state.cartItems.filter((item) =>
+                item.id !== action.payload.id);
             const filteredItemQuantity = filteredCartItem.map((item) => {
-                return item.cartQuantity;
+                return { qty: item.cartQuantity, price: item.salePrice }
             })
-            state.cartQuantityTotal = filteredItemQuantity.length;
+            console.log("filteredCartItem: ", filteredCartItem)
             state.cartItems = filteredCartItem;
+            state.cartQuantityTotal = filteredItemQuantity.reduce((sum, item) => sum + item.qty, 0);
+            state.cartTotalAmount = filteredItemQuantity.reduce((sum, item) => sum + item.qty * item.price, 0);
         },
         cartQuantityIncrease(state, action) {
             const findItem = state.cartItems.findIndex((item) => item.id === action.payload.id);
@@ -157,6 +178,7 @@ const productSlice = createSlice({
             state.cartItems = action.payload.items;
             state.cartQuantityTotal = action.payload.cartQuantityTotal;
             state.cartTotalAmount = action.payload.cartTotalAmount;
+
         });
     }
 });

@@ -20,7 +20,9 @@ import ProductListOne from "@/components/product/ProductListOne";
 import { mapInSlices, slugify } from "@/utils";
 import PosterTwo from "@/components/poster/PosterTwo";
 import { useEffect, useState } from "react";
-import { getCategoryAll, getProductAll } from "@/services/category.service"
+import { getCategoryAll } from "@/services/category.service"
+import { getProductAll } from "@/services/product.service"
+
 
 const HomeElectronics = () => {
     const pathname = usePathname();

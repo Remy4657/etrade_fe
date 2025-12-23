@@ -7,6 +7,7 @@ import { removeFromCartAPI } from "@/store/slices/productSlice";
 const MiniCart = () => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.productData);
+  console.log("[mini cart] getProducts: ", getProducts)
   const router = useRouter();
 
   const removeCartHandler = (data) => {
@@ -62,6 +63,10 @@ const MiniCart = () => {
                           ? data.salePrice
                           : data.price}
                         <strong>x{data.cartQuantity}</strong>
+                        <span>   </span>
+                        <span className="currency-symbol">size: {data.productSize},</span>
+                        <span className="currency-symbol">color: {data.productColor}</span>
+
                       </div>
                       <div className="pro-qty item-quantity">
                         <input type="number" className="quantity-input" />

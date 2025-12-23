@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FsLightbox from "fslightbox-react";
 import { addToCart, addToWishlist, addToCartAPI } from "@/store/slices/productSlice";
@@ -8,45 +8,76 @@ import SlickSlider from "@/components/elements/SlickSlider";
 import { discountPercentage, reviewAverage, slugify } from "@/utils";
 import { ProductReview } from "@/data/Comments";
 import ProductRating from "@/components/product/elements/ProductRating";
+import { getDetailProduct } from "@/services/product.service"
+import { getCart } from "@/store/slices/productSlice";
 
-const SingleLayouThree = ({ singleData }) => {
-    const findReview = ProductReview.filter((data) => slugify(data.productId) === slugify(singleData.id));
-    const ratingNumber = reviewAverage(findReview);
+
+const SingleLayouThree = ({ idProduct }) => {
+    const dispatch = useDispatch();
     const getWishlist = useSelector((state) => state.productData.wishlistItems);
-    const isWishlistAdded = getWishlist.filter((data) => data.id === singleData.id);
-
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
     const [quantity, setquantity] = useState(1);
     const [colorImage, setColorImage] = useState("");
     const [productSize, setProductSize] = useState("");
     const [fsToggler, setFsToggler] = useState(false);
+    const [singleData, setSingleData] = useState(null)
 
-    const dispatch = useDispatch();
+    const findReview = useMemo(() => {
+        if (!singleData?.id) return [];
+        return ProductReview.filter(
+            (data) => slugify(data.productId) === slugify(singleData.id)
+        );
+    }, [singleData]);
+
+    const ratingNumber = useMemo(() => {
+        if (!findReview.length) return 0;
+        return reviewAverage(findReview);
+    }, [findReview]);
+
+    const isWishlistAdded = useMemo(() => {
+        if (!singleData?.id) return false;
+        return getWishlist.some((item) => item.id === singleData.id);
+    }, [getWishlist, singleData]);
+
+
+
+
+    useEffect(() => {
+        const fetchDetailProduct = async () => {
+            try {
+                const productDetail = await getDetailProduct(idProduct);
+                setSingleData(productDetail.data);
+            } catch (error) {
+                console.error("Fetch product failed:", error);
+            }
+        };
+
+        if (idProduct) {
+            fetchDetailProduct();
+        }
+    }, [idProduct]);
 
     const handleAddToCart = (cartAddedData) => {
         let product = { ...cartAddedData }
-        console.log("[add detail] product: ", product)
-        const quantity2 = product.cartQuantity
-        console.log("quantity: ", product.thubnail)
-        console.log("[add detail]: ", {
-            productId: product.id,
-            quantity2: product?.cartQuantity,
-            productColor: colorImage.color,
-            productSize
-        })
-        // dispatch(addToCart())
+
         if (quantity > 0) {
             product.cartQuantity = quantity;
             product.productColor = colorImage.color;
             product.productSize = productSize;
+            // start: rename id to productId
+            product.productId = product.id;
+            delete product.id;
+            // end: rename id to productId
+
+            console.log("[layoutThree] product: ", product)
             dispatch(addToCart(product));
-            // dispatch(addToCartAPI({
-            //     productId: product.id,
-            //     quantity: product.cartQuantity,
-            //     productColor: colorImage.color,
-            //     productSize
-            // }))
+            dispatch(addToCartAPI({
+                productId: product.productId,
+                quantity: product.cartQuantity,
+                productColor: colorImage.color,
+                productSize
+            }))
         } else {
             alert("Please select minimum 1 quantity")
         }
@@ -84,7 +115,9 @@ const SingleLayouThree = ({ singleData }) => {
         }
         return galleryPreview;
     }
-
+    if (!singleData) {
+        return <div>Loading...</div>;
+    }
     return (
         <section className="axil-single-product-area axil-section-gap pb--0">
             <div className="single-product-thumb mb--40">

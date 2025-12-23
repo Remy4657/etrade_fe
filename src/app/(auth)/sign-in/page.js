@@ -23,7 +23,6 @@ const SignIn = () => {
     const onSubmit = async (data) => {
 
         const resultAction = await dispatch(loginUser({ email: data.email, password: data.password }));
-        console.log("[res dispatch login]: ", resultAction)
         if (resultAction.payload.code == 200) {
             dispatch(getCart())
             toast.success(resultAction.payload?.message, {

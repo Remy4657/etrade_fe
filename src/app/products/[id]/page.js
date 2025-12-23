@@ -1,3 +1,4 @@
+
 import ProductsData from "@/data/Products";
 import ProductOne from "@/components/product/ProductOne";
 import { slugify } from "@/utils";
@@ -9,10 +10,19 @@ import SingleLayouSeven from "./SingleLayouSeven";
 import SingleLayoutOne from "./SingleLayoutOne";
 import SingleLayoutTwo from "./SingleLayoutTwo";
 import SingleLayoutFour from "./SingleLayoutFour";
+import { getDetailProduct } from "@/services/product.service"
 
-const ProductDetails = ({ params }) => {
+
+const ProductDetails = async ({ params }) => {
+    //const productDetail = await getDetailProduct(params.id);
+    //console.log("productDetail: ", productDetail)
+    // if (!productDetail.ok) {
+    //     const data = await productDetail.json();
+    //     throw new Error(data.message || "Failed to fetch product");
+    // }
     const findProduct = ProductsData.filter(product => slugify(product.id) === slugify(params.id));
     const singleProduct = findProduct[0];
+    console.log("singleProduct: ", singleProduct)
     const productCategory = singleProduct.pCate;
     const relatedProduct = ProductsData.filter(product => slugify(product.pCate) === slugify(productCategory));
 
@@ -22,7 +32,7 @@ const ProductDetails = ({ params }) => {
                 return <SingleLayouSeven singleData={singleProduct} />
                 break;
             case "Electronics":
-                return <SingleLayouThree singleData={singleProduct} />
+                return <SingleLayouThree idProduct={params.id} />
                 break;
             case "Fashion":
                 return <SingleLayoutOne singleData={singleProduct} />
@@ -40,42 +50,42 @@ const ProductDetails = ({ params }) => {
         <>
             <ProductSingleLayout />
             <Section pClass="pb--50 pb_sm--30">
-                <SectionTitle 
+                <SectionTitle
                     title="Viewed Items"
                     subtitle="Your Recently"
                     subtitleIcon="far fa-shopping-basket"
                     subColor="highlighter-primary"
                 />
                 <SlickSlider
-                class="recent-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
-                slidesToShow={4}
-                infinite={false}
-                responsive = {[
-                    {
-                      breakpoint: 1400,
-                      settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                      }
-                    },
-                    {
-                      breakpoint: 992,
-                      settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                      }
-                    },
-                    {
-                      breakpoint: 575,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                      }
-                    },
-                  ]}
+                    class="recent-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
+                    slidesToShow={4}
+                    infinite={false}
+                    responsive={[
+                        {
+                            breakpoint: 1400,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 575,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                            }
+                        },
+                    ]}
                 >
                     {relatedProduct?.slice(0, 10).map((data) => (
-                        <ProductOne product={data} key={data.id}/>
+                        <ProductOne product={data} key={data.id} />
                     ))}
                 </SlickSlider>
             </Section>
