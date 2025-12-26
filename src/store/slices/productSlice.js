@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2';
 import CartService from "@/services/cart.service"
+import CheckoutService from "@/services/checkout.service"
 import { calculateTotalAmount, calculateTotalQuantity } from "@/utils";
 
 export const addToCartAPI = createAsyncThunk(
@@ -53,6 +54,18 @@ export const updateProductCartQuantity = createAsyncThunk(
         }
     }
 );
+// checkout 
+export const checkoutApi = createAsyncThunk(
+    "order/checkoutApi",
+    async (data, thunkAPI) => {
+        try {
+            const res = await CheckoutService.checkout(data);
+            return res.data;
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data);
+        }
+    }
+);
 const productSlice = createSlice({
     name: 'products',
     initialState: {
@@ -68,7 +81,6 @@ const productSlice = createSlice({
     },
     reducers: {
         addToCart(state, action) {
-            console.log("[add product] action.payload: ", action.payload)
             const ItemIndex = state.cartItems.findIndex((item) =>
                 item.productId === action.payload.productId &&
                 item.productColor === action.payload.productColor &&
@@ -96,15 +108,12 @@ const productSlice = createSlice({
             state.cartTotalAmount = calculateTotalAmount(state.cartItems);
         },
         removeCartItem(state, action) {
-            console.log("[remove] action.payload: ", action.payload)
-            console.log("[remove] state.cartItems: ", state.cartItems)
 
             const filteredCartItem = state.cartItems.filter((item) =>
                 item.id !== action.payload.id);
             const filteredItemQuantity = filteredCartItem.map((item) => {
                 return { qty: item.cartQuantity, price: item.salePrice }
             })
-            console.log("filteredCartItem: ", filteredCartItem)
             state.cartItems = filteredCartItem;
             state.cartQuantityTotal = filteredItemQuantity.reduce((sum, item) => sum + item.qty, 0);
             state.cartTotalAmount = filteredItemQuantity.reduce((sum, item) => sum + item.qty * item.price, 0);
@@ -169,8 +178,6 @@ const productSlice = createSlice({
         },
         addToOrder(state, action) {
             state.orderItems.push(action.payload);
-            state.cartQuantityTotal = 0;
-            state.cartItems = [];
         }
     },
     extraReducers: (builder) => {

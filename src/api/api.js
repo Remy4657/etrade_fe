@@ -17,4 +17,12 @@ export const cartApi = {
 export const productApi = {
     GET_DETAIL_PRODUCT: "/product",
 };
-
+export const shippingApi = {
+    GET_SHIPPING_ALL: "/get-all-shipping",
+};
+export const paymentApi = {
+    GET_PAYMENT_ALL: "/get-all-payment",
+};
+export const checkoutApi = {
+    CHECKOUT: "/orders/checkout",
+};

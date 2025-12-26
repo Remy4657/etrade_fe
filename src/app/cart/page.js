@@ -131,7 +131,7 @@ const Cart = () => {
                                             <div className="summery-table-wrap">
                                                 <table className="table summery-table mb--30">
                                                     <tbody>
-                                                        <tr className="order-subtotal">
+                                                        {/* <tr className="order-subtotal">
                                                             <td>Subtotal</td>
                                                             <td>${cartProducts.cartTotalAmount}</td>
                                                         </tr>
@@ -151,7 +151,7 @@ const Cart = () => {
                                                                     <label htmlFor="radio3">Flat rate: $12.00</label>
                                                                 </div>
                                                             </td>
-                                                        </tr>
+                                                        </tr> */}
                                                         <tr className="order-total">
                                                             <td>Total</td>
                                                             <td className="order-total-amount">${cartProducts.cartTotalAmount}</td>
