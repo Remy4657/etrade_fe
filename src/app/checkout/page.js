@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
@@ -22,27 +22,41 @@ const Checkout = () => {
 
     const [listShipping, setListShipping] = useState([])
     const [listPayment, setListPayment] = useState([])
-
-
     const {
         register,
         handleSubmit,
         watch,
+        setValue,
         formState: { errors },
     } = useForm(
-            // {
-            //     defaultValues: {
-            //         paymentMethod: listPayment?.[0]?.id,
-            //          shippingMethod: listShipping?.[0]?.id
-            //     }
-            // }
-        );
-    const selectedShippingCode = watch("shippingMethod")
-    console.log("selectedShippingCode: ", selectedShippingCode)
+        {
+            defaultValues: {
+                shippingMethod: null
+            }
+        }
+    );
+    const selectedShippingId = watch("shippingMethod")
+    console.log("selectedShippingId: ", selectedShippingId)
+    useEffect(() => {
+        if (!listShipping?.length) return
 
-    // const selectedShipping = listShipping.find(
-    //     item => item.code === selectedShippingCode
-    // )
+        const defaultShipping =
+            listShipping.find(item => item.code === "STANDARD") ||
+            listShipping[0]
+        // react-hook-form compare gia tri string
+        setValue("shippingMethod", String(defaultShipping.id))
+    }, [listShipping, setValue])
+
+
+    const selectedShipping = useMemo(() => {
+        return listShipping?.find(
+            item => item.id === Number(selectedShippingId)
+        )
+    }, [selectedShippingId, listShipping])
+
+    const shippingFee = selectedShipping?.fee || 0
+
+
     useEffect(() => {
         const fetchAllShippinng = async () => {
             const { data } = await getShippingAll()
@@ -190,7 +204,7 @@ const Checkout = () => {
                                                             {listShipping?.map((item, index) => {
                                                                 return (
                                                                     <div className="input-group" key={item.code}>
-                                                                        <input type="radio" {...register("shippingMethod")} id={`shipping-${item.code}`} value={item.id} defaultChecked={item.code == "STANDARD" ? true : false} />
+                                                                        <input type="radio" {...register("shippingMethod")} id={`shipping-${item.code}`} value={String(item.id)} />
                                                                         <label htmlFor={`shipping-${item.code}`}>{item.name}: {item.fee}$</label>
                                                                     </div>
                                                                 )
@@ -200,7 +214,7 @@ const Checkout = () => {
                                                     </tr>
                                                     <tr className="order-total">
                                                         <td>Total</td>
-                                                        <td className="order-total-amount">${cartProducts.cartTotalAmount}</td>
+                                                        <td className="order-total-amount">${cartProducts.cartTotalAmount + shippingFee}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

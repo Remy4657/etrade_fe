@@ -10,7 +10,7 @@ export const addToCartAPI = createAsyncThunk(
         try {
             console.log("[sile] product: ", product)
             const res = await CartService.addToCart(product)
-            thunkAPI.dispatch(getCart());
+            thunkAPI.dispatch(getCurrentCart());
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(
@@ -32,11 +32,11 @@ export const removeFromCartAPI = createAsyncThunk(
         }
     }
 );
-export const getCart = createAsyncThunk(
-    "cart/getCart",
+export const getCurrentCart = createAsyncThunk(
+    "cart/getCurrentCart",
     async (_, thunkAPI) => {
         try {
-            const res = await CartService.getCart();
+            const res = await CartService.getCurrentCart();
             return res.data;
         } catch (err) {
             return thunkAPI.rejectWithValue(err.response.data);
@@ -181,7 +181,7 @@ const productSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getCart.fulfilled, (state, action) => {
+        builder.addCase(getCurrentCart.fulfilled, (state, action) => {
             state.cartItems = action.payload.items;
             state.cartQuantityTotal = action.payload.cartQuantityTotal;
             state.cartTotalAmount = action.payload.cartTotalAmount;

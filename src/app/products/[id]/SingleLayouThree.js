@@ -9,7 +9,7 @@ import { discountPercentage, reviewAverage, slugify } from "@/utils";
 import { ProductReview } from "@/data/Comments";
 import ProductRating from "@/components/product/elements/ProductRating";
 import { getDetailProduct } from "@/services/product.service"
-import { getCart } from "@/store/slices/productSlice";
+import { getCurrentCart } from "@/store/slices/productSlice";
 
 
 const SingleLayouThree = ({ idProduct }) => {

@@ -5,7 +5,7 @@ const CartService = {
     addToCart: (product) => {
         return axiosClient.post(cartApi.ADD_TO_CART, { ...product });
     },
-    getCart: () => {
+    getCurrentCart: () => {
         return axiosClient.get(cartApi.GET_CART);
     },
     removeFromCart: (cartItemId) => {

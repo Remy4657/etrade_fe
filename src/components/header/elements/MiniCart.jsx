@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCartItem, miniCartHandler } from "@/store/slices/productSlice";
 import { removeFromCartAPI } from "@/store/slices/productSlice";
@@ -7,26 +7,26 @@ import { removeFromCartAPI } from "@/store/slices/productSlice";
 const MiniCart = () => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.productData);
-  console.log("[mini cart] getProducts: ", getProducts)
   const router = useRouter();
 
   const removeCartHandler = (data) => {
-    console.log("[product] remove: ", data)
     dispatch(removeCartItem(data));
-    dispatch(removeFromCartAPI(data.id))
-  }
+    dispatch(removeFromCartAPI(data.id));
+  };
   const cartHandler = (data) => {
     dispatch(miniCartHandler(data));
-  }
+  };
 
   const miniCartFooterBtnHandler = (data) => {
     router.push(data);
     dispatch(miniCartHandler(false));
-  }
+  };
 
   return (
     <>
-      <div className={`cart-dropdown ${getProducts.isMinicartOpen ? "open" : ""}`}>
+      <div
+        className={`cart-dropdown ${getProducts.isMinicartOpen ? "open" : ""}`}
+      >
         <div className="cart-content-wrap">
           <div className="cart-header">
             <h2 className="header-title">Cart review</h2>
@@ -49,24 +49,26 @@ const MiniCart = () => {
                         height={100}
                         width={100}
                       />
-                      <button className="close-btn" onClick={() => removeCartHandler(data)}>
+                      <button
+                        className="close-btn"
+                        onClick={() => removeCartHandler(data)}
+                      >
                         <i className="fas fa-times"></i>
                       </button>
                     </div>
                     <div className="item-content">
-                      <h3 className="item-title">
-                        {data.title}
-                      </h3>
+                      <h3 className="item-title">{data.title}</h3>
                       <div className="item-price">
                         <span className="currency-symbol">$</span>
-                        {data.salePrice
-                          ? data.salePrice
-                          : data.price}
+                        {data.salePrice ? data.salePrice : data.price}
                         <strong>x{data.cartQuantity}</strong>
-                        <span>   </span>
-                        <span className="currency-symbol">size: {data.productSize},</span>
-                        <span className="currency-symbol">color: {data.productColor}</span>
-
+                        <span> </span>
+                        <span className="currency-symbol">
+                          size: {data.productSize},
+                        </span>
+                        <span className="currency-symbol">
+                          color: {data.productColor}
+                        </span>
                       </div>
                       <div className="pro-qty item-quantity">
                         <input type="number" className="quantity-input" />
@@ -88,8 +90,18 @@ const MiniCart = () => {
                 </span>
               </h3>
               <div className="group-btn">
-                <button className="axil-btn btn-bg-primary viewcart-btn" onClick={() => miniCartFooterBtnHandler("/cart")}>View Cart</button>
-                <button className="axil-btn btn-bg-secondary checkout-btn" onClick={() => miniCartFooterBtnHandler("/checkout")}>Checkout</button>
+                <button
+                  className="axil-btn btn-bg-primary viewcart-btn"
+                  onClick={() => miniCartFooterBtnHandler("/cart")}
+                >
+                  View Cart
+                </button>
+                <button
+                  className="axil-btn btn-bg-secondary checkout-btn"
+                  onClick={() => miniCartFooterBtnHandler("/checkout")}
+                >
+                  Checkout
+                </button>
               </div>
             </div>
           ) : (

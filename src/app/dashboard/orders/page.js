@@ -1,7 +1,22 @@
+"use client"
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import OrderService from "@/services/order.service"
+import { formatDateTime } from "@/utils";
 
 const UserOrders = () => {
-    return ( 
+    const [listOrder, setListOrder] = useState([])
+    useEffect(() => {
+        const fetchAllOrders = async () => {
+            const res = await OrderService.getAll()
+            if (res.data) {
+                setListOrder(res.data)
+            }
+        }
+        fetchAllOrders()
+    }, [])
+    console.log("listOrder: ", listOrder)
+    return (
         <div className="axil-dashboard-order">
             <div className="table-responsive">
                 <table className="table">
@@ -15,20 +30,24 @@ const UserOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">#6523</th>
-                            <td>October 16, 2023</td>
-                            <td>Processing</td>
-                            <td>$326.63 for 1 items</td>
-                            <td>
-                                <Link href="dashboard/orders/view" className="axil-btn view-btn">View</Link>
-                            </td>
-                        </tr>
+                        {listOrder.map((item, index) => {
+                            return (
+                                <tr key={item.id}>
+                                    <th scope="row">{index + 1}</th>
+                                    <td>{formatDateTime(item.createdAt)}</td>
+                                    <td>{item.status}</td>
+                                    <td>${item.totalAmount} for {item.items.length} items</td>
+                                    <td>
+                                        <Link href="dashboard/orders/view" className="axil-btn view-btn">View</Link>
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default UserOrders;

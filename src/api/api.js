@@ -26,3 +26,6 @@ export const paymentApi = {
 export const checkoutApi = {
     CHECKOUT: "/orders/checkout",
 };
+export const orderApi = {
+    GET_ALL: "/orders",
+};
