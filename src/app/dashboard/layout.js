@@ -1,9 +1,9 @@
 'use client';
 import Link from "next/link";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import FooterTwo from "@/components/footer/FooterTwo";
 import HeaderFive from "@/components/header/HeaderFive";
@@ -11,14 +11,25 @@ import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
 import { DashboardAsideMenu } from "@/data/Menu";
 import { UserLists } from "@/data/Users";
+import { logout } from "@/store/slices/authSlice";
 
 const DahsboardLayout = ({ children }) => {
+    const dispatch = useDispatch();
+    const router = useRouter();
     const authInfo = useSelector((state) => state.auth);
     const users = authInfo?.userData;
     const userInfo = UserLists[0];
     const pathname = usePathname();
     const split = pathname.split("/");
     const pageSlug = split[split.length - 1];
+
+    const handleLogout = async (e) => {
+        //  e.preventDefault();
+
+        await dispatch(logout())
+        //router.push("/sign-in")
+        console.log('logout')
+    }
 
     return (
         <>
@@ -32,15 +43,15 @@ const DahsboardLayout = ({ children }) => {
                                 <div className="media">
                                     <div className="thumbnail">
                                         <Image
-                                            src={userInfo.avatar}
+                                            src={users?.avatar}
                                             height={70}
                                             width={70}
-                                            alt={users.username}
+                                            alt={users?.username}
                                         />
                                     </div>
                                     <div className="media-body">
-                                        <h5 className="title mb-0">Hello {users.username}</h5>
-                                        <span className="joining-date">eTrade Member Since </span>
+                                        <h5 className="title mb-0">Hello {users?.username}</h5>
+                                        <span className="joining-date">eeTrade Member Since </span>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +65,7 @@ const DahsboardLayout = ({ children }) => {
                                                         <i className={data.icon} />{data.name}
                                                     </Link>
                                                 ))}
-                                                <Link href="/sign-in" className="nav-item nav-link">
+                                                <Link href="/sign-in" className="nav-item nav-link" onClick={(e) => handleLogout(e)}>
                                                     <i className="fal fa-sign-out" />Logout
                                                 </Link>
                                             </div>

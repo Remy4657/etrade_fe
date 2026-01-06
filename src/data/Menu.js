@@ -2,23 +2,23 @@ const HeaderMenu = [
     {
         name: "Home",
         url: "#",
-        hasChildren: true,
+        hasChildren: false,
         children: [
             {
                 name: "Electronics",
                 url: "/home/electronics"
             },
-            
+
             {
                 name: "Jewellery",
                 url: "/home/jewellery"
             },
-           
+
             {
                 name: "Fashion",
                 url: "/home/fashion"
             },
-           
+
             {
                 name: "Furniture",
                 url: "/home/furniture"
@@ -95,7 +95,7 @@ const HeaderMenu = [
         name: "About",
         url: "/about",
         hasChildren: false,
-        
+
     },
     {
         name: "Blog",
@@ -136,7 +136,7 @@ const HeaderMenu = [
         name: "Contact",
         url: "/contact",
         hasChildren: false,
-        
+
     },
 ]
 
@@ -217,22 +217,22 @@ const CateMenu = [
         ],
         featured: [
             {
-                thumb:"/images/product/product-feature1.png",
+                thumb: "/images/product/product-feature1.png",
                 url: "/"
             },
             {
-                thumb:"/images/product/product-feature2.png",
+                thumb: "/images/product/product-feature2.png",
                 url: "/"
             },
             {
-                thumb:"/images/product/product-feature3.png",
+                thumb: "/images/product/product-feature3.png",
                 url: "/"
             },
             {
-                thumb:"/images/product/product-feature4.png",
+                thumb: "/images/product/product-feature4.png",
                 url: "/"
             },
-            
+
         ]
 
     },
@@ -282,30 +282,30 @@ const CateMenu = [
 
 const DashboardAsideMenu = [
     {
-      icon: "fas fa-th-large",
-      name: "Dashboard",
-      slug: ""
+        icon: "fas fa-th-large",
+        name: "Dashboard",
+        slug: ""
     },
     {
-      icon: "fas fa-shopping-basket",
-      name: "Orders",
-      slug: "orders"
+        icon: "fas fa-shopping-basket",
+        name: "Orders",
+        slug: "orders"
     },
     {
-      icon: "fas fa-file-download",
-      name: "Downloads",
-      slug: "downloads"
+        icon: "fas fa-file-download",
+        name: "Downloads",
+        slug: "downloads"
     },
     {
-      icon: "fas fa-home",
-      name: "Addresses",
-      slug: "addresses-edit"
+        icon: "fas fa-home",
+        name: "Addresses",
+        slug: "addresses-edit"
     },
     {
-      icon: "fas fa-user",
-      name: "Account Details",
-      slug: "account-details" 
+        icon: "fas fa-user",
+        name: "Account Details",
+        slug: "account-details"
     }
 ]
 
-export {HeaderMenu, CateMenu, DashboardAsideMenu};
+export { HeaderMenu, CateMenu, DashboardAsideMenu };

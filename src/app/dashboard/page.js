@@ -7,7 +7,7 @@ const Dashboard = () => {
     const users = authInfo?.userData;
     return (
         <div className="axil-dashboard-overview">
-            <div className="welcome-text">Hello {users.username} (not <span>{users.name}?</span> <a href="/sign-in">Log Out</a>)</div>
+            <div className="welcome-text">Hello {users?.username} (not <span>{users?.name}?</span> <a href="/sign-in">Log Out</a>)</div>
             <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
         </div>
     );

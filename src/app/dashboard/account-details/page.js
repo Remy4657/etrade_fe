@@ -1,38 +1,41 @@
 'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector, useDispatch } from "react-redux";
 
 const AccountDetails = () => {
+    const { userData } = useSelector((state) => state.auth);
+
     const [userAccountInfo, setUserAccountInfo] = useState(null);
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
+    } = useForm();
 
     const userInfoHandler = (data) => {
         setUserAccountInfo(data);
     }
 
-    return ( 
+    return (
         <div className="axil-dashboard-account">
             <form className="account-details-form" onSubmit={handleSubmit(userInfoHandler)}>
                 <div className="row">
                     <div className="col-lg-6">
                         <div className="form-group">
-                            <label>First Name</label>
-                            <input type="text" className="form-control" {...register('firstName', { required: true })} defaultValue="Annie" />
+                            <label>Username</label>
+                            <input type="text" className="form-control" {...register('firstName', { required: true })} defaultValue={userData.username} />
                             {errors.firstName && <p className="error">First Name is required.</p>}
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div className="form-group">
-                            <label>Last Name</label>
-                            <input type="text" className="form-control" {...register('lastName', { required: true })} defaultValue="Mario" />
+                            <label>Email</label>
+                            <input type="text" className="form-control" {...register('lastName', { required: true })} defaultValue={userData.email} />
                             {errors.lastName && <p className="error">Last Name is required.</p>}
                         </div>
                     </div>
-                    <div className="col-12">
+                    {/* <div className="col-12">
                         <div className="form-group mb--40">
                             <label>Country/ Region</label>
                             <select className="select2" {...register('country', { required: true })}>
@@ -44,7 +47,7 @@ const AccountDetails = () => {
                             {errors.country && <p className="error">Country Name is required.</p>}
                             <p className="b3 mt--10">This will be how your name will be displayed in the account section and in reviews</p>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="col-12">
                         <h5 className="title">Password Change</h5>
                         <div className="form-group">
@@ -67,7 +70,7 @@ const AccountDetails = () => {
             </form>
         </div>
 
-     );
+    );
 }
- 
+
 export default AccountDetails;

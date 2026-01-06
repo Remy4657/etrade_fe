@@ -1,11 +1,11 @@
 export const categoryApi = {
     GET_CATEGORY_ALL: "/categories",
-    GET_PRODUCT_ALL: "/products",
 };
 export const authApi = {
     REGISTER: "/auth/register",
     LOGIN: "/auth/login",
-    GET_ME: "/auth/me"
+    GET_ME: "/auth/me",
+    LOGOUT: "/auth/logout"
 };
 export const cartApi = {
     ADD_TO_CART: "/cart/add",
@@ -15,6 +15,7 @@ export const cartApi = {
 
 }
 export const productApi = {
+    GET_PRODUCT_ALL: "/products",
     GET_DETAIL_PRODUCT: "/product",
 };
 export const shippingApi = {
@@ -28,4 +29,6 @@ export const checkoutApi = {
 };
 export const orderApi = {
     GET_ALL: "/orders",
+    GET_DETAIL: "/orders",
+
 };

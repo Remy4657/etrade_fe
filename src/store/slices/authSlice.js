@@ -14,6 +14,13 @@ export const loginUser = createAsyncThunk(
         }
     }
 );
+export const logout = createAsyncThunk(
+    "auth/logout",
+    async () => {
+        const res = await AuthService.logout();
+        return;
+    }
+);
 export const getMe = createAsyncThunk(
     "auth/getMe",
     async (_, { rejectWithValue }) => {
@@ -56,6 +63,19 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.login = false;
                 state.isError = action.payload;
+            });
+        // logout
+        builder
+            .addCase(logout.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.isLoading = false;
+                state.login = false;
+                state.userData = null;
+            })
+            .addCase(logout.rejected, (state) => {
+                state.isLoading = false;
             });
         // getMe
         builder

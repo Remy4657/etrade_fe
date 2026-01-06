@@ -6,19 +6,19 @@ import ServiceTwo from "@/components/services/ServiceTwo";
 import ShopNoSidebar from "./ShopNoSidebar";
 import ShopWithSidebar from "./ShopWithSidebar";
 
-const Shop = ({searchParams}) => {
-    return ( 
+const Shop = ({ searchParams }) => {
+    return (
         <>
-        <HeaderFive headerCampaign />
-        <Breadcrumb activeItem="Shop" title="Explore All Products" />
-        <main className="main-wrapper">
-            {searchParams.layout === "no-sidebar" ? <ShopNoSidebar />:<ShopWithSidebar />}
-            <NewsLetter />
-            <ServiceTwo />
-        </main>
-        <FooterTwo />
+            <HeaderFive headerCampaign />
+            <Breadcrumb activeItem="Shop" title="Explore All Products" />
+            <main className="main-wrapper">
+                {searchParams.layout !== "no-sidebar" ? <ShopNoSidebar /> : <ShopWithSidebar />}
+                <NewsLetter />
+                <ServiceTwo />
+            </main>
+            <FooterTwo />
         </>
     );
 }
- 
+
 export default Shop;

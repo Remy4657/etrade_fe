@@ -41,7 +41,7 @@ const OrderView = () => {
                     </tfoot>
                 </table>
             </div>
-            <div className="order-address">
+            {/* <div className="order-address">
                 <h2 className="block-title">Billing address</h2>
                 <address>
                 Winifred Holder <br />
@@ -55,20 +55,20 @@ const OrderView = () => {
                 <p className="address-phone"><i className="far fa-phone"></i> +1 (939) 635-2505</p>
                 <p className="address-email"><i className="far fa-envelope"></i> vikutyqudy@mailinator.com</p>
                 </address>
-            </div>
+            </div> */}
             <div className="order-address">
                 <h2 className="block-title">Shipping address</h2>
                 <address>
-                Winifred Holder <br />
-                Gonzales Harmon Plc<br />
-                60 East New Parkway<br />
-                Neque vero quibusdam<br />
-                Nulla iure blanditii<br />
-                South wels<br />
-                86444<br />
-                Solomon Islands<br />
-                <p className="address-phone"><i className="far fa-phone"></i> +1 (939) 635-2505</p>
-                <p className="address-email"><i className="far fa-envelope"></i> vikutyqudy@mailinator.com</p>
+                    Winifred Holder <br />
+                    Gonzales Harmon Plc<br />
+                    60 East New Parkway<br />
+                    Neque vero quibusdam<br />
+                    Nulla iure blanditii<br />
+                    South wels<br />
+                    86444<br />
+                    Solomon Islands<br />
+                    <p className="address-phone"><i className="far fa-phone"></i> +1 (939) 635-2505</p>
+                    <p className="address-email"><i className="far fa-envelope"></i> vikutyqudy@mailinator.com</p>
                 </address>
             </div>
         </div>

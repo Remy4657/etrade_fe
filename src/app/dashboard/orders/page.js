@@ -38,7 +38,7 @@ const UserOrders = () => {
                                     <td>{item.status}</td>
                                     <td>${item.totalAmount} for {item.items.length} items</td>
                                     <td>
-                                        <Link href="dashboard/orders/view" className="axil-btn view-btn">View</Link>
+                                        <Link href={`dashboard/orders/${item.id}`} className="axil-btn view-btn">View</Link>
                                     </td>
                                 </tr>
                             )
@@ -46,7 +46,7 @@ const UserOrders = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 }
 

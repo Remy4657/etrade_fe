@@ -11,6 +11,10 @@ const AuthService = {
     },
     me: () => {
         return axiosClient.get(authApi.GET_ME)
+    },
+    logout: () => {
+        return axiosClient.post(authApi.LOGOUT)
+
     }
 };
 

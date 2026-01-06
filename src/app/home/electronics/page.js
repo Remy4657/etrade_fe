@@ -41,16 +41,15 @@ const HomeElectronics = () => {
                     getProductAll()
                 ])
                 setListCategory(cateRes.data)
-                setExploreProduct(productRes.data)
+                const exploreProductSeperate = mapInSlices(productRes.data, 8);
+
+                setExploreProduct(exploreProductSeperate)
             } catch (error) {
                 console.error(error)
             }
         }
-
         fetchData()
     }, [])
-
-
 
     return (
         <>
@@ -70,17 +69,17 @@ const HomeElectronics = () => {
                         class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
                         slidesToShow={1}
                     >
-                        {exploreProduct.map((product, index) => (
+                        {exploreProduct.slice(0, 2).map((product, index) => (
                             <div key={index}>
                                 <div className="row row--15">
-                                    <div className="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30" key={product.id}>
-                                        <ProductOne product={product} />
-                                    </div>
-
+                                    {product.map((data) => (
+                                        <div className="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30" key={data.id}>
+                                            <ProductOne product={data} />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         ))}
-
                     </SlickSlider>
                     <div className="row">
                         <div className="col-lg-12 text-center mt--20 mt_sm--0">

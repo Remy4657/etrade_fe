@@ -62,7 +62,7 @@ const SignIn = () => {
                 <form className="singin-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" {...register('email', { required: true })} defaultValue="test1@gmail.com" />
+                        <input type="email" className="form-control" {...register('email', { required: true })} defaultValue="test2@gmail.com" />
                         {errors.email && <p className="error">Email is required.</p>}
                     </div>
                     <div className="form-group">

@@ -22,12 +22,11 @@ const ProductDetails = async ({ params }) => {
     // }
     const findProduct = ProductsData.filter(product => slugify(product.id) === slugify(params.id));
     const singleProduct = findProduct[0];
-    console.log("singleProduct: ", singleProduct)
-    const productCategory = singleProduct.pCate;
+    const productCategory = singleProduct?.pCate;
     const relatedProduct = ProductsData.filter(product => slugify(product.pCate) === slugify(productCategory));
 
     const ProductSingleLayout = () => {
-        switch (singleProduct.pCate) {
+        switch (singleProduct?.pCate) {
             case "NFT":
                 return <SingleLayouSeven singleData={singleProduct} />
                 break;
