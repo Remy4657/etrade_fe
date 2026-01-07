@@ -45,7 +45,7 @@ const HomeElectronics = () => {
 
                 setExploreProduct(exploreProductSeperate)
             } catch (error) {
-                console.error(error)
+                return
             }
         }
         fetchData()

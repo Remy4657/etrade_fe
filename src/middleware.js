@@ -1,4 +1,11 @@
 import { NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
+
+export default createMiddleware({
+    locales: ["vi", "en"],
+    defaultLocale: "vi"
+});
+
 
 export function middleware(request) {
     const token = request.cookies.get("access_token")?.value;
@@ -35,5 +42,6 @@ export const config = {
         "/order/:path*",
         "/wishlist/:path*",
         "/dashboard/:path*",
-        "/profile/:path*"],
+        "/profile/:path*",
+        "/((?!api|_next|.*\\..*).*)"],
 };

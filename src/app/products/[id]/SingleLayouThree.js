@@ -1,6 +1,7 @@
 'use client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import FsLightbox from "fslightbox-react";
 import { addToCart, addToWishlist, addToCartAPI } from "@/store/slices/productSlice";
@@ -13,8 +14,11 @@ import { getCurrentCart } from "@/store/slices/productSlice";
 
 
 const SingleLayouThree = ({ idProduct }) => {
+    const router = useRouter()
     const dispatch = useDispatch();
     const getWishlist = useSelector((state) => state.productData.wishlistItems);
+    const userData = useSelector((state) => state.auth);
+
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
     const [quantity, setquantity] = useState(1);
@@ -59,6 +63,10 @@ const SingleLayouThree = ({ idProduct }) => {
     }, [idProduct]);
 
     const handleAddToCart = (cartAddedData) => {
+        if (!userData.login) {
+            router.push("/sign-in");
+            return;
+        }
         let product = { ...cartAddedData }
 
         if (quantity > 0) {

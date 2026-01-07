@@ -33,7 +33,7 @@ const ShopNoSidebar = () => {
                 setListCategory(cateRes.data)
                 setListProduct(productRes.data)
             } catch (error) {
-                console.error(error)
+                console.error("err: ", error)
             }
         }
         fetchAllOrders()
@@ -78,15 +78,8 @@ const ShopNoSidebar = () => {
     }
     const priceRangeHandler = (e) => {
         const value = e.target.value;
-        console.log("value: ", value)
         setRangePrice(value)
-        // const splitValue = value.split("-");
-        // const getPriceData = ProductsData.filter(data => data.price >= parseInt(splitValue[0]) && data.price <= parseInt(splitValue[1]));
-        // if (value === "null") {
-        //     setcateProduct(ProductsData);
-        // } else {
-        //     setcateProduct(getPriceData);
-        // }
+
     }
     return (
         <Section pClass="axil-shop-area">

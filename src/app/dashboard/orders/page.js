@@ -8,14 +8,17 @@ const UserOrders = () => {
     const [listOrder, setListOrder] = useState([])
     useEffect(() => {
         const fetchAllOrders = async () => {
-            const res = await OrderService.getAll()
-            if (res.data) {
-                setListOrder(res.data)
+            try {
+                const res = await OrderService.getAll()
+                if (res.data) {
+                    setListOrder(res.data)
+                }
+            } catch (error) {
+
             }
         }
         fetchAllOrders()
     }, [])
-    console.log("listOrder: ", listOrder)
     return (
         <div className="axil-dashboard-order">
             <div className="table-responsive">

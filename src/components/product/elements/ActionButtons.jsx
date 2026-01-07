@@ -21,7 +21,6 @@ const ActionButtons = (props) => {
       router.push("/sign-in");
       return;
     }
-    console.log("[add] product: ", product)
     dispatch(addToCart(product));
     dispatch(addToCartAPI({ productId: product.id, quantity: 1 }));
 
@@ -50,7 +49,7 @@ const ActionButtons = (props) => {
       {props.cartBtn && (
         <li className="select-option">
           <button onClick={() => handleAddToCart(props.productAction)}>
-            Add to Cart
+            bAdd to Cart
           </button>
 
         </li>

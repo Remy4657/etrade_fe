@@ -36,7 +36,6 @@ const Checkout = () => {
         }
     );
     const selectedShippingId = watch("shippingMethod")
-    console.log("selectedShippingId: ", selectedShippingId)
     useEffect(() => {
         if (!listShipping?.length) return
 
@@ -59,13 +58,23 @@ const Checkout = () => {
 
     useEffect(() => {
         const fetchAllShippinng = async () => {
-            const { data } = await getShippingAll()
-            setListShipping(data)
+            try {
+                const { data } = await getShippingAll()
+                setListShipping(data)
+            } catch (error) {
+
+            }
+
 
         }
         const fetchAllPayment = async () => {
-            const { data } = await getPaymentAll()
-            setListPayment(data)
+            try {
+                const { data } = await getPaymentAll()
+                setListPayment(data)
+            } catch (error) {
+
+            }
+
         }
         fetchAllShippinng()
         fetchAllPayment()

@@ -39,7 +39,9 @@ export const getCurrentCart = createAsyncThunk(
             const res = await CartService.getCurrentCart();
             return res.data;
         } catch (err) {
-            return thunkAPI.rejectWithValue(err.response.data);
+            console.log("err cart: ", err)
+            // action.payload chính là object trả về trong rejectWithValue
+            return thunkAPI.rejectWithValue(err.data);
         }
     }
 );

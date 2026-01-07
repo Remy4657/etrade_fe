@@ -6,15 +6,16 @@ import "slick-carousel/slick/slick-theme.css";
 import "@/styles/style.scss";
 import { ToastContainer, Bounce } from 'react-toastify';
 import RefreshApp from '@/components/refresh';
+import I18Provider from '@/provider/i18n';
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children, params: { locale } }) => {
 	useEffect(() => {
 		window.bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js");
 	}, []);
 
 
 	return (
-		<html lang="en">
+		<html lang={locale}>
 			<head>
 				<link rel="stylesheet" href="/css/font-awesome.css" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
