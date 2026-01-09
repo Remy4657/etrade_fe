@@ -23,12 +23,9 @@ const DahsboardLayout = ({ children }) => {
     const split = pathname.split("/");
     const pageSlug = split[split.length - 1];
 
-    const handleLogout = async (e) => {
-        //  e.preventDefault();
-
+    const handleLogout = async () => {
         await dispatch(logout())
-        //router.push("/sign-in")
-        console.log('logout')
+        router.push("/sign-in")
     }
 
     return (
@@ -65,9 +62,9 @@ const DahsboardLayout = ({ children }) => {
                                                         <i className={data.icon} />{data.name}
                                                     </Link>
                                                 ))}
-                                                <Link href="/sign-in" className="nav-item nav-link" onClick={(e) => handleLogout(e)}>
+                                                <button className="nav-item nav-link" onClick={() => handleLogout()}>
                                                     <i className="fal fa-sign-out" />Logout
-                                                </Link>
+                                                </button>
                                             </div>
                                         </nav>
                                     </aside>

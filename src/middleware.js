@@ -10,7 +10,6 @@ export default createMiddleware({
 export function middleware(request) {
     const token = request.cookies.get("access_token")?.value;
     const { pathname } = request.nextUrl;
-
     const PRIVATE_ROUTES = [
         "/cart",
         "/checkout",

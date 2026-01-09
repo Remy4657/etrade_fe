@@ -1,7 +1,7 @@
 'use client';
 import Link from "next/link";
 import { useState } from "react";
-import ProductsData from "@/data/Products";
+import { useSelector } from "react-redux";
 import ProductThumbnail from "@/components/product/elements/ProductThumbnail";
 import ProductTitle from "@/components/product/elements/ProductTitle";
 import ProductPrice from "@/components/product/elements/ProductPrice";
@@ -9,12 +9,13 @@ import ProductRating from "@/components/product/elements/ProductRating";
 import ActionButtons from "@/components/product/elements/ActionButtons";
 
 const ProductSearchModal = (props) => {
-  const getProducts = ProductsData;
+  const { listProducts } = useSelector((state) => state.productData);
+
   const [productQuery, setProductQuery] = useState([]);
- 
+
   const SearchInputHandler = (inputValue) => {
     if (inputValue.length > 0) {
-      let matchingData = getProducts.filter((product) =>
+      let matchingData = listProducts.filter((product) =>
         product.title.toLowerCase().includes(inputValue.toLowerCase())
       );
       setProductQuery(matchingData);
@@ -55,20 +56,20 @@ const ProductSearchModal = (props) => {
               {productQuery &&
                 productQuery.map((data) => (
                   <div className="axil-product-list" key={data.id}>
-					<div onClick={props.toggleHandler}>
-						<ProductThumbnail
-						productThumb={data}
-						width={120}
-						height={120}
-						/>
-					</div>
+                    <div onClick={props.toggleHandler}>
+                      <ProductThumbnail
+                        productThumb={data}
+                        width={120}
+                        height={120}
+                      />
+                    </div>
                     <div className="product-content">
                       <ProductRating rating={data} />
-					  <div onClick={props.toggleHandler}>
-                      	<ProductTitle productTitle={data} titleTag="h6" />
-					  </div>
+                      <div onClick={props.toggleHandler}>
+                        <ProductTitle productTitle={data} titleTag="h6" />
+                      </div>
                       <ProductPrice price={data} />
-					  <ActionButtons productAction={data} wishlistBtn cartBtn/>
+                      <ActionButtons productAction={data} wishlistBtn cartBtn={false} />
                     </div>
                   </div>
                 ))}

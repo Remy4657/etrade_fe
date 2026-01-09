@@ -21,7 +21,7 @@ const ProductOne = ({ product, pClass }) => {
           discountLabel
           hoverItems
           wishlistBtn
-          cartBtn
+          cartBtn={false}
           quickViewBtn
           isHoverThumbnail
         />

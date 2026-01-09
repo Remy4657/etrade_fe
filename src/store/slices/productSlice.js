@@ -1,15 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2';
 import CartService from "@/services/cart.service"
+import ProductService from "@/services/product.service"
 import CheckoutService from "@/services/checkout.service"
 import { calculateTotalAmount, calculateTotalQuantity } from "@/utils";
+import { logout } from "./authSlice";
 
+
+export const fetchAllProductAPI = createAsyncThunk(
+    "product/fetchAllProductAPI",
+    async (_, thunkAPI) => {
+        try {
+            const res = await ProductService.getProductAll()
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(
+                err.response?.data || "Error system"
+            );
+        }
+    }
+);
 export const addToCartAPI = createAsyncThunk(
     "cart/addToCartAPI",
     async (product, thunkAPI) => {
         try {
             console.log("[sile] product: ", product)
             const res = await CartService.addToCart(product)
+            // update cart in redux
             thunkAPI.dispatch(getCurrentCart());
             return res.data;
         } catch (error) {
@@ -71,6 +88,7 @@ export const checkoutApi = createAsyncThunk(
 const productSlice = createSlice({
     name: 'products',
     initialState: {
+        listProducts: [],
         cartItems: [],
         cartQuantityTotal: 0,
         cartTotalAmount: 0,
@@ -189,6 +207,23 @@ const productSlice = createSlice({
             state.cartTotalAmount = action.payload.cartTotalAmount;
 
         });
+        builder.addCase(logout.fulfilled, (state) => {
+            state.cartItems = []
+            state.cartQuantityTotal = 0
+            state.cartTotalAmount = 0
+            state.wishlistItems = []
+        })
+        builder
+            .addCase(fetchAllProductAPI.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchAllProductAPI.fulfilled, (state, action) => {
+                state.listProducts = action.payload
+                state.isLoading = false
+            })
+            .addCase(fetchAllProductAPI.rejected, (state) => {
+                state.isLoading = false
+            })
     }
 });
 

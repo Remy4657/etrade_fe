@@ -1,12 +1,12 @@
 'use client';
 import { useState, useEffect, useMemo } from "react";
+import { useSelector } from "react-redux";
 import { getPriceRange, slugify } from "@/utils";
 import { Category } from "@/data/ProductCategory";
 import ProductOne from "@/components/product/ProductOne";
 import ProductsData from "@/data/Products";
 import Section from "@/components/elements/Section";
 import { ColorAttribute } from "@/data/ProductAttribute";
-import { getProductAll } from "@/services/product.service"
 import { getCategoryAll } from "@/services/category.service"
 
 
@@ -14,7 +14,6 @@ import { getCategoryAll } from "@/services/category.service"
 const ShopNoSidebar = () => {
 
     const [cateProduct, setcateProduct] = useState(ProductsData);
-    const [listProduct, setListProduct] = useState([])
     const [listCategory, setListCategory] = useState([])
     const [category, setCategory] = useState("all");
     const [sort, setSort] = useState(null);
@@ -23,15 +22,16 @@ const ShopNoSidebar = () => {
     const [productShow, setProductShow] = useState(12);
     const priceRange = getPriceRange(ProductsData);
 
+    const { listProducts } = useSelector((state) => state.productData);
+
+
     useEffect(() => {
         const fetchAllOrders = async () => {
             try {
                 const [cateRes, productRes] = await Promise.all([
                     getCategoryAll(),
-                    getProductAll()
                 ])
                 setListCategory(cateRes.data)
-                setListProduct(productRes.data)
             } catch (error) {
                 console.error("err: ", error)
             }
@@ -39,7 +39,7 @@ const ShopNoSidebar = () => {
         fetchAllOrders()
     }, [])
     const filteredProducts = useMemo(() => {
-        let result = [...listProduct];
+        let result = [...listProducts];
         //  FILTER theo category
         if (category !== "all") {
             result = result.filter(
@@ -59,7 +59,7 @@ const ShopNoSidebar = () => {
             result = result.filter(data => data.salePrice >= parseInt(splitValue[0]) && data.price <= parseInt(splitValue[1]));
         }
         return result;
-    }, [listProduct, category, sort, rangePrice]);
+    }, [category, sort, rangePrice]);
     const sortHandler = (e) => {
         setSort(e.target.value)
     };

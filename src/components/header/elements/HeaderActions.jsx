@@ -5,8 +5,10 @@ import ProductSearchModal from "@/components/header/elements/ProductSearchModal"
 import MiniCart from "@/components/header/elements/MiniCart";
 import { miniCartHandler } from "@/store/slices/productSlice";
 import { mobileMenu } from "@/store/slices/menuSlice";
+import { useRouter } from "next/navigation";
 
 const HeaderActions = (props) => {
+  const router = useRouter()
   const [searchToggle, setSearchToggle] = useState(false);
   const [accountDropdown, setaccountDropdown] = useState(false);
 
@@ -23,9 +25,9 @@ const HeaderActions = (props) => {
     dispatch(miniCartHandler(data));
   }
 
-const mobileMneuHandler = (data) => {
-  dispatch(mobileMenu(data))
-}
+  const mobileMneuHandler = (data) => {
+    dispatch(mobileMenu(data))
+  }
   return (
     <div className="header-action">
       <ul className="action-list">
@@ -35,7 +37,7 @@ const mobileMneuHandler = (data) => {
               type="search"
               className="placeholder product-search-input"
               name="search2"
-              placeholder="What are you looking for?"
+              placeholder="What are you looking forr?"
               autoComplete="off"
             />
             <button type="submit" className="icon wooc-btn-search">
@@ -56,7 +58,7 @@ const mobileMneuHandler = (data) => {
 
         <li className="wishlist">
           <Link href="/wishlist">
-            {getProducts.wishListQuantity > 0 && 
+            {getProducts.wishListQuantity > 0 &&
               <span className="cart-count">{getProducts.wishListQuantity}</span>
             }
             <i className="far fa-heart" />
@@ -88,15 +90,15 @@ const mobileMneuHandler = (data) => {
               </li>
             </ul>
             <div className="login-btn">
-              <Link href="/sign-in" className="axil-btn btn-bg-primary">
+              <button onClick={() => { router.push("/sign-in") }} className="axil-btn btn-bg-primary">
                 Login
-              </Link>
+              </button>
             </div>
             <div className="reg-footer text-center">
               No account yet?
-              <Link href="/sign-up" className="btn-link">
+              <button onClick={() => { router.push("/sign-in") }} className="btn-link">
                 REGISTER HERE.
-              </Link>
+              </button>
             </div>
           </div>
         </li>

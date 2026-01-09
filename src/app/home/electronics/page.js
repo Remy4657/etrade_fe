@@ -21,34 +21,55 @@ import { mapInSlices, slugify } from "@/utils";
 import PosterTwo from "@/components/poster/PosterTwo";
 import { useEffect, useState } from "react";
 import { getCategoryAll } from "@/services/category.service"
-import { getProductAll } from "@/services/product.service"
+import { getProductBestseller, getProductNewest } from "@/services/product.service"
+import { fetchAllProductAPI } from "@/store/slices/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const HomeElectronics = () => {
-    const pathname = usePathname();
-    const split = pathname.split("/");
-    const pageCategory = split[split.length - 1];
+    const dispatch = useDispatch()
     const electronicsProduct = ProductsData.filter(data => data.pCate === "Electronics");
-    const exploreProduct1 = mapInSlices(electronicsProduct, 8);
     const [listCategory, setListCategory] = useState([])
-    const [exploreProduct, setExploreProduct] = useState([])
+    const [listProductNewest, setListProductNewest] = useState([])
+    const [listProductBestseller, setListProductBestseller] = useState([])
 
+    //
+    const { listProducts } = useSelector((state) => state.productData);
+
+    const exploreProductSeperate = mapInSlices(listProducts, 8);
     useEffect(() => {
-        const fetchData = async () => {
+        dispatch(fetchAllProductAPI())
+        const fetchAllCategory = async () => {
             try {
-                const [cateRes, productRes] = await Promise.all([
+                const [cateRes] = await Promise.all([
                     getCategoryAll(),
-                    getProductAll()
                 ])
                 setListCategory(cateRes.data)
-                const exploreProductSeperate = mapInSlices(productRes.data, 8);
-
-                setExploreProduct(exploreProductSeperate)
             } catch (error) {
                 return
             }
         }
-        fetchData()
+        const fetchAllProductBestseller = async () => {
+            try {
+                const res = await getProductBestseller()
+                setListProductBestseller(res?.data)
+            } catch (error) {
+
+            }
+
+        }
+        const fetchAllProductNewest = async () => {
+            try {
+                const res = await getProductNewest()
+                setListProductNewest(res?.data)
+            } catch (error) {
+
+            }
+
+        }
+        fetchAllProductBestseller()
+        fetchAllProductNewest()
+        fetchAllCategory()
     }, [])
 
     return (
@@ -69,7 +90,7 @@ const HomeElectronics = () => {
                         class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
                         slidesToShow={1}
                     >
-                        {exploreProduct.slice(0, 2).map((product, index) => (
+                        {exploreProductSeperate.slice(0, 2).map((product, index) => (
                             <div key={index}>
                                 <div className="row row--15">
                                     {product.map((data) => (
@@ -124,7 +145,7 @@ const HomeElectronics = () => {
                             },
                         ]}
                     >
-                        {electronicsProduct.map((data) => (
+                        {listProductNewest.map((data) => (
                             <ProductTwo product={data} key={data.id} />
                         ))}
 
@@ -140,7 +161,7 @@ const HomeElectronics = () => {
                         pClass="section-title-center"
                     />
                     <div className="row row-cols-xl-2 row-cols-1 row--15">
-                        {electronicsProduct.slice(0, 8).map((data) => (
+                        {listProductBestseller.map((data) => (
                             <div className="col" key={data.id}>
                                 <ProductListOne product={data} />
                             </div>

@@ -4,29 +4,29 @@ import ProductTitle from "./elements/ProductTitle";
 import ProductPrice from "./elements/ProductPrice";
 import ActionButtons from "./elements/ActionButtons";
 
-const ProductTwo = ({product}) => {
-    return (
-      <div className="axil-product product-style-two">
-        <ProductThumbnail 
+const ProductTwo = ({ product }) => {
+  return (
+    <div className="axil-product product-style-two">
+      <ProductThumbnail
         productThumb={product}
-        discountLabel 
+        discountLabel
         isHoverThumbnail
-        />
-        
-        <div className="product-content">
-          <div className="inner">
-            <ProductTitle productTitle={product}/>
-            <ProductPrice price={product} />
-            <ActionButtons 
+      />
+
+      <div className="product-content">
+        <div className="inner">
+          <ProductTitle productTitle={product} />
+          <ProductPrice price={product} />
+          <ActionButtons
             productAction={product}
             wishlistBtn
-            cartBtn
+            cartBtn={false}
             quickViewBtn
-            />
-          </div>
+          />
         </div>
       </div>
-    );
+    </div>
+  );
 }
- 
+
 export default ProductTwo;

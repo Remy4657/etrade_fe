@@ -17,6 +17,10 @@ export const cartApi = {
 export const productApi = {
     GET_PRODUCT_ALL: "/products",
     GET_DETAIL_PRODUCT: "/product",
+    GET_PRODUCT_CATEGORY: "/products",
+    GET_PRODUCT_BESTSELLER: "/products/best-seller",
+    GET_PRODUCT_NEWEST: "/products/newest"
+
 };
 export const shippingApi = {
     GET_SHIPPING_ALL: "/get-all-shipping",
