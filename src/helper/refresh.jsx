@@ -5,17 +5,17 @@ import { getMe } from "@/store/slices/authSlice";
 import { getCurrentCart } from "@/store/slices/productSlice";
 
 const RefreshApp = ({ children }) => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchMe = async () => {
-      dispatch(getMe());
-      dispatch(getCurrentCart());
-    };
-    fetchMe();
-  }, [dispatch]);
+    useEffect(() => {
+        const fetchMe = async () => {
+            dispatch(getMe());
+            dispatch(getCurrentCart());
+        };
+        fetchMe();
+    }, [dispatch]);
 
-  return <>{children}</>;
+    return <>{children}</>;
 };
 
 export default RefreshApp;

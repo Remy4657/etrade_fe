@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast, Bounce } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
+import { useSession, signIn } from "next-auth/react";
 import AuthLayout from "../layout";
 import { loginUser } from "@/store/slices/authSlice";
 import { getCurrentCart } from "@/store/slices/productSlice";
@@ -72,8 +73,13 @@ const SignIn = () => {
                     </div>
                     <div className="form-group d-flex align-items-center justify-content-between">
                         <button type="submit" className="axil-btn btn-bg-primary submit-btn">Sign In</button>
-                        <Link href="/forgot-password" className="forgot-btn">Forget password?</Link>
+
                     </div>
+                    <div className="form-group d-flex align-items-center justify-content-between">
+                        <button onClick={() => signIn("google")} className="axil-btn submit-btn">Sign In by Google</button>
+
+                    </div>
+                    <Link href="/forgot-password" className="forgot-btn">Forget password?</Link>
                     {loginError && <p className="error">User and Password doesn&apos;t match</p>}
                 </form>
             </div>
