@@ -202,9 +202,9 @@ const productSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getCurrentCart.fulfilled, (state, action) => {
-            state.cartItems = action.payload.items;
-            state.cartQuantityTotal = action.payload.cartQuantityTotal;
-            state.cartTotalAmount = action.payload.cartTotalAmount;
+            state.cartItems = action?.payload?.items ?? [];
+            state.cartQuantityTotal = action?.payload?.cartQuantityTotal ?? 0;
+            state.cartTotalAmount = action?.payload?.cartTotalAmount ?? 0;
 
         });
         builder.addCase(logout.fulfilled, (state) => {

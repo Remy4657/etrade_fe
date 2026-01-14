@@ -6,14 +6,16 @@ import MiniCart from "@/components/header/elements/MiniCart";
 import { miniCartHandler } from "@/store/slices/productSlice";
 import { mobileMenu } from "@/store/slices/menuSlice";
 import { useRouter } from "next/navigation";
+import { logout } from "@/store/slices/authSlice";
 
 const HeaderActions = (props) => {
+  const dispatch = useDispatch()
   const router = useRouter()
+  const userData = useSelector((state) => state.auth);
+  const getProducts = useSelector((state) => state.productData);
+
   const [searchToggle, setSearchToggle] = useState(false);
   const [accountDropdown, setaccountDropdown] = useState(false);
-
-  const dispatch = useDispatch();
-  const getProducts = useSelector((state) => state.productData);
 
   const searchBoxToggleHandler = () => {
     setSearchToggle((toggler) => !toggler);
@@ -90,16 +92,26 @@ const HeaderActions = (props) => {
               </li>
             </ul>
             <div className="login-btn">
-              <button onClick={() => { router.push("/sign-in") }} className="axil-btn btn-bg-primary">
+              {!userData.login ? <button onClick={() => { router.push("/sign-in") }} className="axil-btn btn-bg-primary">
                 Login
               </button>
+                :
+                <button onClick={() => {
+                  dispatch(logout())
+                  router.push("/sign-in")
+                }} className="axil-btn btn-bg-primary">
+                  Logout
+                </button>
+              }
             </div>
-            <div className="reg-footer text-center">
-              No account yet?
-              <button onClick={() => { router.push("/sign-in") }} className="btn-link">
-                REGISTER HERE.
-              </button>
-            </div>
+            {!userData.login &&
+              <div className="reg-footer text-center">
+                No account yet?
+                <Link href="/sign-up" className="btn-link">
+                  REGISTER HERE.
+                </Link>
+              </div>}
+
           </div>
         </li>
         <li className="axil-mobile-toggle">

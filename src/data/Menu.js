@@ -1,7 +1,7 @@
 const HeaderMenu = [
     {
         name: "Home",
-        url: "#",
+        url: "/",
         hasChildren: false,
         children: [
             {
@@ -31,8 +31,8 @@ const HeaderMenu = [
     },
     {
         name: "Shop",
-        url: "#",
-        hasChildren: true,
+        url: "/shop",
+        hasChildren: false,
         children: [
             {
                 name: "Shop",
@@ -67,7 +67,7 @@ const HeaderMenu = [
     {
         name: "Pages",
         url: "#",
-        hasChildren: true,
+        hasChildren: false,
         children: [
             {
                 name: "Wishlist",

@@ -9,6 +9,7 @@ export default createMiddleware({
 
 export function middleware(request) {
     const token = request.cookies.get("access_token")?.value;
+    console.log("middleware token:", token) // sẽ thấy
     const { pathname } = request.nextUrl;
     const PRIVATE_ROUTES = [
         "/cart",
@@ -20,6 +21,7 @@ export function middleware(request) {
 
     // ĐÃ LOGIN → KHÔNG ĐƯỢC VÀO LOGIN
     if (token && (pathname === "/sign-in" || pathname === "/sign-up")) {
+        console.log("zoday")
         return NextResponse.redirect(new URL("/", request.url));
     }
     // CHƯA LOGIN → KHÔNG ĐƯỢC VÀO TRANG PRIVATE
@@ -27,6 +29,7 @@ export function middleware(request) {
         pathname.startsWith(route)
     );
     if (!token && isPrivateRoute) {
+        console.log("[middleware] redirect login")
         return NextResponse.redirect(new URL("/sign-in", request.url));
     }
     return NextResponse.next();

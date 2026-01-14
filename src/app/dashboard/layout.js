@@ -13,6 +13,7 @@ import { DashboardAsideMenu } from "@/data/Menu";
 import { UserLists } from "@/data/Users";
 import { logout } from "@/store/slices/authSlice";
 
+
 const DahsboardLayout = ({ children }) => {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -24,7 +25,7 @@ const DahsboardLayout = ({ children }) => {
     const pageSlug = split[split.length - 1];
 
     const handleLogout = async () => {
-        await dispatch(logout())
+        dispatch(logout())
         router.push("/sign-in")
     }
 

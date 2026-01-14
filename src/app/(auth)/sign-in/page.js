@@ -11,9 +11,11 @@ import { loginUser } from "@/store/slices/authSlice";
 import { getCurrentCart } from "@/store/slices/productSlice";
 
 const SignIn = () => {
+    const { data: session, status } = useSession();
+    console.log("session: ", session)
+
     const dispatch = useDispatch();
     const router = useRouter();
-    const [signInData, setSignInData] = useState(null);
     const [loginError, setLoginError] = useState(false);
     const {
         register,
@@ -54,6 +56,15 @@ const SignIn = () => {
         }
 
     }
+    const handleLoginGoogle = async () => {
+        signIn("google", { callbackUrl: "/" })
+        // gắn access_token vào cookie
+        const accessToken = session?.access_token
+        await fetch(`${process.env.NEXT_URL}/api/auth/set-cookie`, {
+            method: "POST",
+            body: JSON.stringify({ accessToken }),
+        })
+    }
 
     return (
         <AuthLayout bgImage="bg_image--9">
@@ -72,15 +83,41 @@ const SignIn = () => {
                         {errors.password && <p className="error">Password is required.</p>}
                     </div>
                     <div className="form-group d-flex align-items-center justify-content-between">
-                        <button type="submit" className="axil-btn btn-bg-primary submit-btn">Sign In</button>
-
+                        <button type="submit" className="axil-btn btn-bg-primary submit-btn ">Sign In</button>
+                        <Link href="/forgot-password" className="forgot-btn">Forget password?</Link>
+                        {loginError && <p className="error">User and Password doesn&apos;t match</p>}
                     </div>
+                    {/* <hr style={{ height: "1px", backgroundColor: "#ccc", marginTop: "50px", marginBottom: "0px" }} /> */}
+                    <div className="d-flex m-5"><span style={{ margin: "auto", fontSize: "12px" }}>OR</span></div>
                     <div className="form-group d-flex align-items-center justify-content-between">
-                        <button onClick={() => signIn("google")} className="axil-btn submit-btn">Sign In by Google</button>
-
+                        <button
+                            type="button"
+                            class="btn"
+                            style={{
+                                fontSize: "14px",
+                                fontWeight: "500",
+                                border: "1px solid #ccc",
+                                color: "#444",
+                                backgroundColor: "#fff",
+                                padding: "12px 16px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: "10px"
+                            }}
+                            onClick={() => handleLoginGoogle()}>
+                            <img
+                                src="https://developers.google.com/identity/images/g-logo.png"
+                                alt="Google"
+                                style={{
+                                    width: "22px",
+                                    height: "22px"
+                                }}
+                            />
+                            Continue with Google
+                        </button>
+                        {/* <button onClick={() => signIn("google")} className="axil-btn w-100">Sign In by Google</button> */}
                     </div>
-                    <Link href="/forgot-password" className="forgot-btn">Forget password?</Link>
-                    {loginError && <p className="error">User and Password doesn&apos;t match</p>}
                 </form>
             </div>
         </AuthLayout>

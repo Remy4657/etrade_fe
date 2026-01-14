@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AuthService from "@/services/auth.service"
-
+import { signOut } from "next-auth/react"
 export const loginUser = createAsyncThunk(
     "auth/loginUser",
     async (data, { rejectWithValue }) => {
@@ -16,9 +16,14 @@ export const loginUser = createAsyncThunk(
 );
 export const logout = createAsyncThunk(
     "auth/logout",
-    async () => {
-        const res = await AuthService.logout();
-        return;
+    async (_, { rejectWithValue }) => {
+        try {
+            await AuthService.logout();
+            await signOut({ redirect: false })
+            return;
+        } catch (err) {
+            return rejectWithValue("Logout err: ", err);
+        }
     }
 );
 export const getMe = createAsyncThunk(

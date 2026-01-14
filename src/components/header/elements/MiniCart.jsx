@@ -39,7 +39,7 @@ const MiniCart = () => {
           </div>
           <div className="cart-body">
             <ul className="cart-item-list">
-              {getProducts.cartItems.length > 0 ? (
+              {getProducts?.cartItems?.length > 0 ? (
                 getProducts.cartItems.map((data) => (
                   <li className="cart-item" key={data.id}>
                     <div className="item-img">
@@ -81,7 +81,7 @@ const MiniCart = () => {
               )}
             </ul>
           </div>
-          {getProducts.cartItems.length > 0 ? (
+          {getProducts?.cartItems?.length > 0 ? (
             <div className="cart-footer">
               <h3 className="cart-subtotal">
                 <span className="subtotal-title">Subtotal:</span>

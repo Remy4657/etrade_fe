@@ -1,10 +1,14 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import axios from "axios";
+import axiosClient from "@/utils/axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
   secret: process.env.NO_SECRET,
+  session: {
+    maxAge: 60 * 60, // 1h
+  },
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
@@ -19,8 +23,8 @@ export const authOptions = {
         },
       },
       async authorize(credentials, req) {
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/google`,
+        const res = await axiosClient.post(
+          `/auth/google`,
           {
             type: "password",
             username: credentials?.username,
@@ -49,7 +53,7 @@ export const authOptions = {
       token.idToken = googleIdToken
       console.log("[raw] token: ", token)
       if (trigger === "signIn" && account?.provider != "credentials") {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/google`,
+        const res = await axiosClient.post(`/auth/google`,
           {},
           {
             headers: {
@@ -59,21 +63,16 @@ export const authOptions = {
         );
         console.log("[res login]: ", res.data)
         if (res.data) {
-          token.access_token = res.data.accessToken;
-          token.roles = res.data.roles;
+          const accessToken = res.data.data.accessToken;
+          token.access_token = accessToken;
+          token.roles = res.data.data.roles;
         }
       }
       if (trigger === "signIn" && account?.provider === "credentials") {
-        //@ts-ignore
         token.username = user?.DT?.username;
-        //@ts-ignore
         token.email = user?.DT?.email;
-        //@ts-ignore
         token.roles = user?.DT?.role;
-        //@ts-ignore
         token.access_token = user?.DT?.access_token;
-        //@ts-ignore
-        token.refresh_token = user?.DT?.refresh_token;
       }
       console.log("[route] token: ", token);
       console.log("[route] user: ", user);
@@ -86,7 +85,6 @@ export const authOptions = {
         session.user.roles = token.roles;
         session.user.picture = token.picture
         session.access_token = token.access_token;
-        session.refresh_token = token.refresh_token;
       }
       console.log("[route] session: ", session);
       return session;

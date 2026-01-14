@@ -14,7 +14,6 @@ const AuthService = {
     },
     logout: () => {
         return axiosClient.post(authApi.LOGOUT)
-
     }
 };
 

@@ -14,28 +14,40 @@ import {
 } from "redux-persist";
 import storage from "./storage";
 
-// 1️⃣ Combine reducer (GIỮ ĐÚNG key bạn đang dùng)
-const rootReducer = combineReducers({
-    productData: productSlice,
-    auth: authSlice,
-    menu: menuSlice,
-});
+
 
 // 2️⃣ Cấu hình persist
-const persistConfig = {
-    key: "root",
+// const persistConfig = {
+//     key: "root",
+//     storage,
+//     whitelist: ["productData"],
+// };
+const productPersistConfig = {
+    key: "product",
     storage,
-    whitelist: ["productData"],
-    // 👆 chỉ persist product (chuẩn ecommerce)
-    // auth thường nên dùng cookie
+    whitelist: ["listProducts"], // ✅ CHỈ LƯU listProducts
 };
 
 // 3️⃣ Persist reducer
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
+//const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const persistedProductReducer = persistReducer(
+    productPersistConfig,
+    productSlice
+);
+// 1️⃣ Combine reducer (GIỮ ĐÚNG key bạn đang dùng)
+// const rootReducer = combineReducers({
+//     productData: productSlice,
+//     auth: authSlice,
+//     menu: menuSlice,
+// });
+const rootReducer = combineReducers({
+    productData: persistedProductReducer, // ✅ product đã được persist riêng
+    auth: authSlice,
+    menu: menuSlice,
+});
 // 4️⃣ Configure store
 export const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
