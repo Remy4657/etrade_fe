@@ -1,9 +1,9 @@
 import { cookies } from "next/headers"
 
 export async function POST(req) {
-  const { accessToken } = await req.json()
-  console.log("[set-cookie] accessToken: ", accessToken)
-  cookies().set("access_token", accessToken, {
+  const res = await req.json()
+  const cookieStore = await cookies();
+  cookieStore.set("access_token", res.accessToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     path: "/",

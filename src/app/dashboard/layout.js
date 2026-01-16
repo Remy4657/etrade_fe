@@ -40,12 +40,14 @@ const DahsboardLayout = ({ children }) => {
                             <div className="axil-dashboard-author">
                                 <div className="media">
                                     <div className="thumbnail">
-                                        <Image
-                                            src={users?.avatar}
-                                            height={70}
-                                            width={70}
-                                            alt={users?.username}
-                                        />
+                                        {users?.avatar && (
+                                            <Image
+                                                src={users.avatar}
+                                                width={70}
+                                                height={70}
+                                                alt="Avatar"
+                                            />
+                                        )}
                                     </div>
                                     <div className="media-body">
                                         <h5 className="title mb-0">Hello {users?.username}</h5>

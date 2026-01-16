@@ -58,12 +58,6 @@ const SignIn = () => {
     }
     const handleLoginGoogle = async () => {
         signIn("google", { callbackUrl: "/" })
-        // gắn access_token vào cookie
-        const accessToken = session?.access_token
-        await fetch(`${process.env.NEXT_URL}/api/auth/set-cookie`, {
-            method: "POST",
-            body: JSON.stringify({ accessToken }),
-        })
     }
 
     return (
@@ -92,7 +86,7 @@ const SignIn = () => {
                     <div className="form-group d-flex align-items-center justify-content-between">
                         <button
                             type="button"
-                            class="btn"
+                            className="btn"
                             style={{
                                 fontSize: "14px",
                                 fontWeight: "500",

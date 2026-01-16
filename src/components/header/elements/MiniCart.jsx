@@ -40,8 +40,8 @@ const MiniCart = () => {
           <div className="cart-body">
             <ul className="cart-item-list">
               {getProducts?.cartItems?.length > 0 ? (
-                getProducts.cartItems.map((data) => (
-                  <li className="cart-item" key={data.id}>
+                getProducts.cartItems.map((data, index) => (
+                  <li className="cart-item" key={index}>
                     <div className="item-img">
                       <Image
                         src={data.thumbnail}

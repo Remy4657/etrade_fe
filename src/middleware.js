@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
-    locales: ["vi", "en"],
-    defaultLocale: "vi"
+    locales: ["en", "vi"],
+    defaultLocale: "en"
 });
 
 
@@ -18,7 +18,7 @@ export function middleware(request) {
         "/order",
         "/dashboard",
     ];
-
+    console.log("pathname: ", pathname)
     // ĐÃ LOGIN → KHÔNG ĐƯỢC VÀO LOGIN
     if (token && (pathname === "/sign-in" || pathname === "/sign-up")) {
         console.log("zoday")
@@ -28,6 +28,7 @@ export function middleware(request) {
     const isPrivateRoute = PRIVATE_ROUTES.some(route =>
         pathname.startsWith(route)
     );
+    console.log("!isToken: ", !token)
     if (!token && isPrivateRoute) {
         console.log("[middleware] redirect login")
         return NextResponse.redirect(new URL("/sign-in", request.url));
@@ -36,6 +37,7 @@ export function middleware(request) {
 }
 export const config = {
     matcher: [
+        "/",
         "/sign-in",
         "/sign-up",
         "/cart/:path*",
@@ -45,5 +47,6 @@ export const config = {
         "/wishlist/:path*",
         "/dashboard/:path*",
         "/profile/:path*",
+        "/(vi|en)/:path*",
         "/((?!api|_next|.*\\..*).*)"],
 };

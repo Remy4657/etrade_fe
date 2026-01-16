@@ -1,4 +1,5 @@
 import NextAuth from "next-auth";
+import { cookies } from "next/headers"
 import GoogleProvider from "next-auth/providers/google";
 import axios from "axios";
 import axiosClient from "@/utils/axios";
@@ -48,10 +49,8 @@ export const authOptions = {
   },
   callbacks: {
     async jwt({ token, trigger, user, account, profile, isNewUser }) {
-      console.log("[raw] account: ", account)
       const googleIdToken = account?.id_token;
       token.idToken = googleIdToken
-      console.log("[raw] token: ", token)
       if (trigger === "signIn" && account?.provider != "credentials") {
         const res = await axiosClient.post(`/auth/google`,
           {},
@@ -61,9 +60,17 @@ export const authOptions = {
             },
           }
         );
-        console.log("[res login]: ", res.data)
+        console.log("[nextauth]: res login", res.data)
         if (res.data) {
+          const cookieStore = await cookies();
           const accessToken = res.data.data.accessToken;
+
+          cookieStore.set("access_token", accessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            path: "/",
+            maxAge: 60 * 60,
+          });
           token.access_token = accessToken;
           token.roles = res.data.data.roles;
         }
@@ -74,8 +81,7 @@ export const authOptions = {
         token.roles = user?.DT?.role;
         token.access_token = user?.DT?.access_token;
       }
-      console.log("[route] token: ", token);
-      console.log("[route] user: ", user);
+      console.log("[nextauth] token: ", token);
 
       return token;
     },
@@ -86,7 +92,7 @@ export const authOptions = {
         session.user.picture = token.picture
         session.access_token = token.access_token;
       }
-      console.log("[route] session: ", session);
+      console.log("[nextauth] session: ", session);
       return session;
     },
   },

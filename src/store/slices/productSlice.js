@@ -26,7 +26,7 @@ export const addToCartAPI = createAsyncThunk(
         try {
             console.log("[sile] product: ", product)
             const res = await CartService.addToCart(product)
-            // update cart in redux
+            // update cart in redux (để update id để làm key trong MiniCart compponent)
             thunkAPI.dispatch(getCurrentCart());
             return res.data;
         } catch (error) {
