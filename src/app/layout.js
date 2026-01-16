@@ -1,22 +1,15 @@
-'use client';
-import { useEffect } from 'react';
-import { Providers } from '@/store/provider';
+
+import { ProviderRedux } from '@/store/provider';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/style.scss";
 import { ToastContainer, Bounce } from 'react-toastify';
 import RefreshApp from '@/helper/refresh';
 import NextAuthWrapper from '@/helper/next.auth.wrapper';
-import I18Provider from '@/provider/i18n';
 
-const RootLayout = ({ children, params: { locale } }) => {
-	useEffect(() => {
-		window.bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js");
-	}, []);
-
-
+const RootLayout = ({ children }) => {
 	return (
-		<html lang={locale}>
+		<html>
 			<head>
 				<link rel="stylesheet" href="/css/font-awesome.css" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,7 +18,7 @@ const RootLayout = ({ children, params: { locale } }) => {
 			</head>
 			<body>
 				<NextAuthWrapper>
-					<Providers>
+					<ProviderRedux>
 						<RefreshApp>
 							{children}
 						</RefreshApp>
@@ -42,8 +35,9 @@ const RootLayout = ({ children, params: { locale } }) => {
 							theme="light"
 							transition={Bounce}
 						/>
-					</Providers>
+					</ProviderRedux>
 				</NextAuthWrapper>
+
 
 			</body>
 		</html>
