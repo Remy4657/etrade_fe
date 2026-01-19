@@ -10,7 +10,11 @@ import { getAllPosts, getPostBySlug } from "@/utils/api";
 import markdownToHtml from "@/utils/markdownToHtml";
 import SingleBlogContent from "@/components/blog/single-post/SingleBlogContent";
 
-const BlogDetails = async ({params}) => {
+
+export const dynamic = "force-dynamic";
+
+const BlogDetails = async ({ params }) => {
+    console.log("[blog]")
     const postMeta = getPostBySlug(params.slug, [
         'id',
         'title',
@@ -41,36 +45,36 @@ const BlogDetails = async ({params}) => {
         'views',
     ])
 
-    return ( 
+    return (
         <>
-        <HeaderFive headerSlider />
-        <main className="main-wrapper">
-            <SingleBlogContent meta={postMeta} content={postContent} />
-            <Section pClass="related-blog-area" sectionPadding="pb--60 pb_sm--40">
-                <SectionTitle 
-                 title="Latest Blog"
-                 subtitle="Hot News"
-                 subtitleIcon="fal fa-bell"
-                 subColor="highlighter-primary"
-                />
-                <SlickSlider
-                class="slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
-                slidesToShow={3}
-                infinite={false}
-                >
-                    {allPosts.map((data) => (
-                        <BlogOne posts={data} key={data.id} thumbHeight={300} thumbWidth={410} spacing="no-space"/>
-                    ))}
-                </SlickSlider>
-            </Section>
-            <NewsLetter />
-            <ServiceTwo />
-        </main>
-        <FooterTwo />
+            <HeaderFive headerSlider />
+            <main className="main-wrapper">
+                <SingleBlogContent meta={postMeta} content={postContent} />
+                <Section pClass="related-blog-area" sectionPadding="pb--60 pb_sm--40">
+                    <SectionTitle
+                        title="Latest Blog"
+                        subtitle="Hot News"
+                        subtitleIcon="fal fa-bell"
+                        subColor="highlighter-primary"
+                    />
+                    <SlickSlider
+                        class="slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
+                        slidesToShow={3}
+                        infinite={false}
+                    >
+                        {allPosts.map((data) => (
+                            <BlogOne posts={data} key={data.id} thumbHeight={300} thumbWidth={410} spacing="no-space" />
+                        ))}
+                    </SlickSlider>
+                </Section>
+                <NewsLetter />
+                <ServiceTwo />
+            </main>
+            <FooterTwo />
         </>
-     );
+    );
 }
- 
+
 export default BlogDetails;
 
 export async function generateStaticParams() {

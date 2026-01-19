@@ -1,7 +1,7 @@
 const CuurencyDropdown = () => {
   return (
     <div className="dropdown">
-      <button
+      {/* <button
         className="dropdown-toggle"
         type="button"
         data-bs-toggle="dropdown"
@@ -25,7 +25,7 @@ const CuurencyDropdown = () => {
             EUR
           </a>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

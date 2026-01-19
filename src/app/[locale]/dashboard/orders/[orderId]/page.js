@@ -22,7 +22,7 @@ export default async function OrderDetailPage({ params }) {
                 <tbody>
                     {data.items?.map((item, index) => {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td>{item.productName}, {item.productSize}, {item.productColor} <strong>X {item.quantity}</strong></td>
                                 <td>${item.price * item.quantity}</td>
                             </tr>

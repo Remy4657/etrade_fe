@@ -9,6 +9,10 @@ const intlMiddleware = createMiddleware({
 
 
 export function middleware(request) {
+    const { pathname } = request.nextUrl;
+    // if (pathname === "/sign-in" || pathname === "/sign-up") {
+    //     return NextResponse.next();
+    // }
     // 1️⃣ CHẠY i18n middleware TRƯỚC
     const response = intlMiddleware(request);
 
@@ -17,7 +21,6 @@ export function middleware(request) {
 
     const token = request.cookies.get("access_token")?.value;
     console.log("middleware token:", token) // sẽ thấy
-    const { pathname } = request.nextUrl;
     const PRIVATE_ROUTES = [
         "/cart",
         "/checkout",

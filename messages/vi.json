@@ -3,12 +3,16 @@
         "title": "Trang chủ",
         "welcome": "Xin chào"
     },
-    "NavbarLinks": {
-        "home": "Trang chủ",
-        "homeTitle": "Trang chủ tiêu đề",
-        "about": "Về chúng tôi",
-        "aboutTitle": "Tiêu đề_về chúng tôi",
-        "profile": "Hồ sơ",
-        "profileTitle": "Hồ sơ tiêu đề"
+    "Header": {
+        "Home": "Trang chủ",
+        "Shop": "Cửa hàng",
+        "Pages": "Trang",
+        "About": "Về chúng tôi",
+        "Blog": "Bài viết",
+        "Contact": "Liên hệ"
+    },
+    "Authentication": {
+        "SignIn": "Đăng nhập",
+        "SignUp": "Đăng ký"
     }
 }

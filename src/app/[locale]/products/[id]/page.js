@@ -2,7 +2,7 @@ import ProductsData from "@/data/Products";
 import { slugify } from "@/utils";
 import SingleLayouThree from "./SingleLayouThree";
 
-
+export const dynamic = "force-dynamic";
 const ProductDetails = async ({ params }) => {
     //const productDetail = await getDetailProduct(params.id);
     //console.log("productDetail: ", productDetail)

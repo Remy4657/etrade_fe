@@ -59,7 +59,7 @@ const ShopNoSidebar = () => {
             result = result.filter(data => data.salePrice >= parseInt(splitValue[0]) && data.price <= parseInt(splitValue[1]));
         }
         return result;
-    }, [category, sort, rangePrice]);
+    }, [listProducts, category, sort, rangePrice]);
     const sortHandler = (e) => {
         setSort(e.target.value)
     };

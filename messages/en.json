@@ -3,12 +3,16 @@
         "title": "Home",
         "welcome": "Welcome"
     },
-    "NavbarLinks": {
-        "home": "Home",
-        "homeTitle": "Home page",
-        "about": "About",
-        "aboutTitle": "About page",
-        "profile": "Profile",
-        "profileTitle": "Profile page"
+    "Header": {
+        "Home": "Home",
+        "Shop": "Shop",
+        "Pages": "Pages",
+        "About": "About",
+        "Blog": "Blog",
+        "Contact": "Contact"
+    },
+    "Authentication": {
+        "SignIn": "Sign In",
+        "SignUp": "Sign Up"
     }
 }

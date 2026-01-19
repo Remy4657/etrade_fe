@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getMe } from "@/store/slices/authSlice";
 import { getCurrentCart } from "@/store/slices/productSlice";
 
-const RefreshApp = ({ children }) => {
+const InitiateData = ({ children }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,4 +18,4 @@ const RefreshApp = ({ children }) => {
     return <>{children}</>;
 };
 
-export default RefreshApp;
+export default InitiateData;

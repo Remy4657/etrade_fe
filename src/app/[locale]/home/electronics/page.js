@@ -1,6 +1,5 @@
 'use client';
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
 import CategoryElectronics from "@/components/category/CategoryElectronics";
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
@@ -10,7 +9,6 @@ import BannerOne from "@/components/hero-banner/BannerOne";
 import PosterOne from "@/components/poster/PosterOne";
 import ProductOne from "@/components/product/ProductOne";
 import TestimonialOne from "@/components/testimonial/TestimonialOne";
-import ProductsData from "@/data/Products";
 import FooterTwo from "@/components/footer/FooterTwo";
 import ServiceTwo from "@/components/services/ServiceTwo";
 import NewsLetter from "@/components/newsletter/NewsLetter";
@@ -28,13 +26,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 const HomeElectronics = () => {
     const dispatch = useDispatch()
-    const electronicsProduct = ProductsData.filter(data => data.pCate === "Electronics");
+    const { listProducts } = useSelector((state) => state.productData);
+
     const [listCategory, setListCategory] = useState([])
     const [listProductNewest, setListProductNewest] = useState([])
     const [listProductBestseller, setListProductBestseller] = useState([])
-
-    //
-    const { listProducts } = useSelector((state) => state.productData);
 
     const exploreProductSeperate = mapInSlices(listProducts, 8);
     useEffect(() => {
@@ -70,7 +66,7 @@ const HomeElectronics = () => {
         fetchAllProductBestseller()
         fetchAllProductNewest()
         fetchAllCategory()
-    }, [])
+    }, [dispatch])
 
     return (
         <>

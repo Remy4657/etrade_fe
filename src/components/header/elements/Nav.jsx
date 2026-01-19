@@ -3,54 +3,56 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslations } from "next-intl";
 import { HeaderMenu } from "@/data/Menu";
 import { mobileMenu } from "@/store/slices/menuSlice";
 
 const Nav = () => {
-	const dispatch = useDispatch();
-	const menuOption = useSelector((state) => state.menu);
-	const [windowWidth, setWindowWidth] = useState();
+  const dispatch = useDispatch();
+  const t = useTranslations("Header");
+  const menuOption = useSelector((state) => state.menu);
+  const [windowWidth, setWindowWidth] = useState();
 
-	const mobileMneuHandler = (data) => {
-		dispatch(mobileMenu(data));
-	};
+  const mobileMneuHandler = (data) => {
+    dispatch(mobileMenu(data));
+  };
 
-	const mobileMenuToggleHandler = () => {
-		let windowWidthCheck = window.innerWidth;
-		setWindowWidth(windowWidthCheck);
-		window.addEventListener("resize", (e) => {
-			let windowWidth = window.innerWidth;
-			setWindowWidth(windowWidth);
-		});
-		let subMenuToggler = document.getElementsByClassName("submenu-link");
-		if (windowWidth < 992) {
-			for (let i = 0; i < subMenuToggler.length; i++) {
-				let element = subMenuToggler[i];
-				element.addEventListener("click", function (e) {
-				e.preventDefault();
-				if (element.offsetParent.classList.contains("open")) {
-					for (let j = 0; j < subMenuToggler.length; j++) {
-					const subElem = subMenuToggler[j];
-					subElem.offsetParent.classList.remove("open");
-					subElem.nextSibling.style.display = "none";
-					}
-				} else {
-					for (let j = 0; j < subMenuToggler.length; j++) {
-						const subElem = subMenuToggler[j];
-						subElem.offsetParent.classList.remove("open");
-						subElem.nextSibling.style.display = "none";
-					}
-					element.offsetParent.classList.add("open");
-					element.nextSibling.style.display = "block";
-				}
-				});
-			}
-		}
-	}
+  const mobileMenuToggleHandler = () => {
+    let windowWidthCheck = window.innerWidth;
+    setWindowWidth(windowWidthCheck);
+    window.addEventListener("resize", (e) => {
+      let windowWidth = window.innerWidth;
+      setWindowWidth(windowWidth);
+    });
+    let subMenuToggler = document.getElementsByClassName("submenu-link");
+    if (windowWidth < 992) {
+      for (let i = 0; i < subMenuToggler.length; i++) {
+        let element = subMenuToggler[i];
+        element.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (element.offsetParent.classList.contains("open")) {
+            for (let j = 0; j < subMenuToggler.length; j++) {
+              const subElem = subMenuToggler[j];
+              subElem.offsetParent.classList.remove("open");
+              subElem.nextSibling.style.display = "none";
+            }
+          } else {
+            for (let j = 0; j < subMenuToggler.length; j++) {
+              const subElem = subMenuToggler[j];
+              subElem.offsetParent.classList.remove("open");
+              subElem.nextSibling.style.display = "none";
+            }
+            element.offsetParent.classList.add("open");
+            element.nextSibling.style.display = "block";
+          }
+        });
+      }
+    }
+  }
 
-	useEffect(() => {
-		mobileMenuToggleHandler();
-	}, [windowWidth]);
+  useEffect(() => {
+    mobileMenuToggleHandler();
+  }, [windowWidth, mobileMenuToggleHandler]);
 
   return (
     <>
@@ -76,7 +78,7 @@ const Nav = () => {
             menuItem.hasChildren == true ? (
               <li className="menu-item-has-children" key={index}>
                 <Link className="submenu-link" href={menuItem.url}>
-                  {menuItem.name}
+                  {t(menuItem.name)}
                 </Link>
                 <ul className="axil-submenu">
                   {menuItem.children.map((submenu, index) => (
@@ -88,7 +90,7 @@ const Nav = () => {
               </li>
             ) : (
               <li key={index}>
-                <Link href={menuItem.url}>{menuItem.name}</Link>
+                <Link href={menuItem.url}>{t(menuItem.name)}</Link>
               </li>
             )
           )}

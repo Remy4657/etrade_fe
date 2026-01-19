@@ -6,7 +6,7 @@ import SplashHeader from "@/components/splash/SplashHeader";
 import SplashHomeDemo from "@/components/splash/SplashHomeDemo";
 import SplashInnerDemo from "@/components/splash/SplashInnerDemo";
 import SplashSupport from "@/components/splash/SplashSupport";
-import HomeElectronics from "@/app/home/electronics/page";
+import HomeElectronics from "@/app/[locale]/home/electronics/page";
 
 export const metadata = {
 	title: 'eTrade Multipurpose eCommerce Next JS Template',
