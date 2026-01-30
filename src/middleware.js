@@ -28,19 +28,15 @@ export function middleware(request) {
         "/order",
         "/dashboard",
     ];
-    console.log("pathname: ", pathname)
     // ĐÃ LOGIN → KHÔNG ĐƯỢC VÀO LOGIN
     if (token && (pathname === "/sign-in" || pathname === "/sign-up")) {
-        console.log("zoday")
         return NextResponse.redirect(new URL("/", request.url));
     }
     // CHƯA LOGIN → KHÔNG ĐƯỢC VÀO TRANG PRIVATE
     const isPrivateRoute = PRIVATE_ROUTES.some(route =>
         pathname.startsWith(route)
     );
-    console.log("!isToken: ", !token)
     if (!token && isPrivateRoute) {
-        console.log("[middleware] redirect login")
         return NextResponse.redirect(new URL("/sign-in", request.url));
     }
     return NextResponse.next();

@@ -1,12 +1,11 @@
 import NextAuth from "next-auth";
 import { cookies } from "next/headers"
 import GoogleProvider from "next-auth/providers/google";
-import axios from "axios";
 import axiosClient from "@/utils/axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
-  secret: process.env.NO_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     maxAge: 60 * 60, // 1h
   },
@@ -33,15 +32,15 @@ export const authOptions = {
           }
         );
         if (res.data.EC == 0) {
-          console.log("[route] res credentials: ", res?.data);
+          // console.log("[route] res credentials: ", res?.data);
           throw new Error(res.data.EM);
         }
         return res.data;
       },
     }),
     GoogleProvider({
-      clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
-      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     })
   ],
   pages: {
@@ -60,18 +59,18 @@ export const authOptions = {
             },
           }
         );
-        console.log("[nextauth]: res login", res.data)
+        // console.log("[nextauth]: res login", res.data)
         if (res.data) {
-          const cookieStore = await cookies();
-          const accessToken = res.data.data.accessToken;
+          // const cookieStore = await cookies();
+          // const accessToken = res.data.data.accessToken;
 
-          cookieStore.set("access_token", accessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            path: "/",
-            maxAge: 60 * 60,
-          });
-          token.access_token = accessToken;
+          // cookieStore.set("access_token", accessToken, {
+          //   httpOnly: true,
+          //   secure: process.env.NODE_ENV === "production",
+          //   path: "/",
+          //   maxAge: 60 * 60,
+          // });
+          token.access_token = res.data.data.accessToken;
           token.roles = res.data.data.roles;
         }
       }
@@ -81,8 +80,8 @@ export const authOptions = {
         token.roles = user?.DT?.role;
         token.access_token = user?.DT?.access_token;
       }
-      console.log("[nextauth] token: ", token);
-
+      //console.log("[nextauth] token: ", token);
+      console.log("JWT CALLBACK", { token, account, user })
       return token;
     },
     async session({ session, user, token }) {
@@ -92,7 +91,8 @@ export const authOptions = {
         session.user.picture = token.picture
         session.access_token = token.access_token;
       }
-      console.log("[nextauth] session: ", session);
+      //console.log("[nextauth] session: ", session);
+      console.log("SESSION CALLBACK", { session, token })
       return session;
     },
   },
