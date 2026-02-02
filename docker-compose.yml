@@ -1,6 +1,10 @@
 services:
   frontend:
     image: etrade-frontend
+    networks:
+      - etrade-network
+    environment:
+      - INTERNAL_API_URL=http://backend:8080
     env_file:
       - .env
     build: .
@@ -10,3 +14,6 @@ services:
       - .:/app
       - /app/node_modules
     command: npm run dev
+networks:
+  etrade-network:
+    external: true

@@ -3,6 +3,7 @@ import { cookies } from "next/headers"
 import GoogleProvider from "next-auth/providers/google";
 import axiosClient from "@/utils/axios";
 import CredentialsProvider from "next-auth/providers/credentials";
+import axios from "axios";
 
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -23,13 +24,20 @@ export const authOptions = {
         },
       },
       async authorize(credentials, req) {
-        const res = await axiosClient.post(
-          `/auth/google`,
+        const res = await axios.post(
+          `http://backend:8080/api/v1/auth/google`,
           {
             type: "password",
             username: credentials?.username,
             password: credentials?.password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
           }
+
         );
         if (res.data.EC == 0) {
           // console.log("[route] res credentials: ", res?.data);
@@ -51,12 +59,14 @@ export const authOptions = {
       const googleIdToken = account?.id_token;
       token.idToken = googleIdToken
       if (trigger === "signIn" && account?.provider != "credentials") {
-        const res = await axiosClient.post(`/auth/google`,
+        const res = await axios.post(`http://backend:8080/api/v1/auth/google`,
           {},
           {
             headers: {
               Authorization: `Bearer ${googleIdToken}`,
             },
+            withCredentials: true,
+
           }
         );
         // console.log("[nextauth]: res login", res.data)
