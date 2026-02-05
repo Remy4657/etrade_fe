@@ -62,7 +62,7 @@ const BlogDetails = async ({ params }) => {
                         slidesToShow={3}
                         infinite={false}
                     >
-                        {allPosts.map((data) => (
+                        {allPosts?.map((data) => (
                             <BlogOne posts={data} key={data.id} thumbHeight={300} thumbWidth={410} spacing="no-space" />
                         ))}
                     </SlickSlider>
@@ -79,7 +79,7 @@ export default BlogDetails;
 
 export async function generateStaticParams() {
     const posts = getAllPosts(['slug']);
-    return posts.map((post) => ({
+    return posts?.map((post) => ({
         slug: post.slug
     }));
 }

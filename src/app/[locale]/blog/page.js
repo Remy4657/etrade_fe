@@ -14,7 +14,7 @@ import SearchWidget from "@/components/widget/SearchWidget";
 import TagsWidget from "@/components/widget/TagsWidget";
 import { getAllPosts } from "@/utils/api";
 
-const BlogPage = ({searchParams}) => {
+const BlogPage = ({ searchParams }) => {
 
     const allPosts = getAllPosts([
         'id',
@@ -39,50 +39,50 @@ const BlogPage = ({searchParams}) => {
             return "Blog Grid";
         }
     }
-  
-    return ( 
+
+    return (
         <>
-        <HeaderFive headerSlider />
-        <main className="main-wrapper">
-            <Breadcrumb  activeItem="Blogs" title={breadCrumbTitle()} />
-            <Section>
-                <div className={`row ${searchParams.blog === "list" ? "row--25" : ""}`}>
-                    <div className={`col-lg-8 ${searchParams.blog === "list" ? "axil-post-wrapper" : ""}`}>
-                        {searchParams.blog === "list" ? 
-                            allPosts.map((data) => (
-                                <BlogOne posts={data} key={data.id} moreBtn excerpt/>
-                            ))
-                        : 
-                        <div className="row g-5">
-                            {allPosts.map((data) => (
-                                <div className="col-md-6" key={data.id}>
-                                    <BlogTwo posts={data}/>
+            <HeaderFive headerSlider />
+            <main className="main-wrapper">
+                <Breadcrumb activeItem="Blogs" title={breadCrumbTitle()} />
+                <Section>
+                    <div className={`row ${searchParams.blog === "list" ? "row--25" : ""}`}>
+                        <div className={`col-lg-8 ${searchParams.blog === "list" ? "axil-post-wrapper" : ""}`}>
+                            {searchParams.blog === "list" ?
+                                allPosts?.map((data) => (
+                                    <BlogOne posts={data} key={data.id} moreBtn excerpt />
+                                ))
+                                :
+                                <div className="row g-5">
+                                    {allPosts?.map((data) => (
+                                        <div className="col-md-6" key={data.id}>
+                                            <BlogTwo posts={data} />
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div> 
-                        }
-                        <Pagination 
-                        data={allPosts}
-                        postPerPage={6}
-                        />
+                            }
+                            <Pagination
+                                data={allPosts}
+                                postPerPage={6}
+                            />
+                        </div>
+                        <div className="col-lg-4">
+                            <aside className="axil-sidebar-area">
+                                <SearchWidget />
+                                <PostWidget />
+                                <ProductWidget />
+                                <ArchiveWidget />
+                                <TagsWidget />
+                            </aside>
+                        </div>
                     </div>
-                    <div className="col-lg-4">
-                        <aside className="axil-sidebar-area">
-                            <SearchWidget />
-                            <PostWidget />
-                            <ProductWidget />
-                            <ArchiveWidget />
-                            <TagsWidget />
-                        </aside>
-                    </div>
-                </div>
-            </Section>
-            <NewsLetter />
-            <ServiceTwo />
-        </main>
-        <FooterTwo />
+                </Section>
+                <NewsLetter />
+                <ServiceTwo />
+            </main>
+            <FooterTwo />
         </>
-     );
+    );
 }
- 
+
 export default BlogPage;

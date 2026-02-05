@@ -62,7 +62,7 @@ const recentMonthList = function (lastFrom) {
 
 const getPriceRange = function (product) {
 	let priceLists = []
-	const productsList = product.map((data) => {
+	const productsList = product?.map((data) => {
 		priceLists.push(data.price);
 	})
 	const highPrice = Math.max(...priceLists);
@@ -70,7 +70,7 @@ const getPriceRange = function (product) {
 	const priceInterval = Math.round(highPrice / priceGap);
 	let priceRange = [];
 
-	[...Array(priceInterval)].map((item, index) => {
+	[...Array(priceInterval)]?.map((item, index) => {
 		let from = priceGap * index;
 		let to = from + priceGap;
 		priceRange.push({ from, to });
@@ -81,7 +81,7 @@ const getPriceRange = function (product) {
 
 const calculateTotalAmount = function (items) {
 	let totalAmount = 0;
-	const allAmount = items.map((item) => {
+	const allAmount = items?.map((item) => {
 		let price = item.salePrice ? item.salePrice : item.price;
 		let productsPrice = item.cartQuantity * price;
 		return productsPrice;

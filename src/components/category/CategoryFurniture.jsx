@@ -11,11 +11,11 @@ const CategoryFurniture = () => {
   const pathname = usePathname();
   const split = pathname.split("/");
   const pageCategory = split[split.length - 1];
-  
+
   const findCategory = Category.filter(
     (data) => slugify(data.cate) === pageCategory
-    );
-    const furniture = findCategory[0].subCate;
+  );
+  const furniture = findCategory[0].subCate;
 
   return (
     <Section pClass="axil-categorie-area" sectionPadding="pt--30">
@@ -25,7 +25,7 @@ const CategoryFurniture = () => {
         arrows={false}
         infinite={false}
         autoplay={true}
-        responsive = {[
+        responsive={[
           {
             breakpoint: 1400,
             settings: {
@@ -56,7 +56,7 @@ const CategoryFurniture = () => {
           },
         ]}
       >
-        {furniture.map((data, index) => (
+        {furniture?.map((data, index) => (
           <div className="categrie-product-2" key={index}>
             <Link href={`/products/category/${pageCategory}/${slugify(data.name)}`}>
               <Image src={data.thumb} height={24} width={24} alt={data.name} />

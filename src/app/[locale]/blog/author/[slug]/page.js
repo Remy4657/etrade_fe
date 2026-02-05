@@ -8,7 +8,7 @@ import ServiceTwo from "@/components/services/ServiceTwo";
 import { slugify, unSlugify } from "@/utils";
 import { getAllPosts } from "@/utils/api";
 
-const BlogAuthor = ({params}) => {
+const BlogAuthor = ({ params }) => {
     const allPosts = getAllPosts([
         'id',
         'slug',
@@ -19,33 +19,33 @@ const BlogAuthor = ({params}) => {
     ]);
 
     const postsByAuthor = allPosts.filter((post) => slugify(post.author_name) === params.slug);
-    return ( 
+    return (
         <>
-        <HeaderFive headerSlider />
-        <main className="main-wrapper">
-            <Breadcrumb activeItem="Author" title={unSlugify(params.slug)}/>
-            <Section>
-                <div className="row g-5">
-                    {postsByAuthor.map((data) => (
-                        <div className="col-md-4" key={data.id}>
-                            <BlogTwo posts={data}/>
-                        </div>
-                    ))}
-                </div> 
-            </Section>
-            <NewsLetter />
-            <ServiceTwo />
-        </main>
-        <FooterTwo />
+            <HeaderFive headerSlider />
+            <main className="main-wrapper">
+                <Breadcrumb activeItem="Author" title={unSlugify(params.slug)} />
+                <Section>
+                    <div className="row g-5">
+                        {postsByAuthor?.map((data) => (
+                            <div className="col-md-4" key={data.id}>
+                                <BlogTwo posts={data} />
+                            </div>
+                        ))}
+                    </div>
+                </Section>
+                <NewsLetter />
+                <ServiceTwo />
+            </main>
+            <FooterTwo />
         </>
-     );
+    );
 }
- 
+
 export default BlogAuthor;
 
 export async function generateStaticParams() {
     const posts = getAllPosts(['author_name']);
-    return posts.map((post) => ({
+    return posts?.map((post) => ({
         slug: slugify(post.author_name)
     }));
 }

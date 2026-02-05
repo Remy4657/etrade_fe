@@ -41,13 +41,13 @@ const FooterTwo = () => {
                   </div>
                 </div>
               </div>
-              {FooterData.footerLink.slice(0, 2).map((items, index) => (
+              {FooterData.footerLink.slice(0, 2)?.map((items, index) => (
                 <div className="col-lg-3 col-sm-6" key={index}>
                   <div className="axil-footer-widget">
                     <h5 className="widget-title">{items.label}</h5>
                     <div className="inner">
                       <ul>
-                        {items.linkList.map((link, index) => (
+                        {items.linkList?.map((link, index) => (
                           <li key={index}>
                             <Link href={link.url}>{link.name}</Link>
                           </li>

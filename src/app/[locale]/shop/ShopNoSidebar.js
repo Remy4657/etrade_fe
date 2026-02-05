@@ -91,18 +91,18 @@ const ShopNoSidebar = () => {
                                 <div className="category-select">
                                     <select className="single-select" onChange={CategoryHandler}>
                                         <option value="all">All Categories</option>
-                                        {listCategory.map((data, index) => (
+                                        {listCategory?.map((data, index) => (
                                             <option value={slugify(data.name)} key={index}>{data.name}</option>
                                         ))}
                                     </select>
                                     {/* <select className="single-select" onChange={colorHandler}>
-                                        {ColorAttribute.map((data, index) => (
+                                        {ColorAttribute?.map((data, index) => (
                                             <option value={slugify(data)} key={index}>{data}</option>
                                         ))}
                                     </select> */}
                                     <select className="single-select" onChange={priceRangeHandler}>
                                         <option value="null">Price Range</option>
-                                        {priceRange.map((data, index) => (
+                                        {priceRange?.map((data, index) => (
                                             <option value={`${data.from}-${data.to}`} key={index}>{data.from} - {data.to}</option>
                                         ))}
                                     </select>
@@ -125,7 +125,7 @@ const ShopNoSidebar = () => {
                 </div>
             </div>
             <div className="row row--15">
-                {filteredProducts.length > 0 ? filteredProducts.slice(0, productShow).map((data) => (
+                {filteredProducts.length > 0 ? filteredProducts.slice(0, productShow)?.map((data) => (
                     <div className="col-xl-3 col-lg-4 col-sm-6" key={data.id}>
                         <ProductOne product={data} pClass="mt--40" />
                     </div>

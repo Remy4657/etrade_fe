@@ -74,14 +74,14 @@ const Nav = () => {
           </Link>
         </div>
         <ul className="mainmenu">
-          {HeaderMenu.map((menuItem, index) =>
+          {HeaderMenu?.map((menuItem, index) =>
             menuItem.hasChildren == true ? (
               <li className="menu-item-has-children" key={index}>
                 <Link className="submenu-link" href={menuItem.url}>
                   {t(menuItem.name)}
                 </Link>
                 <ul className="axil-submenu">
-                  {menuItem.children.map((submenu, index) => (
+                  {menuItem.children?.map((submenu, index) => (
                     <li key={index}>
                       <Link onClick={() => mobileMneuHandler(false)} href={submenu.url}>{submenu.name}</Link>
                     </li>

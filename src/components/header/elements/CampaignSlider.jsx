@@ -20,7 +20,7 @@ const CampaignSlider = () => {
               class="header-campaign-activation axil-slick-arrow arrow-both-side header-campaign-arrow"
               slidesToShow={1}
             >
-              {SlideData.map((data, index) => (
+              {SlideData?.map((data, index) => (
                 <div key={index}>
                   <div className="campaign-content" key={index}>
                     <p>

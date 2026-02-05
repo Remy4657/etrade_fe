@@ -131,7 +131,7 @@ const productSlice = createSlice({
 
             const filteredCartItem = state.cartItems.filter((item) =>
                 item.id !== action.payload.id);
-            const filteredItemQuantity = filteredCartItem.map((item) => {
+            const filteredItemQuantity = filteredCartItem?.map((item) => {
                 return { qty: item.cartQuantity, price: item.salePrice }
             })
             state.cartItems = filteredCartItem;

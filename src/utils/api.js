@@ -13,9 +13,9 @@ export function getPostBySlug(slug, fields = []) {
   const fullPath = path.join(postsDirectory, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
-  
+
   const items = {}
-  
+
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === 'slug') {
@@ -24,18 +24,18 @@ export function getPostBySlug(slug, fields = []) {
     if (field === 'content') {
       items[field] = content
     }
-    
+
     if (typeof data[field] !== 'undefined') {
       items[field] = data[field]
     }
   })
-  
+
   return items
 }
 
 export function getAllPosts(fields = []) {
   const slugs = getPostSlugs()
-  const posts = slugs.map((slug) => getPostBySlug(slug, fields))
+  const posts = slugs?.map((slug) => getPostBySlug(slug, fields))
   return posts
 }
 

@@ -54,7 +54,7 @@ const ProductSearchModal = (props) => {
             </div>
             <div className="psearch-results">
               {productQuery &&
-                productQuery.map((data) => (
+                productQuery?.map((data) => (
                   <div className="axil-product-list" key={data.id}>
                     <div onClick={props.toggleHandler}>
                       <ProductThumbnail

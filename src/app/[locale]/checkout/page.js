@@ -104,7 +104,7 @@ const Checkout = () => {
                 totalQuantity: cartProducts.cartQuantityTotal,
                 orderDate: new Date().toLocaleString(),
             }));
-            const listProduct = cartProducts.cartItems.map(({ cartQuantity, id, price, salePrice, thumbnail, title, ...rest }) => ({
+            const listProduct = cartProducts.cartItems?.map(({ cartQuantity, id, price, salePrice, thumbnail, title, ...rest }) => ({
                 quantity: cartQuantity,
                 ...rest
             }))
@@ -195,7 +195,7 @@ const Checkout = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {cartProducts.cartItems.map((items, index) => (
+                                                    {cartProducts.cartItems?.map((items, index) => (
                                                         <tr className="order-product" key={index}>
                                                             <td>{items.title} <span className="quantity">x{items.cartQuantity}, {items.productSize}, {items.productColor}</span></td>
                                                             <td>${items.salePrice ? items.salePrice : items.price}</td>

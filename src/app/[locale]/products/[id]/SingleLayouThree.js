@@ -140,7 +140,7 @@ const SingleLayouThree = ({ idProduct }) => {
     const getFullscreenPreview = () => {
         let galleryPreview = [];
         if (singleData.gallery) {
-            singleData.gallery.map((img) => {
+            singleData.gallery?.map((img) => {
                 galleryPreview.push(img);
             })
         } else {
@@ -171,7 +171,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                 asNavFor={nav2}
                                                 ref={(slider1 => setNav1(slider1))}
                                             >
-                                                {singleData.gallery ? singleData.gallery.map((galleryImg, index) => (
+                                                {singleData.gallery ? singleData.gallery?.map((galleryImg, index) => (
                                                     <div className="thumbnail" key={index}>
                                                         <Image
                                                             src={galleryImg}
@@ -230,7 +230,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                 },
                                             ]}
                                         >
-                                            {singleData.gallery ? singleData.gallery.map((galleryImg, index) => (
+                                            {singleData.gallery ? singleData.gallery?.map((galleryImg, index) => (
                                                 <div className="small-thumb-img" key={index}>
                                                     <Image
                                                         src={galleryImg}
@@ -386,7 +386,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                             <div className="axil-comment-area pro-desc-commnet-area">
                                                 <h5 className="title">{findReview.length} Review for this product</h5>
                                                 <ul className="comment-list">
-                                                    {findReview.map((data, index) => (
+                                                    {findReview?.map((data, index) => (
                                                         <li className="comment" key={index}>
                                                             <div className="comment-body">
                                                                 <div className="single-comment">
@@ -403,7 +403,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                                             <span className="hover-flip-item-wrapper">{data.user_name}</span>
                                                                             <span className="commenter-rating">
                                                                                 {
-                                                                                    [...Array(5)].map((item, index) => (
+                                                                                    [...Array(5)]?.map((item, index) => (
                                                                                         <i
                                                                                             className={`${index <= data.rating - 1 ? '' : 'empty-rating'} fas fa-star`}
                                                                                             key={index}
@@ -508,7 +508,7 @@ const SingleLayouThree = ({ idProduct }) => {
                         },
                     ]}
                 >
-                    {listProductCategory?.slice(0, 10).map((data) => (
+                    {listProductCategory?.slice(0, 10)?.map((data) => (
                         <ProductOne product={data} key={data.id} />
                     ))}
                 </SlickSlider>

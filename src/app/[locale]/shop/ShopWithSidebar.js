@@ -21,7 +21,7 @@ const ShopWithSidebar = () => {
     const [priceRangeToggle, setpriceRangeToggle] = useState(true);
 
     const categoryHandler = (cateSelect) => {
-        const cateFilterProduct = ProductsData.filter((data) =>(slugify(data.pCate) === cateSelect));
+        const cateFilterProduct = ProductsData.filter((data) => (slugify(data.pCate) === cateSelect));
         setFilterProduct(cateFilterProduct)
         setFilterText(cateSelect);
     }
@@ -71,7 +71,7 @@ const ShopWithSidebar = () => {
         500
     ]
 
-    return ( 
+    return (
         <Section pClass="axil-shop-area">
             <div className="row">
                 <div className="col-lg-3">
@@ -82,76 +82,76 @@ const ShopWithSidebar = () => {
                         {/* Category Filter */}
                         <div className={`toggle-list product-categories ${cateToggle ? "active" : ""}`}>
                             <h6 onClick={() => setcateToggle(!cateToggle)} className="title">CATEGORIES</h6>
-                            {cateToggle && 
+                            {cateToggle &&
                                 <div className="shop-submenu">
                                     <ul>
-                                        {Category.map((data, index) => (
-                                            <li className={filterText === slugify(data.cate) ? "current-cat" :""} key={index}>
+                                        {Category?.map((data, index) => (
+                                            <li className={filterText === slugify(data.cate) ? "current-cat" : ""} key={index}>
                                                 <button onClick={() => categoryHandler(slugify(data.cate))}>{data.cate}</button>
                                             </li>
-                                            ))}
+                                        ))}
                                     </ul>
                                 </div>
                             }
-                        </div> 
+                        </div>
                         {/* Gender Filter  */}
                         <div className={`toggle-list product-categories product-gender ${genderToggle ? "active" : ""}`}>
                             <h6 onClick={() => setgenderToggle(!genderToggle)} className="title">GENDER</h6>
-                            {genderToggle && 
-                            <div className="shop-submenu">
-                            <ul>
-                                {Gender?.map((data, index) => (
-                                    <li className={filterText === data ? "chosen" :""} key={index}>
-                                        <button onClick={() => genderHandler(data)}>{data}</button>
-                                    </li>
-                                ))}
-                            </ul>
-                            </div>
+                            {genderToggle &&
+                                <div className="shop-submenu">
+                                    <ul>
+                                        {Gender?.map((data, index) => (
+                                            <li className={filterText === data ? "chosen" : ""} key={index}>
+                                                <button onClick={() => genderHandler(data)}>{data}</button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             }
                         </div>
                         {/* Color Filter  */}
                         <div className={`toggle-list product-color ${colorToggle ? "active" : ""}`}>
                             <h6 onClick={() => setcolorToggle(!colorToggle)} className="title">COLORS</h6>
-                            {colorToggle && 
-                            <div className="shop-submenu">
-                                <ul>
-                                    {ColorAttribute?.map((data, index) => (
-                                        <li className={filterText === slugify(data) ? "chosen" :""} key={index}>
-                                            <button onClick={() => colorHandler(slugify(data))} className={slugify(data)}></button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            {colorToggle &&
+                                <div className="shop-submenu">
+                                    <ul>
+                                        {ColorAttribute?.map((data, index) => (
+                                            <li className={filterText === slugify(data) ? "chosen" : ""} key={index}>
+                                                <button onClick={() => colorHandler(slugify(data))} className={slugify(data)}></button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             }
                         </div>
                         {/* Size Filter  */}
                         <div className={`toggle-list product-size ${sizeToggle ? "active" : ""}`}>
                             <h6 onClick={() => setsizeToggle(!sizeToggle)} className="title">SIZE</h6>
-                            {sizeToggle && 
-                            <div className="shop-submenu">
-                                <ul>
-                                    {SizeAttribute?.map((data, index) => (
-                                        <li className={filterText === slugify(data) ? "chosen" :""} key={index}>
-                                            <button onClick={() => sizeHandler(slugify(data))}>{data}</button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            {sizeToggle &&
+                                <div className="shop-submenu">
+                                    <ul>
+                                        {SizeAttribute?.map((data, index) => (
+                                            <li className={filterText === slugify(data) ? "chosen" : ""} key={index}>
+                                                <button onClick={() => sizeHandler(slugify(data))}>{data}</button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             }
                         </div>
                         {/* Price Filter  */}
                         <div className={`toggle-list product-price-range ${priceRangeToggle ? "active" : ""}`}>
                             <h6 onClick={() => setpriceRangeToggle(!priceRangeToggle)} className="title">PRICE</h6>
-                            {priceRangeToggle && 
-                            <div className="shop-submenu">
-                                <ul>
-                                    {priceRangeData?.map((data, index) => (
-                                        <li className={filterText === data ? "chosen" :""} key={index}>
-                                            <button onClick={() => priceRangeHandler(data)}>{data}</button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            {priceRangeToggle &&
+                                <div className="shop-submenu">
+                                    <ul>
+                                        {priceRangeData?.map((data, index) => (
+                                            <li className={filterText === data ? "chosen" : ""} key={index}>
+                                                <button onClick={() => priceRangeHandler(data)}>{data}</button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             }
                         </div>
                         <button className="axil-btn btn-bg-primary" onClick={() => productFilterReset()} >All Reset</button>
@@ -159,7 +159,7 @@ const ShopWithSidebar = () => {
                 </div>
                 <div className="col-lg-9">
                     <div className="row row--15">
-                        {filterProduct.length > 0 ? filterProduct.slice(0, productShow).map((data) => (
+                        {filterProduct.length > 0 ? filterProduct.slice(0, productShow)?.map((data) => (
                             <div className="col-xl-4 col-sm-6" key={data.id}>
                                 <ProductOne product={data} pClass="mb--30" />
                             </div>
@@ -174,5 +174,5 @@ const ShopWithSidebar = () => {
         </Section>
     );
 }
- 
+
 export default ShopWithSidebar;

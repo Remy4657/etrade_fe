@@ -63,7 +63,7 @@ const HeaderAsideMenu = () => {
             <i className="fas fa-times" />
           </button>
           <ul className="nav-menu-list">
-            {CateMenu.map((menuItem, index) => (
+            {CateMenu?.map((menuItem, index) => (
               <li key={index}>
                 <Link
                   href={menuItem.url}
@@ -84,11 +84,11 @@ const HeaderAsideMenu = () => {
                   <div className="department-megamenu">
                     <div className="department-megamenu-wrap">
                       <div className="department-submenu-wrap">
-                        {menuItem.children.slice(0, 3).map((submenu, index) => (
+                        {menuItem.children.slice(0, 3)?.map((submenu, index) => (
                           <div className="department-submenu" key={index}>
                             <h3 className="submenu-heading">{submenu.label}</h3>
                             <ul>
-                              {submenu.items.map((item, index) => (
+                              {submenu.items?.map((item, index) => (
                                 <li key={index}>
                                   <Link href={`/products/category/${slugify(menuItem.name)}/${slugify(item.name)}`}>{item.name}</Link>
                                 </li>
@@ -101,7 +101,7 @@ const HeaderAsideMenu = () => {
                         <div className="featured-product">
                           <h3 className="featured-heading">Featured</h3>
                           <div className="product-list">
-                            {menuItem.featured.slice(0, 4).map((feature, index) => (
+                            {menuItem.featured.slice(0, 4)?.map((feature, index) => (
                               <div className="item-product" key={index}>
                                 <Link href={feature.url}>
                                   <Image

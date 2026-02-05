@@ -63,7 +63,7 @@ const Cart = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {cartProducts.cartItems.map((product) => (
+                                            {cartProducts.cartItems?.map((product) => (
                                                 <tr key={product.id}>
                                                     <td className="product-remove">
                                                         <button className="remove-wishlist" onClick={() => removeCartHandler(product)}>

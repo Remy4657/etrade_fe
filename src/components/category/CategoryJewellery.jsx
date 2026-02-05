@@ -12,11 +12,11 @@ const CategoryJewellery = () => {
   const pathname = usePathname();
   const split = pathname.split("/");
   const pageCategory = split[split.length - 1];
-  
+
   const findCategory = Category.filter(
     (data) => slugify(data.cate) === pageCategory
-    );
-    const jewellery = findCategory[0].subCate;
+  );
+  const jewellery = findCategory[0].subCate;
 
   return (
     <Section pClass="axil-categorie-area" sectionPadding="axil-section-gapcommon">
@@ -30,7 +30,7 @@ const CategoryJewellery = () => {
         class="slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
         slidesToShow={7}
         infinite={false}
-        responsive = {[
+        responsive={[
           {
             breakpoint: 1400,
             settings: {
@@ -61,7 +61,7 @@ const CategoryJewellery = () => {
           },
         ]}
       >
-        {jewellery.map((data, index) => (
+        {jewellery?.map((data, index) => (
           <div className="categrie-product" key={index}>
             <Link href={`/products/category/${pageCategory}/${slugify(data.name)}`}>
               <Image src={data.thumb} height={64} width={64} alt={data.name} />

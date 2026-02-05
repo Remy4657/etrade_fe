@@ -42,7 +42,7 @@ const Wishlist = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {getWishlist.map((product) => (
+                                            {getWishlist?.map((product) => (
                                                 <tr key={product.id}>
                                                     <td className="product-remove">
                                                         <button onClick={() => removeWishlistHandler(product)} className="remove-wishlist">

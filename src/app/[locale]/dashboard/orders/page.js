@@ -33,7 +33,7 @@ const UserOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {listOrder.map((item, index) => {
+                        {listOrder?.map((item, index) => {
                             return (
                                 <tr key={item.id}>
                                     <th scope="row">{index + 1}</th>

@@ -24,20 +24,13 @@ export const authOptions = {
         },
       },
       async authorize(credentials, req) {
-        const res = await axios.post(
-          `http://backend:8080/api/v1/auth/google`,
+        const res = await axiosClient.post(
+          `/auth/google`,
           {
             type: "password",
             username: credentials?.username,
             password: credentials?.password,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
           }
-
         );
         if (res.data.EC == 0) {
           // console.log("[route] res credentials: ", res?.data);
@@ -59,28 +52,26 @@ export const authOptions = {
       const googleIdToken = account?.id_token;
       token.idToken = googleIdToken
       if (trigger === "signIn" && account?.provider != "credentials") {
-        const res = await axios.post(`http://backend:8080/api/v1/auth/google`,
+        const res = await axiosClient.post(`/auth/google`,
           {},
           {
             headers: {
               Authorization: `Bearer ${googleIdToken}`,
             },
-            withCredentials: true,
-
           }
         );
         // console.log("[nextauth]: res login", res.data)
         if (res.data) {
-          // const cookieStore = await cookies();
-          // const accessToken = res.data.data.accessToken;
+          const cookieStore = await cookies();
+          const accessToken = res.data.data.accessToken;
 
-          // cookieStore.set("access_token", accessToken, {
-          //   httpOnly: true,
-          //   secure: process.env.NODE_ENV === "production",
-          //   path: "/",
-          //   maxAge: 60 * 60,
-          // });
-          token.access_token = res.data.data.accessToken;
+          cookieStore.set("access_token", accessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            path: "/",
+            maxAge: 60 * 60,
+          });
+          token.access_token = accessToken;
           token.roles = res.data.data.roles;
         }
       }

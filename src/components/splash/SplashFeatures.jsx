@@ -52,43 +52,43 @@ const SplashFeatures = () => {
 
     ]
     return (
-      <div className="pv-feature-area" id="features">
-        <div className="container">
-          <div className="pv-feature-box">
-          <SectionTitle 
-                pClass="section-title-center"
-                subColor="highlighter-secondary"
-                subtitle="Features"
-                subtitleIcon="fas fa-fire"
-                title="We have Impressive <br/>
+        <div className="pv-feature-area" id="features">
+            <div className="container">
+                <div className="pv-feature-box">
+                    <SectionTitle
+                        pClass="section-title-center"
+                        subColor="highlighter-secondary"
+                        subtitle="Features"
+                        subtitleIcon="fas fa-fire"
+                        title="We have Impressive <br/>
                 Features"
-            />
-            <div className="row">
-            {ThemeFeatures.map((data, index) => (
-                 <div className="col-lg-4 col-md-6 col-12" key={index}>
-                 <div className="pv-feature">
-                   <div className="service-box">
-                     <div className="icon">
-                        <Image
-                        src={data.icon}
-                        height={48}
-                        width={48}
-                        alt="icon" 
-                        />
-                     </div>
-                     <div className="content">
-                       <h3 className="title" dangerouslySetInnerHTML={{__html: data.title}}></h3>
-                       <p>{data.text}</p>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-            ))}
+                    />
+                    <div className="row">
+                        {ThemeFeatures?.map((data, index) => (
+                            <div className="col-lg-4 col-md-6 col-12" key={index}>
+                                <div className="pv-feature">
+                                    <div className="service-box">
+                                        <div className="icon">
+                                            <Image
+                                                src={data.icon}
+                                                height={48}
+                                                width={48}
+                                                alt="icon"
+                                            />
+                                        </div>
+                                        <div className="content">
+                                            <h3 className="title" dangerouslySetInnerHTML={{ __html: data.title }}></h3>
+                                            <p>{data.text}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     );
 }
- 
+
 export default SplashFeatures;

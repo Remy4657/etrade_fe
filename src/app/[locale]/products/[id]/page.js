@@ -24,7 +24,7 @@ export default ProductDetails;
 export async function generateStaticParams() {
     const products = ProductsData;
 
-    return products.map((post) => ({
+    return products?.map((post) => ({
         id: slugify(post.id),
     }));
 }

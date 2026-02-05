@@ -4,20 +4,20 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BlogComment } from '@/data/Comments';
 
-const BlogCommentForm = ({metaData}) => {
-    const [blogCommentForm, setBlogCommentForm] = useState(null);
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
+const BlogCommentForm = ({ metaData }) => {
+  const [blogCommentForm, setBlogCommentForm] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const CommentDataHandler = (data) => {
-        data.postId = metaData.id;
-        setBlogCommentForm(data);
-    }
+  const CommentDataHandler = (data) => {
+    data.postId = metaData.id;
+    setBlogCommentForm(data);
+  }
 
-    const getComment = BlogComment.filter((data) => data.postId === metaData.id);
+  const getComment = BlogComment.filter((data) => data.postId === metaData.id);
 
   return (
     <>

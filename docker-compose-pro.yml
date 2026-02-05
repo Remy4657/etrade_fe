@@ -1,0 +1,15 @@
+services:
+  frontend:
+    image: remy4657/etrade-frontend:v1.1
+    networks:
+      - etrade-network
+    env_file:
+      - .env
+    build: .
+    ports:
+      - "3000:3000"
+    command: npm run start
+networks:
+  etrade-network:
+    external: true
+    

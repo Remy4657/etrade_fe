@@ -42,7 +42,7 @@ const OrderReceived = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {latestOrder.items.map((data, index) => (
+                                        {latestOrder.items?.map((data, index) => (
                                             <tr key={index}>
                                                 <td>{data.title} <strong>X {data.cartQuantity}</strong></td>
                                                 <td>{data.salePrice ? data.salePrice : price}</td>

@@ -86,10 +86,10 @@ const HomeElectronics = () => {
                         class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
                         slidesToShow={1}
                     >
-                        {exploreProductSeperate.slice(0, 2).map((product, index) => (
+                        {exploreProductSeperate.slice(0, 2)?.map((product, index) => (
                             <div key={index}>
                                 <div className="row row--15">
-                                    {product.map((data) => (
+                                    {product?.map((data) => (
                                         <div className="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30" key={data.id}>
                                             <ProductOne product={data} />
                                         </div>
@@ -141,7 +141,7 @@ const HomeElectronics = () => {
                             },
                         ]}
                     >
-                        {listProductNewest.map((data) => (
+                        {listProductNewest?.map((data) => (
                             <ProductTwo product={data} key={data.id} />
                         ))}
 
@@ -157,7 +157,7 @@ const HomeElectronics = () => {
                         pClass="section-title-center"
                     />
                     <div className="row row-cols-xl-2 row-cols-1 row--15">
-                        {listProductBestseller.map((data) => (
+                        {listProductBestseller?.map((data) => (
                             <div className="col" key={data.id}>
                                 <ProductListOne product={data} />
                             </div>

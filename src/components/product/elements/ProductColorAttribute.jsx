@@ -12,7 +12,7 @@ const ProductColorAttribute = (props) => {
   return (
     <div className="color-variant-wrapper">
       <ul className="color-variant">
-        {props.attributeColor.colorAttribute.map((data, index) => (
+        {props.attributeColor.colorAttribute?.map((data, index) => (
           <li
             className={`${data.color} ${colorImage.color === data.color ? "active" : ""
               }`}

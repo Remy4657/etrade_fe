@@ -62,7 +62,7 @@ const CategoryElectronics = (props) => {
           },
         ]}
       >
-        {listCategory.map((data, index) => (
+        {listCategory?.map((data, index) => (
           <div className="categrie-product" key={index}>
             <Link
               href={`/products/category/${pageCategory}/${slugify(data.name)}`}
