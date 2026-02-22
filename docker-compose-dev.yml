@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: etrade-frontend
+    image: remy4657/etrade-frontend:dev
     networks:
       - etrade-network
     env_file:

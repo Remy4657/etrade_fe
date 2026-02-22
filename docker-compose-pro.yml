@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: remy4657/etrade-frontend:v1.1
+    image: remy4657/etrade-frontend:pro
     networks:
       - etrade-network
     env_file:
@@ -12,4 +12,3 @@ services:
 networks:
   etrade-network:
     external: true
-    
