@@ -10,17 +10,8 @@ const intlMiddleware = createMiddleware({
 
 export function middleware(request) {
     const { pathname } = request.nextUrl;
-    // if (pathname === "/sign-in" || pathname === "/sign-up") {
-    //     return NextResponse.next();
-    // }
-    // 1️⃣ CHẠY i18n middleware TRƯỚC
-    const response = intlMiddleware(request);
-
-    // Nếu next-intl đã redirect → trả luôn
-    if (response) return response;
-
+    console.log(" request.cookies: ", request.cookies) // sẽ thấy
     const token = request.cookies.get("access_token")?.value;
-    console.log("middleware token:", token) // sẽ thấy
     const PRIVATE_ROUTES = [
         "/cart",
         "/checkout",
@@ -28,8 +19,10 @@ export function middleware(request) {
         "/order",
         "/dashboard",
     ];
+    console.log("middleware pathname:", pathname) // sẽ thấy
+    console.log("token: ", token) // sẽ thấy
     // ĐÃ LOGIN → KHÔNG ĐƯỢC VÀO LOGIN
-    if (token && (pathname === "/sign-in" || pathname === "/sign-up")) {
+    if (token && (pathname.includes("/sign-in") || pathname.includes("/sign-up"))) {
         return NextResponse.redirect(new URL("/", request.url));
     }
     // CHƯA LOGIN → KHÔNG ĐƯỢC VÀO TRANG PRIVATE
@@ -39,6 +32,12 @@ export function middleware(request) {
     if (!token && isPrivateRoute) {
         return NextResponse.redirect(new URL("/sign-in", request.url));
     }
+    // 1️⃣ CHẠY i18n middleware TRƯỚC
+    const response = intlMiddleware(request);
+    // Nếu next-intl đã redirect → trả luôn
+    if (response) return response;
+
+
     return NextResponse.next();
 }
 export const config = {

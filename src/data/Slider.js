@@ -4,21 +4,21 @@ const ElectronicsSlider = [
         subTitle: "Hot Deal In This Week",
         subIcon: "fas fa-fire",
         price: "$49.00",
-        thumb: "/images/product/product-38.png"
+        thumb: "/images/product/product-38.webp"
     },
     {
         title: "Smart Digital Watch",
         subTitle: "Hot Deal In This Week",
         subIcon: "fas fa-fire",
         price: "$89.00",
-        thumb: "/images/product/product-39.png"
+        thumb: "/images/product/product-40.webp"
     },
     {
         title: "Smart Digital Watch",
         subTitle: "Hot Deal In This Week",
         subIcon: "fas fa-fire",
         price: "$89.00",
-        thumb: "/images/product/product-39.png"
+        thumb: "/images/product/product-40.webp"
     }
 ]
 const NftSlider = {

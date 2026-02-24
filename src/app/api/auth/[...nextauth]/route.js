@@ -3,9 +3,11 @@ import { cookies } from "next/headers"
 import GoogleProvider from "next-auth/providers/google";
 import axiosClient from "@/utils/axios";
 import CredentialsProvider from "next-auth/providers/credentials";
-import axios from "axios";
+
+export const dynamic = "force-dynamic";
 
 export const authOptions = {
+  trustHost: true,
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     maxAge: 60 * 60, // 1h

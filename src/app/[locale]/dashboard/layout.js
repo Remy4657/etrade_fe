@@ -61,7 +61,7 @@ const DahsboardLayout = ({ children }) => {
                                         <nav className="axil-dashboard-nav">
                                             <div className="nav nav-tabs">
                                                 {DashboardAsideMenu?.map((data, index) => (
-                                                    <Link href={`dashboard/${data.slug}`} className={`nav-item nav-link ${data.slug === pageSlug ? "active" : ""}`} key={index}>
+                                                    <Link href={`${data.slug}`} className={`nav-item nav-link ${data.slug === pageSlug ? "active" : ""}`} key={index}>
                                                         <i className={data.icon} />{data.name}
                                                     </Link>
                                                 ))}

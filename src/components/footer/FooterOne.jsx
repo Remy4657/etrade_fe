@@ -67,7 +67,7 @@ const FooterOne = (props) => {
           </div>
         </div>
       </div>
-      <div className="copyright-area copyright-default separator-top">
+      {/* <div className="copyright-area copyright-default separator-top">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-xl-7 col-lg-12">
@@ -144,7 +144,7 @@ const FooterOne = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

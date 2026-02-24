@@ -69,18 +69,18 @@ const FooterData = {
         }
     ],
     footerInfo: {
-        address: "685 Market Street, <br /> Las Vegas, LA 95820, <br /> United States.",
-        email: "example@domain.com",
+        address: "141, <br /> Las Vegas, LA 95820, <br /> United States.",
+        email: "example@example.com",
         phone: "(+01) 850-315-5862"
     },
     footerAppInfo: {
-        title: "Save $3 With App & New User only",
+        title: "tetxt sgd  sds sdgjs",
         qrCode: "/images/others/qr.png",
-        appStoreLink:"https://apps.apple.com/",
+        appStoreLink: "https://apps.apple.com/",
         appStoreLogo: "/images/others/app-store.png",
-        googlePlayLink:'https://play.google.com/',
+        googlePlayLink: 'https://play.google.com/',
         googlePlayLogo: "/images/others/play-store.png",
     }
 }
 
-export {FooterData};
+export { FooterData };

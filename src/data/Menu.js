@@ -64,33 +64,33 @@ const HeaderMenu = [
             }
         ]
     },
-    {
-        name: "Pages",
-        url: "#",
-        hasChildren: false,
-        children: [
-            {
-                name: "Wishlist",
-                url: "/wishlist"
-            },
-            {
-                name: "Cart",
-                url: "/cart"
-            },
-            {
-                name: "Sign Up",
-                url: "/sign-up"
-            },
-            {
-                name: "Privacy Policy",
-                url: "/privacy-policy"
-            },
-            {
-                name: "Coming Soon",
-                url: "/coming-soon"
-            },
-        ]
-    },
+    // {
+    //     name: "Pages",
+    //     url: "#",
+    //     hasChildren: false,
+    //     children: [
+    //         {
+    //             name: "Wishlist",
+    //             url: "/wishlist"
+    //         },
+    //         {
+    //             name: "Cart",
+    //             url: "/cart"
+    //         },
+    //         {
+    //             name: "Sign Up",
+    //             url: "/sign-up"
+    //         },
+    //         {
+    //             name: "Privacy Policy",
+    //             url: "/privacy-policy"
+    //         },
+    //         {
+    //             name: "Coming Soon",
+    //             url: "/coming-soon"
+    //         },
+    //     ]
+    // },
     {
         name: "About",
         url: "/about",
@@ -99,38 +99,38 @@ const HeaderMenu = [
     },
     {
         name: "Blog",
-        url: "#",
-        hasChildren: true,
-        children: [
-            {
-                name: "Blog Grid",
-                url: "/blog"
-            },
-            {
-                name: "Blog List",
-                url: "/blog?blog=list"
-            },
-            {
-                name: "Standard Post",
-                url: "/blog/important-updates-for-listing-and-delisting-your-nfts"
-            },
-            {
-                name: "Gallery Post",
-                url: "/blog/apple-presents-app-best-of-2020-winners"
-            },
-            {
-                name: "Video Post",
-                url: "/blog/keeping-yourself-safe-when-buying-nfts-on-etrade"
-            },
-            {
-                name: "Audio Post",
-                url: "/blog/how-to-generate-blog-ideas-are-great-for-businesses-that-sell-both-b2b-and-d2c"
-            },
-            {
-                name: "Quote Post",
-                url: "/blog/an-oral-history-of-the-aim-away-message-by-the-people-who-were-there"
-            }
-        ]
+        url: "/blog/how-to-generate-blog-ideas-are-great-for-businesses-that-sell-both-b2b-and-d2c",
+        hasChildren: false,
+        // children: [
+        //     {
+        //         name: "Blog Grid",
+        //         url: "/blog"
+        //     },
+        //     {
+        //         name: "Blog List",
+        //         url: "/blog?blog=list"
+        //     },
+        //     {
+        //         name: "Standard Post",
+        //         url: "/blog/important-updates-for-listing-and-delisting-your-nfts"
+        //     },
+        //     {
+        //         name: "Gallery Post",
+        //         url: "/blog/apple-presents-app-best-of-2020-winners"
+        //     },
+        //     {
+        //         name: "Video Post",
+        //         url: "/blog/keeping-yourself-safe-when-buying-nfts-on-etrade"
+        //     },
+        //     {
+        //         name: "Audio Post",
+        //         url: "/blog/how-to-generate-blog-ideas-are-great-for-businesses-that-sell-both-b2b-and-d2c"
+        //     },
+        //     {
+        //         name: "Quote Post",
+        //         url: "/blog/an-oral-history-of-the-aim-away-message-by-the-people-who-were-there"
+        //     }
+        // ]
     },
     {
         name: "Contact",
@@ -284,27 +284,27 @@ const DashboardAsideMenu = [
     {
         icon: "fas fa-th-large",
         name: "Dashboard",
-        slug: ""
+        slug: "/dashboard"
     },
     {
         icon: "fas fa-shopping-basket",
         name: "Orders",
-        slug: "orders"
+        slug: "/dashboard/orders"
     },
     {
         icon: "fas fa-file-download",
         name: "Downloads",
-        slug: "downloads"
+        slug: "/dashboard/downloads"
     },
     {
         icon: "fas fa-home",
         name: "Addresses",
-        slug: "addresses-edit"
+        slug: "/dashboard/addresses-edit"
     },
     {
         icon: "fas fa-user",
         name: "Account Details",
-        slug: "account-details"
+        slug: "/dashboard/account-details"
     }
 ]
 

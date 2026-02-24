@@ -59,7 +59,7 @@ const FooterTwo = () => {
               ))}
               <div className="col-lg-3 col-sm-6">
                 <div className="axil-footer-widget">
-                  <h5 className="widget-title">Download App</h5>
+                  {/* <h5 className="widget-title">Download App</h5> */}
                   <div className="inner">
                     <span>{FooterData.footerAppInfo.title}</span>
                     <div className="download-btn-group">
@@ -96,7 +96,7 @@ const FooterTwo = () => {
             </div>
           </div>
         </div>
-        <div className="copyright-area copyright-default separator-top">
+        {/* <div className="copyright-area copyright-default separator-top">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-xl-4">
@@ -164,7 +164,7 @@ const FooterTwo = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </footer>
       {getQuickView.quickView && <ProductQuickView />}
     </>
