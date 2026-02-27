@@ -24,6 +24,7 @@ Admin can manage products, categories, and orders.
 - Add to cart
 - Checkout
 - View order history
+- Multilanguage
 
 ## Installation
 
