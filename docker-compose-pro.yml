@@ -5,7 +5,9 @@ services:
       - etrade-network
     env_file:
       - .env
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.pro
     ports:
       - "3000:3000"
     command: npm run start
