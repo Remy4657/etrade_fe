@@ -7,17 +7,20 @@ Admin can manage products, categories, and orders.
 ## Tech Stack
 
 ### Frontend
+
 - React / Next.js
 - Axios
 - Redux / Context API
 
 ### Deployment
+
 - Docker
 - Nginx
 - VPS (Hostinger)
 - ## Features
 
 ### User
+
 - Register / Login
 - Browse products
 - Search & filter products
@@ -29,8 +32,10 @@ Admin can manage products, categories, and orders.
 ## Installation
 
 ### 1. Clone project
+
 git clone ...
 
 ### 3. Run frontend
+
 npm install
 npm run dev
