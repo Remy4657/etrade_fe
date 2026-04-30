@@ -1,16 +1,14 @@
 services:
   frontend:
-    image: remy4657/etrade-frontend:pro
+    image: remy4657/test-etrade-fe-ci:latest
+    container_name: etrade_frontend
+    restart: always
     networks:
       - etrade-network
     env_file:
       - .env
-    build:
-      context: .
-      dockerfile: Dockerfile.pro
     ports:
       - "3000:3000"
-    command: npm run start
 networks:
   etrade-network:
     external: true
