@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
       - name: Build Next.js
         run: npm run build
       - name: login docker registry
