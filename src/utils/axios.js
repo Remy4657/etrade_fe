@@ -3,6 +3,8 @@ import { getSession } from "next-auth/react";
 
 const isServer = typeof window === "undefined";
 console.log("isServer: ", isServer)
+console.log("type of window: ", typeof window)
+console.log("process.env: ", process.env)
 const axiosClient = axios.create({
     baseURL: isServer
         ? process.env.INTERNAL_API_URL
