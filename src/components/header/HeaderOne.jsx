@@ -10,11 +10,14 @@ import HeaderQuickLink from "@/components/header/elements/HeaderQuickLink";
 import HeaderBrand from "@/components/header/elements/HeaderBrand";
 import HeaderActions from "@/components/header/elements/HeaderActions";
 
+import { useTranslations } from "next-intl";
+
 const HeaderOne = () => {
   const axilHeader = useRef();
   const axilPlaceholder = useRef();
   const axilMainmenu = useRef();
   const menuOption = useSelector((state) => state.menu);
+  const t = useTranslations();
 
   useEffect(() => {
     const headerHeight = axilHeader.current.clientHeight;
@@ -36,7 +39,7 @@ const HeaderOne = () => {
     <header className="header axil-header header-style-1" ref={axilHeader}>
       <HeaderTopNotify>
         <p>
-          Open Doors To A World Of Fashion <Link href="/">Discover More/</Link>
+          {t("title.text")} <Link href="/shop">{t("title.link")}</Link>
         </p>
       </HeaderTopNotify>
 
@@ -45,12 +48,8 @@ const HeaderOne = () => {
           <div className="row align-items-center">
             <div className="col-sm-6">
               <div className="header-top-dropdown">
-                <LangDropdown />
                 <CuurencyDropdown />
               </div>
-            </div>
-            <div className="col-sm-6">
-              <HeaderQuickLink />
             </div>
           </div>
         </div>
@@ -60,6 +59,8 @@ const HeaderOne = () => {
         <div className="container">
           <div className="header-navbar">
             <HeaderBrand />
+            <LangDropdown />
+
             <div
               className={`header-main-nav ${
                 menuOption.isMobileMenuOpen ? "open" : ""

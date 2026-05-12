@@ -14,7 +14,6 @@ import SingleBlogContent from "@/components/blog/single-post/SingleBlogContent";
 export const dynamic = "force-dynamic";
 
 const BlogDetails = async ({ params }) => {
-    console.log("[blog]")
     const postMeta = getPostBySlug(params.slug, [
         'id',
         'title',
@@ -47,7 +46,7 @@ const BlogDetails = async ({ params }) => {
 
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <SingleBlogContent meta={postMeta} content={postContent} />
                 <Section pClass="related-blog-area" sectionPadding="pb--60 pb_sm--40">

@@ -3,14 +3,13 @@ import createMiddleware from "next-intl/middleware";
 
 const intlMiddleware = createMiddleware({
     locales: ["en", "vi"],
-    defaultLocale: "en",
+    defaultLocale: "vi",
     localeDetection: false,
 });
 
 
 export function middleware(request) {
     const { pathname } = request.nextUrl;
-    console.log(" request.cookies: ", request.cookies) // sẽ thấy
     const token = request.cookies.get("access_token")?.value;
     const PRIVATE_ROUTES = [
         "/cart",
@@ -19,8 +18,7 @@ export function middleware(request) {
         "/order",
         "/dashboard",
     ];
-    console.log("middleware pathname:", pathname) // sẽ thấy
-    console.log("token: ", token) // sẽ thấy
+    console.log("pathname: ", pathname)
     // ĐÃ LOGIN → KHÔNG ĐƯỢC VÀO LOGIN
     if (token && (pathname.includes("/sign-in") || pathname.includes("/sign-up"))) {
         return NextResponse.redirect(new URL("/", request.url));

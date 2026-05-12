@@ -42,7 +42,7 @@ const BlogPage = ({ searchParams }) => {
 
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="Blogs" title={breadCrumbTitle()} />
                 <Section>

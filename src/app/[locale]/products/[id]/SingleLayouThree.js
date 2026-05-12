@@ -59,7 +59,6 @@ const SingleLayouThree = ({ idProduct }) => {
         const fetchDetailProduct = async () => {
             try {
                 const productDetail = await getDetailProduct(idProduct);
-                console.log("productDetail: ", productDetail)
                 setSingleData(productDetail.data);
                 setCategoryProductDetail(productDetail?.data?.pcate)
             } catch (error) {
@@ -75,7 +74,6 @@ const SingleLayouThree = ({ idProduct }) => {
         const fetchProductCategory = async () => {
             try {
                 const res = await getProductCategory(categoryProductDetail);
-                console.log("res productCategory: ", res)
                 setListProductCategory(res?.data)
                 return
             } catch (error) {
@@ -89,7 +87,7 @@ const SingleLayouThree = ({ idProduct }) => {
     }, [categoryProductDetail]);
 
     const handleAddToCart = (cartAddedData) => {
-        if (!userData.login) {
+        if (!userData?.login) {
             router.push("/sign-in");
             return;
         }

@@ -5,8 +5,6 @@ export default async function OrderDetailPage({ params }) {
     const { orderId } = params;
 
     const { data } = await OrderService.getDetail(orderId)
-    //const order = await res.json();
-    console.log("resOrder: ", data)
 
     return <div className="axil-dashboard-order-view">
         <p>Order <strong>#6523</strong> was placed on <strong>{formatDateTime(data.createdAt)}</strong> and is currently <strong>{data.status}</strong>.</p>

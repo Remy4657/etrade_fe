@@ -21,7 +21,7 @@ const BlogCategory = ({ params }) => {
 
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="Blogs" title={unSlugify(params.slug)} />
                 <Section>

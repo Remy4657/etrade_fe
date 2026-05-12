@@ -25,13 +25,13 @@ const DahsboardLayout = ({ children }) => {
     const pageSlug = split[split.length - 1];
 
     const handleLogout = async () => {
-        dispatch(logout())
+        await dispatch(logout())
         router.push("/sign-in")
     }
 
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="My Account" title="Explore All Products" />
                 <div className="axil-dashboard-area axil-section-gap">
@@ -51,7 +51,7 @@ const DahsboardLayout = ({ children }) => {
                                     </div>
                                     <div className="media-body">
                                         <h5 className="title mb-0">Hello {users?.username}</h5>
-                                        <span className="joining-date">eeTrade Member Since </span>
+                                        {/* <span className="joining-date">eeTrade Member Since </span> */}
                                     </div>
                                 </div>
                             </div>

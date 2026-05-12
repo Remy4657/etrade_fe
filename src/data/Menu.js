@@ -281,26 +281,26 @@ const CateMenu = [
 ]
 
 const DashboardAsideMenu = [
-    {
-        icon: "fas fa-th-large",
-        name: "Dashboard",
-        slug: "/dashboard"
-    },
+    // {
+    //     icon: "fas fa-th-large",
+    //     name: "Dashboard",
+    //     slug: "/dashboard"
+    // },
     {
         icon: "fas fa-shopping-basket",
         name: "Orders",
         slug: "/dashboard/orders"
     },
-    {
-        icon: "fas fa-file-download",
-        name: "Downloads",
-        slug: "/dashboard/downloads"
-    },
-    {
-        icon: "fas fa-home",
-        name: "Addresses",
-        slug: "/dashboard/addresses-edit"
-    },
+    // {
+    //     icon: "fas fa-file-download",
+    //     name: "Downloads",
+    //     slug: "/dashboard/downloads"
+    // },
+    // {
+    //     icon: "fas fa-home",
+    //     name: "Addresses",
+    //     slug: "/dashboard/addresses-edit"
+    // },
     {
         icon: "fas fa-user",
         name: "Account Details",

@@ -1,18 +1,22 @@
 {
-    "Home": {
-        "title": "Home",
-        "welcome": "Welcome"
-    },
-    "Header": {
-        "Home": "Home",
-        "Shop": "Shop",
-        "Pages": "Pages",
-        "About": "About",
-        "Blog": "Blog",
-        "Contact": "Contact"
-    },
-    "Authentication": {
-        "SignIn": "Sign In",
-        "SignUp": "Sign Up"
-    }
+  "title": {
+    "text": "Big Sale",
+    "link": "Shop Now"
+  },
+  "Home": {
+    "title": "Home",
+    "welcome": "Welcome"
+  },
+  "Header": {
+    "Home": "Home",
+    "Shop": "Shop",
+    "Pages": "Pages",
+    "About": "About",
+    "Blog": "Blog",
+    "Contact": "Contact"
+  },
+  "Authentication": {
+    "SignIn": "Sign In",
+    "SignUp": "Sign Up"
+  }
 }

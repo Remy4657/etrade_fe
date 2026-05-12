@@ -18,8 +18,8 @@ export const logout = createAsyncThunk(
     "auth/logout",
     async (_, { rejectWithValue }) => {
         try {
-            await AuthService.logout();
-            await signOut({ redirect: false })
+            await AuthService.logout(); // sign out ở server
+            await signOut({ redirect: false }) // sign out ở client (xóa session cookie)
             return;
         } catch (err) {
             return rejectWithValue("Logout err: ", err);

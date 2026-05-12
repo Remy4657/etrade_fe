@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeWishlistItem } from "@/store/slices/productSlice";
-import HeaderOne from "@/components/header/HeaderOne";
 import FooterOne from "@/components/footer/FooterTwo";
 
 const Wishlist = () => {
@@ -20,7 +19,6 @@ const Wishlist = () => {
 
     return (
         <>
-            <HeaderOne />
             <main>
                 <div className="axil-wishlist-area axil-section-gap">
                     <div className="container">
