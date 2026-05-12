@@ -25,7 +25,7 @@ const BlogTags = ({ params }) => {
 
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="Tags" title={unSlugify(params.slug)} />
                 <Section>

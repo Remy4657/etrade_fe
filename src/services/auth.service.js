@@ -6,7 +6,6 @@ const AuthService = {
         return axiosClient.post(authApi.REGISTER, { ...data });
     },
     login: (data) => {
-        console.log("[data login]:", data)
         return axiosClient.post(authApi.LOGIN, { ...data });
     },
     me: () => {

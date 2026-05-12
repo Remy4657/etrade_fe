@@ -9,7 +9,7 @@ const OrderReceived = () => {
     const latestOrder = orders[orders.length - 1];
     return (
         <>
-            <HeaderFive />
+            {/* <HeaderFive /> */}
             <main className="main-wrapper">
                 <Section pClass="order-received">
                     {latestOrder &&

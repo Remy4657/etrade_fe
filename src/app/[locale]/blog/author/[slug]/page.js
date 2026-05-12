@@ -21,7 +21,7 @@ const BlogAuthor = ({ params }) => {
     const postsByAuthor = allPosts.filter((post) => slugify(post.author_name) === params.slug);
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="Author" title={unSlugify(params.slug)} />
                 <Section>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ProductSearchModal from "@/components/header/elements/ProductSearchModal";
@@ -7,10 +8,14 @@ import { miniCartHandler } from "@/store/slices/productSlice";
 import { mobileMenu } from "@/store/slices/menuSlice";
 import { useRouter } from "next/navigation";
 import { logout } from "@/store/slices/authSlice";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const HeaderActions = (props) => {
-  const dispatch = useDispatch()
-  const router = useRouter()
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const { data: session } = useSession();
+  const dataUser = session?.user || null;
   const userData = useSelector((state) => state.auth);
   const getProducts = useSelector((state) => state.productData);
 
@@ -25,11 +30,11 @@ const HeaderActions = (props) => {
   };
   const cartHandler = (data) => {
     dispatch(miniCartHandler(data));
-  }
+  };
 
   const mobileMneuHandler = (data) => {
-    dispatch(mobileMenu(data))
-  }
+    dispatch(mobileMenu(data));
+  };
   return (
     <div className="header-action">
       <ul className="action-list">
@@ -60,62 +65,86 @@ const HeaderActions = (props) => {
 
         <li className="wishlist">
           <Link href="/wishlist">
-            {getProducts.wishListQuantity > 0 &&
+            {getProducts.wishListQuantity > 0 && (
               <span className="cart-count">{getProducts.wishListQuantity}</span>
-            }
+            )}
             <i className="far fa-heart" />
           </Link>
         </li>
         <li className="shopping-cart">
-          <button className="cart-dropdown-btn" onClick={() => cartHandler(true)}>
+          <button
+            className="cart-dropdown-btn"
+            onClick={() => cartHandler(true)}
+          >
             <span className="cart-count">{getProducts.cartQuantityTotal}</span>
             <i className="far fa-shopping-cart" />
           </button>
         </li>
         <li className="my-account">
           <button onClick={accountDropdownToggler}>
-            <i className="far fa-user" />
+            {dataUser?.image ? (
+              <Image
+                src={dataUser?.image}
+                alt="User avatar"
+                height={30}
+                width={30}
+                className="rounded-circle"
+              />
+            ) : (
+              <i className="far fa-user" />
+            )}
           </button>
           <div
             className={`my-account-dropdown ${accountDropdown ? "open" : ""}`}
           >
-            <span className="title">QUICKLINKS</span>
             <ul>
               <li>
-                <Link href="/dashboard">My Account</Link>
+                <Link href="/dashboard/account-details">My Account</Link>
               </li>
               <li>
-                <Link href="dashboard/orders">Orders</Link>
+                <Link href="/dashboard/orders">Orders</Link>
               </li>
               <li>
-                <Link href="dashboard/account-details">Settings</Link>
+                {/* <Link href="dashboard/account-details">Settings</Link> */}
               </li>
             </ul>
             <div className="login-btn">
-              {!userData.login ? <button onClick={() => { router.push("/sign-in") }} className="axil-btn btn-bg-primary">
-                Login
-              </button>
-                :
-                <button onClick={() => {
-                  dispatch(logout())
-                  router.push("/sign-in")
-                }} className="axil-btn btn-bg-primary">
+              {!userData?.login ? (
+                <button
+                  onClick={() => {
+                    router.push("/sign-in");
+                  }}
+                  className="axil-btn btn-bg-primary"
+                >
+                  Login
+                </button>
+              ) : (
+                <button
+                  onClick={async () => {
+                    await dispatch(logout());
+                    router.push("/sign-in");
+                  }}
+                  className="axil-btn btn-bg-primary"
+                >
                   Logout
                 </button>
-              }
+              )}
             </div>
-            {!userData.login &&
+            {!userData?.login && (
               <div className="reg-footer text-center">
                 No account yet?
                 <Link href="/sign-up" className="btn-link">
                   REGISTER HERE.
                 </Link>
-              </div>}
-
+              </div>
+            )}
           </div>
         </li>
         <li className="axil-mobile-toggle">
-          <button className="menu-btn mobile-nav-toggler" onClick={() => mobileMneuHandler(true)}>
+          <button
+            className="menu-btn mobile-nav-toggler"
+            onClick={() => mobileMneuHandler(true)}
+          >
             <i className="fal fa-bars"></i>
           </button>
         </li>

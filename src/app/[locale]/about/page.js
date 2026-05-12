@@ -15,7 +15,7 @@ import { TeamData } from "@/data/Team";
 const AboutUs = () => {
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb
                     activeItem="About Us"

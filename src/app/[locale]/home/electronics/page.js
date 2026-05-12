@@ -4,7 +4,6 @@ import CategoryElectronics from "@/components/category/CategoryElectronics";
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
 import SlickSlider from "@/components/elements/SlickSlider";
-import HeaderOne from "@/components/header/HeaderOne";
 import BannerOne from "@/components/hero-banner/BannerOne";
 import PosterOne from "@/components/poster/PosterOne";
 import ProductOne from "@/components/product/ProductOne";
@@ -70,7 +69,6 @@ const HomeElectronics = () => {
 
     return (
         <>
-            <HeaderOne />
             <main className="main-wrapper">
                 <BannerOne />
                 <CategoryElectronics listCategory={listCategory} />

@@ -5,17 +5,17 @@ import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
 
 const SingleProductLayout = ({ children }) => {
-    return ( 
+    return (
         <>
-        <HeaderFive headerSlider/>
-        <main className="main-wrapper">
-           {children}
-            <NewsLetter />
-            <ServiceTwo />
-        </main>
-        <FooterTwo />
+            {/* <HeaderFive headerSlider/> */}
+            <main className="main-wrapper">
+                {children}
+                <NewsLetter />
+                <ServiceTwo />
+            </main>
+            <FooterTwo />
         </>
     );
 }
- 
+
 export default SingleProductLayout;

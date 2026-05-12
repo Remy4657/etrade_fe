@@ -1,18 +1,22 @@
 {
-    "Home": {
-        "title": "Trang chủ",
-        "welcome": "Xin chào"
-    },
-    "Header": {
-        "Home": "Trang chủ",
-        "Shop": "Cửa hàng",
-        "Pages": "Trang",
-        "About": "Về chúng tôi",
-        "Blog": "Bài viết",
-        "Contact": "Liên hệ"
-    },
-    "Authentication": {
-        "SignIn": "Đăng nhập",
-        "SignUp": "Đăng ký"
-    }
+  "title": {
+    "text": "Khuyến mãi lớn",
+    "link": "Mua ngay"
+  },
+  "Home": {
+    "title": "Trang chủ",
+    "welcome": "Xin chào"
+  },
+  "Header": {
+    "Home": "Trang chủ",
+    "Shop": "Cửa hàng",
+    "Pages": "Trang",
+    "About": "Về chúng tôi",
+    "Blog": "Bài viết",
+    "Contact": "Liên hệ"
+  },
+  "Authentication": {
+    "SignIn": "Đăng nhập",
+    "SignUp": "Đăng ký"
+  }
 }

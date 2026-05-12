@@ -1,28 +1,13 @@
 import axios from "axios";
 import { getSession } from "next-auth/react";
 
-const isServer = typeof window === "undefined";
-console.log("isServer: ", isServer)
-console.log("type of window: ", typeof window)
-console.log("process.env: ", process.env)
 const axiosClient = axios.create({
-    baseURL: isServer
-        ? process.env.INTERNAL_API_URL
-        : process.env.NEXT_PUBLIC_API_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     headers: {
         "Content-Type": "application/json",
     },
     withCredentials: true,
 });
-
-// const axiosClient = axios.create({
-//     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
-//     headers: {
-//         "Content-Type": "application/json",
-//     },
-//     withCredentials: true
-// });
-
 axiosClient.interceptors.request.use(
     async (config) => {
         const session = await getSession();

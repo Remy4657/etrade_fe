@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
-import HeaderOne from "@/components/header/HeaderOne";
 import { slugify } from "@/utils";
 import { removeCartItem, cartQuantityIncrease, cartQuantityDecrease, cartClear, updateCartAmount } from "@/store/slices/productSlice";
 import FooterTwo from "@/components/footer/FooterTwo";
@@ -14,13 +13,11 @@ const Cart = () => {
     const cartProducts = useSelector((state) => state.productData);
 
     const removeCartHandler = (data) => {
-        console.log("[cart remove] data: ", data)
         dispatch(removeCartItem(data))
         dispatch(removeFromCartAPI(data.id))
     }
 
     const quantityIncreaseHandler = (data) => {
-        console.log("data: ", data)
         dispatch(cartQuantityIncrease(data))
         dispatch(updateProductCartQuantity({ cartItemId: data.id, typeUpdate: "increase" }))
     }
@@ -38,7 +35,6 @@ const Cart = () => {
 
     return (
         <>
-            <HeaderOne />
             <main className="main-wrapper">
                 <div className="axil-product-cart-area axil-section-gap">
                     <div className="container">

@@ -24,14 +24,14 @@ const AccountDetails = () => {
                     <div className="col-lg-6">
                         <div className="form-group">
                             <label>Username</label>
-                            <input type="text" className="form-control" {...register('firstName', { required: true })} defaultValue={userData.username} />
+                            <input type="text" className="form-control" {...register('firstName', { required: true })} defaultValue={userData?.username} />
                             {errors.firstName && <p className="error">First Name is required.</p>}
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="text" className="form-control" {...register('lastName', { required: true })} defaultValue={userData.email} />
+                            <input type="text" className="form-control" {...register('lastName', { required: true })} defaultValue={userData?.email} />
                             {errors.lastName && <p className="error">Last Name is required.</p>}
                         </div>
                     </div>

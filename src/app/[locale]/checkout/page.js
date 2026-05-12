@@ -128,7 +128,7 @@ const Checkout = () => {
     }
     return (
         <>
-            <HeaderFive headerSlider />
+            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Section pClass="axil-checkout-area">
                     {cartProducts.cartItems.length > 0 ?

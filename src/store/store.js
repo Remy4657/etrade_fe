@@ -16,7 +16,7 @@ import storage from "./storage";
 
 
 
-// 2️⃣ Cấu hình persist
+// 2️. Cấu hình persist
 // const persistConfig = {
 //     key: "root",
 //     storage,
@@ -25,27 +25,27 @@ import storage from "./storage";
 const productPersistConfig = {
     key: "product",
     storage,
-    whitelist: ["listProducts"], // ✅ CHỈ LƯU listProducts
+    whitelist: ["listProducts"], //  CHỈ LƯU listProducts
 };
 
-// 3️⃣ Persist reducer
+// 3️. Persist reducer
 //const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const persistedProductReducer = persistReducer(
     productPersistConfig,
     productSlice
 );
-// 1️⃣ Combine reducer (GIỮ ĐÚNG key bạn đang dùng)
+// 1️. Combine reducer (GIỮ ĐÚNG key bạn đang dùng)
 // const rootReducer = combineReducers({
 //     productData: productSlice,
 //     auth: authSlice,
 //     menu: menuSlice,
 // });
 const rootReducer = combineReducers({
-    productData: persistedProductReducer, // ✅ product đã được persist riêng
+    productData: persistedProductReducer, //  product đã được persist riêng
     auth: authSlice,
     menu: menuSlice,
 });
-// 4️⃣ Configure store
+// 4️. Configure store
 export const store = configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
@@ -63,5 +63,5 @@ export const store = configureStore({
         }),
 });
 
-// 5️⃣ Persistor
+// 5️. Persistor
 export const persistor = persistStore(store);
