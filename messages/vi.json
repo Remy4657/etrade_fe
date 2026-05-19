@@ -3,6 +3,21 @@
     "text": "Khuyến mãi lớn",
     "link": "Mua ngay"
   },
+  "banner1": {
+    "title": "Tai nghe không dây Roco",
+    "subTitle": "Deal hot tuần này"
+  },
+  "banner2": {
+    "title": "Đồng hồ thông minh Roco",
+    "subTitle": "Deal hot tuần này"
+  },
+  "banner3": {
+    "title": "Laptop Lenovo",
+    "subTitle": "Deal hot tuần này"
+  },
+  "button": {
+    "banner": "Mua ngay"
+  },
   "Home": {
     "title": "Trang chủ",
     "welcome": "Xin chào"

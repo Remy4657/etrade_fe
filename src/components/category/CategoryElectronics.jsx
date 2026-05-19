@@ -65,7 +65,9 @@ const CategoryElectronics = (props) => {
         {listCategory?.map((data, index) => (
           <div className="categrie-product" key={index}>
             <Link
-              href={`/shop`}
+              href={{
+                pathname: `/shop`,
+              }}
             >
               <Image src={data.thumb} height={64} width={64} alt={data.name} />
               <h6 className="cat-title">{data.name}</h6>

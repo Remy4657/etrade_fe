@@ -1,4 +1,5 @@
 'use client';
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -100,17 +101,15 @@ const SignIn = () => {
                                 gap: "10px"
                             }}
                             onClick={() => handleLoginGoogle()}>
-                            <img
-                                src="https://developers.google.com/identity/images/g-logo.png"
+                            <Image
+                                src="/images/logo/Google.png"
                                 alt="Google"
-                                style={{
-                                    width: "22px",
-                                    height: "22px"
-                                }}
+                                width={20}
+                                height={20}
+
                             />
                             Continue with Google
                         </button>
-                        {/* <button onClick={() => signIn("google")} className="axil-btn w-100">Sign In by Google</button> */}
                     </div>
                 </form>
             </div>

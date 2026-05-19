@@ -43,7 +43,7 @@ export const removeFromCartAPI = createAsyncThunk(
             return res.data;
         } catch (error) {
             return rejectWithValue(
-                err.response?.data || "Error system"
+                error.response?.data || "Error system"
             );
         }
     }

@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,16 +7,29 @@ import { slugify } from "@/utils";
 import { removeCartItem, cartQuantityIncrease, cartQuantityDecrease, cartClear, updateCartAmount } from "@/store/slices/productSlice";
 import FooterTwo from "@/components/footer/FooterTwo";
 import { removeFromCartAPI, updateProductCartQuantity } from "@/store/slices/productSlice";
-
+import { toast } from "react-toastify";
+import { logout } from "@/store/slices/authSlice";
 
 const Cart = () => {
     const dispatch = useDispatch();
+    const router = useRouter();
     const cartProducts = useSelector((state) => state.productData);
 
-    const removeCartHandler = (data) => {
-        dispatch(removeCartItem(data))
-        dispatch(removeFromCartAPI(data.id))
-    }
+    const removeCartHandler = async (data) => {
+        try {
+            const res = await dispatch(removeFromCartAPI(data.id));
+            if (res.meta.requestStatus === "rejected") {
+                await dispatch(logout())
+                toast.error("Hết phiên đăng nhập để thực hiện chức năng này");
+                router.push("/sign-in")
+                return
+            }
+            dispatch(removeCartItem(data));
+        } catch (error) {
+            toast.error("Có lỗi xảy ra khi xóa sản phẩm, vui lòng thử lại");
+        }
+
+    };
 
     const quantityIncreaseHandler = (data) => {
         dispatch(cartQuantityIncrease(data))

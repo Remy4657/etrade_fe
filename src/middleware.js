@@ -30,7 +30,7 @@ export function middleware(request) {
     if (!token && isPrivateRoute) {
         return NextResponse.redirect(new URL("/sign-in", request.url));
     }
-    // 1️⃣ CHẠY i18n middleware TRƯỚC
+    // 1. CHẠY i18n middleware TRƯỚC
     const response = intlMiddleware(request);
     // Nếu next-intl đã redirect → trả luôn
     if (response) return response;

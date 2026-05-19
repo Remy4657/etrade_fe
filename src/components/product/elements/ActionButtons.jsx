@@ -15,7 +15,7 @@ const ActionButtons = (props) => {
 
   const getWishlist = useSelector((state) => state.productData.wishlistItems);
   const isWishlistAdded = getWishlist.filter(
-    (data) => data.id === props.productAction.id
+    (data) => data.id === props.productAction.id,
   );
 
   const handleAddToCart = (product) => {
@@ -36,23 +36,22 @@ const ActionButtons = (props) => {
       addToQuickView({
         viewItem: product,
         quickView: true,
-      })
+      }),
     );
   };
 
   return (
     <ul className="cart-action">
-      {props.wishlistBtn && props.productAction.pCate !== "NFT" && (
-        <li className="wishlist">
-          <button onClick={() => handleAddToWishlist(props.productAction)}>
-            <i
-              className={
-                isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"
-              }
-            />
-          </button>
-        </li>
-      )}
+      <li className="wishlist">
+        <button onClick={() => handleAddToWishlist(props.productAction)}>
+          <i
+            className={
+              isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"
+            }
+          />
+        </button>
+      </li>
+
       {props.cartBtn && (
         <li className="select-option">
           <button onClick={() => handleAddToCart(props.productAction)}>
@@ -60,13 +59,12 @@ const ActionButtons = (props) => {
           </button>
         </li>
       )}
-      {props.quickViewBtn && props.productAction.pCate !== "NFT" && (
-        <li className="quickview">
-          <button onClick={() => quickViewHandler(props.productAction)}>
-            <i className="far fa-eye" />
-          </button>
-        </li>
-      )}
+
+      <li className="quickview">
+        <button onClick={() => quickViewHandler(props.productAction)}>
+          <i className="far fa-eye" />
+        </button>
+      </li>
     </ul>
   );
 };

@@ -3,6 +3,21 @@
     "text": "Big Sale",
     "link": "Shop Now"
   },
+  "banner1": {
+    "title": "Roco Wireless Headphone",
+    "subTitle": "Hot Deal In This Week"
+  },
+  "banner2": {
+    "title": "Smart Digital Watch",
+    "subTitle": "Hot Deal In This Week"
+  },
+  "banner3": {
+    "title": "Smart Digital Watch",
+    "subTitle": "Hot Deal In This Week"
+  },
+  "button": {
+    "banner": "Shop Now"
+  },
   "Home": {
     "title": "Home",
     "welcome": "Welcome"

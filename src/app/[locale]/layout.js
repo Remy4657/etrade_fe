@@ -5,10 +5,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/style.scss";
 import { ToastContainer, Bounce } from 'react-toastify';
-import InitiateData from '@/helper/refresh';
-import NextAuthWrapper from '@/helper/next.auth.wrapper';
+import InitiateData from '@/components/helper/refresh';
+import NextAuthWrapper from '@/components/helper/next.auth.wrapper';
 import I18Provider from '@/provider/i18n';
-import Header from '@/helper/header';
+import Header from '@/components/helper/header';
 
 const dmSans = DM_Sans({
 	subsets: ["latin"],
@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 });
 const RootLayout = ({ children }) => {
 	return (
-		<html>
+		<html suppressHydrationWarning={true}>
 			<head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" />

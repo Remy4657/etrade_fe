@@ -119,7 +119,7 @@ const SingleLayouThree = ({ idProduct }) => {
     };
 
     const decrementQuantity = () => {
-        if (quantity > 0) {
+        if (quantity > 1) {
             setquantity(quantity - 1);
         }
     }
@@ -301,7 +301,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                             </div>
                                             <ul className="product-action d-flex-center mb--0">
                                                 <li className="add-to-cart">
-                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">bAdd to Cart</button>
+                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Add to Cartt</button>
                                                 </li>
                                                 <li className="wishlist">
                                                     <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)}><i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} /></button>
