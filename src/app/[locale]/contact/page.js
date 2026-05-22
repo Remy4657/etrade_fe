@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import ServiceTwo from "@/components/services/ServiceTwo";
 import { StoreInfo } from "@/data/Common";
+import { useTranslations } from "next-intl";
 
 const ContactUs = () => {
+    const t = useTranslations();
 
     const [result, showresult] = useState(false);
     const {
@@ -40,77 +42,10 @@ const ContactUs = () => {
             <main className="main-wrapper">
                 <Breadcrumb
                     activeItem="Contact"
-                    title="Contact With Us"
+                    title={t('Contact.breadcrumbTitle')}
                 />
                 <div className="axil-contact-page-area axil-section-gap">
                     <div className="container">
-                        <div className="axil-contact-page">
-                            <div className="row row--30">
-                                <div className="col-lg-8">
-                                    <div className="contact-form">
-                                        <div>
-                                            <h3 className="title mb--10">We would love to hear from you.</h3>
-                                            <p>If you’ve got great products your making or looking to work with us then drop us a line.</p>
-                                            <form onSubmit={handleSubmit(sendEmail)}>
-                                                <div className="row row--10">
-                                                    <div className="col-lg-4">
-                                                        <div className="form-group">
-                                                            <label>Name <span>*</span></label>
-                                                            <input type="text" {...register('name', { required: true })} />
-                                                            {errors.name && <p className="error">Name is required.</p>}
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-4">
-                                                        <div className="form-group">
-                                                            <label>Phone <span>*</span></label>
-                                                            <input type="text" {...register('phone', { required: true })} />
-                                                            {errors.phone && <p className="error">Phone is required.</p>}
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-4">
-                                                        <div className="form-group">
-                                                            <label>E-mail <span>*</span></label>
-                                                            <input type="email" {...register('email', { required: true })} />
-                                                            {errors.email && <p className="error">Email is required.</p>}
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <div className="form-group">
-                                                            <label>Your Message</label>
-                                                            <textarea {...register('message')} cols={1} rows={2} />
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <div className="form-group mb--0">
-                                                            <button name="submit" type="submit" className="axil-btn btn-bg-primary">Send Message</button>
-                                                            {result && <p className="success">Message has been sent successfully</p>}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="contact-location mb--40">
-                                        <h4 className="title mb--20">Our Store</h4>
-                                        <span className="address mb--20">{StoreInfo.address}</span>
-                                        <span className="phone">Phone: {StoreInfo.phone}</span>
-                                        <span className="email">Email: {StoreInfo.email}</span>
-                                    </div>
-                                    <div className="contact-career mb--40">
-                                        <h4 className="title mb--20">Careers</h4>
-                                        <p>Instead of buying six things, one that you really like.</p>
-                                    </div>
-                                    <div className="opening-hour">
-                                        <h4 className="title mb--20">Opening Hours:</h4>
-                                        <p>Monday to Saturday: {StoreInfo.opening.monToSat}
-                                            <br /> Sundays: {StoreInfo.opening.othersDay}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div className="axil-google-map-wrap axil-section-gap pb--0">
                             <div className="mapouter">
                                 <div className="gmap_canvas">
@@ -123,11 +58,79 @@ const ContactUs = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="axil-contact-page">
+                            <div className="row row--30">
+                                <div className="col-lg-8">
+                                    <div className="contact-form">
+                                        <div>
+                                            <h3 className="title mb--10">{t('Contact.title')}</h3>
+                                            <p>{t('Contact.description')}</p>
+                                            <form onSubmit={handleSubmit(sendEmail)}>
+                                                <div className="row row--10">
+                                                    <div className="col-lg-4">
+                                                        <div className="form-group">
+                                                            <label>{t('Contact.name')} <span>*</span></label>
+                                                            <input type="text" {...register('name', { required: true })} />
+                                                            {errors.name && <p className="error">Name is required.</p>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-lg-4">
+                                                        <div className="form-group">
+                                                            <label>{t('Contact.phone')} <span>*</span></label>
+                                                            <input type="text" {...register('phone', { required: true })} />
+                                                            {errors.phone && <p className="error">Phone is required.</p>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-lg-4">
+                                                        <div className="form-group">
+                                                            <label>{t('Contact.email')} <span>*</span></label>
+                                                            <input type="email" {...register('email', { required: true })} />
+                                                            {errors.email && <p className="error">Email is required.</p>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <div className="form-group">
+                                                            <label>{t('Contact.message')}</label>
+                                                            <textarea {...register('message')} cols={1} rows={2} />
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <div className="form-group mb--0">
+                                                            <button name="submit" type="submit" className="axil-btn btn-bg-primary">{t('Contact.submitButton')}</button>
+                                                            {result && <p className="success">{t('Contact.successMessage')}</p>}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-4">
+                                    <div className="contact-location mb--40">
+                                        <h4 className="title mb--20">{t('Contact.ourStore')}</h4>
+                                        <span className="address mb--20">{StoreInfo.address}</span>
+                                        <span className="phone">Phone: {StoreInfo.phone}</span>
+                                        <span className="email">Email: {StoreInfo.email}</span>
+                                    </div>
+                                    <div className="contact-career mb--40">
+                                        <h4 className="title mb--20">{t('Contact.careers')}</h4>
+                                        <p>{t('Contact.careersDescription')}</p>
+                                    </div>
+                                    <div className="opening-hour">
+                                        <h4 className="title mb--20">{t('Contact.openingHours')}</h4>
+                                        <p>{t('Contact.mondayToSaturday')} {StoreInfo.opening.monToSat}
+                                            <br /> {t('Contact.sundays')}: {StoreInfo.opening.othersDay}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

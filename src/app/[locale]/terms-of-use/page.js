@@ -1,6 +1,6 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import ServiceTwo from "@/components/services/ServiceTwo";
 import { fetchMarkdownFile } from "@/utils/api";
@@ -27,7 +27,7 @@ const TermsOfUse = async () => {
                 </Section>
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

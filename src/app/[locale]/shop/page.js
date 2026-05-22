@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
@@ -16,7 +16,7 @@ const Shop = ({ searchParams }) => {
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

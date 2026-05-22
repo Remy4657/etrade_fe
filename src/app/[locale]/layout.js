@@ -4,7 +4,7 @@ import "/public/css/font-awesome.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/style.scss";
-import { ToastContainer, Bounce } from 'react-toastify';
+import { ToastContainer, Flip } from 'react-toastify';
 import InitiateData from '@/components/helper/refresh';
 import NextAuthWrapper from '@/components/helper/next.auth.wrapper';
 import I18Provider from '@/provider/i18n';
@@ -36,17 +36,18 @@ const RootLayout = ({ children }) => {
 								}
 							</InitiateData>
 							<ToastContainer
+
 								position="top-right"
 								autoClose={5000}
-								hideProgressBar={true}
-								newestOnTop={false}
-								closeOnClick={false}
+								hideProgressBar={false}
+								newestOnTop
+								closeOnClick
 								rtl={false}
 								pauseOnFocusLoss
 								draggable
-								pauseOnHover
+								pauseOnHover={false}
 								theme="light"
-								transition={Bounce}
+								transition={Flip}
 							/>
 						</I18Provider>
 

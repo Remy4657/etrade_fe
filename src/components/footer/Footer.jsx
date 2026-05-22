@@ -2,12 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { useTranslations } from "next-intl";
 import { ScocialLink } from "@/data/Common";
 import { FooterData } from "@/data/Footer";
 import ProductQuickView from "../product/elements/ProductQuickView";
 
-const FooterTwo = () => {
+const Footer = () => {
   const getQuickView = useSelector((state) => state.productData);
+  const t = useTranslations();
 
   return (
     <>
@@ -17,7 +19,7 @@ const FooterTwo = () => {
             <div className="row">
               <div className="col-lg-3 col-sm-6">
                 <div className="axil-footer-widget">
-                  <h5 className="widget-title">Support</h5>
+                  <h5 className="widget-title">{t("Footer.support")}</h5>
                   <div className="inner">
                     <p
                       dangerouslySetInnerHTML={{
@@ -28,13 +30,12 @@ const FooterTwo = () => {
                       <li>
                         <a href={`mailto:${FooterData.footerInfo.email}`}>
                           <i className="fal fa-envelope-open" />
-                          {FooterData.footerInfo.email}
+                          {t("Footer.email")}
                         </a>
                       </li>
                       <li>
                         <a href={`tel:${FooterData.footerInfo.phone}`}>
-                          <i className="fal fa-phone-alt" />{" "}
-                          {FooterData.footerInfo.phone}
+                          <i className="fal fa-phone-alt" /> {t("Footer.phone")}
                         </a>
                       </li>
                     </ul>
@@ -44,12 +45,16 @@ const FooterTwo = () => {
               {FooterData.footerLink.slice(0, 2)?.map((items, index) => (
                 <div className="col-lg-3 col-sm-6" key={index}>
                   <div className="axil-footer-widget">
-                    <h5 className="widget-title">{items.label}</h5>
+                    <h5 className="widget-title">
+                      {t(`Footer.${items.label}`)}
+                    </h5>
                     <div className="inner">
                       <ul>
                         {items.linkList?.map((link, index) => (
                           <li key={index}>
-                            <Link href={link.url}>{link.name}</Link>
+                            <Link href={link.url}>
+                              {t(`Footer.${link.name}`)}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -61,7 +66,7 @@ const FooterTwo = () => {
                 <div className="axil-footer-widget">
                   {/* <h5 className="widget-title">Download App</h5> */}
                   <div className="inner">
-                    <span>{FooterData.footerAppInfo.title}</span>
+                    <span>{t("Footer.mobileAppTitle")}</span>
                     <div className="download-btn-group">
                       <div className="qr-code">
                         <Image
@@ -96,79 +101,10 @@ const FooterTwo = () => {
             </div>
           </div>
         </div>
-        {/* <div className="copyright-area copyright-default separator-top">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-xl-4">
-                <div className="social-share">
-                  <a href={ScocialLink.facebook.url}>
-                    <i className={ScocialLink.facebook.icon} />
-                  </a>
-                  <a href={ScocialLink.instagram.url}>
-                    <i className={ScocialLink.instagram.icon} />
-                  </a>
-                  <a href={ScocialLink.twitter.url}>
-                    <i className={ScocialLink.twitter.icon} />
-                  </a>
-                  <a href={ScocialLink.linkedin.url}>
-                    <i className={ScocialLink.linkedin.icon} />
-                  </a>
-                  <a href={ScocialLink.discord.url}>
-                    <i className={ScocialLink.discord.icon} />
-                  </a>
-                </div>
-              </div>
-              <div className="col-xl-4 col-lg-12">
-                <div className="copyright-left d-flex flex-wrap justify-content-center">
-                  <ul className="quick-link">
-                    <li>
-                      © {new Date().getFullYear()}. All rights reserved by {" "}
-                      <a target="_blank" href="https://axilthemes.com/">
-                        Axilthemes
-                      </a>
-                      .
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-xl-4 col-lg-12">
-                <div className="copyright-right d-flex flex-wrap justify-content-xl-end justify-content-center align-items-center">
-                  <span className="card-text">Accept For</span>
-                  <ul className="payment-icons-bottom quick-link">
-                    <li>
-                      <Image
-                        src="/images/icons/cart/cart-1.png"
-                        alt="paypal cart"
-                        width={17}
-                        height={20}
-                      />
-                    </li>
-                    <li>
-                      <Image
-                        src="/images/icons/cart/cart-2.png"
-                        alt="Master card"
-                        width={33}
-                        height={20}
-                      />
-                    </li>
-                    <li>
-                      <Image
-                        src="/images/icons/cart/cart-5.png"
-                        alt="Visa card"
-                        width={46}
-                        height={20}
-                      />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </footer>
       {getQuickView.quickView && <ProductQuickView />}
     </>
   );
 };
 
-export default FooterTwo;
+export default Footer;

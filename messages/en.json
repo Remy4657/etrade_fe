@@ -33,5 +33,40 @@
   "Authentication": {
     "SignIn": "Sign In",
     "SignUp": "Sign Up"
+  },
+  "Contact": {
+    "breadcrumbTitle": "Contact With Us",
+    "title": "We would love to hear from you.",
+    "description": "If you’ve got great products your making or looking to work with us then drop us a line.",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "E-mail",
+    "message": "Your Message",
+    "submitButton": "Send Message",
+    "successMessage": "Message has been sent successfully",
+    "ourStore": "Our Store",
+    "careers": "Careers",
+    "careersDescription": "Instead of buying six things, one that you really like.",
+    "openingHours": "Opening Hours:",
+    "mondayToSaturday": "Monday to Saturday:",
+    "sundays": "Sundays:"
+  },
+  "Footer": {
+    "support": "Support",
+    "account": "Account",
+    "myAccount": "My Account",
+    "login": "Login",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "shop": "Shop",
+    "quickLink": "Quick Link",
+    "aboutUs": "About Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms Of Use",
+    "contact": "Contact",
+    "mobileAppTitle": "Our mobile application",
+    "email": "Email",
+    "phone": "Phone",
+    "acceptFor": "Accept For"
   }
 }

@@ -33,5 +33,40 @@
   "Authentication": {
     "SignIn": "Đăng nhập",
     "SignUp": "Đăng ký"
+  },
+  "Contact": {
+    "breadcrumbTitle": "Liên hệ với chúng tôi",
+    "title": "Chúng tôi rất mong được nhận feedback từ bạn.",
+    "description": "Nếu bạn có sản phẩm tuyệt vời hoặc đang tìm kiếm cơ hội hợp tác, hãy gửi tin nhắn cho chúng tôi.",
+    "name": "Họ và tên",
+    "phone": "Số điện thoại",
+    "email": "Email",
+    "message": "Tin nhắn của bạn",
+    "submitButton": "Gửi tin nhắn",
+    "successMessage": "Tin nhắn đã được gửi thành công",
+    "ourStore": "Cửa hàng của chúng tôi",
+    "careers": "Cơ hội nghề nghiệp",
+    "careersDescription": "Thay vì mua sáu thứ, hãy chọn một thứ mà bạn thực sự thích.",
+    "openingHours": "Giờ mở cửa:",
+    "mondayToSaturday": "Thứ Hai đến Thứ Bảy:",
+    "sundays": "Chủ Nhật:"
+  },
+  "Footer": {
+    "support": "Hỗ trợ",
+    "account": "Tài khoản",
+    "myAccount": "Tài khoản của tôi",
+    "login": "Đăng nhập",
+    "cart": "Giỏ hàng",
+    "wishlist": "Danh sách yêu thích",
+    "shop": "Cửa hàng",
+    "quickLink": "Liên kết nhanh",
+    "aboutUs": "Về chúng tôi",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng",
+    "contact": "Liên hệ",
+    "mobileAppTitle": "Ứng dụng di động của chúng tôi",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "acceptFor": "Chấp nhận"
   }
 }

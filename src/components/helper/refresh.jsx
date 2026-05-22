@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { getMe } from "@/store/slices/authSlice";
 import { logout } from "@/store/slices/authSlice";
 import { getCurrentCart } from "@/store/slices/productSlice";
+import { toast } from "react-toastify";
 
 const InitiateData = ({ children }) => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const InitiateData = ({ children }) => {
         await dispatch(getMe()).unwrap();
       } catch (error) {
         await dispatch(logout());
-        router.push("/sign-in");
+        // router.push("/sign-in");
       }
     };
     fetchMe();

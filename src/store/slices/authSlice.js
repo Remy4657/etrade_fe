@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import AuthService from "@/services/auth.service"
+import authService from "@/services/auth.service"
 import { signOut } from "next-auth/react"
 import { getCurrentCart } from "./productSlice";
 
@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
     "auth/loginUser",
     async (data, { rejectWithValue }) => {
         try {
-            const res = await AuthService.login(data);
+            const res = await authService.login(data);
             return res.data;
         } catch (err) {
             return rejectWithValue(
@@ -20,8 +20,8 @@ export const logout = createAsyncThunk(
     "auth/logout",
     async (_, { rejectWithValue }) => {
         try {
-            await AuthService.logout(); // sign out ở server
-            await signOut({ redirect: false }) // sign out ở client (xóa session cookie)
+            await authService.logout(); // sign out ở server
+            await signOut({ redirect: false }) // sign out ở client (xóa session cookie), 
             return;
         } catch (err) {
             return rejectWithValue("Logout err: ", err);
@@ -32,7 +32,7 @@ export const getMe = createAsyncThunk(
     "auth/getMe",
     async (_, { rejectWithValue, dispatch }) => {
         try {
-            const res = await AuthService.me();
+            const res = await authService.me();
             if (res.data) { // Nếu có dữ liệu người dùng, lấy giỏ hàng hiện tại
                 dispatch(getCurrentCart())
             }

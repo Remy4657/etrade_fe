@@ -12,6 +12,7 @@ import {
 import ProductRating from "./ProductRating";
 import SlickSlider from "@/components/elements/SlickSlider";
 import ProductDiscountLabel from "./ProductDiscountLabel";
+import { toast } from "react-toastify";
 
 const ProductQuickView = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const ProductQuickView = () => {
     (data) => data.id === getQuickViewItem.id,
   );
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = async (product) => {
     const { id, ...restProduct } = product;
     let cartItems = {
       ...restProduct,
@@ -37,18 +38,20 @@ const ProductQuickView = () => {
       productColor: colorImage.color,
       productSize: productSize,
     };
-    console.log("product: ", product);
-    console.log("cartItems before add to cart: ", cartItems);
     if (quantity > 0) {
-      dispatch(addToCart(cartItems));
-      dispatch(
-        addToCartAPI({
-          productId: cartItems.productId,
-          quantity: cartItems.cartQuantity,
-          productColor: colorImage.color,
-          productSize,
-        }),
-      );
+      try {
+        await dispatch(
+          addToCartAPI({
+            productId: cartItems.productId,
+            quantity: cartItems.cartQuantity,
+            productColor: colorImage.color,
+            productSize,
+          }),
+        ).unwrap();
+        dispatch(addToCart(cartItems));
+      } catch (error) {
+        toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
     } else {
       alert("Please select minimum 1 quantity");
     }

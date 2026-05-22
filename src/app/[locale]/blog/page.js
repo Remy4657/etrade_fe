@@ -3,7 +3,7 @@ import BlogOne from "@/components/blog/BlogOne";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Pagination from "@/components/elements/Pagination";
 import Section from "@/components/elements/Section";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
@@ -80,7 +80,7 @@ const BlogPage = ({ searchParams }) => {
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

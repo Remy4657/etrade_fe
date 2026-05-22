@@ -5,7 +5,8 @@ export const authApi = {
     REGISTER: "/auth/register",
     LOGIN: "/auth/login",
     GET_ME: "/auth/me",
-    LOGOUT: "/auth/logout"
+    LOGOUT: "/auth/logout",
+    REFRESH_TOKEN: "/auth/refresh"
 };
 export const cartApi = {
     ADD_TO_CART: "/cart/add",

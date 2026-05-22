@@ -3,7 +3,7 @@ import { toast, Bounce } from 'react-toastify';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import AuthService from "@/services/auth.service"
+import authService from "@/services/auth.service"
 
 const SignUp = () => {
     const router = useRouter();
@@ -16,7 +16,7 @@ const SignUp = () => {
 
     const onSubmit = async (data, e) => {
         setSignupData(data);
-        const res = await AuthService.register({ ...data })
+        const res = await authService.register({ ...data })
         if (res.data.code === 200) {
             toast.success(res.data.message, {
                 position: "top-right",

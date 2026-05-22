@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { slugify } from "@/utils";
 import { removeCartItem, cartQuantityIncrease, cartQuantityDecrease, cartClear, updateCartAmount } from "@/store/slices/productSlice";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import { removeFromCartAPI, updateProductCartQuantity } from "@/store/slices/productSlice";
 import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
@@ -184,7 +184,7 @@ const Cart = () => {
                     </div>
                 </div>
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

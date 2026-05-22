@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from "react-redux";
 import Section from "@/components/elements/Section";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import ServiceTwo from "@/components/services/ServiceTwo";
 import { addToOrder } from '@/store/slices/productSlice';
@@ -256,7 +256,7 @@ const Checkout = () => {
                 </Section>
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

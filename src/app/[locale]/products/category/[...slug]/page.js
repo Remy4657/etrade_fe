@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
-import ProductOne from "@/components/product/ProductOne";
+import Product from "@/components/product/Product";
 import ProductsData from "@/data/Products";
 import { slugify, unSlugify } from "@/utils";
 
@@ -25,7 +25,7 @@ const CategoryProduct = ({ params }) => {
                 <div className="row row--15">
                     {cateProduct.length > 0 ? cateProduct?.map((data) => (
                         <div className="col-xl-3 col-lg-4 col-sm-6" key={data.id}>
-                            <ProductOne product={data} />
+                            <Product product={data} />
                         </div>
                     )) : <h2 className="text-center">No Category Products Found</h2>}
                 </div>

@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { getPriceRange, slugify } from "@/utils";
 import { Category } from "@/data/ProductCategory";
-import ProductOne from "@/components/product/ProductOne";
+import Product from "@/components/product/Product";
 import ProductsData from "@/data/Products";
 import Section from "@/components/elements/Section";
 import { ColorAttribute } from "@/data/ProductAttribute";
@@ -127,7 +127,7 @@ const ShopNoSidebar = () => {
             <div className="row row--15">
                 {filteredProducts.length > 0 ? filteredProducts.slice(0, productShow)?.map((data) => (
                     <div className="col-xl-3 col-lg-4 col-sm-6" key={data.id}>
-                        <ProductOne product={data} pClass="mt--40" />
+                        <Product product={data} pClass="mt--40" />
                     </div>
                 )) : <h4 className="text-center pt--30">No Data Found</h4>}
             </div>
