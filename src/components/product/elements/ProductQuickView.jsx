@@ -1,30 +1,59 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, addToQuickView, addToWishlist } from "@/store/slices/productSlice";
+import {
+  addToCart,
+  addToCartAPI,
+  addToQuickView,
+  addToWishlist,
+} from "@/store/slices/productSlice";
 import ProductRating from "./ProductRating";
 import SlickSlider from "@/components/elements/SlickSlider";
 import ProductDiscountLabel from "./ProductDiscountLabel";
+import { toast } from "react-toastify";
 
 const ProductQuickView = () => {
   const dispatch = useDispatch();
-  const [quantity, setquantity] = useState(0);
+  const [quantity, setquantity] = useState(1);
   const [colorImage, setColorImage] = useState("");
   const [productSize, setProductSize] = useState("");
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
-  const getQuickViewItem = useSelector((state) => state.productData.quickViewItems);
+  const getQuickViewItem = useSelector(
+    (state) => state.productData.quickViewItems,
+  );
   const getWishlist = useSelector((state) => state.productData.wishlistItems);
-  const isWishlistAdded = getWishlist.filter((data) => data.id === getQuickViewItem.id);
+  const isWishlistAdded = getWishlist.filter(
+    (data) => data.id === getQuickViewItem.id,
+  );
 
-  const handleAddToCart = (product) => {
-    let cartItems = { ...product, cartQuantity: quantity, productColor: colorImage.color, productSize: productSize };
+  const handleAddToCart = async (product) => {
+    const { id, ...restProduct } = product;
+    let cartItems = {
+      ...restProduct,
+      productId: id,
+      cartQuantity: quantity,
+      productColor: colorImage.color,
+      productSize: productSize,
+    };
     if (quantity > 0) {
-      dispatch(addToCart(cartItems));
+      try {
+        await dispatch(
+          addToCartAPI({
+            productId: cartItems.productId,
+            quantity: cartItems.cartQuantity,
+            productColor: colorImage.color,
+            productSize,
+          }),
+        ).unwrap();
+        dispatch(addToCart(cartItems));
+      } catch (error) {
+        toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
     } else {
-      alert("Please select minimum 1 quantity")
+      alert("Please select minimum 1 quantity");
     }
   };
 
@@ -33,24 +62,26 @@ const ProductQuickView = () => {
   };
 
   const decrementQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setquantity(quantity - 1);
     }
-  }
+  };
   const incrementQuantity = () => {
     setquantity(quantity + 1);
-  }
+  };
 
   const quickViewHandler = () => {
-    dispatch(addToQuickView({
-      viewItem: null,
-      quickView: false
-    }));
+    dispatch(
+      addToQuickView({
+        viewItem: null,
+        quickView: false,
+      }),
+    );
   };
 
   const productSizeHandler = (size) => {
     setProductSize(size);
-  }
+  };
 
   const colorImageHandler = (color) => {
     setColorImage(color);
@@ -68,10 +99,7 @@ const ProductQuickView = () => {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <button
-                onClick={() => quickViewHandler()}
-                className="btn-close"
-              >
+              <button onClick={() => quickViewHandler()} className="btn-close">
                 <i className="far fa-times" />
               </button>
             </div>
@@ -91,19 +119,23 @@ const ProductQuickView = () => {
                           asNavFor={nav2}
                           ref={(slider1) => setNav1(slider1)}
                         >
-                          {getQuickViewItem.gallery ? getQuickViewItem.gallery?.map((data, index) => (
-                            <div className="thumbnail" key={index}>
-                              <Image
-                                src={data}
-                                width={446}
-                                height={446}
-                                alt="Gallery Thumbnail"
-                              />
-                              {getQuickViewItem.salePrice &&
-                                <ProductDiscountLabel discount={getQuickViewItem} />
-                              }
-                            </div>
-                          )) :
+                          {getQuickViewItem.gallery ? (
+                            getQuickViewItem.gallery?.map((data, index) => (
+                              <div className="thumbnail" key={index}>
+                                <Image
+                                  src={data}
+                                  width={446}
+                                  height={446}
+                                  alt="Gallery Thumbnail"
+                                />
+                                {getQuickViewItem.salePrice && (
+                                  <ProductDiscountLabel
+                                    discount={getQuickViewItem}
+                                  />
+                                )}
+                              </div>
+                            ))
+                          ) : (
                             <div className="thumbnail">
                               <Image
                                 src={getQuickViewItem.thumbnail}
@@ -111,11 +143,13 @@ const ProductQuickView = () => {
                                 height={446}
                                 alt="Gallery Thumbnail"
                               />
-                              {getQuickViewItem.salePrice &&
-                                <ProductDiscountLabel discount={getQuickViewItem} />
-                              }
+                              {getQuickViewItem.salePrice && (
+                                <ProductDiscountLabel
+                                  discount={getQuickViewItem}
+                                />
+                              )}
                             </div>
-                          }
+                          )}
                         </SlickSlider>
                       </div>
                       <div className="col-lg-2 order-lg-1">
@@ -132,21 +166,23 @@ const ProductQuickView = () => {
                             {
                               breakpoint: 992,
                               settings: {
-                                vertical: false
-                              }
+                                vertical: false,
+                              },
                             },
                           ]}
                         >
-                          {getQuickViewItem.gallery ? getQuickViewItem.gallery?.map((data, index) => (
-                            <div className="small-thumb-img" key={index}>
-                              <Image
-                                src={data}
-                                width={73}
-                                height={71}
-                                alt="Gallery Thumbnail"
-                              />
-                            </div>
-                          )) :
+                          {getQuickViewItem.gallery ? (
+                            getQuickViewItem.gallery?.map((data, index) => (
+                              <div className="small-thumb-img" key={index}>
+                                <Image
+                                  src={data}
+                                  width={73}
+                                  height={71}
+                                  alt="Gallery Thumbnail"
+                                />
+                              </div>
+                            ))
+                          ) : (
                             <div className="small-thumb-img">
                               <Image
                                 src={getQuickViewItem.thumbnail}
@@ -155,7 +191,7 @@ const ProductQuickView = () => {
                                 alt="Gallery Thumbnail"
                               />
                             </div>
-                          }
+                          )}
                         </SlickSlider>
                       </div>
                     </div>
@@ -173,7 +209,7 @@ const ProductQuickView = () => {
                             ? getQuickViewItem.salePrice
                             : getQuickViewItem.price}
                         </span>
-                        {getQuickViewItem.shortDes &&
+                        {getQuickViewItem.shortDes && (
                           <>
                             <ul
                               className="product-meta"
@@ -185,9 +221,9 @@ const ProductQuickView = () => {
                               {getQuickViewItem.shortDes.text}
                             </p>
                           </>
-                        }
+                        )}
                         <div className="product-variations-wrapper">
-                          {getQuickViewItem.colorAttribute &&
+                          {getQuickViewItem.colorAttribute && (
                             <div className="product-variation">
                               <h6 className="title">Colors:</h6>
                               <div className="color-variant-wrapper">
@@ -195,10 +231,11 @@ const ProductQuickView = () => {
                                   {getQuickViewItem.colorAttribute?.map(
                                     (data, index) => (
                                       <li
-                                        className={`${data.color} ${colorImage.color === data.color
-                                          ? "active"
-                                          : ""
-                                          }`}
+                                        className={`${data.color} ${
+                                          colorImage.color === data.color
+                                            ? "active"
+                                            : ""
+                                        }`}
                                         key={index}
                                         onClick={() => colorImageHandler(data)}
                                       >
@@ -206,61 +243,73 @@ const ProductQuickView = () => {
                                           <span className="color" />
                                         </span>
                                       </li>
-                                    )
+                                    ),
                                   )}
                                 </ul>
                               </div>
                             </div>
-                          }
-                          {getQuickViewItem.sizeAttribute &&
+                          )}
+                          {getQuickViewItem.sizeAttribute && (
                             <div className="product-variation product-size-variation">
                               <h6 className="title">Size:</h6>
                               <ul className="range-variant">
                                 {getQuickViewItem.sizeAttribute?.map(
                                   (data, index) => (
-                                    <li key={index} className={productSize === data ? "active" : ""} onClick={() => productSizeHandler(data)}>{data}</li>
-                                  )
+                                    <li
+                                      key={index}
+                                      className={
+                                        productSize === data ? "active" : ""
+                                      }
+                                      onClick={() => productSizeHandler(data)}
+                                    >
+                                      {data}
+                                    </li>
+                                  ),
                                 )}
                               </ul>
                             </div>
-                          }
+                          )}
                         </div>
                         <div className="product-action-wrapper d-flex-center">
-                          {getQuickViewItem.pCate !== "NFT" &&
-                            <div className="pro-qty">
-                              <span
-                                className="qtybtn"
-                                onClick={decrementQuantity}
-                              >
-                                -
-                              </span>
-                              <input
-                                type="number"
-                                className="quantity-input"
-                                value={quantity}
-                                readOnly
-                              />
-                              <span
-                                className="qtybtn"
-                                onClick={incrementQuantity}
-                              >
-                                +
-                              </span>
-                            </div>
-                          }
+                          <div className="pro-qty">
+                            <span
+                              className="qtybtn"
+                              onClick={decrementQuantity}
+                            >
+                              -
+                            </span>
+                            <input
+                              type="number"
+                              className="quantity-input"
+                              value={quantity}
+                              readOnly
+                            />
+                            <span
+                              className="qtybtn"
+                              onClick={incrementQuantity}
+                            >
+                              +
+                            </span>
+                          </div>
+
                           <ul className="product-action d-flex-center mb--0">
                             <li className="add-to-cart">
-                              {getQuickViewItem.pCate !== "NFT" ?
-                                <button disabled={(getQuickViewItem.colorAttribute && !colorImage) || (getQuickViewItem.sizeAttribute && !productSize) ? true : false}
-                                  onClick={() =>
-                                    handleAddToCart(getQuickViewItem)
-                                  }
-                                  className="axil-btn btn-bg-primary"
-                                >
-                                  Add to Cart
-                                </button>
-                                :
-                                <Link className="axil-btn btn-bg-primary" href={`/products/${getQuickViewItem.id}`}>Buy Product</Link>}
+                              <button
+                                disabled={
+                                  (getQuickViewItem.colorAttribute &&
+                                    !colorImage) ||
+                                  (getQuickViewItem.sizeAttribute &&
+                                    !productSize)
+                                    ? true
+                                    : false
+                                }
+                                onClick={() =>
+                                  handleAddToCart(getQuickViewItem)
+                                }
+                                className="axil-btn btn-bg-primary"
+                              >
+                                Add to Carttt
+                              </button>
                             </li>
                             <li className="wishlist">
                               <button
@@ -269,7 +318,13 @@ const ProductQuickView = () => {
                                   handleAddToWishlist(getQuickViewItem)
                                 }
                               >
-                                <i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} />
+                                <i
+                                  className={
+                                    isWishlistAdded.length === 1
+                                      ? "fas fa-heart"
+                                      : "far fa-heart"
+                                  }
+                                />
                               </button>
                             </li>
                           </ul>
@@ -289,6 +344,6 @@ const ProductQuickView = () => {
       ></div>
     </>
   );
-}
+};
 
 export default ProductQuickView;

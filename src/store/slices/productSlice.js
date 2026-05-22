@@ -29,9 +29,9 @@ export const addToCartAPI = createAsyncThunk(
             thunkAPI.dispatch(getCurrentCart());
             return res.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(
-                err.response?.data || "Error system"
-            );
+            // ✅ Lấy message từ error object
+            const errorMessage = error.message || error.response?.data || "Error system";
+            throw new Error(errorMessage);
         }
     }
 );
@@ -43,7 +43,7 @@ export const removeFromCartAPI = createAsyncThunk(
             return res.data;
         } catch (error) {
             return rejectWithValue(
-                err.response?.data || "Error system"
+                error.response?.data || "Error system"
             );
         }
     }

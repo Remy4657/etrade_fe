@@ -1,7 +1,7 @@
 'use client';
 import { useSelector } from "react-redux";
 import Section from "@/components/elements/Section";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 
 const OrderReceived = () => {
@@ -121,7 +121,7 @@ const OrderReceived = () => {
                     }
                 </Section>
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

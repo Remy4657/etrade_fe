@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeWishlistItem } from "@/store/slices/productSlice";
-import FooterOne from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 
 const Wishlist = () => {
     const dispatch = useDispatch();
@@ -78,12 +78,12 @@ const Wishlist = () => {
                                     </table>
                                 </div>
                             </>
-                            : <h4 className="title text-center">There is no Wishlist</h4>
+                            : <h4 className="title text-center">There is no Wishlistt</h4>
                         }
                     </div>
                 </div>
             </main>
-            <FooterOne />
+            <Footer />
         </>
     );
 }

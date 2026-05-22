@@ -59,6 +59,7 @@ export const store = configureStore({
                     PURGE,
                     REGISTER,
                 ],
+                ignoredActionPaths: ["meta.config", "meta.request"],
             },
         }),
 });

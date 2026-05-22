@@ -2,7 +2,7 @@ import BlogOne from "@/components/blog/BlogOne";
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
 import SlickSlider from "@/components/elements/SlickSlider";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
@@ -69,7 +69,7 @@ const BlogDetails = async ({ params }) => {
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

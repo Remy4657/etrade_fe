@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import ServiceTwo from "@/components/services/ServiceTwo";
 
@@ -38,7 +38,7 @@ const NotFound = () => {
                 </section>
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

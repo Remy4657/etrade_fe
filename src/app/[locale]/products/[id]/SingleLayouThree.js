@@ -13,7 +13,8 @@ import { getDetailProduct, getProductCategory } from "@/services/product.service
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
 import ProductsData from "@/data/Products";
-import ProductOne from "@/components/product/ProductOne";
+import Product from "@/components/product/Product";
+import { toast } from "react-toastify";
 
 const SingleLayouThree = ({ idProduct }) => {
     const router = useRouter()
@@ -74,10 +75,10 @@ const SingleLayouThree = ({ idProduct }) => {
         const fetchProductCategory = async () => {
             try {
                 const res = await getProductCategory(categoryProductDetail);
+
                 setListProductCategory(res?.data)
-                return
             } catch (error) {
-                return
+                console.error("Fetch product category failed:", error);
             }
         };
         if (categoryProductDetail) {
@@ -86,7 +87,7 @@ const SingleLayouThree = ({ idProduct }) => {
         }
     }, [categoryProductDetail]);
 
-    const handleAddToCart = (cartAddedData) => {
+    const handleAddToCart = async (cartAddedData) => {
         if (!userData?.login) {
             router.push("/sign-in");
             return;
@@ -101,14 +102,18 @@ const SingleLayouThree = ({ idProduct }) => {
             product.productId = product.id;
             delete product.id;
             // end: rename id to productId
+            try {
+                await dispatch(addToCartAPI({
+                    productId: product.productId,
+                    quantity: product.cartQuantity,
+                    productColor: colorImage.color,
+                    productSize
+                })).unwrap()
+                dispatch(addToCart(product));
+            } catch (error) {
+                toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+            }
 
-            dispatch(addToCart(product));
-            dispatch(addToCartAPI({
-                productId: product.productId,
-                quantity: product.cartQuantity,
-                productColor: colorImage.color,
-                productSize
-            }))
         } else {
             alert("Please select minimum 1 quantity")
         }
@@ -119,7 +124,7 @@ const SingleLayouThree = ({ idProduct }) => {
     };
 
     const decrementQuantity = () => {
-        if (quantity > 0) {
+        if (quantity > 1) {
             setquantity(quantity - 1);
         }
     }
@@ -301,7 +306,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                             </div>
                                             <ul className="product-action d-flex-center mb--0">
                                                 <li className="add-to-cart">
-                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">bAdd to Cart</button>
+                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Add to Cartt</button>
                                                 </li>
                                                 <li className="wishlist">
                                                     <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)}><i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} /></button>
@@ -507,7 +512,7 @@ const SingleLayouThree = ({ idProduct }) => {
                     ]}
                 >
                     {listProductCategory?.slice(0, 10)?.map((data) => (
-                        <ProductOne product={data} key={data.id} />
+                        <Product product={data} key={data.id} />
                     ))}
                 </SlickSlider>
             </Section>

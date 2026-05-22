@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  reactStrictMode: false,
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
     return config;

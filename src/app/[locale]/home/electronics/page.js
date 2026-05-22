@@ -6,14 +6,13 @@ import SectionTitle from "@/components/elements/SectionTitle";
 import SlickSlider from "@/components/elements/SlickSlider";
 import BannerOne from "@/components/hero-banner/BannerOne";
 import PosterOne from "@/components/poster/PosterOne";
-import ProductOne from "@/components/product/ProductOne";
+import Product from "@/components/product/Product";
 import TestimonialOne from "@/components/testimonial/TestimonialOne";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import ServiceTwo from "@/components/services/ServiceTwo";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import WhyChoose from "@/components/why-choose/WhyChoose";
-import ProductTwo from "@/components/product/ProductTwo";
-import ProductListOne from "@/components/product/ProductListOne";
+import ProductList from "@/components/product/ProductList";
 import { mapInSlices, slugify } from "@/utils";
 import PosterTwo from "@/components/poster/PosterTwo";
 import { useEffect, useState } from "react";
@@ -58,7 +57,7 @@ const HomeElectronics = () => {
                 const res = await getProductNewest()
                 setListProductNewest(res?.data)
             } catch (error) {
-
+                console.log(error)
             }
 
         }
@@ -89,7 +88,7 @@ const HomeElectronics = () => {
                                 <div className="row row--15">
                                     {product?.map((data) => (
                                         <div className="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30" key={data.id}>
-                                            <ProductOne product={data} />
+                                            <Product product={data} />
                                         </div>
                                     ))}
                                 </div>
@@ -140,7 +139,7 @@ const HomeElectronics = () => {
                         ]}
                     >
                         {listProductNewest?.map((data) => (
-                            <ProductTwo product={data} key={data.id} />
+                            <Product product={data} key={data.id} />
                         ))}
 
                     </SlickSlider>
@@ -157,7 +156,7 @@ const HomeElectronics = () => {
                     <div className="row row-cols-xl-2 row-cols-1 row--15">
                         {listProductBestseller?.map((data) => (
                             <div className="col" key={data.id}>
-                                <ProductListOne product={data} />
+                                <ProductList product={data} />
                             </div>
                         ))}
                     </div>
@@ -167,7 +166,7 @@ const HomeElectronics = () => {
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

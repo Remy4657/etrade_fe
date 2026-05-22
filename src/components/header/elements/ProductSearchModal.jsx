@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -6,7 +6,6 @@ import ProductThumbnail from "@/components/product/elements/ProductThumbnail";
 import ProductTitle from "@/components/product/elements/ProductTitle";
 import ProductPrice from "@/components/product/elements/ProductPrice";
 import ProductRating from "@/components/product/elements/ProductRating";
-import ActionButtons from "@/components/product/elements/ActionButtons";
 
 const ProductSearchModal = (props) => {
   const { listProducts } = useSelector((state) => state.productData);
@@ -16,7 +15,7 @@ const ProductSearchModal = (props) => {
   const SearchInputHandler = (inputValue) => {
     if (inputValue.length > 0) {
       let matchingData = listProducts.filter((product) =>
-        product.title.toLowerCase().includes(inputValue.toLowerCase())
+        product.title.toLowerCase().includes(inputValue.toLowerCase()),
       );
       setProductQuery(matchingData);
     } else {
@@ -69,7 +68,6 @@ const ProductSearchModal = (props) => {
                         <ProductTitle productTitle={data} titleTag="h6" />
                       </div>
                       <ProductPrice price={data} />
-                      <ActionButtons productAction={data} wishlistBtn cartBtn={false} />
                     </div>
                   </div>
                 ))}

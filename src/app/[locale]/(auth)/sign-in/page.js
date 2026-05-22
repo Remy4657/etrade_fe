@@ -1,8 +1,9 @@
 'use client';
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast, Bounce } from 'react-toastify';
+import { toast, Flip } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
 import { useSession, signIn } from "next-auth/react";
@@ -32,12 +33,12 @@ const SignIn = () => {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
+                closeOnClick: true,
+                pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                transition: Bounce,
+                transition: Flip,
             });
             router.push("/");
         } else {
@@ -100,17 +101,15 @@ const SignIn = () => {
                                 gap: "10px"
                             }}
                             onClick={() => handleLoginGoogle()}>
-                            <img
-                                src="https://developers.google.com/identity/images/g-logo.png"
+                            <Image
+                                src="/images/logo/Google.png"
                                 alt="Google"
-                                style={{
-                                    width: "22px",
-                                    height: "22px"
-                                }}
+                                width={20}
+                                height={20}
+
                             />
                             Continue with Google
                         </button>
-                        {/* <button onClick={() => signIn("google")} className="axil-btn w-100">Sign In by Google</button> */}
                     </div>
                 </form>
             </div>

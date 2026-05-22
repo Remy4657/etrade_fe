@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
 import SlickSlider from "@/components/elements/SlickSlider";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
@@ -78,7 +78,7 @@ const AboutUs = () => {
                     </div>
 
                 </section>
-                <section className="axil-team-area axil-section-gap bg-wild-sand">
+                {/* <section className="axil-team-area axil-section-gap bg-wild-sand">
                     <div className="team-left-fullwidth">
                         <div className="container ml--xxl-0">
                             <SectionTitle
@@ -111,7 +111,7 @@ const AboutUs = () => {
                             </SlickSlider>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 <section className="axil-about-area about-style-2">
                     <div className="container">
                         {AboutFeatures?.map((data, index) => (
@@ -141,7 +141,7 @@ const AboutUs = () => {
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

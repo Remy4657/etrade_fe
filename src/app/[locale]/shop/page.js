@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
@@ -12,11 +12,11 @@ const Shop = ({ searchParams }) => {
             {/* <HeaderFive headerCampaign /> */}
             <Breadcrumb activeItem="Shop" title="Explore All Products" />
             <main className="main-wrapper">
-                {searchParams.layout !== "no-sidebar" ? <ShopNoSidebar /> : <ShopWithSidebar />}
+                <ShopNoSidebar />
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { usePathname, useRouter } from "next/navigation";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import FooterTwo from "@/components/footer/FooterTwo";
+import Footer from "@/components/footer/Footer";
 import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import ServiceTwo from "@/components/services/ServiceTwo";
@@ -84,7 +84,7 @@ const DahsboardLayout = ({ children }) => {
                 <NewsLetter />
                 <ServiceTwo />
             </main>
-            <FooterTwo />
+            <Footer />
         </>
     );
 }

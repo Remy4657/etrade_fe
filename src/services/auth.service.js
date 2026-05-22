@@ -1,7 +1,7 @@
 import axiosClient from "@/utils/axios";
 import { authApi } from "@/api/api";
 
-const AuthService = {
+const authService = {
     register: (data) => {
         return axiosClient.post(authApi.REGISTER, { ...data });
     },
@@ -13,7 +13,10 @@ const AuthService = {
     },
     logout: () => {
         return axiosClient.post(authApi.LOGOUT)
+    },
+    refreshToken: () => {
+        return axiosClient.post(authApi.REFRESH_TOKEN)
     }
 };
 
-module.exports = AuthService
+module.exports = authService

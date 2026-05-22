@@ -1,47 +1,47 @@
 const FooterData = {
     footerLink: [
         {
-            label: "Account",
+            label: "account",
             linkList: [
                 {
-                    name: "My Account",
+                    name: "myAccount",
                     url: "/dashboard"
                 },
                 {
-                    name: "Login",
+                    name: "login",
                     url: "/sign-in"
                 },
                 {
-                    name: "Cart",
+                    name: "cart",
                     url: "/cart"
                 },
                 {
-                    name: "Wishlist",
+                    name: "wishlist",
                     url: "/wishlist"
                 },
                 {
-                    name: "Shop",
+                    name: "shop",
                     url: "/shop"
                 }
             ]
         },
         {
-            label: "Quick Link",
+            label: "quickLink",
             linkList: [
                 {
-                    name: "About Us",
+                    name: "aboutUs",
                     url: "/about"
                 },
                 {
-                    name: "Privacy Policy",
+                    name: "privacyPolicy",
                     url: "/privacy-policy"
                 },
                 {
-                    name: "Terms Of Use",
+                    name: "termsOfUse",
                     url: "/terms-of-use"
                 },
                 {
-                    name: "Contact",
+                    name: "contact",
                     url: "/contact"
                 },
             ]
@@ -74,7 +74,7 @@ const FooterData = {
         phone: "(+01) 850-315-5862"
     },
     footerAppInfo: {
-        title: "tetxt sgd  sds sdgjs",
+        title: "Ứng dụng di động của chúng tôi",
         qrCode: "/images/others/qr.png",
         appStoreLink: "https://apps.apple.com/",
         appStoreLogo: "/images/others/app-store.png",
