@@ -1,8 +1,7 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import ServiceTwo from "@/components/services/ServiceTwo";
+import CustomerService from "@/components/services/CustomerService";
 import { fetchMarkdownFile } from "@/utils/api";
 import markdownToHtml from "@/utils/markdownToHtml";
 
@@ -13,7 +12,6 @@ const PrivacyPolicy = async () => {
 
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="Pages" title="Privacy Policy" />
                 <Section>
@@ -26,7 +24,7 @@ const PrivacyPolicy = async () => {
                         </div>
                     </div>
                 </Section>
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

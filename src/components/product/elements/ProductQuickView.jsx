@@ -1,6 +1,6 @@
 "use client";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,9 +13,11 @@ import ProductRating from "./ProductRating";
 import SlickSlider from "@/components/elements/SlickSlider";
 import ProductDiscountLabel from "./ProductDiscountLabel";
 import { toast } from "react-toastify";
+import { logout } from "@/store/slices/authSlice";
 
 const ProductQuickView = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [quantity, setquantity] = useState(1);
   const [colorImage, setColorImage] = useState("");
   const [productSize, setProductSize] = useState("");
@@ -50,7 +52,10 @@ const ProductQuickView = () => {
         ).unwrap();
         dispatch(addToCart(cartItems));
       } catch (error) {
+        await dispatch(logout());
+
         toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+        router.push("/sign-in");
       }
     } else {
       alert("Please select minimum 1 quantity");

@@ -9,7 +9,7 @@ import PosterOne from "@/components/poster/PosterOne";
 import Product from "@/components/product/Product";
 import TestimonialOne from "@/components/testimonial/TestimonialOne";
 import Footer from "@/components/footer/Footer";
-import ServiceTwo from "@/components/services/ServiceTwo";
+import CustomerService from "@/components/services/CustomerService";
 import NewsLetter from "@/components/newsletter/NewsLetter";
 import WhyChoose from "@/components/why-choose/WhyChoose";
 import ProductList from "@/components/product/ProductList";
@@ -164,7 +164,7 @@ const HomeElectronics = () => {
                 <WhyChoose />
                 <PosterTwo column="mb--30" />
                 <NewsLetter />
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

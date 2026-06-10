@@ -2,7 +2,7 @@ import axios from "axios";
 import { getSession } from "next-auth/react";
 import authService from "@/services/auth.service";
 import { signOut } from "next-auth/react";
-import { toast } from "react-toastify";
+
 const axiosClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
     headers: {
@@ -11,11 +11,11 @@ const axiosClient = axios.create({
     withCredentials: true,
 });
 axiosClient.interceptors.request.use(
-    async (config) => { // Trước khi gửi request, thêm token vào header nếu có
-        const session = await getSession();
-        if (session?.access_token) {
-            config.headers.Authorization = `Bearer ${session.access_token}`;
-        }
+    async (config) => {
+        // const session = await getSession();
+        // if (session?.access_token) {
+        //     config.headers.Authorization = `Bearer ${session.access_token}`;
+        // }
 
         return config;
     },
@@ -37,22 +37,10 @@ axiosClient.interceptors.response.use(
             originalRequest.url.includes("/auth/login") ||
             originalRequest.url.includes("/auth/register") ||
             originalRequest.url.includes("/auth/refresh")
-
         ) {
             return Promise.reject(error);
         }
-        // if (
-        //     originalRequest.url.includes("/auth/refresh")
-        // ) {
-        // toast.error("Hết phiên đăng nhập, vui lòng đăng nhập lại");
-        // await authService.logout(); // sign out ở server
-        // await signOut({ redirect: false }) // sign out ở client (xóa session cookie),
-        // window.location.href = "/sign-in";
-        //     return Promise.reject(error);
-        // }
-
         const status = error.response?.status;
-        // const message = error.response?.data?.message || "Có lỗi xảy ra";
 
         switch (status) {
             case 403:

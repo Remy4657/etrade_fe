@@ -1,17 +1,15 @@
 'use client';
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
-import ServiceTwo from "@/components/services/ServiceTwo";
+import CustomerService from "@/components/services/CustomerService";
 
 const SingleProductLayout = ({ children }) => {
     return (
         <>
-            {/* <HeaderFive headerSlider/> */}
             <main className="main-wrapper">
                 {children}
                 <NewsLetter />
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

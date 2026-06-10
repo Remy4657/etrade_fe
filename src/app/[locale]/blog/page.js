@@ -4,14 +4,10 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Pagination from "@/components/elements/Pagination";
 import Section from "@/components/elements/Section";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
-import ServiceTwo from "@/components/services/ServiceTwo";
-import ArchiveWidget from "@/components/widget/ArchiveWidget";
+import CustomerService from "@/components/services/CustomerService";
 import PostWidget from "@/components/widget/PostWidget";
-import ProductWidget from "@/components/widget/ProductWidget";
 import SearchWidget from "@/components/widget/SearchWidget";
-import TagsWidget from "@/components/widget/TagsWidget";
 import { getAllPosts } from "@/utils/api";
 
 const BlogPage = ({ searchParams }) => {
@@ -32,19 +28,10 @@ const BlogPage = ({ searchParams }) => {
         'views'
     ]);
 
-    const breadCrumbTitle = () => {
-        if (searchParams.blog === "list") {
-            return "Blog List";
-        } else {
-            return "Blog Grid";
-        }
-    }
-
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
-                <Breadcrumb activeItem="Blogs" title={breadCrumbTitle()} />
+                <Breadcrumb activeItem="Blogs" />
                 <Section>
                     <div className={`row ${searchParams.blog === "list" ? "row--25" : ""}`}>
                         <div className={`col-lg-8 ${searchParams.blog === "list" ? "axil-post-wrapper" : ""}`}>
@@ -70,15 +57,12 @@ const BlogPage = ({ searchParams }) => {
                             <aside className="axil-sidebar-area">
                                 <SearchWidget />
                                 <PostWidget />
-                                <ProductWidget />
-                                <ArchiveWidget />
-                                <TagsWidget />
                             </aside>
                         </div>
                     </div>
                 </Section>
                 <NewsLetter />
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

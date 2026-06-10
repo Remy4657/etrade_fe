@@ -3,31 +3,6 @@ const HeaderMenu = [
         name: "Home",
         url: "/",
         hasChildren: false,
-        children: [
-            {
-                name: "Electronics",
-                url: "/home/electronics"
-            },
-
-            {
-                name: "Jewellery",
-                url: "/home/jewellery"
-            },
-
-            {
-                name: "Fashion",
-                url: "/home/fashion"
-            },
-
-            {
-                name: "Furniture",
-                url: "/home/furniture"
-            },
-            {
-                name: "NFT",
-                url: "/home/nft"
-            },
-        ]
     },
     {
         name: "Shop",
@@ -64,33 +39,7 @@ const HeaderMenu = [
             }
         ]
     },
-    // {
-    //     name: "Pages",
-    //     url: "#",
-    //     hasChildren: false,
-    //     children: [
-    //         {
-    //             name: "Wishlist",
-    //             url: "/wishlist"
-    //         },
-    //         {
-    //             name: "Cart",
-    //             url: "/cart"
-    //         },
-    //         {
-    //             name: "Sign Up",
-    //             url: "/sign-up"
-    //         },
-    //         {
-    //             name: "Privacy Policy",
-    //             url: "/privacy-policy"
-    //         },
-    //         {
-    //             name: "Coming Soon",
-    //             url: "/coming-soon"
-    //         },
-    //     ]
-    // },
+
     {
         name: "About",
         url: "/about",
@@ -99,38 +48,9 @@ const HeaderMenu = [
     },
     {
         name: "Blog",
-        url: "/blog/how-to-generate-blog-ideas-are-great-for-businesses-that-sell-both-b2b-and-d2c",
+        url: "/blog",
         hasChildren: false,
-        // children: [
-        //     {
-        //         name: "Blog Grid",
-        //         url: "/blog"
-        //     },
-        //     {
-        //         name: "Blog List",
-        //         url: "/blog?blog=list"
-        //     },
-        //     {
-        //         name: "Standard Post",
-        //         url: "/blog/important-updates-for-listing-and-delisting-your-nfts"
-        //     },
-        //     {
-        //         name: "Gallery Post",
-        //         url: "/blog/apple-presents-app-best-of-2020-winners"
-        //     },
-        //     {
-        //         name: "Video Post",
-        //         url: "/blog/keeping-yourself-safe-when-buying-nfts-on-etrade"
-        //     },
-        //     {
-        //         name: "Audio Post",
-        //         url: "/blog/how-to-generate-blog-ideas-are-great-for-businesses-that-sell-both-b2b-and-d2c"
-        //     },
-        //     {
-        //         name: "Quote Post",
-        //         url: "/blog/an-oral-history-of-the-aim-away-message-by-the-people-who-were-there"
-        //     }
-        // ]
+
     },
     {
         name: "Contact",

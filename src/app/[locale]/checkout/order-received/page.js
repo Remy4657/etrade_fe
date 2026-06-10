@@ -2,14 +2,12 @@
 import { useSelector } from "react-redux";
 import Section from "@/components/elements/Section";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
 
 const OrderReceived = () => {
     const orders = useSelector((state) => state.productData.orderItems);
     const latestOrder = orders[orders.length - 1];
     return (
         <>
-            {/* <HeaderFive /> */}
             <main className="main-wrapper">
                 <Section pClass="order-received">
                     {latestOrder &&

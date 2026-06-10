@@ -4,15 +4,13 @@ import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import Nav from "@/components/header/elements/Nav";
 import LangDropdown from "@/components/header/elements/LangDropdown";
-import CuurencyDropdown from "@/components/header/elements/CurrencyDropdown";
 import HeaderTopNotify from "@/components/header/elements/HeaderTopNotify";
-import HeaderQuickLink from "@/components/header/elements/HeaderQuickLink";
 import HeaderBrand from "@/components/header/elements/HeaderBrand";
 import HeaderActions from "@/components/header/elements/HeaderActions";
 
 import { useTranslations } from "next-intl";
 
-const HeaderOne = () => {
+const Header = () => {
   const axilHeader = useRef();
   const axilPlaceholder = useRef();
   const axilMainmenu = useRef();
@@ -47,9 +45,7 @@ const HeaderOne = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-sm-6">
-              <div className="header-top-dropdown">
-                <CuurencyDropdown />
-              </div>
+              <div className="header-top-dropdown"></div>
             </div>
           </div>
         </div>
@@ -76,4 +72,4 @@ const HeaderOne = () => {
   );
 };
 
-export default HeaderOne;
+export default Header;

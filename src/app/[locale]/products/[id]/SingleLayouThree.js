@@ -15,6 +15,7 @@ import SectionTitle from "@/components/elements/SectionTitle";
 import ProductsData from "@/data/Products";
 import Product from "@/components/product/Product";
 import { toast } from "react-toastify";
+import { logout } from "@/store/slices/authSlice";
 
 const SingleLayouThree = ({ idProduct }) => {
     const router = useRouter()
@@ -111,7 +112,9 @@ const SingleLayouThree = ({ idProduct }) => {
                 })).unwrap()
                 dispatch(addToCart(product));
             } catch (error) {
+                dispatch(logout())
                 toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+                router.push("/sign-in")
             }
 
         } else {

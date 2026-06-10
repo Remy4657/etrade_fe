@@ -47,7 +47,7 @@ export const authOptions = {
     })
   ],
   pages: {
-    signIn: "/sign-in",
+    signIn: "/sign-in", // đường dẫn đến trang đăng nhập tùy chỉnh của bạn
   },
   // callback này sẽ được gọi sau khi người dùng đăng nhập thành công, nó sẽ nhận được token, trigger, user, account, profile, 
   // isNewUser làm tham số, trong đó token là token hiện tại của người dùng, trigger là sự kiện kích hoạt callback (ví dụ: "signIn", 
@@ -73,12 +73,19 @@ export const authOptions = {
         if (res.data) {
           const cookieStore = await cookies();
           const accessToken = res.data.data.accessToken;
+          const refreshToken = res.data.data.refreshToken;
 
           cookieStore.set("access_token", accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             path: "/",
-            maxAge: 60 * 60,
+            maxAge: 24 * 60 * 60, // 1 day
+          });
+          cookieStore.set("refresh_token", refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            path: "/",
+            maxAge: 60 * 60 * 24 * 14, // 14 days
           });
           token.access_token = accessToken;
           token.roles = res.data.data.roles;
@@ -105,8 +112,6 @@ export const authOptions = {
         session.user.picture = token.picture
         session.access_token = token.access_token;
       }
-      //console.log("[nextauth] session: ", session);
-      console.log("SESSION CALLBACK", { session, token })
       return session;
     },
   },

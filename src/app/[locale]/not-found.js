@@ -2,13 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import ServiceTwo from "@/components/services/ServiceTwo";
+import CustomerService from "@/components/services/CustomerService";
 
 const NotFound = () => {
     return (
         <>
-            {/* <HeaderFive headerSlider/> */}
             <main className="main-wrapper">
                 <section className="error-page onepage-screen-area">
                     <div className="container">
@@ -36,7 +34,7 @@ const NotFound = () => {
                         </div>
                     </div>
                 </section>
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

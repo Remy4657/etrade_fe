@@ -4,10 +4,10 @@ export const metadata = {
 	description: 'eTrade Multipurpose eCommerce Nextjs Template',
 }
 
-const HomeOne = () => {
+const Home = () => {
 	return (
 		<HomeElectronics />
 	);
 }
 
-export default HomeOne;
+export default Home;

@@ -2,13 +2,10 @@
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from "react-redux";
 import Section from "@/components/elements/Section";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import ServiceTwo from "@/components/services/ServiceTwo";
 import { addToOrder } from '@/store/slices/productSlice';
 import { getPaymentAll } from "@/services/payment.service"
 import { getShippingAll } from "@/services/shipping.service"
@@ -128,7 +125,6 @@ const Checkout = () => {
     }
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Section pClass="axil-checkout-area">
                     {cartProducts.cartItems.length > 0 ?
@@ -254,7 +250,7 @@ const Checkout = () => {
                         </div>
                     }
                 </Section>
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

@@ -3,19 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
-import SectionTitle from "@/components/elements/SectionTitle";
-import SlickSlider from "@/components/elements/SlickSlider";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
-import ServiceTwo from "@/components/services/ServiceTwo";
+import CustomerService from "@/components/services/CustomerService";
 import { AboutAchievment, AboutFeatures, AboutStore } from "@/data/About";
-import { TeamData } from "@/data/Team";
 
 const AboutUs = () => {
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb
                     activeItem="About Us"
@@ -139,7 +134,7 @@ const AboutUs = () => {
                     </div>
                 </section>
                 <NewsLetter />
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

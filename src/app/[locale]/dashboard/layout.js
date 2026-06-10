@@ -6,9 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
 import NewsLetter from "@/components/newsletter/NewsLetter";
-import ServiceTwo from "@/components/services/ServiceTwo";
+import CustomerService from "@/components/services/CustomerService";
 import { DashboardAsideMenu } from "@/data/Menu";
 import { UserLists } from "@/data/Users";
 import { logout } from "@/store/slices/authSlice";
@@ -31,7 +30,6 @@ const DahsboardLayout = ({ children }) => {
 
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb activeItem="My Account" title="Explore All Products" />
                 <div className="axil-dashboard-area axil-section-gap">
@@ -82,7 +80,7 @@ const DahsboardLayout = ({ children }) => {
                     </div>
                 </div>
                 <NewsLetter />
-                <ServiceTwo />
+                <CustomerService />
             </main>
             <Footer />
         </>

@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { ServiceData } from "@/data/Service";
 
-
-const ServiceTwo = () => {
+const CustomerService = () => {
   return (
     <div className="service-area">
       <div className="container">
@@ -31,4 +30,4 @@ const ServiceTwo = () => {
   );
 };
 
-export default ServiceTwo;
+export default CustomerService;

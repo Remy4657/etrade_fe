@@ -102,7 +102,7 @@ const SignIn = () => {
                             }}
                             onClick={() => handleLoginGoogle()}>
                             <Image
-                                src="/images/logo/Google.png"
+                                src="/images/logo/google.png"
                                 alt="Google"
                                 width={20}
                                 height={20}

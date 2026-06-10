@@ -3,9 +3,9 @@
 /** next */
 import { usePathname } from "next/navigation";
 
-import HeaderOne from "@/components/header/HeaderOne";
+import Header from "@/components/header/Header";
 
-export default function Header() {
+export default function HeaderWrapper() {
   const pathname = usePathname();
   console.log("pathname: ", pathname);
   const isLoginPage =
@@ -15,7 +15,7 @@ export default function Header() {
     <>
       {!isLoginPage ? (
         <>
-          <HeaderOne />
+          <Header />
         </>
       ) : (
         <></>
