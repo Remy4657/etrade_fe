@@ -1,9 +1,7 @@
 'use client';
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast, Flip } from 'react-toastify';
+import { toast, Flip, Bounce } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
 import { useSession, signIn } from "next-auth/react";
@@ -13,11 +11,8 @@ import { getCurrentCart } from "@/store/slices/productSlice";
 
 const SignIn = () => {
     const { data: session, status } = useSession();
-    console.log("session: ", session)
-
     const dispatch = useDispatch();
     const router = useRouter();
-    const [loginError, setLoginError] = useState(false);
     const {
         register,
         handleSubmit,
@@ -53,7 +48,6 @@ const SignIn = () => {
                 theme: "light",
                 transition: Bounce,
             });
-            setLoginError(true);
         }
 
     }
@@ -64,26 +58,33 @@ const SignIn = () => {
     return (
         <AuthLayout bgImage="bg_image--9">
             <div className="axil-signin-form">
-                <h3 className="title">Sign in to eTrade.</h3>
-                <p className="b2 mb--55">Enter your detail below</p>
+                <h3 className="title">Đăng nhập vào MegaDeal.</h3>
+                <p className="b2 mb--55">Chào mừng bạn đến với MegaDeal</p>
                 <form className="singin-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label>Email</label>
                         <input type="email" className="form-control" {...register('email', { required: true })} defaultValue="test2@gmail.com" />
-                        {errors.email && <p className="error">Email is required.</p>}
+                        {errors.email && <p className="error">Email là trường bắt buộc.</p>}
                     </div>
                     <div className="form-group">
-                        <label>Password</label>
-                        <input type="password" className="form-control" {...register('password', { required: true, minLength: 4 })} defaultValue={123456} />
-                        {errors.password && <p className="error">Password is required.</p>}
+                        <label>Mật khẩu</label>
+                        <input type="password" className="form-control" {...register('password', { required: true, minLength: 6 })} defaultValue={123456} />
+                        {errors.password && errors.password.type === 'required' && <p className="error">Mật khẩu là trường bắt buộc.</p>}
+                        {errors.password && errors.password.type === 'minLength' && <p className="error">Mật khẩu phải có ít nhất 6 ký tự.</p>}
                     </div>
-                    <div className="form-group d-flex align-items-center justify-content-between">
-                        <button type="submit" className="axil-btn btn-bg-primary submit-btn ">Sign In</button>
-                        <Link href="/forgot-password" className="forgot-btn">Forget password?</Link>
-                        {loginError && <p className="error">User and Password doesn&apos;t match</p>}
+                    <div className="d-flex align-items-center justify-content-between">
+                        <button type="submit" className="axil-btn btn-bg-primary submit-btn m-auto">Đăng nhập</button>
+                        {/* <Link href="/forgot-password" className="forgot-btn">Forget password?</Link> */}
+
                     </div>
-                    {/* <hr style={{ height: "1px", backgroundColor: "#ccc", marginTop: "50px", marginBottom: "0px" }} /> */}
-                    <div className="d-flex m-5"><span style={{ margin: "auto", fontSize: "12px" }}>OR</span></div>
+
+                    <div className="d-flex align-items-center my-5 justify-content-center">
+                        <div className="border-top w-25"></div>
+                        <span className="px-3 text-muted">Hoặc</span>
+                        <div className="border-top w-25"></div>
+                    </div>
+
+
                     <div className="form-group d-flex align-items-center justify-content-between">
                         <button
                             type="button"
@@ -108,7 +109,7 @@ const SignIn = () => {
                                 height={20}
 
                             />
-                            Continue with Google
+                            Tiếp tục bằng tài khoản Google
                         </button>
                     </div>
                 </form>

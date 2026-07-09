@@ -31,7 +31,6 @@ axiosClient.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        console.log("originalRequest.url: ", originalRequest.url);
         // những api không cần check token như signin, signup, refresh thì không cần gọi refresh token nữa vì nếu gọi refresh token mà refresh token cũng hết hạn thì sẽ bị lỗi vòng lặp vô hạn nên cần check trước khi gọi refresh token
         if (
             originalRequest.url.includes("/auth/login") ||
@@ -45,7 +44,6 @@ axiosClient.interceptors.response.use(
         switch (status) {
             case 403:
                 originalRequest._retryCount = originalRequest._retryCount || 0;
-                console.log("originalRequest._retryCount: ", originalRequest._retryCount);
 
                 if (originalRequest._retryCount < 1) {
                     originalRequest._retryCount += 1;
@@ -53,11 +51,9 @@ axiosClient.interceptors.response.use(
                         await authService.refreshToken();
                         return axiosClient(originalRequest); // retry lại request cũ với access token mới
                     } catch (error) {
-                        console.log("add cart: ", error);
                         await authService.logout(); // sign out ở server
                         await signOut({ redirect: false }) // sign out ở client (xóa session cookie),
                         throw new Error("Hết phiên đăng nhập, vui lòng đăng nhập lại");
-
                     }
                 }
         }

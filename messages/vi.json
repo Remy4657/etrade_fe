@@ -24,7 +24,7 @@
   },
   "Header": {
     "Home": "Trang chủ",
-    "Shop": "Cửa hàng",
+    "Shop": "Sản phẩm",
     "Pages": "Trang",
     "About": "Về chúng tôi",
     "Blog": "Bài viết",
@@ -58,7 +58,7 @@
     "login": "Đăng nhập",
     "cart": "Giỏ hàng",
     "wishlist": "Danh sách yêu thích",
-    "shop": "Cửa hàng",
+    "shop": "Sản phẩm",
     "quickLink": "Liên kết nhanh",
     "aboutUs": "Về chúng tôi",
     "privacyPolicy": "Chính sách bảo mật",

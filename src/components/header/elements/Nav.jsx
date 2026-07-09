@@ -48,7 +48,7 @@ const Nav = () => {
         });
       }
     }
-  }
+  };
 
   useEffect(() => {
     mobileMenuToggleHandler();
@@ -83,7 +83,12 @@ const Nav = () => {
                 <ul className="axil-submenu">
                   {menuItem.children?.map((submenu, index) => (
                     <li key={index}>
-                      <Link onClick={() => mobileMneuHandler(false)} href={submenu.url}>{submenu.name}</Link>
+                      <Link
+                        onClick={() => mobileMneuHandler(false)}
+                        href={submenu.url}
+                      >
+                        {submenu.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -92,7 +97,7 @@ const Nav = () => {
               <li key={index}>
                 <Link href={menuItem.url}>{t(menuItem.name)}</Link>
               </li>
-            )
+            ),
           )}
         </ul>
       </nav>

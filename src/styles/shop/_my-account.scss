@@ -1,5 +1,5 @@
 /*-----------------------
- My Account Dashboard 
+ My Account Dashboard
 -------------------------*/
 .axil-signin-area {
   position: fixed;
@@ -17,7 +17,7 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 40px 100px;
+  padding: 10px 100px;
   z-index: 1;
   @media only screen and (max-width: 991px) {
     padding: 40px 30px;
@@ -110,7 +110,6 @@
 .axil-signin-form {
   max-width: 450px;
   width: 100%;
-  padding: 30px;
   .singin-form {
     padding-bottom: 30px;
   }

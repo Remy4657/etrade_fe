@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import Footer from "@/components/footer/Footer";
-import CustomerService from "@/components/services/CustomerService";
 import { StoreInfo } from "@/data/Common";
 import { useTranslations } from "next-intl";
 
@@ -126,9 +124,7 @@ const ContactUs = () => {
 
                     </div>
                 </div>
-                <CustomerService />
             </main>
-            <Footer />
         </>
     );
 }

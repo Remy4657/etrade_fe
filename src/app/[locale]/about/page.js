@@ -1,11 +1,9 @@
-'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
-import Footer from "@/components/footer/Footer";
-import NewsLetter from "@/components/newsletter/NewsLetter";
-import CustomerService from "@/components/services/CustomerService";
+
 import { AboutAchievment, AboutFeatures, AboutStore } from "@/data/About";
 
 const AboutUs = () => {
@@ -73,40 +71,7 @@ const AboutUs = () => {
                     </div>
 
                 </section>
-                {/* <section className="axil-team-area axil-section-gap bg-wild-sand">
-                    <div className="team-left-fullwidth">
-                        <div className="container ml--xxl-0">
-                            <SectionTitle
-                                title="Expart Management Team"
-                                subtitle="Our Team"
-                                subtitleIcon="fas fa-users"
-                                subColor="highlighter-primary"
-                            />
-                            <SlickSlider
-                                class="team-slide-activation slick-layout-wrapper--20 axil-slick-arrow arrow-top-slide"
-                                slidesToShow={4}
-                                infinite={false}
-                            >
-                                {TeamData?.map((data, index) => (
-                                    <div className="axil-team-member" key={index}>
-                                        <div className="thumbnail">
-                                            <Image
-                                                src={data.thumbnail}
-                                                width={330}
-                                                height={380}
-                                                alt={data.name}
-                                            />
-                                        </div>
-                                        <div className="team-content">
-                                            <span className="subtitle">{data.designation}</span>
-                                            <h5 className="title">{data.name}</h5>
-                                        </div>
-                                    </div>
-                                ))}
-                            </SlickSlider>
-                        </div>
-                    </div>
-                </section> */}
+
                 <section className="axil-about-area about-style-2">
                     <div className="container">
                         {AboutFeatures?.map((data, index) => (
@@ -133,10 +98,7 @@ const AboutUs = () => {
                         ))}
                     </div>
                 </section>
-                <NewsLetter />
-                <CustomerService />
             </main>
-            <Footer />
         </>
     );
 }

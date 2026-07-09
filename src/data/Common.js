@@ -19,7 +19,7 @@ const ScocialLink = {
         url: "https://www.discord.com/",
         icon: "fab fa-discord",
     }
-    
+
 }
 
 const Logo = {
@@ -40,10 +40,10 @@ const StoreInfo = {
 }
 
 const ComingSoonData = {
-    title:"Our new website is on the way",
-    subtitle:"We're coming soon! We're working hard to give you the best experince.",
+    title: "Our new website is on the way",
+    subtitle: "We're coming soon! We're working hard to give you the best experince.",
     launchDate: "2023-10-01T23:59:59"
 }
 
-   
-export {ScocialLink, Logo, StoreInfo, ComingSoonData};
+
+export { ScocialLink, Logo, StoreInfo, ComingSoonData };

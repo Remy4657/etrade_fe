@@ -9,7 +9,10 @@ import InitiateData from '@/components/helper/refresh.wrapper';
 import NextAuthWrapper from '@/components/helper/next.auth.wrapper';
 import I18Provider from '@/provider/i18n';
 import HeaderWrapper from '@/components/helper/header.wrapper';
-
+export const metadata = {
+	title: 'MegaDeal',
+	description: 'MegaDeal',
+}
 const dmSans = DM_Sans({
 	subsets: ["latin"],
 	weight: ["400", "500", "700"],
@@ -30,8 +33,8 @@ const RootLayout = ({ children }) => {
 							<InitiateData>
 								{
 									<>
-										<HeaderWrapper />
-										{children}
+										<HeaderWrapper children={children} />
+
 									</>
 								}
 							</InitiateData>

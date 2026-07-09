@@ -15,7 +15,7 @@ const AuthLayout = ({ children, bgImage }) => {
                     <div className="col-md-6">
                         <Link href="/" className="site-logo">
                             <Image
-                                src={Logo.dark}
+                                src="/images/logo/logo.png"
                                 height={40}
                                 width={157}
                                 alt="Logo"
@@ -24,8 +24,8 @@ const AuthLayout = ({ children, bgImage }) => {
                     </div>
                     <div className="col-md-6">
                         <div className="singin-header-btn">
-                            <p>{slug.includes("sign-in") ? "Not a member?" : "Already a member?"}</p>
-                            <Link href={slug.includes("sign-in") ? "/sign-up" : "/sign-in"} className="axil-btn btn-bg-secondary sign-up-btn">{slug.includes("sign-in") ? "Sign Up Now" : "Sign In"}</Link>
+                            <p>{slug.includes("sign-in") ? "Chưa có tài khoản?" : "Đã có tài khoản?"}</p>
+                            <Link href={slug.includes("sign-in") ? "sign-up" : "sign-in"} className="text-primary">{slug.includes("sign-in") ? " Đăng ký" : " Đăng nhập"}</Link>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ const AuthLayout = ({ children, bgImage }) => {
             <div className="row">
                 <div className="col-xl-4 col-lg-6">
                     <div className={`axil-signin-banner bg_image ${bgImage ? bgImage : "bg_image--10"}`}>
-                        <h3 className="title">We Offer the Best Products</h3>
+
                     </div>
                 </div>
                 <div className="col-lg-6 offset-xl-2">

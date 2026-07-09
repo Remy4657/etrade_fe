@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -15,8 +16,9 @@ const HeaderActions = (props) => {
   const router = useRouter();
 
   const { data: session } = useSession();
-  const dataUser = session?.user || null;
-  const userData = useSelector((state) => state.auth);
+  const userInfoGoogle = session?.user || null;
+  const userInfoCre = useSelector((state) => state.auth);
+
   const getProducts = useSelector((state) => state.productData);
 
   const [searchToggle, setSearchToggle] = useState(false);
@@ -29,6 +31,10 @@ const HeaderActions = (props) => {
     setaccountDropdown((toggler) => !toggler);
   };
   const cartHandler = (data) => {
+    if (!userInfoCre.userData) {
+      router.push("/sign-in");
+      return;
+    }
     dispatch(miniCartHandler(data));
   };
 
@@ -82,9 +88,9 @@ const HeaderActions = (props) => {
         </li>
         <li className="my-account">
           <button onClick={accountDropdownToggler}>
-            {dataUser?.image ? (
+            {userInfoGoogle?.image ? (
               <Image
-                src={dataUser?.image}
+                src={userInfoGoogle?.image}
                 alt="User avatar"
                 height={30}
                 width={30}
@@ -99,24 +105,24 @@ const HeaderActions = (props) => {
           >
             <ul>
               <li>
-                <Link href="/dashboard/account-details">My Account</Link>
+                <Link href="/dashboard/account-details">Tài khoản</Link>
               </li>
               <li>
-                <Link href="/dashboard/orders">Orders</Link>
+                <Link href="/dashboard/orders">Đơn hàng</Link>
               </li>
               <li>
                 {/* <Link href="dashboard/account-details">Settings</Link> */}
               </li>
             </ul>
             <div className="login-btn">
-              {!userData?.login ? (
+              {!userInfoCre?.login ? (
                 <button
                   onClick={() => {
                     router.push("/sign-in");
                   }}
                   className="axil-btn btn-bg-primary"
                 >
-                  Login
+                  Đăng nhập
                 </button>
               ) : (
                 <button
@@ -126,15 +132,15 @@ const HeaderActions = (props) => {
                   }}
                   className="axil-btn btn-bg-primary"
                 >
-                  Logout
+                  Đăng xuất
                 </button>
               )}
             </div>
-            {!userData?.login && (
+            {!userInfoCre?.login && (
               <div className="reg-footer text-center">
-                No account yet?
+                Chưa có tài khoản?
                 <Link href="/sign-up" className="btn-link">
-                  REGISTER HERE.
+                  ĐĂNG KÝ.
                 </Link>
               </div>
             )}

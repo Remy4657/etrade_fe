@@ -72,7 +72,7 @@ export const updateProductCartQuantity = createAsyncThunk(
         }
     }
 );
-// checkout 
+// checkout
 export const checkoutApi = createAsyncThunk(
     "order/checkoutApi",
     async (data, thunkAPI) => {
@@ -87,6 +87,7 @@ export const checkoutApi = createAsyncThunk(
 const productSlice = createSlice({
     name: 'products',
     initialState: {
+        isLoading: false,
         listProducts: [],
         cartItems: [],
         cartQuantityTotal: 0,
@@ -161,8 +162,8 @@ const productSlice = createSlice({
             if (ItemIndex >= 0) {
                 Swal.fire({
                     title: action.payload.title,
-                    text: 'You already Added the item',
-                    icon: 'error',
+                    text: 'Đã thêm vào sản phẩm yêu thích',
+                    icon: 'success',
                     timer: 1500,
                     showConfirmButton: false,
                     timerProgressBar: true,
@@ -172,7 +173,7 @@ const productSlice = createSlice({
                 state.wishListQuantity += 1;
                 Swal.fire({
                     title: action.payload.title,
-                    text: 'Added to your Wishlist',
+                    text: 'Đã thêm vào sản phẩm yêu thích',
                     icon: 'success',
                     timer: 1500,
                     showConfirmButton: false,

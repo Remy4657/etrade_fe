@@ -52,9 +52,10 @@ const ProductQuickView = () => {
         ).unwrap();
         dispatch(addToCart(cartItems));
       } catch (error) {
+        console.log("error: ", error);
         await dispatch(logout());
 
-        toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+        //toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
         router.push("/sign-in");
       }
     } else {
@@ -230,7 +231,7 @@ const ProductQuickView = () => {
                         <div className="product-variations-wrapper">
                           {getQuickViewItem.colorAttribute && (
                             <div className="product-variation">
-                              <h6 className="title">Colors:</h6>
+                              <h6 className="title">Màu sắc:</h6>
                               <div className="color-variant-wrapper">
                                 <ul className="color-variant">
                                   {getQuickViewItem.colorAttribute?.map(
@@ -256,7 +257,7 @@ const ProductQuickView = () => {
                           )}
                           {getQuickViewItem.sizeAttribute && (
                             <div className="product-variation product-size-variation">
-                              <h6 className="title">Size:</h6>
+                              <h6 className="title">Kích thước:</h6>
                               <ul className="range-variant">
                                 {getQuickViewItem.sizeAttribute?.map(
                                   (data, index) => (
@@ -313,7 +314,7 @@ const ProductQuickView = () => {
                                 }
                                 className="axil-btn btn-bg-primary"
                               >
-                                Add to Carttt
+                                Thêm vào giỏ hàng
                               </button>
                             </li>
                             <li className="wishlist">

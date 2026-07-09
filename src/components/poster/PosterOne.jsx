@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import SectionTitle from "../elements/SectionTitle";
 import CountDown from "../elements/CountDown";
@@ -13,26 +13,33 @@ const PosterOne = (props) => {
             <div className="col-xl-5 col-lg-6">
               <div className="poster-countdown-content">
                 <SectionTitle
-                  title={props.title ?? "Enhance Your Music Experience"}
-                  subtitle={props.subtitle ?? "Don’t Miss!!"}
+                  title={props.title ?? "Nâng tầm trải nghiệm âm nhạc"}
+                  subtitle={props.subtitle ?? "Đừng bỏ lỡ"}
                   subColor={props.subColor ?? "highlighter-secondary"}
                   subtitleIcon={props.subtitleIcon ?? "fal fa-headphones-alt"}
                 />
                 <div className="poster-countdown countdown mb--40">
-                  <CountDown unit date={props.CountTime ?? "2023-12-01T23:59:59"} />
+                  <CountDown
+                    unit
+                    date={props.CountTime ?? "2026-08-01T23:59:59"}
+                  />
                 </div>
-                <Link href="/shop" className="axil-btn btn-bg-primary">Check it Out!</Link>
+                <Link href="/shop" className="axil-btn btn-bg-primary">
+                  Xem ngay!
+                </Link>
               </div>
             </div>
             <div className="col-xl-7 col-lg-6">
               <div className="poster-countdown-thumbnail">
                 <Image
-                  src={props.thumbnail ?? "/images/product/poster/poster-03.webp"}
+                  src={
+                    props.thumbnail ?? "/images/product/poster/poster-03.webp"
+                  }
                   alt="Poster Thumbnail"
                   width={props.thumbWidth ?? 452}
                   height={props.thumbHeight ?? 502}
                 />
-                {props.singleAnimation &&
+                {props.singleAnimation && (
                   <div className="music-singnal">
                     <div className="item-circle circle-1" />
                     <div className="item-circle circle-2" />
@@ -40,7 +47,7 @@ const PosterOne = (props) => {
                     <div className="item-circle circle-4" />
                     <div className="item-circle circle-5" />
                   </div>
-                }
+                )}
               </div>
             </div>
           </div>
@@ -48,6 +55,6 @@ const PosterOne = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default PosterOne;

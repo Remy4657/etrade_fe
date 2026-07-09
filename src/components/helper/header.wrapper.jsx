@@ -1,13 +1,10 @@
 "use client";
-
-/** next */
 import { usePathname } from "next/navigation";
-
 import Header from "@/components/header/Header";
+import Footer from "../footer/Footer";
 
-export default function HeaderWrapper() {
+export default function HeaderWrapper({ children }) {
   const pathname = usePathname();
-  console.log("pathname: ", pathname);
   const isLoginPage =
     pathname.includes("sign-in") || pathname.includes("sign-up");
 
@@ -16,9 +13,11 @@ export default function HeaderWrapper() {
       {!isLoginPage ? (
         <>
           <Header />
+          {children}
+          <Footer />
         </>
       ) : (
-        <></>
+        <>{children}</>
       )}
     </>
   );

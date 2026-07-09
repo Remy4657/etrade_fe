@@ -8,8 +8,8 @@ const TestimonialOne = () => {
   return (
     <Section pClass="bg-vista-white">
       <SectionTitle
-        title="Users Feedback"
-        subtitle="Testimonials"
+        title=""
+        subtitle="Khách hàng phản hồi"
         subtitleIcon="fal fa-quote-left"
         subColor="highlighter-secondary"
       />
@@ -21,8 +21,8 @@ const TestimonialOne = () => {
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1,
-            }
-          }
+            },
+          },
         ]}
       >
         {TestimonialData?.map((data, index) => (
@@ -41,8 +41,8 @@ const TestimonialOne = () => {
                   />
                 </div>
                 <div className="media-body">
-                  <span className="designation">{data.authorDesignation}</span>
                   <h6 className="title">{data.authorName}</h6>
+                  <span className="designation">{data.authorDesignation}</span>
                 </div>
               </div>
             </div>

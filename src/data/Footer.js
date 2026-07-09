@@ -32,14 +32,7 @@ const FooterData = {
                     name: "aboutUs",
                     url: "/about"
                 },
-                {
-                    name: "privacyPolicy",
-                    url: "/privacy-policy"
-                },
-                {
-                    name: "termsOfUse",
-                    url: "/terms-of-use"
-                },
+
                 {
                     name: "contact",
                     url: "/contact"

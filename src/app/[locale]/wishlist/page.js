@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeWishlistItem } from "@/store/slices/productSlice";
-import Footer from "@/components/footer/Footer";
 
 const Wishlist = () => {
     const dispatch = useDispatch();
@@ -25,17 +24,17 @@ const Wishlist = () => {
                         {getWishlist.length > 0 ?
                             <>
                                 <div className="product-table-heading">
-                                    <h4 className="title">My Wish List on eTrade</h4>
+                                    <h4 className="title">Sản phẩm yêu thích</h4>
                                 </div>
                                 <div className="table-responsive">
                                     <table className="table axil-product-table axil-wishlist-table">
                                         <thead>
                                             <tr>
                                                 <th scope="col" className="product-remove" />
-                                                <th scope="col" className="product-thumbnail">Product</th>
+                                                <th scope="col" className="product-thumbnail">Sản phẩm</th>
                                                 <th scope="col" className="product-title" />
-                                                <th scope="col" className="product-price">Unit Price</th>
-                                                <th scope="col" className="product-stock-status">Stock Status</th>
+                                                <th scope="col" className="product-price">Giá</th>
+                                                <th scope="col" className="product-stock-status">Tình trạng</th>
                                                 <th scope="col" className="product-add-cart" />
                                             </tr>
                                         </thead>
@@ -66,10 +65,10 @@ const Wishlist = () => {
                                                         <span className="currency-symbol">$</span>
                                                         {product.salePrice ? product.salePrice : product.price}
                                                     </td>
-                                                    <td className="product-stock-status" data-title="Status">In Stock</td>
+                                                    <td className="product-stock-status" data-title="Status">Còn hàng</td>
                                                     <td className="product-add-cart">
                                                         <button className="axil-btn btn-outline" onClick={() => handleAddToCart(product)}>
-                                                            Add to Cart
+                                                            Thêm vào giỏ hàng
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -78,12 +77,11 @@ const Wishlist = () => {
                                     </table>
                                 </div>
                             </>
-                            : <h4 className="title text-center">There is no Wishlistt</h4>
+                            : <h4 className="title text-center">Chưa có sản phẩm yêu thích</h4>
                         }
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

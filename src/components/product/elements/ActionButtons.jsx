@@ -55,7 +55,7 @@ const ActionButtons = (props) => {
       {props.cartBtn && (
         <li className="select-option">
           <button onClick={() => handleAddToCart(props.productAction)}>
-            bAdd to Cart
+            Thêm vào giỏ hàng
           </button>
         </li>
       )}

@@ -11,7 +11,6 @@ const LangDropdown = () => {
   const handleLanguageChange = (e) => {
     const newLocale = e.target.value;
     const path = pathname.split("/").slice(2).join("/");
-    console.log("path: ", path)
     router.push(`/${newLocale}/${path}`);
   };
   return (
@@ -24,6 +23,6 @@ const LangDropdown = () => {
       <option value="en">EN</option>
     </select>
   );
-}
+};
 
 export default LangDropdown;
