@@ -2,13 +2,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeWishlistItem } from "@/store/slices/productSlice";
+import { addToCart, addToCartAPI, removeWishlistItem } from "@/store/slices/productSlice";
 
 const Wishlist = () => {
     const dispatch = useDispatch();
     const getWishlist = useSelector((state) => state.productData.wishlistItems);
 
-    const handleAddToCart = (product) => {
+    const handleAddToCart = async (product) => {
         dispatch(addToCart(product));
     };
 
@@ -67,9 +67,9 @@ const Wishlist = () => {
                                                     </td>
                                                     <td className="product-stock-status" data-title="Status">Còn hàng</td>
                                                     <td className="product-add-cart">
-                                                        <button className="axil-btn btn-outline" onClick={() => handleAddToCart(product)}>
+                                                        {/* <button className="axil-btn btn-outline" onClick={() => handleAddToCart(product)}>
                                                             Thêm vào giỏ hàng
-                                                        </button>
+                                                        </button> */}
                                                     </td>
                                                 </tr>
                                             ))}

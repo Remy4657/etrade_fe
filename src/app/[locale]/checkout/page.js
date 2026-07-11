@@ -51,29 +51,17 @@ const Checkout = () => {
 
     const shippingFee = selectedShipping?.fee || 0
 
-
     useEffect(() => {
-        const fetchAllShippinng = async () => {
-            try {
-                const { data } = await getShippingAll()
-                setListShipping(data)
-            } catch (error) {
-
-            }
-
-
-        }
-        const fetchAllPayment = async () => {
-            try {
-                const { data } = await getPaymentAll()
-                setListPayment(data)
-            } catch (error) {
-
-            }
+        const fetchShipmentAndPaymentMethod = async () => {
+            const [dataShipment, dataPayment] = await Promise.all([
+                await getShippingAll(),
+                await getPaymentAll()
+            ]);
+            setListShipping(dataShipment.data)
+            setListPayment(dataPayment.data)
 
         }
-        fetchAllShippinng()
-        fetchAllPayment()
+        fetchShipmentAndPaymentMethod()
     }, [])
 
     const checkoutFormHandler = (data, e) => {
@@ -133,7 +121,7 @@ const Checkout = () => {
                                     <div className="axil-checkout-billing">
                                         <h4 className="title mb--40">Địa chỉ nhận hàng</h4>
                                         <div className="row">
-                                            <div className="col-lg-6">
+                                            <div className="col-lg-8">
                                                 <div className="form-group">
                                                     <label>Họ tên <span>*</span></label>
                                                     <input type="text" {...register('fullname', { required: true })} placeholder="" />

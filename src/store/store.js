@@ -17,11 +17,7 @@ import storage from "./storage";
 
 
 // 2️. Cấu hình persist
-// const persistConfig = {
-//     key: "root",
-//     storage,
-//     whitelist: ["productData"],
-// };
+
 const productPersistConfig = {
     key: "product",
     storage,

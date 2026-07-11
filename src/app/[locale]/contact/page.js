@@ -37,7 +37,7 @@ const ContactUs = () => {
         <>
             <main className="main-wrapper">
                 <Breadcrumb
-                    activeItem="Contact"
+                    activeItem="Liên hệ"
                     title={t('Contact.breadcrumbTitle')}
                 />
                 <div className="axil-contact-page-area axil-section-gap">

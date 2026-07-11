@@ -52,13 +52,13 @@ const ActionButtons = (props) => {
         </button>
       </li>
 
-      {props.cartBtn && (
+      {/* {props.cartBtn && (
         <li className="select-option">
           <button onClick={() => handleAddToCart(props.productAction)}>
-            Thêm vào giỏ hàng
+            Thêm vào giỏ hànggg
           </button>
         </li>
-      )}
+      )} */}
 
       <li className="quickview">
         <button onClick={() => quickViewHandler(props.productAction)}>

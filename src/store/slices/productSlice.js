@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2';
 import CartService from "@/services/cart.service"
 import ProductService from "@/services/product.service"
+import CategoryService from "@/services/category.service"
+
 import CheckoutService from "@/services/checkout.service"
 import { calculateTotalAmount, calculateTotalQuantity } from "@/utils";
 import { logout } from "./authSlice";
@@ -15,7 +17,46 @@ export const fetchAllProductAPI = createAsyncThunk(
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(
-                err.response?.data || "Error system"
+                error.response?.data || "Error system"
+            );
+        }
+    }
+);
+export const fetchProducBestsellerAPI = createAsyncThunk(
+    "product/fetchProducBestsellerAPI",
+    async (_, thunkAPI) => {
+        try {
+            const res = await ProductService.getProductBestseller()
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(
+                error.response?.data || "Error system"
+            );
+        }
+    }
+);
+export const fetchProducNewestAPI = createAsyncThunk(
+    "product/fetchProducNewestAPI",
+    async (_, thunkAPI) => {
+        try {
+            const res = await ProductService.getProductNewest()
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(
+                error.response?.data || "Error system"
+            );
+        }
+    }
+);
+export const fetchAllCategoryAPI = createAsyncThunk(
+    "product/fetchAllCategoryAPI",
+    async (_, thunkAPI) => {
+        try {
+            const res = await CategoryService.getCategoryAll()
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(
+                error.response?.data || "Error system"
             );
         }
     }
@@ -29,9 +70,11 @@ export const addToCartAPI = createAsyncThunk(
             thunkAPI.dispatch(getCurrentCart());
             return res.data;
         } catch (error) {
-            // ✅ Lấy message từ error object
-            const errorMessage = error.message || error.response?.data || "Error system";
-            throw new Error(errorMessage);
+            //  Lấy message từ error object
+            const errorMessage = error.response?.data || "Error system";
+            //throw new Error(errorMessage.message);
+            return thunkAPI.rejectWithValue(errorMessage);
+
         }
     }
 );
@@ -89,6 +132,10 @@ const productSlice = createSlice({
     initialState: {
         isLoading: false,
         listProducts: [],
+        listProductBestSeller: [],
+        listProductNewest: [],
+        listCategory: [],
+
         cartItems: [],
         cartQuantityTotal: 0,
         cartTotalAmount: 0,
@@ -213,6 +260,7 @@ const productSlice = createSlice({
             state.cartTotalAmount = 0
             state.wishlistItems = []
         })
+        // all product
         builder
             .addCase(fetchAllProductAPI.pending, (state) => {
                 state.isLoading = true
@@ -224,6 +272,34 @@ const productSlice = createSlice({
             .addCase(fetchAllProductAPI.rejected, (state) => {
                 state.isLoading = false
             })
+        // product newest
+        builder
+            .addCase(fetchProducNewestAPI.pending, (state) => {
+            })
+            .addCase(fetchProducNewestAPI.fulfilled, (state, action) => {
+                state.listProductNewest = action.payload
+            })
+            .addCase(fetchProducNewestAPI.rejected, (state) => {
+            })
+        // product best seller
+        builder
+            .addCase(fetchProducBestsellerAPI.pending, (state) => {
+            })
+            .addCase(fetchProducBestsellerAPI.fulfilled, (state, action) => {
+                state.listProductBestSeller = action.payload
+            })
+            .addCase(fetchProducBestsellerAPI.rejected, (state) => {
+            })
+        // product category
+        builder
+            .addCase(fetchAllCategoryAPI.pending, (state) => {
+            })
+            .addCase(fetchAllCategoryAPI.fulfilled, (state, action) => {
+                state.listCategory = action.payload
+            })
+            .addCase(fetchAllCategoryAPI.rejected, (state) => {
+            })
+
     }
 });
 

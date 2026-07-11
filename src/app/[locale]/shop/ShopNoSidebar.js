@@ -1,17 +1,13 @@
 'use client';
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { getPriceRange, slugify } from "@/utils";
 import Product from "@/components/product/Product";
 import ProductsData from "@/data/Products";
 import Section from "@/components/elements/Section";
-import { getCategoryAll } from "@/services/category.service"
-
-
 
 const ShopNoSidebar = () => {
 
-    const [listCategory, setListCategory] = useState([])
     const [category, setCategory] = useState("all");
     const [sort, setSort] = useState(null);
     const [rangePrice, setRangePrice] = useState(null);
@@ -19,22 +15,9 @@ const ShopNoSidebar = () => {
     const [productShow, setProductShow] = useState(12);
     const priceRange = getPriceRange(ProductsData);
 
-    const { listProducts } = useSelector((state) => state.productData);
+    const { listProducts, listCategory } = useSelector((state) => state.productData);
 
 
-    useEffect(() => {
-        const fetchAllOrders = async () => {
-            try {
-                const [cateRes, productRes] = await Promise.all([
-                    getCategoryAll(),
-                ])
-                setListCategory(cateRes.data)
-            } catch (error) {
-                console.error("err: ", error)
-            }
-        }
-        fetchAllOrders()
-    }, [])
     const filteredProducts = useMemo(() => {
         let result = [...listProducts];
         //  FILTER theo category

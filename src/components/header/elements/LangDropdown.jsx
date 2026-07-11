@@ -17,12 +17,20 @@ const LangDropdown = () => {
     <select
       value={locale}
       onChange={handleLanguageChange}
-      style={{ width: "50px", padding: "0px", border: "none" }}
+      style={{
+        cursor: "pointer",
+        width: "50px",
+        padding: "5px",
+        border: "none",
+      }}
     >
-      <option value="vi">VI</option>
-      <option value="en">EN</option>
+      <option value="vi" style={{ cursor: "pointer" }}>
+        VI
+      </option>
+      <option value="en" style={{ cursor: "pointer" }}>
+        EN
+      </option>
     </select>
   );
 };
-
 export default LangDropdown;

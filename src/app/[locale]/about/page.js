@@ -11,8 +11,8 @@ const AboutUs = () => {
         <>
             <main className="main-wrapper">
                 <Breadcrumb
-                    activeItem="About Us"
-                    title="About Our Store"
+                    activeItem="Về chúng tôi"
+                    title="Giới thiệu cửa hàng"
                 />
                 <Section pClass="axil-about-area about-style-1">
                     <div className="row align-items-center">
@@ -21,7 +21,7 @@ const AboutUs = () => {
                                 <div className="thumbnail">
                                     <Image
                                         src={AboutStore.thumbnail}
-                                        alt="About Us"
+                                        alt="Giới thiệu về cửa hàng"
                                         width={420}
                                         height={501}
                                     />
@@ -57,7 +57,7 @@ const AboutUs = () => {
                                                 src={data.icon}
                                                 width={60}
                                                 height={60}
-                                                alt="Shape"
+                                                alt="Biểu tượng"
                                             />
                                         </div>
                                         <div className="content">
@@ -82,16 +82,17 @@ const AboutUs = () => {
                                             src={data.thumbnail}
                                             width={545}
                                             height={440}
-                                            alt="About Us"
+                                            alt="Hình ảnh tính năng"
                                         />
                                     </div>
                                 </div>
                                 <div className={`col-lg-7 ${index % 2 === 0 ? "" : "order-lg-1"}`}>
                                     <div className={`about-content ${index % 2 === 0 ? "content-right" : "content-left"}`}>
-                                        <span className="subtitle">{data.subtitle}</span>
+                                        {/* <span className="subtitle">{data.subtitle}</span> */}
+
                                         <h4 className="title">{data.title}</h4>
                                         <p>{data.text}</p>
-                                        <Link href="/contact" className="axil-btn btn-outline">Get In Touch</Link>
+                                        {/* <Link href="/contact" className="axil-btn btn-outline">Liên hệ</Link> */}
                                     </div>
                                 </div>
                             </div>

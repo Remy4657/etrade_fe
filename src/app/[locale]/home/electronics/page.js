@@ -10,65 +10,30 @@ import Product from "@/components/product/Product";
 import TestimonialOne from "@/components/testimonial/TestimonialOne";
 import WhyChoose from "@/components/why-choose/WhyChoose";
 import ProductList from "@/components/product/ProductList";
-import { mapInSlices, slugify } from "@/utils";
-import { useEffect, useState } from "react";
-import { getCategoryAll } from "@/services/category.service"
-import { getProductBestseller, getProductNewest } from "@/services/product.service"
-import { fetchAllProductAPI } from "@/store/slices/productSlice";
+import { mapInSlices } from "@/utils";
+import { useEffect } from "react";
+import DashboardLoading from '../../loading';
+
+import { fetchAllProductAPI, fetchProducBestsellerAPI, fetchProducNewestAPI, fetchAllCategoryAPI } from "@/store/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 
 const HomeElectronics = () => {
     const dispatch = useDispatch()
-    const { listProducts, isLoading } = useSelector((state) => state.productData);
-
-    const [listCategory, setListCategory] = useState([])
-    const [listProductNewest, setListProductNewest] = useState([])
-    const [listProductBestseller, setListProductBestseller] = useState([])
+    const { listProducts, isLoading, listProductBestSeller, listProductNewest, listCategory } = useSelector((state) => state.productData);
 
     const exploreProductSeperate = mapInSlices(listProducts, 12);
 
     useEffect(() => {
         dispatch(fetchAllProductAPI())
+        dispatch(fetchProducBestsellerAPI())
+        dispatch(fetchProducNewestAPI())
+        dispatch(fetchAllCategoryAPI())
     }, [dispatch])
 
-    console.log("isLoading: ", isLoading)
 
-    useEffect(() => {
-        const fetchAllCategory = async () => {
-            try {
-                const [cateRes] = await Promise.all([
-                    getCategoryAll(),
-                ])
-                setListCategory(cateRes.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        const fetchAllProductBestseller = async () => {
-            try {
-                const res = await getProductBestseller()
-                setListProductBestseller(res?.data)
-            } catch (error) {
-                console.log(error)
-
-            }
-
-        }
-        const fetchAllProductNewest = async () => {
-            try {
-                const res = await getProductNewest()
-                setListProductNewest(res?.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fetchAllProductBestseller()
-        fetchAllProductNewest()
-        fetchAllCategory()
-    }, [])
     if (isLoading) {
-        return <>Loading...</>
+        return <DashboardLoading />;
     }
 
     return (
@@ -159,7 +124,7 @@ const HomeElectronics = () => {
                         pClass="section-title-center"
                     />
                     <div className="row row-cols-xl-2 row-cols-1 row--15">
-                        {listProductBestseller?.map((data) => (
+                        {listProductBestSeller?.map((data) => (
                             <div className="col" key={data.id}>
                                 <ProductList product={data} />
                             </div>

@@ -52,7 +52,8 @@ const ProductQuickView = () => {
         ).unwrap();
         dispatch(addToCart(cartItems));
       } catch (error) {
-        console.log("error: ", error);
+        console.log("error client: ", error);
+
         await dispatch(logout());
 
         //toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");

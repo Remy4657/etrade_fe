@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import FsLightbox from "fslightbox-react";
 import { addToCart, addToWishlist, addToCartAPI } from "@/store/slices/productSlice";
 import SlickSlider from "@/components/elements/SlickSlider";
 import { discountPercentage, reviewAverage, slugify } from "@/utils";
@@ -12,7 +11,7 @@ import ProductRating from "@/components/product/elements/ProductRating";
 import { getDetailProduct, getProductCategory } from "@/services/product.service"
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
-import ProductsData from "@/data/Products";
+
 import Product from "@/components/product/Product";
 import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
@@ -31,12 +30,6 @@ const SingleLayouThree = ({ idProduct }) => {
     const [singleData, setSingleData] = useState(null)
     const [categoryProductDetail, setCategoryProductDetail] = useState("")
     const [listProductCategory, setListProductCategory] = useState([])
-
-    const findProduct = ProductsData.filter(product => slugify(product.id) === slugify(idProduct));
-    const singleProduct = findProduct[0];
-    const productCategory = singleProduct?.pCate;
-    const relatedProduct = ProductsData.filter(product => slugify(product.pCate) === slugify(productCategory));
-
 
 
     const findReview = useMemo(() => {
