@@ -1,20 +1,13 @@
 'use client';
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { getPriceRange, slugify } from "@/utils";
-import { Category } from "@/data/ProductCategory";
 import Product from "@/components/product/Product";
 import ProductsData from "@/data/Products";
 import Section from "@/components/elements/Section";
-import { ColorAttribute } from "@/data/ProductAttribute";
-import { getCategoryAll } from "@/services/category.service"
-
-
 
 const ShopNoSidebar = () => {
 
-    const [cateProduct, setcateProduct] = useState(ProductsData);
-    const [listCategory, setListCategory] = useState([])
     const [category, setCategory] = useState("all");
     const [sort, setSort] = useState(null);
     const [rangePrice, setRangePrice] = useState(null);
@@ -22,22 +15,9 @@ const ShopNoSidebar = () => {
     const [productShow, setProductShow] = useState(12);
     const priceRange = getPriceRange(ProductsData);
 
-    const { listProducts } = useSelector((state) => state.productData);
+    const { listProducts, listCategory } = useSelector((state) => state.productData);
 
 
-    useEffect(() => {
-        const fetchAllOrders = async () => {
-            try {
-                const [cateRes, productRes] = await Promise.all([
-                    getCategoryAll(),
-                ])
-                setListCategory(cateRes.data)
-            } catch (error) {
-                console.error("err: ", error)
-            }
-        }
-        fetchAllOrders()
-    }, [])
     const filteredProducts = useMemo(() => {
         let result = [...listProducts];
         //  FILTER theo category
@@ -54,7 +34,6 @@ const ShopNoSidebar = () => {
         }
         // FILTER theo range price
         if (rangePrice != "null" && rangePrice != null) {
-            console.log("zo day: ", rangePrice)
             const splitValue = rangePrice.split("-");
             result = result.filter(data => data.salePrice >= parseInt(splitValue[0]) && data.price <= parseInt(splitValue[1]));
         }
@@ -69,13 +48,7 @@ const ShopNoSidebar = () => {
     const CategoryHandler = (e) => {
         setCategory(e.target.value)
     }
-    const colorHandler = (e) => {
-        let getColorData = ProductsData.filter((items) => {
-            let colors = items.colorAttribute?.filter(color => slugify(color.color) === e.target.value)
-            return colors?.length > 0;
-        })
-        setcateProduct(getColorData)
-    }
+
     const priceRangeHandler = (e) => {
         const value = e.target.value;
         setRangePrice(value)
@@ -90,18 +63,14 @@ const ShopNoSidebar = () => {
                             <div className="col-lg-9">
                                 <div className="category-select">
                                     <select className="single-select" onChange={CategoryHandler}>
-                                        <option value="all">All Categories</option>
+                                        <option value="all">Tất cả danh mục</option>
                                         {listCategory?.map((data, index) => (
                                             <option value={slugify(data.name)} key={index}>{data.name}</option>
                                         ))}
                                     </select>
-                                    {/* <select className="single-select" onChange={colorHandler}>
-                                        {ColorAttribute?.map((data, index) => (
-                                            <option value={slugify(data)} key={index}>{data}</option>
-                                        ))}
-                                    </select> */}
+
                                     <select className="single-select" onChange={priceRangeHandler}>
-                                        <option value="null">Price Range</option>
+                                        <option value="null">Giá</option>
                                         {priceRange?.map((data, index) => (
                                             <option value={`${data.from}-${data.to}`} key={index}>{data.from} - {data.to}</option>
                                         ))}
@@ -113,9 +82,9 @@ const ShopNoSidebar = () => {
                                     <select className="single-select" onChange={sortHandler}>
                                         {/* <option value="latest">Sort by Latest</option>
                                         <option value="name">Sort by Name</option> */}
-                                        <option value="default">Sort default</option>
-                                        <option value="asc">Sort by price asc</option>
-                                        <option value="desc">Sort by price desc</option>
+                                        <option value="default">Sắp xếp</option>
+                                        <option value="asc">Giá tăng dần</option>
+                                        <option value="desc">Giá giảm dần</option>
 
                                     </select>
                                 </div>
@@ -131,8 +100,9 @@ const ShopNoSidebar = () => {
                     </div>
                 )) : <h4 className="text-center pt--30">No Data Found</h4>}
             </div>
+
             <div className="text-center pt--30">
-                <button className={`axil-btn btn-bg-lighter btn-load-more ${cateProduct.length < productShow ? "disabled" : ""}`} onClick={ProductShowHandler}>{cateProduct.length < productShow ? "No More Data" : "Load more"}</button>
+                <button className={`axil-btn btn-bg-lighter btn-load-more ${listProducts.length <= productShow ? "d-none" : ""}`} onClick={ProductShowHandler}>{listProducts.length < productShow ? "Chưa có sản phẩm" : "Xem thêm"}</button>
             </div>
         </Section>
     );

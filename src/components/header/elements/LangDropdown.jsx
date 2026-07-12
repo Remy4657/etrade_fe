@@ -11,19 +11,27 @@ const LangDropdown = () => {
   const handleLanguageChange = (e) => {
     const newLocale = e.target.value;
     const path = pathname.split("/").slice(2).join("/");
-    console.log("path: ", path)
     router.push(`/${newLocale}/${path}`);
   };
   return (
     <select
       value={locale}
       onChange={handleLanguageChange}
-      style={{ width: "50px", padding: "0px", border: "none" }}
+      style={{
+        marginLeft: "10px",
+        cursor: "pointer",
+        width: "50px",
+        padding: "5px",
+        border: "none",
+      }}
     >
-      <option value="vi">VI</option>
-      <option value="en">EN</option>
+      <option value="vi" style={{ cursor: "pointer" }}>
+        VI
+      </option>
+      <option value="en" style={{ cursor: "pointer" }}>
+        EN
+      </option>
     </select>
   );
-}
-
+};
 export default LangDropdown;

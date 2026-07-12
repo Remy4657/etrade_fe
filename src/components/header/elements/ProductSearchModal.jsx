@@ -38,7 +38,7 @@ const ProductSearchModal = (props) => {
               <input
                 type="search"
                 className="form-control"
-                placeholder="Write Something...."
+                placeholder="Tìm kiếm sản phẩm...."
                 onChange={(e) => SearchInputHandler(e.target.value)}
               />
               <button className="axil-btn btn-bg-primary">
@@ -48,8 +48,7 @@ const ProductSearchModal = (props) => {
           </div>
           <div className="card-body">
             <div className="search-result-header">
-              <h6 className="title">{productQuery.length} Result Found</h6>
-              <Link href="/shop">View All</Link>
+              <h6 className="title">{productQuery.length} kết quả</h6>
             </div>
             <div className="psearch-results">
               {productQuery &&

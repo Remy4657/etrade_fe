@@ -34,7 +34,6 @@ export const authOptions = {
           }
         );
         if (res.data.EC == 0) {
-          // console.log("[route] res credentials: ", res?.data);
           throw new Error(res.data.EM);
         }
         return res.data;
@@ -47,14 +46,14 @@ export const authOptions = {
     })
   ],
   pages: {
-    signIn: "/sign-in",
+    signIn: "/sign-in", // đường dẫn đến trang đăng nhập tùy chỉnh của bạn
   },
-  // callback này sẽ được gọi sau khi người dùng đăng nhập thành công, nó sẽ nhận được token, trigger, user, account, profile, 
-  // isNewUser làm tham số, trong đó token là token hiện tại của người dùng, trigger là sự kiện kích hoạt callback (ví dụ: "signIn", 
-  // "signOut", "update"), user là thông tin người dùng, account là thông tin tài khoản (bao gồm provider và id_token nếu đăng nhập 
-  // bằng google), profile là thông tin hồ sơ người dùng từ provider, isNewUser là boolean cho biết người dùng có phải là người dùng 
-  // mới hay không. Trong callback này mình sẽ kiểm tra nếu trigger là "signIn" và account.provider không phải là "credentials" 
-  // (tức là đăng nhập bằng google), thì mình sẽ gửi id_token lên backend để xác thực và lấy access_token, sau đó lưu access_token 
+  // callback này sẽ được gọi sau khi người dùng đăng nhập thành công, nó sẽ nhận được token, trigger, user, account, profile,
+  // isNewUser làm tham số, trong đó token là token hiện tại của người dùng, trigger là sự kiện kích hoạt callback (ví dụ: "signIn",
+  // "signOut", "update"), user là thông tin người dùng, account là thông tin tài khoản (bao gồm provider và id_token nếu đăng nhập
+  // bằng google), profile là thông tin hồ sơ người dùng từ provider, isNewUser là boolean cho biết người dùng có phải là người dùng
+  // mới hay không. Trong callback này mình sẽ kiểm tra nếu trigger là "signIn" và account.provider không phải là "credentials"
+  // (tức là đăng nhập bằng google), thì mình sẽ gửi id_token lên backend để xác thực và lấy access_token, sau đó lưu access_token
   // vào cookie và trả về token mới có access_token và roles. Nếu trigger là "signIn" và account.provider là "credentials", thì mình sẽ
   // lấy thông tin username, email, role và access_token từ user.DT và trả về token mới.
   callbacks: {
@@ -73,12 +72,19 @@ export const authOptions = {
         if (res.data) {
           const cookieStore = await cookies();
           const accessToken = res.data.data.accessToken;
+          const refreshToken = res.data.data.refreshToken;
 
           cookieStore.set("access_token", accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             path: "/",
-            maxAge: 60 * 60,
+            maxAge: 24 * 60 * 60, // 1 day
+          });
+          cookieStore.set("refresh_token", refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            path: "/",
+            maxAge: 60 * 60 * 24 * 14, // 14 days
           });
           token.access_token = accessToken;
           token.roles = res.data.data.roles;
@@ -90,13 +96,11 @@ export const authOptions = {
         token.roles = user?.DT?.role;
         token.access_token = user?.DT?.access_token;
       }
-      //console.log("[nextauth] token: ", token);
-      console.log("JWT CALLBACK", { token, account, user })
       return token;
     },
-    // callback này sẽ được gọi khi client gọi getSession để lấy thông tin session, nó sẽ nhận được session, user, token làm tham số, 
-    // trong đó session là session hiện tại của người dùng, user là thông tin người dùng, token là token hiện tại của người dùng 
-    // (đã được cập nhật trong callback jwt). Trong callback này mình sẽ kiểm tra nếu token tồn tại thì mình sẽ gán email, roles, 
+    // callback này sẽ được gọi khi client gọi getSession để lấy thông tin session, nó sẽ nhận được session, user, token làm tham số,
+    // trong đó session là session hiện tại của người dùng, user là thông tin người dùng, token là token hiện tại của người dùng
+    // (đã được cập nhật trong callback jwt). Trong callback này mình sẽ kiểm tra nếu token tồn tại thì mình sẽ gán email, roles,
     // picture và access_token từ token vào session.user và session.access_token, sau đó trả về session mới.
     async session({ session, user, token }) {
       if (token) {
@@ -105,8 +109,6 @@ export const authOptions = {
         session.user.picture = token.picture
         session.access_token = token.access_token;
       }
-      //console.log("[nextauth] session: ", session);
-      console.log("SESSION CALLBACK", { session, token })
       return session;
     },
   },

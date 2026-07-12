@@ -8,63 +8,33 @@ import BannerOne from "@/components/hero-banner/BannerOne";
 import PosterOne from "@/components/poster/PosterOne";
 import Product from "@/components/product/Product";
 import TestimonialOne from "@/components/testimonial/TestimonialOne";
-import Footer from "@/components/footer/Footer";
-import ServiceTwo from "@/components/services/ServiceTwo";
-import NewsLetter from "@/components/newsletter/NewsLetter";
 import WhyChoose from "@/components/why-choose/WhyChoose";
 import ProductList from "@/components/product/ProductList";
-import { mapInSlices, slugify } from "@/utils";
-import PosterTwo from "@/components/poster/PosterTwo";
-import { useEffect, useState } from "react";
-import { getCategoryAll } from "@/services/category.service"
-import { getProductBestseller, getProductNewest } from "@/services/product.service"
-import { fetchAllProductAPI } from "@/store/slices/productSlice";
+import { mapInSlices } from "@/utils";
+import { useEffect } from "react";
+import DashboardLoading from '../../loading';
+
+import { fetchAllProductAPI, fetchProducBestsellerAPI, fetchProducNewestAPI, fetchAllCategoryAPI } from "@/store/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 
 const HomeElectronics = () => {
     const dispatch = useDispatch()
-    const { listProducts } = useSelector((state) => state.productData);
+    const { listProducts, isLoading, listProductBestSeller, listProductNewest, listCategory } = useSelector((state) => state.productData);
 
-    const [listCategory, setListCategory] = useState([])
-    const [listProductNewest, setListProductNewest] = useState([])
-    const [listProductBestseller, setListProductBestseller] = useState([])
+    const exploreProductSeperate = mapInSlices(listProducts, 12);
 
-    const exploreProductSeperate = mapInSlices(listProducts, 8);
     useEffect(() => {
         dispatch(fetchAllProductAPI())
-        const fetchAllCategory = async () => {
-            try {
-                const [cateRes] = await Promise.all([
-                    getCategoryAll(),
-                ])
-                setListCategory(cateRes.data)
-            } catch (error) {
-                return
-            }
-        }
-        const fetchAllProductBestseller = async () => {
-            try {
-                const res = await getProductBestseller()
-                setListProductBestseller(res?.data)
-            } catch (error) {
-
-            }
-
-        }
-        const fetchAllProductNewest = async () => {
-            try {
-                const res = await getProductNewest()
-                setListProductNewest(res?.data)
-            } catch (error) {
-                console.log(error)
-            }
-
-        }
-        fetchAllProductBestseller()
-        fetchAllProductNewest()
-        fetchAllCategory()
+        dispatch(fetchProducBestsellerAPI())
+        dispatch(fetchProducNewestAPI())
+        dispatch(fetchAllCategoryAPI())
     }, [dispatch])
+
+
+    if (isLoading) {
+        return <DashboardLoading />;
+    }
 
     return (
         <>
@@ -74,8 +44,8 @@ const HomeElectronics = () => {
                 <PosterOne singleAnimation />
                 <Section>
                     <SectionTitle
-                        title="Explore our Products"
-                        subtitle="Our Products"
+                        title=""
+                        subtitle="Sản phẩm"
                         subtitleIcon="far fa-shopping-basket"
                         subColor="highlighter-secondary"
                     />
@@ -97,15 +67,15 @@ const HomeElectronics = () => {
                     </SlickSlider>
                     <div className="row">
                         <div className="col-lg-12 text-center mt--20 mt_sm--0">
-                            <Link href="/shop" className="axil-btn btn-bg-lighter btn-load-more">View All Products</Link>
+                            <Link href="/shop" className="axil-btn btn-bg-lighter btn-load-more">Xem thêm</Link>
                         </div>
                     </div>
                 </Section>
                 <TestimonialOne />
                 <Section pClass="pb--0" borderBottom="pb--50">
                     <SectionTitle
-                        title="New Arrivals"
-                        subtitle="This Week’s"
+                        title=""
+                        subtitle="Sản phẩm mới"
                         subtitleIcon="far fa-shopping-basket"
                         subColor="highlighter-primary"
                     />
@@ -147,14 +117,14 @@ const HomeElectronics = () => {
                 </Section>
                 <Section pClass="axil-most-sold-product" borderBottom="pb--50">
                     <SectionTitle
-                        title="Most Sold in eTrade Store"
-                        subtitle="Most Sold"
+                        title=""
+                        subtitle="Sản phẩm bán chạy"
                         subtitleIcon="fas fa-star"
                         subColor="highlighter-primary"
                         pClass="section-title-center"
                     />
                     <div className="row row-cols-xl-2 row-cols-1 row--15">
-                        {listProductBestseller?.map((data) => (
+                        {listProductBestSeller?.map((data) => (
                             <div className="col" key={data.id}>
                                 <ProductList product={data} />
                             </div>
@@ -162,11 +132,8 @@ const HomeElectronics = () => {
                     </div>
                 </Section>
                 <WhyChoose />
-                <PosterTwo column="mb--30" />
-                <NewsLetter />
-                <ServiceTwo />
+
             </main>
-            <Footer />
         </>
     );
 }

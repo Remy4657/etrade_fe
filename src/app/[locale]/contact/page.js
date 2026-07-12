@@ -3,9 +3,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
-import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import ServiceTwo from "@/components/services/ServiceTwo";
 import { StoreInfo } from "@/data/Common";
 import { useTranslations } from "next-intl";
 
@@ -38,10 +35,9 @@ const ContactUs = () => {
 
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb
-                    activeItem="Contact"
+                    activeItem="Liên hệ"
                     title={t('Contact.breadcrumbTitle')}
                 />
                 <div className="axil-contact-page-area axil-section-gap">
@@ -53,7 +49,7 @@ const ContactUs = () => {
                                         width={1080}
                                         height={500}
                                         id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=Hanoi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3042.315525799049!2d105.78247067516442!3d21.034403528536277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4abcf6766d%3A0x3d53b16db55e9419!2sIndochina%20Plaza%20HaNoi!5e0!3m2!1svi!2s!4v1781056933961!5m2!1svi!2s"
                                     />
                                 </div>
                             </div>
@@ -128,9 +124,7 @@ const ContactUs = () => {
 
                     </div>
                 </div>
-                <ServiceTwo />
             </main>
-            <Footer />
         </>
     );
 }

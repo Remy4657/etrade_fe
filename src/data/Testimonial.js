@@ -1,30 +1,30 @@
 const TestimonialData = [
     {
-        authorName: "James C. Anderson",
+        authorName: "A. Nam",
         authorThumb: "/images/testimonial/image-1.webp",
-        authorDesignation: "Head Of Idea",
-        reviewText: "“ It’s amazing how much easier it has been to meet new people and create instantly non connections. I have the exact same personal the only thing that has changed is my mind set and a few behaviors. “"
+        authorDesignation: "Hà Nội",
+        reviewText: "“ Sản phẩm dùng rất tốt, chất lượng vượt mong đợi. Thiết kế đẹp, dễ sử dụng và bền bỉ. Tôi cảm thấy hài lòng và chắc chắn sẽ tiếp tục mua thêm để giới thiệu cho bạn bè. “"
 
     },
     {
-        authorName: "James C. Anderson",
+        authorName: "A. Bình",
         authorThumb: "/images/testimonial/image-1.webp",
-        authorDesignation: "Head Of Idea",
-        reviewText: "“ It’s amazing how much easier it has been to meet new people and create instantly non connections. I have the exact same personal the only thing that has changed is my mind set and a few behaviors. “"
+        authorDesignation: "Hà Nội",
+        reviewText: "“ Dịch vụ chăm sóc khách hàng chu đáo, sản phẩm giao nhanh và đúng mô tả. Giá cả hợp lý, chất lượng ổn định. Tôi hoàn toàn yên tâm khi lựa chọn và sẽ quay lại mua lần nữa. “"
 
     },
     {
-        authorName: "James C. Anderson",
+        authorName: "C. Huyền",
         authorThumb: "/images/testimonial/image-1.webp",
-        authorDesignation: "Head Of Idea",
-        reviewText: "“ It’s amazing how much easier it has been to meet new people and create instantly non connections. I have the exact same personal the only thing that has changed is my mind set and a few behaviors. “"
+        authorDesignation: "Hà Nội",
+        reviewText: "“ Sản phẩm mang lại trải nghiệm tuyệt vời, hiệu quả rõ rệt sau khi sử dụng. Đóng gói cẩn thận, giao hàng đúng hẹn. Tôi đánh giá cao sự chuyên nghiệp và sẽ giới thiệu cho người thân. “"
 
     },
     {
-        authorName: "James C. Anderson",
+        authorName: "C. Nguyệt",
         authorThumb: "/images/testimonial/image-1.webp",
-        authorDesignation: "Head Of Idea",
-        reviewText: "“ It’s amazing how much easier it has been to meet new people and create instantly non connections. I have the exact same personal the only thing that has changed is my mind set and a few behaviors. “"
+        authorDesignation: "Hà Nội",
+        reviewText: "“ Sẽ không có lần thứ 2 :v “"
 
     }
 ]

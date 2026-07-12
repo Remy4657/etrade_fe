@@ -29,7 +29,7 @@ const MiniCart = () => {
       >
         <div className="cart-content-wrap">
           <div className="cart-header">
-            <h2 className="header-title">Cart review</h2>
+            <h2 className="header-title">Giỏ hàng</h2>
             <button
               className="cart-close sidebar-close"
               onClick={() => cartHandler(false)}
@@ -77,14 +77,14 @@ const MiniCart = () => {
                   </li>
                 ))
               ) : (
-                <h4 className="text-center">Your cart are empty</h4>
+                <h4 className="text-center">Giỏ hàng trốngg</h4>
               )}
             </ul>
           </div>
           {getProducts?.cartItems?.length > 0 ? (
             <div className="cart-footer">
               <h3 className="cart-subtotal">
-                <span className="subtotal-title">Subtotal:</span>
+                <span className="subtotal-title">Tổng cộng:</span>
                 <span className="subtotal-amount">
                   ${getProducts.cartTotalAmount}
                 </span>
@@ -94,13 +94,13 @@ const MiniCart = () => {
                   className="axil-btn btn-bg-primary viewcart-btn"
                   onClick={() => miniCartFooterBtnHandler("/cart")}
                 >
-                  View Cart
+                  Xem giỏ hàng
                 </button>
                 <button
                   className="axil-btn btn-bg-secondary checkout-btn"
                   onClick={() => miniCartFooterBtnHandler("/checkout")}
                 >
-                  Checkout
+                  Thanh toán
                 </button>
               </div>
             </div>

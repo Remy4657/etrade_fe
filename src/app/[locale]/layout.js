@@ -5,11 +5,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/style.scss";
 import { ToastContainer, Flip } from 'react-toastify';
-import InitiateData from '@/components/helper/refresh';
+import InitiateData from '@/components/helper/refresh.wrapper';
 import NextAuthWrapper from '@/components/helper/next.auth.wrapper';
 import I18Provider from '@/provider/i18n';
-import Header from '@/components/helper/header';
-
+import HeaderWrapper from '@/components/helper/header.wrapper';
+export const metadata = {
+	title: 'MegaDeal',
+	description: 'MegaDeal',
+}
 const dmSans = DM_Sans({
 	subsets: ["latin"],
 	weight: ["400", "500", "700"],
@@ -30,8 +33,8 @@ const RootLayout = ({ children }) => {
 							<InitiateData>
 								{
 									<>
-										<Header />
-										{children}
+										<HeaderWrapper children={children} />
+
 									</>
 								}
 							</InitiateData>

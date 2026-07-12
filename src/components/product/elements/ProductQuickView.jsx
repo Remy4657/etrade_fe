@@ -1,6 +1,6 @@
 "use client";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,9 +13,11 @@ import ProductRating from "./ProductRating";
 import SlickSlider from "@/components/elements/SlickSlider";
 import ProductDiscountLabel from "./ProductDiscountLabel";
 import { toast } from "react-toastify";
+import { logout } from "@/store/slices/authSlice";
 
 const ProductQuickView = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [quantity, setquantity] = useState(1);
   const [colorImage, setColorImage] = useState("");
   const [productSize, setProductSize] = useState("");
@@ -50,7 +52,12 @@ const ProductQuickView = () => {
         ).unwrap();
         dispatch(addToCart(cartItems));
       } catch (error) {
-        toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+        console.log("error client: ", error);
+
+        await dispatch(logout());
+
+        //toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+        router.push("/sign-in");
       }
     } else {
       alert("Please select minimum 1 quantity");
@@ -225,7 +232,7 @@ const ProductQuickView = () => {
                         <div className="product-variations-wrapper">
                           {getQuickViewItem.colorAttribute && (
                             <div className="product-variation">
-                              <h6 className="title">Colors:</h6>
+                              <h6 className="title">Màu sắc:</h6>
                               <div className="color-variant-wrapper">
                                 <ul className="color-variant">
                                   {getQuickViewItem.colorAttribute?.map(
@@ -251,7 +258,7 @@ const ProductQuickView = () => {
                           )}
                           {getQuickViewItem.sizeAttribute && (
                             <div className="product-variation product-size-variation">
-                              <h6 className="title">Size:</h6>
+                              <h6 className="title">Kích thước:</h6>
                               <ul className="range-variant">
                                 {getQuickViewItem.sizeAttribute?.map(
                                   (data, index) => (
@@ -308,7 +315,7 @@ const ProductQuickView = () => {
                                 }
                                 className="axil-btn btn-bg-primary"
                               >
-                                Add to Carttt
+                                Thêm vào giỏ hàng
                               </button>
                             </li>
                             <li className="wishlist">

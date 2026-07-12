@@ -1,20 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import SectionTitle from "../elements/SectionTitle";
 import SlickSlider from "../elements/SlickSlider";
 import Section from "../elements/Section";
-import { Category } from "@/data/ProductCategory";
-import { slugify } from "@/utils";
 
 const CategoryElectronics = (props) => {
   const { listCategory } = props;
-  const pathname = usePathname();
-  const split = pathname.split("/");
-  const pageCategory = split[split.length - 1];
-
-  const findCategory = Category.filter((data) => data.cate === "Electronics");
-  const electronics = findCategory[0].subCate;
 
   return (
     <Section
@@ -22,8 +13,8 @@ const CategoryElectronics = (props) => {
       sectionPadding="axil-section-gapcommon"
     >
       <SectionTitle
-        title="Browse by Category"
-        subtitle="Categories"
+        title=""
+        subtitle="Danh mục"
         subtitleIcon="far fa-tags"
         subColor="highlighter-secondary"
       />

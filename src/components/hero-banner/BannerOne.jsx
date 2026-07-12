@@ -63,10 +63,6 @@ const BannerOne = () => {
                       width={680}
                       alt={data.title}
                     />
-                    <div className="product-price">
-                      <span className="text">From</span>
-                      <span className="price-amount">{data.price}</span>
-                    </div>
                   </div>
                 ))}
               </SlickSlider>

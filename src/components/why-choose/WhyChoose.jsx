@@ -5,15 +5,15 @@ import { WhyChooseData } from "@/data/WhyChoose";
 
 const WhyChoose = () => {
   return (
-    <Section pClass="axil-why-choose-area" sectionPadding="axil-section-gap pb--50 pb_sm--30">
+    <Section pClass="axil-why-choose-area" sectionPadding=" pb--50 pb_sm--30">
       <SectionTitle
         pClass="section-title-center"
-        title="Why People Choose Us"
-        subtitle="Why Us"
+        title="Tại sao chọn chúng tôi"
+        subtitle="Dịch vụ"
         subtitleIcon="fal fa-thumbs-up"
         subColor="highlighter-secondary"
       />
-      <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
+      <div className="justify-content-center row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
         {WhyChooseData.slice(0, 5)?.map((data, index) => (
           <div className="col" key={index}>
             <div className="service-box">
@@ -32,7 +32,6 @@ const WhyChoose = () => {
       </div>
     </Section>
   );
-
-}
+};
 
 export default WhyChoose;

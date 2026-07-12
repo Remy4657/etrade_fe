@@ -1,14 +1,10 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import ServiceTwo from "@/components/services/ServiceTwo";
 
 const NotFound = () => {
     return (
         <>
-            {/* <HeaderFive headerSlider/> */}
             <main className="main-wrapper">
                 <section className="error-page onepage-screen-area">
                     <div className="container">
@@ -16,10 +12,10 @@ const NotFound = () => {
                             <div className="col-lg-6">
                                 <div className="content">
                                     <span className="title-highlighter highlighter-secondary"> <i className="fal fa-exclamation-circle" /> Oops! Somthings missing.</span>
-                                    <h1 className="title">Page not found</h1>
-                                    <p>It seems like we dont find what you searched. The page you were looking for doesn&apos;t exist, isn&apos;t available loading incorrectly.</p>
+                                    <h1 className="title">Trang không tồn tại</h1>
+                                    <p></p>
                                     <Link href="/" className="axil-btn btn-bg-secondary right-icon">
-                                        Back To Home <i className="fal fa-long-arrow-right" />
+                                        Quay lại trang chủ <i className="fal fa-long-arrow-right" />
                                     </Link>
                                 </div>
                             </div>
@@ -36,9 +32,7 @@ const NotFound = () => {
                         </div>
                     </div>
                 </section>
-                <ServiceTwo />
             </main>
-            <Footer />
         </>
     );
 }

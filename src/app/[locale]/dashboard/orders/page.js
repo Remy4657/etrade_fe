@@ -25,23 +25,23 @@ const UserOrders = () => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col">Order</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Mã đơn hàng</th>
+                            <th scope="col">Ngày tạo</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Tổng tiền</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {listOrder?.map((item, index) => {
                             return (
                                 <tr key={item.id}>
-                                    <th scope="row">{index + 1}</th>
+                                    <th scope="row">#{item.id}</th>
                                     <td>{formatDateTime(item.createdAt)}</td>
                                     <td>{item.status}</td>
-                                    <td>${item.totalAmount} for {item.items.length} items</td>
+                                    <td>${item.totalAmount} / {item.items.length} sản phẩm</td>
                                     <td>
-                                        <Link href={`dashboard/orders/${item.id}`} className="axil-btn view-btn">View</Link>
+                                        <Link href={`orders/${item.id}`} className="axil-btn view-btn">Xem chi tiết</Link>
                                     </td>
                                 </tr>
                             )

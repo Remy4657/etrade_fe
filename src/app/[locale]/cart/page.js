@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { slugify } from "@/utils";
 import { removeCartItem, cartQuantityIncrease, cartQuantityDecrease, cartClear, updateCartAmount } from "@/store/slices/productSlice";
-import Footer from "@/components/footer/Footer";
 import { removeFromCartAPI, updateProductCartQuantity } from "@/store/slices/productSlice";
 import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
@@ -55,21 +54,21 @@ const Cart = () => {
                         {cartProducts.cartItems.length > 0 ?
                             <div className="axil-product-cart-wrap">
                                 <div className="product-table-heading">
-                                    <h4 className="title">Your Cart</h4>
-                                    <button className="cart-clear" onClick={() => cartClearHandler()}>Clear Shoping Cart</button>
+                                    <h4 className="title">Giỏ hàng của tôi</h4>
+                                    {/* <button className="cart-clear" onClick={() => cartClearHandler()}>Clear Shoping Cart</button> */}
                                 </div>
                                 <div className="table-responsive">
                                     <table className="table axil-product-table axil-cart-table mb--40">
                                         <thead>
                                             <tr>
                                                 <th scope="col" className="product-remove" />
-                                                <th scope="col" className="product-thumbnail">Product</th>
+                                                <th scope="col" className="product-thumbnail">Sản phẩm</th>
                                                 <th scope="col" className="product-title" />
-                                                <th scope="col" className="product-price">Size</th>
-                                                <th scope="col" className="product-price">Color</th>
-                                                <th scope="col" className="product-price">Price</th>
-                                                <th scope="col" className="product-quantity">Quantity</th>
-                                                <th scope="col" className="product-subtotal">Subtotal</th>
+                                                <th scope="col" className="product-price">Kích thước</th>
+                                                <th scope="col" className="product-price">Màu sắc</th>
+                                                <th scope="col" className="product-price">Giá</th>
+                                                <th scope="col" className="product-quantity">Số lượng</th>
+                                                <th scope="col" className="product-subtotal">Tổng cộng</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -113,7 +112,7 @@ const Cart = () => {
                                                             <span className="qtybtn" onClick={() => quantityIncreaseHandler(product)}>+</span>
                                                         </div>
                                                     </td>
-                                                    <td className="product-subtotal" data-title="Subtotal">
+                                                    <td className="product-subtotal" data-title="Tổng">
                                                         <span className="currency-symbol">$</span>
                                                         {parseFloat(product.salePrice ? product.salePrice * product.cartQuantity : product.price * product.cartQuantity).toFixed(2)}
                                                     </td>
@@ -125,24 +124,23 @@ const Cart = () => {
                                 </div>
                                 <div className="cart-update-btn-area">
                                     <div className="input-group product-cupon">
-                                        <input placeholder="Enter coupon code" type="text" />
+                                        <input placeholder="Nhập mã giảm giá" type="text" />
                                         <div className="product-cupon-btn">
-                                            <button type="submit" className="axil-btn btn-outline">Apply</button>
+                                            <button type="submit" className="axil-btn btn-outline">Áp dụng</button>
                                         </div>
                                     </div>
                                     <div className="update-btn">
-                                        <button className="axil-btn btn-outline" onClick={() => updateCartHandler()}>Update Cart</button>
+                                        <button className="axil-btn btn-outline" onClick={() => updateCartHandler()}>Cập nhật thay đổi</button>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
                                         <div className="axil-order-summery mt--80">
-                                            <h5 className="title mb--20">Order Summary</h5>
                                             <div className="summery-table-wrap">
                                                 <table className="table summery-table mb--30">
                                                     <tbody>
                                                         {/* <tr className="order-subtotal">
-                                                            <td>Subtotal</td>
+                                                            <td>Tổng cộng</td>
                                                             <td>${cartProducts.cartTotalAmount}</td>
                                                         </tr>
                                                         <tr className="order-shipping">
@@ -163,28 +161,27 @@ const Cart = () => {
                                                             </td>
                                                         </tr> */}
                                                         <tr className="order-total">
-                                                            <td>Total</td>
+                                                            <td>Tổng cộng:</td>
                                                             <td className="order-total-amount">${cartProducts.cartTotalAmount}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <Link href="/checkout" className="axil-btn btn-bg-primary checkout-btn">
-                                                Process to Checkout
+                                                Tiếp tục thanh toán
                                             </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div> :
                             <div className="text-center">
-                                <h4>Your Cart is empty</h4>
-                                <Link className="axil-btn btn-bg-primary" href="/shop">Back to shop</Link>
+                                <h4>Giỏ hàng trống</h4>
+                                <Link className="axil-btn btn-bg-primary" href="/shop">Tiếp tục mua sắm</Link>
                             </div>
                         }
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

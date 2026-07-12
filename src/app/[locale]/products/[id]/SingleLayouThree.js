@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import FsLightbox from "fslightbox-react";
 import { addToCart, addToWishlist, addToCartAPI } from "@/store/slices/productSlice";
 import SlickSlider from "@/components/elements/SlickSlider";
 import { discountPercentage, reviewAverage, slugify } from "@/utils";
@@ -12,9 +11,11 @@ import ProductRating from "@/components/product/elements/ProductRating";
 import { getDetailProduct, getProductCategory } from "@/services/product.service"
 import Section from "@/components/elements/Section";
 import SectionTitle from "@/components/elements/SectionTitle";
-import ProductsData from "@/data/Products";
+
 import Product from "@/components/product/Product";
 import { toast } from "react-toastify";
+import { logout } from "@/store/slices/authSlice";
+import DashboardLoading from "../../loading";
 
 const SingleLayouThree = ({ idProduct }) => {
     const router = useRouter()
@@ -27,16 +28,9 @@ const SingleLayouThree = ({ idProduct }) => {
     const [quantity, setquantity] = useState(1);
     const [colorImage, setColorImage] = useState("");
     const [productSize, setProductSize] = useState("");
-    const [fsToggler, setFsToggler] = useState(false);
     const [singleData, setSingleData] = useState(null)
     const [categoryProductDetail, setCategoryProductDetail] = useState("")
     const [listProductCategory, setListProductCategory] = useState([])
-
-    const findProduct = ProductsData.filter(product => slugify(product.id) === slugify(idProduct));
-    const singleProduct = findProduct[0];
-    const productCategory = singleProduct?.pCate;
-    const relatedProduct = ProductsData.filter(product => slugify(product.pCate) === slugify(productCategory));
-
 
 
     const findReview = useMemo(() => {
@@ -111,7 +105,10 @@ const SingleLayouThree = ({ idProduct }) => {
                 })).unwrap()
                 dispatch(addToCart(product));
             } catch (error) {
+                dispatch(logout())
                 toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
+                router.push("/sign-in")
+
             }
 
         } else {
@@ -152,7 +149,7 @@ const SingleLayouThree = ({ idProduct }) => {
         return galleryPreview;
     }
     if (!singleData) {
-        return <div>Loading...</div>;
+        return <DashboardLoading />;
     }
     return (
         <>
@@ -196,10 +193,10 @@ const SingleLayouThree = ({ idProduct }) => {
                                             </SlickSlider>
                                             {singleData.salePrice &&
                                                 <div className="label-block">
-                                                    <div className="product-badget">{discountPercentage(singleData.price, singleData.salePrice)}% OFF</div>
+                                                    <div className="product-badget">giảm {discountPercentage(singleData.price, singleData.salePrice)}%</div>
                                                 </div>
                                             }
-                                            {/* {singleData.gallery && 
+                                            {/* {singleData.gallery &&
                                         <>
                                             <div className="product-quick-view position-view">
                                                 <button onClick={() => setFsToggler(!fsToggler)} className="popup-zoom">
@@ -270,7 +267,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                         <div className="product-variations-wrapper">
                                             {singleData.colorAttribute &&
                                                 <div className="product-variation">
-                                                    <h6 className="title">Colors:</h6>
+                                                    <h6 className="title">Màu sắc:</h6>
                                                     <div className="color-variant-wrapper">
                                                         <ul className="color-variant">
                                                             {singleData.colorAttribute?.map((data, index) => (
@@ -287,7 +284,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                             }
                                             {singleData.sizeAttribute &&
                                                 <div className="product-variation product-size-variation">
-                                                    <h6 className="title">Size:</h6>
+                                                    <h6 className="title">Kích thước:</h6>
                                                     <ul className="range-variant">
                                                         {singleData.sizeAttribute?.map((data, index) => (
                                                             <li key={index} className={productSize === data ? "active" : ""}
@@ -306,7 +303,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                             </div>
                                             <ul className="product-action d-flex-center mb--0">
                                                 <li className="add-to-cart">
-                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Add to Cartt</button>
+                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Thêm vào giỏ hàng</button>
                                                 </li>
                                                 <li className="wishlist">
                                                     <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)}><i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} /></button>
@@ -323,13 +320,11 @@ const SingleLayouThree = ({ idProduct }) => {
                     <div className="container">
                         <ul className="nav tabs" role="tablist">
                             <li className="nav-item" role="presentation">
-                                <a className="active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+                                <a className="active" id="description-tab" data-bs-toggle="tab" href="#" role="tab" aria-controls="description" aria-selected="true">Mô tả</a>
                             </li>
-                            <li className="nav-item " role="presentation">
-                                <a id="additional-info-tab" data-bs-toggle="tab" href="#additional-info" role="tab" aria-controls="additional-info" aria-selected="false">Additional Information</a>
-                            </li>
+
                             <li className="nav-item" role="presentation">
-                                <a id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                                <a id="reviews-tab" data-bs-toggle="tab" href="#" role="tab" aria-controls="reviews" aria-selected="false">Đánh giá</a>
                             </li>
                         </ul>
                         <div className="tab-content">
@@ -478,8 +473,8 @@ const SingleLayouThree = ({ idProduct }) => {
             </section>
             <Section pClass="pb--50 pb_sm--30">
                 <SectionTitle
-                    title="Related Items"
-                    subtitle="Your Recently"
+                    title=""
+                    subtitle="Sản phẩm liên quan"
                     subtitleIcon="far fa-shopping-basket"
                     subColor="highlighter-primary"
                 />

@@ -1,25 +1,18 @@
-'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import Section from "@/components/elements/Section";
-import SectionTitle from "@/components/elements/SectionTitle";
-import SlickSlider from "@/components/elements/SlickSlider";
-import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import NewsLetter from "@/components/newsletter/NewsLetter";
-import ServiceTwo from "@/components/services/ServiceTwo";
+
 import { AboutAchievment, AboutFeatures, AboutStore } from "@/data/About";
-import { TeamData } from "@/data/Team";
 
 const AboutUs = () => {
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Breadcrumb
-                    activeItem="About Us"
-                    title="About Our Store"
+                    activeItem="Về chúng tôi"
+                    title="Giới thiệu cửa hàng"
                 />
                 <Section pClass="axil-about-area about-style-1">
                     <div className="row align-items-center">
@@ -28,7 +21,7 @@ const AboutUs = () => {
                                 <div className="thumbnail">
                                     <Image
                                         src={AboutStore.thumbnail}
-                                        alt="About Us"
+                                        alt="Giới thiệu về cửa hàng"
                                         width={420}
                                         height={501}
                                     />
@@ -64,7 +57,7 @@ const AboutUs = () => {
                                                 src={data.icon}
                                                 width={60}
                                                 height={60}
-                                                alt="Shape"
+                                                alt="Biểu tượng"
                                             />
                                         </div>
                                         <div className="content">
@@ -78,40 +71,7 @@ const AboutUs = () => {
                     </div>
 
                 </section>
-                {/* <section className="axil-team-area axil-section-gap bg-wild-sand">
-                    <div className="team-left-fullwidth">
-                        <div className="container ml--xxl-0">
-                            <SectionTitle
-                                title="Expart Management Team"
-                                subtitle="Our Team"
-                                subtitleIcon="fas fa-users"
-                                subColor="highlighter-primary"
-                            />
-                            <SlickSlider
-                                class="team-slide-activation slick-layout-wrapper--20 axil-slick-arrow arrow-top-slide"
-                                slidesToShow={4}
-                                infinite={false}
-                            >
-                                {TeamData?.map((data, index) => (
-                                    <div className="axil-team-member" key={index}>
-                                        <div className="thumbnail">
-                                            <Image
-                                                src={data.thumbnail}
-                                                width={330}
-                                                height={380}
-                                                alt={data.name}
-                                            />
-                                        </div>
-                                        <div className="team-content">
-                                            <span className="subtitle">{data.designation}</span>
-                                            <h5 className="title">{data.name}</h5>
-                                        </div>
-                                    </div>
-                                ))}
-                            </SlickSlider>
-                        </div>
-                    </div>
-                </section> */}
+
                 <section className="axil-about-area about-style-2">
                     <div className="container">
                         {AboutFeatures?.map((data, index) => (
@@ -122,26 +82,24 @@ const AboutUs = () => {
                                             src={data.thumbnail}
                                             width={545}
                                             height={440}
-                                            alt="About Us"
+                                            alt="Hình ảnh tính năng"
                                         />
                                     </div>
                                 </div>
                                 <div className={`col-lg-7 ${index % 2 === 0 ? "" : "order-lg-1"}`}>
                                     <div className={`about-content ${index % 2 === 0 ? "content-right" : "content-left"}`}>
-                                        <span className="subtitle">{data.subtitle}</span>
+                                        {/* <span className="subtitle">{data.subtitle}</span> */}
+
                                         <h4 className="title">{data.title}</h4>
                                         <p>{data.text}</p>
-                                        <Link href="/contact" className="axil-btn btn-outline">Get In Touch</Link>
+                                        {/* <Link href="/contact" className="axil-btn btn-outline">Liên hệ</Link> */}
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
-                <NewsLetter />
-                <ServiceTwo />
             </main>
-            <Footer />
         </>
     );
 }

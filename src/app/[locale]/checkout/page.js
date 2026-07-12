@@ -2,13 +2,9 @@
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from "react-redux";
 import Section from "@/components/elements/Section";
-import Footer from "@/components/footer/Footer";
-import HeaderFive from "@/components/header/HeaderFive";
-import ServiceTwo from "@/components/services/ServiceTwo";
 import { addToOrder } from '@/store/slices/productSlice';
 import { getPaymentAll } from "@/services/payment.service"
 import { getShippingAll } from "@/services/shipping.service"
@@ -55,29 +51,17 @@ const Checkout = () => {
 
     const shippingFee = selectedShipping?.fee || 0
 
-
     useEffect(() => {
-        const fetchAllShippinng = async () => {
-            try {
-                const { data } = await getShippingAll()
-                setListShipping(data)
-            } catch (error) {
-
-            }
-
-
-        }
-        const fetchAllPayment = async () => {
-            try {
-                const { data } = await getPaymentAll()
-                setListPayment(data)
-            } catch (error) {
-
-            }
+        const fetchShipmentAndPaymentMethod = async () => {
+            const [dataShipment, dataPayment] = await Promise.all([
+                await getShippingAll(),
+                await getPaymentAll()
+            ]);
+            setListShipping(dataShipment.data)
+            setListPayment(dataPayment.data)
 
         }
-        fetchAllShippinng()
-        fetchAllPayment()
+        fetchShipmentAndPaymentMethod()
     }, [])
 
     const checkoutFormHandler = (data, e) => {
@@ -128,7 +112,6 @@ const Checkout = () => {
     }
     return (
         <>
-            {/* <HeaderFive headerSlider /> */}
             <main className="main-wrapper">
                 <Section pClass="axil-checkout-area">
                     {cartProducts.cartItems.length > 0 ?
@@ -136,48 +119,54 @@ const Checkout = () => {
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="axil-checkout-billing">
-                                        <h4 className="title mb--40">Billing details</h4>
+                                        <h4 className="title mb--40">Địa chỉ nhận hàng</h4>
                                         <div className="row">
-                                            <div className="col-lg-6">
+                                            <div className="col-lg-8">
                                                 <div className="form-group">
-                                                    <label>Full Name <span>*</span></label>
-                                                    <input type="text" {...register('fullname', { required: false })} placeholder="Adam" />
-                                                    {errors.fullname && <p className="error">Full Name is required.</p>}
+                                                    <label>Họ tên <span>*</span></label>
+                                                    <input type="text" {...register('fullname', { required: true })} placeholder="" />
+                                                    {errors.fullname && <p className="error">Họ tên là trường bắt buộc.</p>}
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group">
-                                                    <label>Street Address <span>*</span></label>
-                                                    <input type="text" {...register('street', { required: false })} placeholder="House number and street name" />
-                                                    {errors.street && <p className="error">Street Address is required.</p>}
+                                                    <label>Địa chỉ <span>*</span></label>
+                                                    <input type="text" {...register('street', { required: true })} placeholder="" />
+                                                    {errors.street && <p className="error">Địa chỉ là trường bắt buộc.</p>}
                                                 </div>
                                             </div>
 
                                             <div className="col-lg-12">
                                                 <div className="form-group">
-                                                    <label>Town/ City <span>*</span></label>
-                                                    <input type="text" {...register('city', { required: false })} />
-                                                    {errors.city && <p className="error">Town/ City is required.</p>}
+                                                    <label>Thành phố <span>*</span></label>
+                                                    <input type="text" {...register('city', { required: true })} />
+                                                    {errors.city && <p className="error">Thành phố là trường bắt buộc.</p>}
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group">
-                                                    <label>Phone <span>*</span></label>
-                                                    <input type="number" {...register('phone', { required: false, maxLength: 11 })} />
-                                                    {errors.phone && <p className="error">Please enter 11 digit phone number.</p>}
+                                                    <label>Số điện thoại <span>*</span></label>
+                                                    <input type="number" {...register('phone', { required: true, minLength: 10 })} />
+                                                    {errors.phone?.type === 'required' && (
+                                                        <p className="error">Vui lòng nhập số điện thoại.</p>
+                                                    )}
+
+                                                    {errors.phone?.type === 'minLength' && (
+                                                        <p className="error">Số điện thoại phải có ít nhất 10 ký tự.</p>
+                                                    )}
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group">
-                                                    <label>Email Address <span>*</span></label>
-                                                    <input type="email" {...register('email', { required: false })} />
-                                                    {errors.email && <p className="error">Email is required.</p>}
+                                                    <label>Email <span>*</span></label>
+                                                    <input type="email" {...register('email', { required: true })} />
+                                                    {errors.email && <p className="error">Email là trường bắt buộc.</p>}
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group">
-                                                    <label>Other Notes (optional)</label>
-                                                    <textarea rows="2" {...register('notes')} placeholder="Notes about your order, e.g. speacial notes for delivery."></textarea>
+                                                    <label>Lời nhắc </label>
+                                                    <textarea rows="2" {...register('notes')} placeholder="Lưu ý cho người bán..."></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,13 +174,13 @@ const Checkout = () => {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="axil-order-summery order-checkout-summery">
-                                        <h5 className="title mb--20">Your Order</h5>
+                                        <h5 className="title mb--20">Chi tiết đơn hàng</h5>
                                         <div className="summery-table-wrap">
                                             <table className="table summery-table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Product</th>
-                                                        <th>Subtotal</th>
+                                                        <th>Sản phẩm</th>
+                                                        <th>Tổng cộng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -202,13 +191,13 @@ const Checkout = () => {
                                                         </tr>
                                                     ))}
                                                     <tr className="order-subtotal">
-                                                        <td>Subtotal</td>
+                                                        <td>Giá</td>
                                                         <td>${cartProducts.cartTotalAmount}</td>
                                                     </tr>
                                                     <tr className="order-shipping">
                                                         <td colSpan={2}>
                                                             <div className="shipping-amount">
-                                                                <span className="title">Shipping Method</span>
+                                                                <span className="title">Phương thức vận chuyển</span>
                                                             </div>
                                                             {listShipping?.map((item, index) => {
                                                                 return (
@@ -222,8 +211,8 @@ const Checkout = () => {
                                                         </td>
                                                     </tr>
                                                     <tr className="order-total">
-                                                        <td>Total</td>
-                                                        <td className="order-total-amount">${cartProducts.cartTotalAmount + shippingFee}</td>
+                                                        <td>Tổng cộng</td>
+                                                        <td className="order-total-amount">${+cartProducts.cartTotalAmount + shippingFee}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -242,21 +231,19 @@ const Checkout = () => {
                                             })}
 
                                         </div>
-                                        <button type="submit" className="axil-btn btn-bg-primary checkout-btn">Process to Checkout</button>
+                                        <button type="submit" className="axil-btn btn-bg-primary checkout-btn">Đặt hàng</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         :
                         <div className="text-center">
-                            <h4>There is no item for checkout</h4>
-                            <Link href="/shop" className="axil-btn btn-bg-primary">Back to shop</Link>
+                            <h4>Chưa có sản phẩm nào</h4>
+                            <Link href="/shop" className="axil-btn btn-bg-primary">Tiếp tục mua sắm</Link>
                         </div>
                     }
                 </Section>
-                <ServiceTwo />
             </main>
-            <Footer />
         </>
     );
 }

@@ -58,11 +58,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -901,11 +901,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -927,11 +927,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -988,11 +988,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1014,11 +1014,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1074,11 +1074,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1100,11 +1100,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1161,11 +1161,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1187,11 +1187,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1248,11 +1248,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1274,11 +1274,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1335,11 +1335,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1361,11 +1361,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade P"
+                text: "MegaDeal P"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1422,11 +1422,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1448,11 +1448,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1509,11 +1509,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1535,11 +1535,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1596,11 +1596,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1622,11 +1622,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1683,11 +1683,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1709,11 +1709,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1770,11 +1770,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1796,11 +1796,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1857,11 +1857,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1883,11 +1883,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1944,11 +1944,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -1970,11 +1970,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2031,11 +2031,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2057,11 +2057,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2118,11 +2118,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2144,11 +2144,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2205,11 +2205,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2231,11 +2231,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2292,11 +2292,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2318,11 +2318,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2379,11 +2379,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2405,11 +2405,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2466,11 +2466,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2492,11 +2492,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2553,11 +2553,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2579,11 +2579,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2640,11 +2640,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2666,11 +2666,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2727,11 +2727,11 @@ const ProductsData = [
         addInfo: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",
@@ -2753,11 +2753,11 @@ const ProductsData = [
         property: [
             {
                 title: "Brand",
-                text: "eTrade"
+                text: "MegaDeal"
             },
             {
                 title: "Collection",
-                text: "eTrade Capsules"
+                text: "MegaDeal Capsules"
             },
             {
                 title: "Creator",

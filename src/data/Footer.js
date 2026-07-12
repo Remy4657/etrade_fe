@@ -32,14 +32,7 @@ const FooterData = {
                     name: "aboutUs",
                     url: "/about"
                 },
-                {
-                    name: "privacyPolicy",
-                    url: "/privacy-policy"
-                },
-                {
-                    name: "termsOfUse",
-                    url: "/terms-of-use"
-                },
+
                 {
                     name: "contact",
                     url: "/contact"
@@ -69,7 +62,7 @@ const FooterData = {
         }
     ],
     footerInfo: {
-        address: "141, <br /> Las Vegas, LA 95820, <br /> United States.",
+        address: "141, <br /> Xuân Thủy, Cầu Giấy <br /> Hà Nội.",
         email: "example@example.com",
         phone: "(+01) 850-315-5862"
     },
