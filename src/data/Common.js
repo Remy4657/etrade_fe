@@ -23,15 +23,15 @@ const ScocialLink = {
 }
 
 const Logo = {
-    light: "/images/logo/logo-light.png",
-    dark: "/images/logo/logo.png",
-    large: "/images/logo/logo-large.png"
+    light: "/images/logo/MegaDev_Logo_wide3.jpg",
+    dark: "/images/logo/MegaDev_Logo_wide3.jpg",
+    large: "/images/logo/MegaDev_Logo_wide3.jpg"
 }
 
 const StoreInfo = {
-    address: "8212 E. Glen Creek Street Orchard Park, NY 14127, United States of America",
+    address: "240, Xuân Thủy, Cầu Giấy, Hà Nội",
     phone: "+123 456 7890",
-    email: "Hello@etrade.com",
+    email: "megadev@gmail.com",
     opening: {
         monToSat: "9am - 10pm",
         othersDay: "10am - 6pm"

@@ -19,7 +19,7 @@ const WhoAreData = [
 const WhoAreGallery = ["/images/about/about-04.png", "/images/about/about-06.png", "/images/about/about-05.png", "/images/about/about-07.png"]
 
 const AboutStore = {
-    thumbnail: "/images/about/about-01.png",
+    thumbnail: "/images/product/product-07.webp",
     subtitle: "Về Cửa hàng",
     subtitleIcon: "far fa-shopping-basket",
     title: "Mua sắm trực tuyến bao gồm cả việc mua sắm và bán hàng qua internet.",
@@ -50,19 +50,20 @@ const AboutAchievment = [
 
 const AboutFeatures = [
     {
-        subtitle:"Tính năng #01",
+        subtitle: "Tính năng #01",
         title: "Các giải pháp cùng làm việc",
         text: "Xuất bản trang web thương mại điện tử của bạn nhanh chóng với công cụ tạo cửa hàng dễ sử dụng của chúng tôi— không cần viết mã. Di chuyển các mặt hàng từ hệ thống điểm bán hàng hoặc chuyển đổi kênh Instagram của bạn thành trang web mua sắm và bắt đầu bán ngay. Square Online phù hợp với mọi loại doanh nghiệp—bán lẻ, nhà hàng, dịch vụ.",
-        thumbnail: "/images/about/about-02.png"
+        thumbnail: "/images/product/product-08.webp"
     },
     {
-        subtitle:"Tính năng #02",
+        subtitle: "Tính năng #02",
         title: "Các giải pháp cùng làm việc",
         text: "Xuất bản trang web thương mại điện tử của bạn nhanh chóng với công cụ tạo cửa hàng dễ sử dụng của chúng tôi— không cần viết mã. Di chuyển các mặt hàng từ hệ thống điểm bán hàng hoặc chuyển đổi kênh Instagram của bạn thành trang web mua sắm và bắt đầu bán ngay. Square Online phù hợp với mọi loại doanh nghiệp—bán lẻ, nhà hàng, dịch vụ.",
-        thumbnail: "/images/about/about-03.png"
+        thumbnail: "/images/product/product-09.webp"
     }
 
 ]
-    
 
-export{WhoAreData, WhoAreGallery, AboutFeatures, AboutStore, AboutAchievment};
+
+export { WhoAreData, WhoAreGallery, AboutFeatures, AboutStore, AboutAchievment };
+

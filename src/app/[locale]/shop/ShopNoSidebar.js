@@ -63,7 +63,7 @@ const ShopNoSidebar = () => {
                             <div className="col-lg-9">
                                 <div className="category-select">
                                     <select className="single-select" onChange={CategoryHandler}>
-                                        <option value="all">Tất cả</option>
+                                        <option value="all">Tất cả danh mục</option>
                                         {listCategory?.map((data, index) => (
                                             <option value={slugify(data.name)} key={index}>{data.name}</option>
                                         ))}

@@ -4,6 +4,7 @@ import ProductDiscountLabel from "./ProductDiscountLabel";
 import ActionButtons from "./ActionButtons";
 
 const ProductThumbnail = (props) => {
+  console.log("props: ", props);
   return (
     <div className="thumbnail">
       <Link href={`/products/${props.productThumb.id}`}>

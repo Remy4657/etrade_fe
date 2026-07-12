@@ -15,6 +15,7 @@ import SectionTitle from "@/components/elements/SectionTitle";
 import Product from "@/components/product/Product";
 import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
+import DashboardLoading from "../../loading";
 
 const SingleLayouThree = ({ idProduct }) => {
     const router = useRouter()
@@ -148,7 +149,7 @@ const SingleLayouThree = ({ idProduct }) => {
         return galleryPreview;
     }
     if (!singleData) {
-        return <div>Loading...</div>;
+        return <DashboardLoading />;
     }
     return (
         <>

@@ -66,7 +66,7 @@ const Nav = () => {
         <div className="mobile-nav-brand">
           <Link href="/" className="logo">
             <Image
-              src="/images/logo/logo.png"
+              src="/images/logo/MegaDev_Logo_wide.webp"
               alt="Site Logo"
               height={40}
               width={150}

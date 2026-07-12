@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { Logo } from "@/data/Common";
 
 const AuthLayout = ({ children, bgImage }) => {
     const pathname = usePathname();
@@ -15,7 +14,7 @@ const AuthLayout = ({ children, bgImage }) => {
                     <div className="col-md-6">
                         <Link href="/" className="site-logo">
                             <Image
-                                src="/images/logo/logo.png"
+                                src="/images/logo/MegaDev_Logo_wide.webp"
                                 height={40}
                                 width={157}
                                 alt="Logo"

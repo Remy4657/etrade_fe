@@ -18,6 +18,7 @@ const LangDropdown = () => {
       value={locale}
       onChange={handleLanguageChange}
       style={{
+        marginLeft: "10px",
         cursor: "pointer",
         width: "50px",
         padding: "5px",
