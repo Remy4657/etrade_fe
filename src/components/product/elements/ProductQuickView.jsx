@@ -3,17 +3,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  addToCartAPI,
-  addToQuickView,
-  addToWishlist,
-} from "@/store/slices/productSlice";
+import { addToQuickView } from "@/store/slices/productSlice";
+import { addToCart, addToCartAPI } from "@/store/slices/cartSlice";
 import ProductRating from "./ProductRating";
 import SlickSlider from "@/components/elements/SlickSlider";
 import ProductDiscountLabel from "./ProductDiscountLabel";
-import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
+import { addToWishlist, addToWishlistApi } from "@/store/slices/wishlistSlice";
 
 const ProductQuickView = () => {
   const dispatch = useDispatch();
@@ -23,10 +19,8 @@ const ProductQuickView = () => {
   const [productSize, setProductSize] = useState("");
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
-  const getQuickViewItem = useSelector(
-    (state) => state.productData.quickViewItems,
-  );
-  const getWishlist = useSelector((state) => state.productData.wishlistItems);
+  const getQuickViewItem = useSelector((state) => state.product.quickViewItems);
+  const getWishlist = useSelector((state) => state.wishlist.wishlistItems);
   const isWishlistAdded = getWishlist.filter(
     (data) => data.id === getQuickViewItem.id,
   );
@@ -52,12 +46,13 @@ const ProductQuickView = () => {
         ).unwrap();
         dispatch(addToCart(cartItems));
       } catch (error) {
-        console.log("error client: ", error);
+        console.log(error);
 
         await dispatch(logout());
 
         //toast.error(error.message || "Có lỗi xảy ra khi thêm vào giỏ hàng");
         router.push("/sign-in");
+        router.refresh();
       }
     } else {
       alert("Please select minimum 1 quantity");
@@ -65,6 +60,7 @@ const ProductQuickView = () => {
   };
 
   const handleAddToWishlist = (product) => {
+    dispatch(addToWishlistApi(product.id));
     dispatch(addToWishlist(product));
   };
 
@@ -324,6 +320,7 @@ const ProductQuickView = () => {
                                 onClick={() =>
                                   handleAddToWishlist(getQuickViewItem)
                                 }
+                                disabled={isWishlistAdded.length === 1}
                               >
                                 <i
                                   className={

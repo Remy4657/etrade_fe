@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "@/services/auth.service"
 import { signOut } from "next-auth/react"
-import { getCurrentCart } from "./productSlice";
 
 export const loginUser = createAsyncThunk(
     "auth/loginUser",
@@ -21,7 +20,7 @@ export const logout = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             await authService.logout(); // sign out ở server
-            await signOut({ redirect: false }) // sign out ở client (xóa session cookie), 
+            await signOut({ redirect: false }) // sign out ở client (xóa session cookie),
             return;
         } catch (err) {
             return rejectWithValue("Logout err: ", err);
@@ -33,12 +32,10 @@ export const getMe = createAsyncThunk(
     async (_, { rejectWithValue, dispatch }) => {
         try {
             const res = await authService.me();
-            if (res.data) { // Nếu có dữ liệu người dùng, lấy giỏ hàng hiện tại
-                dispatch(getCurrentCart())
-            }
+
             return res.data;
         } catch (err) {
-            return rejectWithValue("Unauthenticated");
+            return rejectWithValue(err);
         }
     }
 );
@@ -50,12 +47,6 @@ const authSlice = createSlice({
         userData: {},
         isLoading: false,
         isError: null,
-    },
-    reducers: {
-        logout(state) {
-            state.login = false;
-            state.userData = null;
-        },
     },
     extraReducers: (builder) => {
         //login

@@ -5,16 +5,15 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from "react-redux";
 import Section from "@/components/elements/Section";
-import { addToOrder } from '@/store/slices/productSlice';
+import { addToOrder, checkoutApi } from '@/store/slices/cartSlice';
 import { getPaymentAll } from "@/services/payment.service"
 import { getShippingAll } from "@/services/shipping.service"
-import { checkoutApi } from '@/store/slices/productSlice';
 
 const Checkout = () => {
     const router = useRouter();
     const dispatch = useDispatch();
-    const cartProducts = useSelector((state) => state.productData);
-    const { userData } = useSelector((state) => state.auth);
+    const cartProducts = useSelector((state) => state.cart);
+    const { userData, login } = useSelector((state) => state.auth);
 
     const [listShipping, setListShipping] = useState([])
     const [listPayment, setListPayment] = useState([])

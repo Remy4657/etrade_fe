@@ -15,6 +15,10 @@ export const cartApi = {
     UPDATE_PRODUCT_CART_QUANTITY: "cart/update"
 
 }
+export const wishlistApi = {
+    WISHLIST: "/wishlist",
+
+}
 export const productApi = {
     GET_PRODUCT_ALL: "/products",
     GET_DETAIL_PRODUCT: "/product",

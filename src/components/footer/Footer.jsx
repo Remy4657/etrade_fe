@@ -3,12 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useTranslations } from "next-intl";
-import { ScocialLink } from "@/data/Common";
 import { FooterData } from "@/data/Footer";
 import ProductQuickView from "../product/elements/ProductQuickView";
 
 const Footer = () => {
-  const getQuickView = useSelector((state) => state.productData);
+  const getQuickView = useSelector((state) => state.product);
   const t = useTranslations();
 
   return (

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, addToWishlist, addToCartAPI } from "@/store/slices/productSlice";
+import { addToCart, addToCartAPI } from "@/store/slices/cartSlice";
 import SlickSlider from "@/components/elements/SlickSlider";
 import { discountPercentage, reviewAverage, slugify } from "@/utils";
 import { ProductReview } from "@/data/Comments";
@@ -16,12 +16,13 @@ import Product from "@/components/product/Product";
 import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
 import DashboardLoading from "../../loading";
+import { addToWishlist, addToWishlistApi } from "@/store/slices/wishlistSlice";
 
 const SingleLayouThree = ({ idProduct }) => {
     const router = useRouter()
     const dispatch = useDispatch();
-    const getWishlist = useSelector((state) => state.productData.wishlistItems);
-    const userData = useSelector((state) => state.auth);
+    const getWishlist = useSelector((state) => state.wishlist.wishlistItems);
+    const { login } = useSelector((state) => state.auth);
 
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
@@ -33,23 +34,22 @@ const SingleLayouThree = ({ idProduct }) => {
     const [listProductCategory, setListProductCategory] = useState([])
 
 
-    const findReview = useMemo(() => {
-        if (!singleData?.id) return [];
-        return ProductReview.filter(
-            (data) => slugify(data.productId) === slugify(singleData.id)
-        );
-    }, [singleData]);
+    // const findReview = useMemo(() => {
+    //     if (!singleData?.id) return [];
+    //     return ProductReview.filter(
+    //         (data) => slugify(data.productId) === slugify(singleData.id)
+    //     );
+    // }, [singleData]);
 
-    const ratingNumber = useMemo(() => {
-        if (!findReview.length) return 0;
-        return reviewAverage(findReview);
-    }, [findReview]);
+    // const ratingNumber = useMemo(() => {
+    //     if (!findReview.length) return 0;
+    //     return reviewAverage(findReview);
+    // }, [findReview]);
 
     const isWishlistAdded = useMemo(() => {
         if (!singleData?.id) return false;
         return getWishlist.some((item) => item.id === singleData.id);
     }, [getWishlist, singleData]);
-
     useEffect(() => {
         const fetchDetailProduct = async () => {
             try {
@@ -82,8 +82,10 @@ const SingleLayouThree = ({ idProduct }) => {
     }, [categoryProductDetail]);
 
     const handleAddToCart = async (cartAddedData) => {
-        if (!userData?.login) {
+        if (!login) {
             router.push("/sign-in");
+            router.refresh()
+
             return;
         }
         let product = { ...cartAddedData }
@@ -117,6 +119,7 @@ const SingleLayouThree = ({ idProduct }) => {
     };
 
     const handleAddToWishlist = (product) => {
+        dispatch(addToWishlistApi(product.id))
         dispatch(addToWishlist(product));
     };
 
@@ -306,7 +309,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                     <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Thêm vào giỏ hàng</button>
                                                 </li>
                                                 <li className="wishlist">
-                                                    <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)}><i className={isWishlistAdded.length === 1 ? "fas fa-heart" : "far fa-heart"} /></button>
+                                                    <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)} disabled={isWishlistAdded}><i className={isWishlistAdded ? "fas fa-heart" : "far fa-heart"} /></button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -380,7 +383,7 @@ const SingleLayouThree = ({ idProduct }) => {
                             <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <div className="reviews-wrapper">
                                     <div className="row">
-                                        <div className="col-lg-6 mb--40">
+                                        {/* <div className="col-lg-6 mb--40">
                                             <div className="axil-comment-area pro-desc-commnet-area">
                                                 <h5 className="title">{findReview.length} Review for this product</h5>
                                                 <ul className="comment-list">
@@ -420,7 +423,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                     ))}
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className="col-lg-6 mb--40">
                                             <div className="comment-respond pro-des-commend-respond mt--0">
                                                 <h5 className="title mb--30">Add a Review</h5>

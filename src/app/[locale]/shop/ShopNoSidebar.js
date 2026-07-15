@@ -15,7 +15,7 @@ const ShopNoSidebar = () => {
     const [productShow, setProductShow] = useState(12);
     const priceRange = getPriceRange(ProductsData);
 
-    const { listProducts, listCategory } = useSelector((state) => state.productData);
+    const { listProducts, listCategory } = useSelector((state) => state.product);
 
 
     const filteredProducts = useMemo(() => {
