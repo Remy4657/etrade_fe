@@ -6,7 +6,7 @@ import Section from "@/components/elements/Section";
 
 const OrderReceived = () => {
     const router = useRouter()
-    const orders = useSelector((state) => state.productData.orderItems);
+    const orders = useSelector((state) => state.cart.orderItems);
     const latestOrder = orders[orders.length - 1];
     return (
         <>

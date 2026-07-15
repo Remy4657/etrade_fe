@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCartItem, miniCartHandler } from "@/store/slices/productSlice";
-import { removeFromCartAPI } from "@/store/slices/productSlice";
+import {
+  removeCartItem,
+  removeFromCartAPI,
+  miniCartHandler,
+} from "@/store/slices/cartSlice";
 
 const MiniCart = () => {
   const dispatch = useDispatch();
-  const getProducts = useSelector((state) => state.productData);
+  const getCarts = useSelector((state) => state.cart);
   const router = useRouter();
 
   const removeCartHandler = (data) => {
@@ -24,9 +27,7 @@ const MiniCart = () => {
 
   return (
     <>
-      <div
-        className={`cart-dropdown ${getProducts.isMinicartOpen ? "open" : ""}`}
-      >
+      <div className={`cart-dropdown ${getCarts.isMinicartOpen ? "open" : ""}`}>
         <div className="cart-content-wrap">
           <div className="cart-header">
             <h2 className="header-title">Giỏ hàng</h2>
@@ -39,8 +40,8 @@ const MiniCart = () => {
           </div>
           <div className="cart-body">
             <ul className="cart-item-list">
-              {getProducts?.cartItems?.length > 0 ? (
-                getProducts.cartItems?.map((data, index) => (
+              {getCarts?.cartItems?.length > 0 ? (
+                getCarts.cartItems?.map((data, index) => (
                   <li className="cart-item" key={index}>
                     <div className="item-img">
                       <Image
@@ -77,16 +78,16 @@ const MiniCart = () => {
                   </li>
                 ))
               ) : (
-                <h4 className="text-center">Giỏ hàng trốngg</h4>
+                <h4 className="text-center">Giỏ hàng trống</h4>
               )}
             </ul>
           </div>
-          {getProducts?.cartItems?.length > 0 ? (
+          {getCarts?.cartItems?.length > 0 ? (
             <div className="cart-footer">
               <h3 className="cart-subtotal">
                 <span className="subtotal-title">Tổng cộng:</span>
                 <span className="subtotal-amount">
-                  ${getProducts.cartTotalAmount}
+                  ${getCarts.cartTotalAmount}
                 </span>
               </h3>
               <div className="group-btn">
@@ -109,7 +110,7 @@ const MiniCart = () => {
           )}
         </div>
       </div>
-      {getProducts.isMinicartOpen && (
+      {getCarts.isMinicartOpen && (
         <div className="closeMask" onClick={() => cartHandler(false)}></div>
       )}
     </>

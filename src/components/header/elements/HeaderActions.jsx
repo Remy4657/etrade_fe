@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ProductSearchModal from "@/components/header/elements/ProductSearchModal";
 import MiniCart from "@/components/header/elements/MiniCart";
-import { miniCartHandler } from "@/store/slices/productSlice";
+import { miniCartHandler } from "@/store/slices/cartSlice";
 import { mobileMenu } from "@/store/slices/menuSlice";
 import { useRouter } from "next/navigation";
 import { logout } from "@/store/slices/authSlice";
@@ -17,10 +17,14 @@ const HeaderActions = (props) => {
 
   const { data: session } = useSession();
   const userInfoGoogle = session?.user || null;
-  const userInfoCre = useSelector((state) => state.auth);
+  const { login } = useSelector((state) => state.auth);
 
-  const getProducts = useSelector((state) => state.productData);
-
+  const cartQuantityTotal = useSelector(
+    (state) => state.cart.cartQuantityTotal,
+  );
+  const wishListQuantity = useSelector(
+    (state) => state.wishlist.wishListQuantity,
+  );
   const [searchToggle, setSearchToggle] = useState(false);
   const [accountDropdown, setaccountDropdown] = useState(false);
 
@@ -31,8 +35,10 @@ const HeaderActions = (props) => {
     setaccountDropdown((toggler) => !toggler);
   };
   const cartHandler = (data) => {
-    if (!userInfoCre.userData) {
+    if (!login) {
       router.push("/sign-in");
+      router.refresh();
+
       return;
     }
     dispatch(miniCartHandler(data));
@@ -71,8 +77,8 @@ const HeaderActions = (props) => {
 
         <li className="wishlist">
           <Link href="/wishlist">
-            {getProducts.wishListQuantity > 0 && (
-              <span className="cart-count">{getProducts.wishListQuantity}</span>
+            {wishListQuantity > 0 && (
+              <span className="cart-count">{wishListQuantity}</span>
             )}
             <i className="far fa-heart" />
           </Link>
@@ -82,7 +88,9 @@ const HeaderActions = (props) => {
             className="cart-dropdown-btn"
             onClick={() => cartHandler(true)}
           >
-            <span className="cart-count">{getProducts.cartQuantityTotal}</span>
+            {cartQuantityTotal > 0 && (
+              <span className="cart-count">{cartQuantityTotal}</span>
+            )}
             <i className="far fa-shopping-cart" />
           </button>
         </li>
@@ -115,10 +123,11 @@ const HeaderActions = (props) => {
               </li>
             </ul>
             <div className="login-btn">
-              {!userInfoCre?.login ? (
+              {!login ? (
                 <button
                   onClick={() => {
                     router.push("/sign-in");
+                    router.refresh();
                   }}
                   className="axil-btn btn-bg-primary"
                 >
@@ -129,6 +138,7 @@ const HeaderActions = (props) => {
                   onClick={async () => {
                     await dispatch(logout());
                     router.push("/sign-in");
+                    router.refresh();
                   }}
                   className="axil-btn btn-bg-primary"
                 >
@@ -136,7 +146,7 @@ const HeaderActions = (props) => {
                 </button>
               )}
             </div>
-            {!userInfoCre?.login && (
+            {!login && (
               <div className="reg-footer text-center">
                 Chưa có tài khoản?
                 <Link href="/sign-up" className="btn-link">

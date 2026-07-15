@@ -80,24 +80,24 @@ const SignUp = () => {
 
             <form className="singin-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label>Tên người dùng</label>
+                    <label className="w-100 text-start">Tên người dùng</label>
                     <input type="text" className="form-control" {...register('username', { required: true })} placeholder="" />
                     {errors.username && <p className="error">Tên người dùng là trường bắt buộc.</p>}
                 </div>
                 <div className="form-group">
-                    <label>Email</label>
+                    <label className="w-100 text-start">Email</label>
                     <input type="email" className="form-control" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="example@gmail.com" />
                     {errors.email && <p className="error">Email là trường bắt buộc.</p>}
                 </div>
                 <div className="form-group">
-                    <label>Mật khẩu</label>
+                    <label className="w-100 text-start">Mật khẩu</label>
                     <input type="password" className="form-control" {...register('password', { required: true, minLength: 6 })} />
                     {errors.password && errors.password.type === 'required' && <p className="error">Mật khẩu là trường bắt buộc.</p>}
                     {errors.password && errors.password.type === 'minLength' && <p className="error">Mật khẩu phải có ít nhất 6 ký tự.</p>}
                 </div>
                 {/* Trường Xác nhận mật khẩu */}
                 <div className="form-group">
-                    <label>Xác nhận mật khẩu</label>
+                    <label className="w-100 text-start">Xác nhận mật khẩu</label>
                     <input
                         type="password"
                         className="form-control"

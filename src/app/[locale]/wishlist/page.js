@@ -2,18 +2,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, addToCartAPI, removeWishlistItem } from "@/store/slices/productSlice";
+import { addToCart } from "@/store/slices/cartSlice";
+import { removeFromWishlistApi, removeWishlistItem } from "@/store/slices/wishlistSlice";
 
 const Wishlist = () => {
     const dispatch = useDispatch();
-    const getWishlist = useSelector((state) => state.productData.wishlistItems);
+    const getWishlist = useSelector((state) => state.wishlist.wishlistItems);
 
     const handleAddToCart = async (product) => {
         dispatch(addToCart(product));
     };
 
-    const removeWishlistHandler = (data) => {
-        dispatch(removeWishlistItem(data))
+    const removeWishlistHandler = (product) => {
+        dispatch(removeFromWishlistApi(product.id))
+        dispatch(removeWishlistItem(product))
     }
 
     return (

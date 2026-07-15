@@ -90,7 +90,7 @@ const calculateTotalAmount = function (items) {
 		const price = allAmount[i];
 		totalAmount += price;
 	}
-	return parseFloat(totalAmount).toFixed(2);
+	return totalAmount;
 }
 
 const calculateTotalQuantity = function (items) {

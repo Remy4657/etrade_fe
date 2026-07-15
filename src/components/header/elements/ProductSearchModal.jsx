@@ -8,7 +8,7 @@ import ProductPrice from "@/components/product/elements/ProductPrice";
 import ProductRating from "@/components/product/elements/ProductRating";
 
 const ProductSearchModal = (props) => {
-  const { listProducts } = useSelector((state) => state.productData);
+  const { listProducts } = useSelector((state) => state.product);
 
   const [productQuery, setProductQuery] = useState([]);
 

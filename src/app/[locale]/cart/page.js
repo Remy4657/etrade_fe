@@ -4,15 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { slugify } from "@/utils";
-import { removeCartItem, cartQuantityIncrease, cartQuantityDecrease, cartClear, updateCartAmount } from "@/store/slices/productSlice";
-import { removeFromCartAPI, updateProductCartQuantity } from "@/store/slices/productSlice";
+import { removeFromCartAPI, updateProductCartQuantity, removeCartItem, cartQuantityIncrease, cartQuantityDecrease, cartClear, updateCartAmount } from "@/store/slices/cartSlice";
 import { toast } from "react-toastify";
 import { logout } from "@/store/slices/authSlice";
 
 const Cart = () => {
     const dispatch = useDispatch();
     const router = useRouter();
-    const cartProducts = useSelector((state) => state.productData);
+    const cartProducts = useSelector((state) => state.cart);
 
     const removeCartHandler = async (data) => {
         try {
@@ -114,7 +113,7 @@ const Cart = () => {
                                                     </td>
                                                     <td className="product-subtotal" data-title="Tổng">
                                                         <span className="currency-symbol">$</span>
-                                                        {parseFloat(product.salePrice ? product.salePrice * product.cartQuantity : product.price * product.cartQuantity).toFixed(2)}
+                                                        {product.salePrice ? product.salePrice * product.cartQuantity : product.price * product.cartQuantity}
                                                     </td>
                                                 </tr>
                                             ))}
@@ -130,7 +129,7 @@ const Cart = () => {
                                         </div>
                                     </div>
                                     <div className="update-btn">
-                                        <button className="axil-btn btn-outline" onClick={() => updateCartHandler()}>Cập nhật thay đổi</button>
+                                        {/* <button className="axil-btn btn-outline" onClick={() => updateCartHandler()}>Cập nhật thay đổi</button> */}
                                     </div>
                                 </div>
                                 <div className="row">

@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import { useSession, signIn } from "next-auth/react";
 import AuthLayout from "../layout";
 import { loginUser } from "@/store/slices/authSlice";
-import { getCurrentCart } from "@/store/slices/productSlice";
+import { getCurrentCart } from "@/store/slices/cartSlice";
+import { getWishlistApi } from "@/store/slices/wishlistSlice";
 
 const SignIn = () => {
     const { data: session, status } = useSession();
@@ -20,35 +21,41 @@ const SignIn = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
+        try {
+            const resultAction = await dispatch(loginUser({ email: data.email, password: data.password }));
+            if (resultAction.payload.code == 200) {
+                dispatch(getCurrentCart())
+                dispatch(getWishlistApi())
 
-        const resultAction = await dispatch(loginUser({ email: data.email, password: data.password }));
-        if (resultAction.payload.code == 200) {
-            dispatch(getCurrentCart())
-            toast.success(resultAction.payload?.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Flip,
-            });
-            router.push("/");
-        } else {
-            toast.error(resultAction.payload?.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            });
+                toast.success(resultAction.payload?.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Flip,
+                });
+                router.push("/");
+            } else {
+                toast.error(resultAction.payload?.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+            }
+        } catch (error) {
+            console.log(error)
         }
+
 
     }
     const handleLoginGoogle = async () => {
@@ -62,12 +69,12 @@ const SignIn = () => {
                 <p className="b2 mb--55">Chào mừng bạn đến với MegaDeal</p>
                 <form className="singin-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        <label>Email</label>
+                        <label className="w-100 text-start">Email</label>
                         <input type="email" className="form-control" {...register('email', { required: true })} defaultValue="test2@gmail.com" />
                         {errors.email && <p className="error">Email là trường bắt buộc.</p>}
                     </div>
                     <div className="form-group">
-                        <label>Mật khẩu</label>
+                        <label className="w-100 text-start">Mật khẩu</label>
                         <input type="password" className="form-control" {...register('password', { required: true, minLength: 6 })} defaultValue={123456} />
                         {errors.password && errors.password.type === 'required' && <p className="error">Mật khẩu là trường bắt buộc.</p>}
                         {errors.password && errors.password.type === 'minLength' && <p className="error">Mật khẩu phải có ít nhất 6 ký tự.</p>}
@@ -103,7 +110,7 @@ const SignIn = () => {
                             }}
                             onClick={() => handleLoginGoogle()}>
                             <Image
-                                src="/images/logo/google.png"
+                                src="/images/logo/icon-google.webp"
                                 alt="Google"
                                 width={20}
                                 height={20}

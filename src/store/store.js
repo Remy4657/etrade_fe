@@ -1,5 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import productSlice from "./slices/productSlice";
+import cartSlice from "./slices/cartSlice";
 import authSlice from "./slices/authSlice";
 import menuSlice from "./slices/menuSlice";
 import {
@@ -13,6 +14,7 @@ import {
     REGISTER,
 } from "redux-persist";
 import storage from "./storage";
+import wishlistSlice from "./slices/wishlistSlice";
 
 
 
@@ -32,13 +34,15 @@ export const persistedProductReducer = persistReducer(
 );
 // 1️. Combine reducer (GIỮ ĐÚNG key bạn đang dùng)
 // const rootReducer = combineReducers({
-//     productData: productSlice,
+//     product: productSlice,
 //     auth: authSlice,
 //     menu: menuSlice,
 // });
 const rootReducer = combineReducers({
-    productData: persistedProductReducer, //  product đã được persist riêng
+    product: persistedProductReducer, //  product đã được persist riêng
     auth: authSlice,
+    cart: cartSlice,
+    wishlist: wishlistSlice,
     menu: menuSlice,
 });
 // 4️. Configure store

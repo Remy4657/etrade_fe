@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const HomeElectronics = () => {
     const dispatch = useDispatch()
-    const { listProducts, isLoading, listProductBestSeller, listProductNewest, listCategory } = useSelector((state) => state.productData);
+    const { listProducts, isLoading, listProductBestSeller, listProductNewest, listCategory } = useSelector((state) => state.product);
 
     const exploreProductSeperate = mapInSlices(listProducts, 12);
 
