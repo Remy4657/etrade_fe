@@ -3,7 +3,7 @@ name: CI-CD
 on:
   push:
     branches: ["deploy"]
-
+  workflow_dispatch:
 jobs:
   github-ci-remy4657:
     runs-on: ubuntu-latest
