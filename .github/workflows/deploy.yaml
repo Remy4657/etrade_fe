@@ -31,13 +31,13 @@ jobs:
       - name: Build Image
         run: |
           docker build -f Dockerfile.pro \
-          -t remy4657/test-etrade-fe-ci:${{ github.sha }} \
-          -t remy4657/test-etrade-fe-ci:latest .
+          -t remy4657/etrade-frontend:${{ github.sha }} \
+          -t remy4657/etrade-frontend:latest .
 
       - name: Push Image
         run: |
-          docker push remy4657/test-etrade-fe-ci:${{ github.sha }}
-          docker push remy4657/test-etrade-fe-ci:latest
+          docker push remy4657/etrade-frontend:${{ github.sha }}
+          docker push remy4657/etrade-frontend:latest
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -46,7 +46,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            cd ~/project/etrade/fe
+            cd ~/project/etrade/frontend
             docker compose pull
             docker compose down
             docker compose up -d

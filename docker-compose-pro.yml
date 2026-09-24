@@ -1,12 +1,12 @@
 services:
   frontend:
-    image: remy4657/test-etrade-fe-ci:latest
+    image: remy4657/etrade-frontend:latest
     container_name: etrade_frontend
     restart: always
     networks:
       - etrade-network
     env_file:
-      - .env
+      - .env.production
     ports:
       - "3000:3000"
 networks:
