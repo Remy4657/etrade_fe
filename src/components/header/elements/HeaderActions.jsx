@@ -9,7 +9,7 @@ import { miniCartHandler } from "@/store/slices/cartSlice";
 import { mobileMenu } from "@/store/slices/menuSlice";
 import { useRouter } from "next/navigation";
 import { logout } from "@/store/slices/authSlice";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const HeaderActions = (props) => {
   const dispatch = useDispatch();

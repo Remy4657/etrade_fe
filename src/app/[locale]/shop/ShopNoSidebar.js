@@ -1,12 +1,11 @@
 'use client';
 import { useState, useMemo } from "react";
-import { useSelector } from "react-redux";
 import { getPriceRange, slugify } from "@/utils";
 import Product from "@/components/product/Product";
 import ProductsData from "@/data/Products";
 import Section from "@/components/elements/Section";
 
-const ShopNoSidebar = () => {
+const ShopNoSidebar = ({ products, categories }) => {
 
     const [category, setCategory] = useState("all");
     const [sort, setSort] = useState(null);
@@ -15,11 +14,10 @@ const ShopNoSidebar = () => {
     const [productShow, setProductShow] = useState(12);
     const priceRange = getPriceRange(ProductsData);
 
-    const { listProducts, listCategory } = useSelector((state) => state.product);
 
 
     const filteredProducts = useMemo(() => {
-        let result = [...listProducts];
+        let result = [...products];
         //  FILTER theo category
         if (category !== "all") {
             result = result.filter(
@@ -38,7 +36,7 @@ const ShopNoSidebar = () => {
             result = result.filter(data => data.salePrice >= parseInt(splitValue[0]) && data.price <= parseInt(splitValue[1]));
         }
         return result;
-    }, [listProducts, category, sort, rangePrice]);
+    }, [products, category, sort, rangePrice]);
     const sortHandler = (e) => {
         setSort(e.target.value)
     };
@@ -64,13 +62,13 @@ const ShopNoSidebar = () => {
                                 <div className="category-select">
                                     <select className="single-select" onChange={CategoryHandler}>
                                         <option value="all">Tất cả danh mục</option>
-                                        {listCategory?.map((data, index) => (
+                                        {categories?.map((data, index) => (
                                             <option value={slugify(data.name)} key={index}>{data.name}</option>
                                         ))}
                                     </select>
 
                                     <select className="single-select" onChange={priceRangeHandler}>
-                                        <option value="null">Giá</option>
+                                        <option value="null">Tất cả giá</option>
                                         {priceRange?.map((data, index) => (
                                             <option value={`${data.from}-${data.to}`} key={index}>{data.from} - {data.to}</option>
                                         ))}
@@ -82,7 +80,7 @@ const ShopNoSidebar = () => {
                                     <select className="single-select" onChange={sortHandler}>
                                         {/* <option value="latest">Sort by Latest</option>
                                         <option value="name">Sort by Name</option> */}
-                                        <option value="default">Sắp xếp</option>
+                                        <option value="default">Mặc định</option>
                                         <option value="asc">Giá tăng dần</option>
                                         <option value="desc">Giá giảm dần</option>
 
@@ -102,7 +100,7 @@ const ShopNoSidebar = () => {
             </div>
 
             <div className="text-center pt--30">
-                <button className={`axil-btn btn-bg-lighter btn-load-more ${listProducts.length <= productShow ? "d-none" : ""}`} onClick={ProductShowHandler}>{listProducts.length < productShow ? "Chưa có sản phẩm" : "Xem thêm"}</button>
+                <button className={`axil-btn btn-bg-lighter btn-load-more ${products.length <= productShow ? "d-none" : ""}`} onClick={ProductShowHandler}>{products.length < productShow ? "Chưa có sản phẩm" : "Xem thêm"}</button>
             </div>
         </Section>
     );

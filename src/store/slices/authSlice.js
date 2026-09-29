@@ -19,6 +19,7 @@ export const logout = createAsyncThunk(
     "auth/logout",
     async (_, { rejectWithValue }) => {
         try {
+            localStorage.removeItem("isLogin")
             await authService.logout(); // sign out ở server
             await signOut({ redirect: false }) // sign out ở client (xóa session cookie),
             return;
@@ -32,7 +33,6 @@ export const getMe = createAsyncThunk(
     async (_, { rejectWithValue, dispatch }) => {
         try {
             const res = await authService.me();
-
             return res.data;
         } catch (err) {
             return rejectWithValue(err);

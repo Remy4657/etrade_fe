@@ -7,7 +7,10 @@ const nextConfig = {
   output: "standalone",
   reactStrictMode: false,
   webpack: (config) => {
-    config.resolve.fallback = { fs: false };
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false
+    };
     return config;
   },
   images: {

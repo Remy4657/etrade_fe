@@ -7,6 +7,8 @@ const eslintConfig = defineConfig([
         rules: {
             'react/no-unescaped-entities': 'off',
             '@next/next/no-page-custom-font': 'off',
+            'no-undef': 'error',
+            'no-unused-vars': 'error',
         },
     },
     // Override default ignores of eslint-config-next.

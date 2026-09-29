@@ -18,7 +18,7 @@ import { logout } from "@/store/slices/authSlice";
 import DashboardLoading from "../../loading";
 import { addToWishlist, addToWishlistApi } from "@/store/slices/wishlistSlice";
 
-const SingleLayouThree = ({ idProduct }) => {
+const SingleLayouThree = ({ products, productDetail }) => {
     const router = useRouter()
     const dispatch = useDispatch();
     const getWishlist = useSelector((state) => state.wishlist.wishlistItems);
@@ -29,63 +29,17 @@ const SingleLayouThree = ({ idProduct }) => {
     const [quantity, setquantity] = useState(1);
     const [colorImage, setColorImage] = useState("");
     const [productSize, setProductSize] = useState("");
-    const [singleData, setSingleData] = useState(null)
-    const [categoryProductDetail, setCategoryProductDetail] = useState("")
-    const [listProductCategory, setListProductCategory] = useState([])
 
-
-    // const findReview = useMemo(() => {
-    //     if (!singleData?.id) return [];
-    //     return ProductReview.filter(
-    //         (data) => slugify(data.productId) === slugify(singleData.id)
-    //     );
-    // }, [singleData]);
-
-    // const ratingNumber = useMemo(() => {
-    //     if (!findReview.length) return 0;
-    //     return reviewAverage(findReview);
-    // }, [findReview]);
 
     const isWishlistAdded = useMemo(() => {
-        if (!singleData?.id) return false;
-        return getWishlist.some((item) => item.id === singleData.id);
-    }, [getWishlist, singleData]);
-    useEffect(() => {
-        const fetchDetailProduct = async () => {
-            try {
-                const productDetail = await getDetailProduct(idProduct);
-                setSingleData(productDetail.data);
-                setCategoryProductDetail(productDetail?.data?.pcate)
-            } catch (error) {
-                console.error("Fetch product failed:", error);
-            }
-        };
-
-        if (idProduct) {
-            fetchDetailProduct();
-        }
-    }, [idProduct]);
-    useEffect(() => {
-        const fetchProductCategory = async () => {
-            try {
-                const res = await getProductCategory(categoryProductDetail);
-
-                setListProductCategory(res?.data)
-            } catch (error) {
-                console.error("Fetch product category failed:", error);
-            }
-        };
-        if (categoryProductDetail) {
-
-            fetchProductCategory();
-        }
-    }, [categoryProductDetail]);
+        if (!productDetail?.id) return false;
+        return getWishlist.some((item) => item.id === productDetail.id);
+    }, [getWishlist, productDetail]);
 
     const handleAddToCart = async (cartAddedData) => {
         if (!login) {
             router.push("/sign-in");
             router.refresh()
-
             return;
         }
         let product = { ...cartAddedData }
@@ -142,16 +96,16 @@ const SingleLayouThree = ({ idProduct }) => {
     };
     const getFullscreenPreview = () => {
         let galleryPreview = [];
-        if (singleData.gallery) {
-            singleData.gallery?.map((img) => {
+        if (productDetail.gallery) {
+            productDetail.gallery?.map((img) => {
                 galleryPreview.push(img);
             })
         } else {
-            galleryPreview.push(singleData.thumbnail);
+            galleryPreview.push(productDetail.thumbnail);
         }
         return galleryPreview;
     }
-    if (!singleData) {
+    if (!productDetail) {
         return <DashboardLoading />;
     }
     return (
@@ -174,7 +128,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                 asNavFor={nav2}
                                                 ref={(slider1 => setNav1(slider1))}
                                             >
-                                                {singleData.gallery ? singleData.gallery?.map((galleryImg, index) => (
+                                                {productDetail.gallery ? productDetail.gallery?.map((galleryImg, index) => (
                                                     <div className="thumbnail" key={index}>
                                                         <Image
                                                             src={galleryImg}
@@ -186,7 +140,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                 )) :
                                                     <div className="thumbnail">
                                                         <Image
-                                                            src={singleData.thumbnail}
+                                                            src={productDetail.thumbnail}
                                                             height={584}
                                                             width={584}
                                                             alt="Gallery Image"
@@ -194,12 +148,12 @@ const SingleLayouThree = ({ idProduct }) => {
                                                     </div>
                                                 }
                                             </SlickSlider>
-                                            {singleData.salePrice &&
+                                            {productDetail.salePrice &&
                                                 <div className="label-block">
-                                                    <div className="product-badget">giảm {discountPercentage(singleData.price, singleData.salePrice)}%</div>
+                                                    <div className="product-badget">giảm {discountPercentage(productDetail.price, productDetail.salePrice)}%</div>
                                                 </div>
                                             }
-                                            {/* {singleData.gallery &&
+                                            {/* {productDetail.gallery &&
                                         <>
                                             <div className="product-quick-view position-view">
                                                 <button onClick={() => setFsToggler(!fsToggler)} className="popup-zoom">
@@ -233,7 +187,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                                 },
                                             ]}
                                         >
-                                            {singleData.gallery ? singleData.gallery?.map((galleryImg, index) => (
+                                            {productDetail.gallery ? productDetail.gallery?.map((galleryImg, index) => (
                                                 <div className="small-thumb-img" key={index}>
                                                     <Image
                                                         src={galleryImg}
@@ -245,7 +199,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                             )) :
                                                 <div className="small-thumb-img">
                                                     <Image
-                                                        src={singleData.thumbnail}
+                                                        src={productDetail.thumbnail}
                                                         height={207}
                                                         width={213}
                                                         alt="Thumb Image"
@@ -258,22 +212,22 @@ const SingleLayouThree = ({ idProduct }) => {
                             <div className="col-lg-5 mb--40">
                                 <div className="single-product-content">
                                     <div className="inner">
-                                        <h2 className="product-title">{singleData.title}</h2>
-                                        <span className="price-amount">${singleData.salePrice ? singleData.salePrice : singleData.price}</span>
-                                        <ProductRating rating={singleData} textEnable />
-                                        {singleData.shortDes &&
+                                        <h2 className="product-title">{productDetail.title}</h2>
+                                        <span className="price-amount">${productDetail.salePrice ? productDetail.salePrice : productDetail.price}</span>
+                                        <ProductRating rating={productDetail} textEnable />
+                                        {productDetail.shortDes &&
                                             <>
-                                                <ul className="product-meta" dangerouslySetInnerHTML={{ __html: singleData.shortDes.listItem }}></ul>
-                                                <p>{singleData.shortDes.text}</p>
+                                                <ul className="product-meta" dangerouslySetInnerHTML={{ __html: productDetail.shortDes.listItem }}></ul>
+                                                <p>{productDetail.shortDes.text}</p>
                                             </>
                                         }
                                         <div className="product-variations-wrapper">
-                                            {singleData.colorAttribute &&
+                                            {productDetail.colorAttribute &&
                                                 <div className="product-variation">
                                                     <h6 className="title">Màu sắc:</h6>
                                                     <div className="color-variant-wrapper">
                                                         <ul className="color-variant">
-                                                            {singleData.colorAttribute?.map((data, index) => (
+                                                            {productDetail.colorAttribute?.map((data, index) => (
                                                                 <li className={`${data.color} ${colorImage.color === data.color ? "active" : ""
                                                                     }`} key={index} onClick={() => colorImageHandler(data)}>
                                                                     <span>
@@ -285,11 +239,11 @@ const SingleLayouThree = ({ idProduct }) => {
                                                     </div>
                                                 </div>
                                             }
-                                            {singleData.sizeAttribute &&
+                                            {productDetail.sizeAttribute &&
                                                 <div className="product-variation product-size-variation">
                                                     <h6 className="title">Kích thước:</h6>
                                                     <ul className="range-variant">
-                                                        {singleData.sizeAttribute?.map((data, index) => (
+                                                        {productDetail.sizeAttribute?.map((data, index) => (
                                                             <li key={index} className={productSize === data ? "active" : ""}
                                                                 onClick={() => productSizeHandler(data)}>{data}</li>
                                                         ))}
@@ -306,10 +260,10 @@ const SingleLayouThree = ({ idProduct }) => {
                                             </div>
                                             <ul className="product-action d-flex-center mb--0">
                                                 <li className="add-to-cart">
-                                                    <button disabled={(singleData.colorAttribute && !colorImage) || (singleData.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(singleData)} className="axil-btn btn-bg-primary">Thêm vào giỏ hàng</button>
+                                                    <button disabled={(productDetail.colorAttribute && !colorImage) || (productDetail.sizeAttribute && !productSize) ? true : false} onClick={() => handleAddToCart(productDetail)} className="axil-btn btn-bg-primary">Thêm vào giỏ hàng</button>
                                                 </li>
                                                 <li className="wishlist">
-                                                    <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(singleData)} disabled={isWishlistAdded}><i className={isWishlistAdded ? "fas fa-heart" : "far fa-heart"} /></button>
+                                                    <button className="axil-btn wishlist-btn" onClick={() => handleAddToWishlist(productDetail)} disabled={isWishlistAdded}><i className={isWishlistAdded ? "fas fa-heart" : "far fa-heart"} /></button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -334,7 +288,7 @@ const SingleLayouThree = ({ idProduct }) => {
                             <div className="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 <div className="product-desc-wrapper">
                                     <div className="row">
-                                        {Array.isArray(singleData.description.textDesc) && singleData.description.textDesc?.map((data, index) => (
+                                        {Array.isArray(productDetail.description.textDesc) && productDetail.description.textDesc?.map((data, index) => (
                                             <div className="col-lg-6 mb--30" key={index}>
                                                 <div className="single-desc">
                                                     <h5 className="title">{data.title}</h5>
@@ -346,7 +300,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                     <div className="row">
                                         <div className="col-lg-12">
                                             <ul className="pro-des-features">
-                                                {singleData.description.listDesc?.map((data, index) => (
+                                                {productDetail.description.listDesc?.map((data, index) => (
                                                     <li className="single-features" key={index}>
                                                         <div className="icon">
                                                             <Image
@@ -369,7 +323,7 @@ const SingleLayouThree = ({ idProduct }) => {
                                     <div className="table-responsive">
                                         <table>
                                             <tbody>
-                                                {singleData.addInfo?.map((data, index) => (
+                                                {productDetail.addInfo?.map((data, index) => (
                                                     <tr key={index}>
                                                         <th>{data.title}</th>
                                                         <td>{data.text}</td>
@@ -509,7 +463,7 @@ const SingleLayouThree = ({ idProduct }) => {
                         },
                     ]}
                 >
-                    {listProductCategory?.slice(0, 10)?.map((data) => (
+                    {products?.slice(0, 10)?.map((data) => (
                         <Product product={data} key={data.id} />
                     ))}
                 </SlickSlider>
