@@ -1,4 +1,4 @@
-// app/api/get-cookie/route.js
+
 import { cookies } from 'next/headers';
 
 export async function GET() {

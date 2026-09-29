@@ -11,36 +11,17 @@ import TestimonialOne from "@/components/testimonial/TestimonialOne";
 import WhyChoose from "@/components/why-choose/WhyChoose";
 import ProductList from "@/components/product/ProductList";
 import { mapInSlices } from "@/utils";
-import { useEffect } from "react";
-import DashboardLoading from '../../loading';
-
-import { fetchAllProductAPI, fetchProducBestsellerAPI, fetchProducNewestAPI, fetchAllCategoryAPI } from "@/store/slices/productSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 
-const HomeElectronics = () => {
-    const dispatch = useDispatch()
-    const { listProducts, isLoading, listProductBestSeller, listProductNewest, listCategory } = useSelector((state) => state.product);
 
-    const exploreProductSeperate = mapInSlices(listProducts, 12);
-
-    useEffect(() => {
-        dispatch(fetchAllProductAPI())
-        dispatch(fetchProducBestsellerAPI())
-        dispatch(fetchProducNewestAPI())
-        dispatch(fetchAllCategoryAPI())
-    }, [dispatch])
-
-
-    if (isLoading) {
-        return <DashboardLoading />;
-    }
+const HomeElectronics = ({ products, productsBestseller, productsNewest, categories }) => {
+    const exploreProductSeperate = mapInSlices(products, 12);
 
     return (
         <>
             <main className="main-wrapper">
                 <BannerOne />
-                <CategoryElectronics listCategory={listCategory} />
+                <CategoryElectronics listCategory={categories} />
                 <PosterOne singleAnimation />
                 <Section>
                     <SectionTitle
@@ -108,7 +89,7 @@ const HomeElectronics = () => {
                             },
                         ]}
                     >
-                        {listProductNewest?.map((data) => (
+                        {productsNewest?.map((data) => (
                             <Product product={data} key={data.id} />
                         ))}
 
@@ -124,7 +105,7 @@ const HomeElectronics = () => {
                         pClass="section-title-center"
                     />
                     <div className="row row-cols-xl-2 row-cols-1 row--15">
-                        {listProductBestSeller?.map((data) => (
+                        {productsBestseller?.map((data) => (
                             <div className="col" key={data.id}>
                                 <ProductList product={data} />
                             </div>

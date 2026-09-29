@@ -39,6 +39,7 @@ const SignIn = () => {
                     transition: Flip,
                 });
                 router.push("/");
+                localStorage.setItem("isLogin", true)
             } else {
                 toast.error(resultAction.payload?.message, {
                     position: "top-right",
